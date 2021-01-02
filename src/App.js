@@ -3,45 +3,49 @@ import './App.css';
 import { useDrag } from 'react-dnd';
 import { r2d6 } from './utils';
 import { Characteristics } from './Characteristic';
+import { useState } from 'react';
+
+
 
 
 function App() {
-  let stats = generateCharacteristics();
+  // let stats = generateCharacteristics();
+  let [characteristics, setCharacteristics] = useState(generateCharacteristics());
+
+  function updateCharacteristics(updated) {
+    let newchars = {};
+    for (let char in characteristics) {
+      if (characteristics.hasOwnProperty(char)) {
+        newchars[char] = characteristics[char];
+      }
+    }
+
+    for (let char in updated) {
+      if (updated.hasOwnProperty(char)) {
+        newchars[char] = updated[char];
+      }
+    }
+
+    setCharacteristics(newchars);
+  }
+
   return (
-
-  //   <div className="App">
-  //     <header className="App-header">
-  //       <img src={logo} className="App-logo" alt="logo" />
-  //       <p>
-  //         Edit <code>src/App.js</code> and save to reload.
-  //       </p>
-  //       <a
-  //         className="App-link"
-  //         href="https://reactjs.org"
-  //         target="_blank"
-  //         rel="noopener noreferrer"
-  //       >
-  //         Learn React
-  //       </a>
-  //     </header> 
-  //   </div>
-
     <div className="App">
-      <Characteristics stats={stats} />
+      <Characteristics characteristics={characteristics} updateCharacteristics={updateCharacteristics} />
     </div>
     
   );
 }
 
 function generateCharacteristics() {
-let characteristics = {
-  strength: r2d6(),
-  dexterity: r2d6(),
-  endurance: r2d6(),
-  intellect: r2d6(),
-  education: r2d6(),
-  social: r2d6(),
-};
+  let characteristics = {
+    Strength: r2d6(),
+    Dexterity: r2d6(),
+    Endurance: r2d6(),
+    Intellect: r2d6(),
+    Education: r2d6(),
+    Social: r2d6(),
+  };
 
   return characteristics;
 }

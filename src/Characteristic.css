@@ -1,0 +1,22 @@
+.CharacteristicValue {
+    border: 1px solid black;
+    width: 20px;
+    height: 20px;
+    cursor: move;
+}
+
+.Characteristics {
+    display: flex;
+    justify-content: center;
+}
+
+.Characteristic {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Value {
+    margin: 0;
+}
