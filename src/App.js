@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { useDrag } from 'react-dnd';
 import { r2d6 } from './utils';
-import { Characteristics } from './Characteristic';
+import { UPP } from './UPP';
 import { useState } from 'react';
 import { Homeworld } from './Homeworld';
 import { Game } from './Game';
@@ -10,7 +10,7 @@ import { Game } from './Game';
 
 function App() {
   // let stats = generateCharacteristics();
-  let [characteristics, setCharacteristics] = useState(generateUPP());
+  let [upp, setUpp] = useState(generateUPP());
   let [homeworldName, setHomeworldName] = useState('');
   let [homeworldUPP, setHomeworldUPP] = useState(generateUWP());
   let [name, setName] = useState('');
@@ -19,9 +19,9 @@ function App() {
 
   function updateUPP(updated) {
     let newchars = {};
-    for (let char in characteristics) {
-      if (characteristics.hasOwnProperty(char)) {
-        newchars[char] = characteristics[char];
+    for (let char in upp) {
+      if (upp.hasOwnProperty(char)) {
+        newchars[char] = upp[char];
       }
     }
 
@@ -31,7 +31,7 @@ function App() {
       }
     }
 
-    setCharacteristics(newchars);
+    setUpp(newchars);
   }
 
   return (
@@ -44,7 +44,7 @@ function App() {
         isGameSelected={isGameSelected} 
         setIsGameSelected={setIsGameSelected} 
       />
-      <Characteristics characteristics={characteristics} updateUPP={updateUPP} />
+      <UPP characteristics={upp} updateUPP={updateUPP} />
       {/* <Homeworld name={homeworldName} updateName={setHomeworldName} upp={homeworldUPP} updateUPP={setHomeworldUPP} /> */}
     </div>
     

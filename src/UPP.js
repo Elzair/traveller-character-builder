@@ -2,10 +2,10 @@ import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { num2tetra } from "./utils";
 
-import './Characteristic.css';
+import './UPP.css';
 import { ItemTypes } from "./constants";
 
-export function Characteristics({characteristics, updateUPP}) {
+export function UPP({characteristics, updateUPP}) {
     let stats = [];
 
     for (let char in characteristics) {
@@ -16,7 +16,7 @@ export function Characteristics({characteristics, updateUPP}) {
 
     return (
         <DndProvider backend={HTML5Backend}>
-            <div className="Characteristics">
+            <div className="UPP">
                 {stats}
             </div>
         </DndProvider>

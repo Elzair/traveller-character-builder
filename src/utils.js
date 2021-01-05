@@ -13,7 +13,7 @@ export function constrain(num, min, max) {
 export function num2tetra(num) {
     let newnum = num;
     if (newnum < 0 || newnum >= 34 ) {
-        throw `Number out of bounds: ${newnum}`;
+        throw new Error(`Number out of bounds: ${newnum}`);
     }
 
     if (newnum >= 18) { newnum++; }
@@ -24,7 +24,7 @@ export function num2tetra(num) {
 
 export function padToTwo(num) {
     if (num < 0 || num > 99) {
-        throw `${num} is out of bounds!`;
+        throw new Error(`${num} is out of bounds!`);
     }
     
     return ("0"+num).slice(-2);
