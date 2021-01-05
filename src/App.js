@@ -44,7 +44,8 @@ function App() {
         isGameSelected={isGameSelected} 
         setIsGameSelected={setIsGameSelected} 
       />
-      <UPP characteristics={upp} updateUPP={updateUPP} />
+      <p class="Name">{name}</p>
+      <UPP game={game} characteristics={upp} updateUPP={updateUPP} />
       {/* <Homeworld name={homeworldName} updateName={setHomeworldName} upp={homeworldUPP} updateUPP={setHomeworldUPP} /> */}
     </div>
     

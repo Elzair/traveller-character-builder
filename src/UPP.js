@@ -5,25 +5,50 @@ import { num2tetra } from "./utils";
 import './UPP.css';
 import { ItemTypes } from "./constants";
 
-export function UPP({characteristics, updateUPP}) {
+export function UPP({game, characteristics, updateUPP}) {
     let stats = [];
 
     for (let char in characteristics) {
         if (characteristics.hasOwnProperty(char)) {
-            stats.push(<Characteristic name={char} value={characteristics[char]} updateUPP={updateUPP} />);
+            if (game === 'mt2e') {
+                stats.push(<Characteristic name={char} value={characteristics[char]} updateUPP={updateUPP} />);
+            } else {
+                stats.push(<CharacteristicNoDND name={char} value={characteristics[char]} updateUPP={updateUPP} />);
+            }
         }
     }
 
-    return (
-        <DndProvider backend={HTML5Backend}>
+    if (game === 'mt2e') {
+        return (
+            <DndProvider backend={HTML5Backend}>
+                <div className="UPP">
+                    {stats}
+                </div>
+            </DndProvider>
+        );
+    } else {
+        return (
             <div className="UPP">
                 {stats}
             </div>
-        </DndProvider>
-    )
+        )
+    }
 }
 
-export function Characteristic({name, value, updateUPP}) {
+function CharacteristicNoDND({ name, value, updateUPP }) {
+    const displayValue = num2tetra(value);
+
+    return (
+        <div className="Characteristic">
+            <p className="Name">{name}</p>
+            <div className="CharacteristicValue">
+                <p className="Value">{displayValue}</p>
+            </div>
+        </div>
+    );
+}
+
+function Characteristic({name, value, updateUPP}) {
     const [{ isDragging }, drag] = useDrag({
         item: { type: ItemTypes.CHARACTERISTIC, name: name, value: value },
         collect: monitor => ({
