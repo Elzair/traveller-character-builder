@@ -31,7 +31,7 @@ export function UPP({options, updateOptions, characteristics, updateUPP, step, s
                     {stats}
                 </div>
             </DndProvider>
-            <input type="button" value="Finalize" onClick={finalizeCharacteristics} />
+            {step===1 && <input type="button" value="Finalize" onClick={finalizeCharacteristics} />}
             </div>
         );
     } else {
@@ -40,7 +40,7 @@ export function UPP({options, updateOptions, characteristics, updateUPP, step, s
             <div className="UPP">
                 {stats}
             </div>
-            <input type="button" value="Finalize" onClick={finalizeCharacteristics} />
+            {step===1 && <input type="button" value="Finalize" onClick={finalizeCharacteristics} />}
             </div>
         );
     }
