@@ -1,0 +1,15 @@
+.IncDec {
+    display: flex;
+    flex-flow: column;
+}
+
+.UwpInput {
+    display: flex;
+    flex-flow: row;
+    align-content: center;
+}
+
+.UWPValue {
+    font-size: 18pt;
+    width: 20px;
+}

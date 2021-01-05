@@ -3,6 +3,10 @@
     width: 20px;
     height: 20px;
     cursor: move;
+    padding: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .Characteristics {
@@ -17,6 +21,12 @@
     align-items: center;
 }
 
+.Name {
+    font-size: 18pt;
+    font-weight: bold;
+}
+
 .Value {
+    font-size: 16pt;
     margin: 0;
 }

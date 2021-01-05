@@ -5,15 +5,12 @@ import { num2tetra } from "./utils";
 import './Characteristic.css';
 import { ItemTypes } from "./constants";
 
-
-let test = 0;
-
-export function Characteristics({characteristics, updateCharacteristics}) {
+export function Characteristics({characteristics, updateUPP}) {
     let stats = [];
 
     for (let char in characteristics) {
         if (characteristics.hasOwnProperty(char)) {
-            stats.push(<Characteristic name={char} value={characteristics[char]} updateCharacteristics={updateCharacteristics} />);
+            stats.push(<Characteristic name={char} value={characteristics[char]} updateUPP={updateUPP} />);
         }
     }
 
@@ -26,7 +23,7 @@ export function Characteristics({characteristics, updateCharacteristics}) {
     )
 }
 
-export function Characteristic({name, value, updateCharacteristics}) {
+export function Characteristic({name, value, updateUPP}) {
     const [{ isDragging }, drag] = useDrag({
         item: { type: ItemTypes.CHARACTERISTIC, name: name, value: value },
         collect: monitor => ({
@@ -39,7 +36,7 @@ export function Characteristic({name, value, updateCharacteristics}) {
             let newchars = {};
             newchars[dropName] = value;
             newchars[name] = dropValue;
-            updateCharacteristics(newchars);
+            updateUPP(newchars);
         },
         collect: (monitor) => ({
             isOver: !!monitor.isOver(),
