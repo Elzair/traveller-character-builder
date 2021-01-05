@@ -5,6 +5,7 @@ import { r2d6 } from './utils';
 import { Characteristics } from './Characteristic';
 import { useState } from 'react';
 import { Homeworld } from './Homeworld';
+import { Game } from './Game';
 
 
 function App() {
@@ -12,6 +13,9 @@ function App() {
   let [characteristics, setCharacteristics] = useState(generateUPP());
   let [homeworldName, setHomeworldName] = useState('');
   let [homeworldUPP, setHomeworldUPP] = useState(generateUWP());
+  let [name, setName] = useState('');
+  let [game, setGame] = useState("classic");
+  let [isGameSelected, setIsGameSelected] = useState(false);
 
   function updateUPP(updated) {
     let newchars = {};
@@ -32,8 +36,16 @@ function App() {
 
   return (
     <div className="App">
+      <Game 
+        name={name} 
+        setName={setName} 
+        game={game} 
+        setGame={setGame} 
+        isGameSelected={isGameSelected} 
+        setIsGameSelected={setIsGameSelected} 
+      />
       <Characteristics characteristics={characteristics} updateUPP={updateUPP} />
-      <Homeworld name={homeworldName} updateName={setHomeworldName} upp={homeworldUPP} updateUPP={setHomeworldUPP} />
+      {/* <Homeworld name={homeworldName} updateName={setHomeworldName} upp={homeworldUPP} updateUPP={setHomeworldUPP} /> */}
     </div>
     
   );
