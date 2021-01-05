@@ -10,12 +10,30 @@ import { Game } from './Game';
 
 function App() {
   // let stats = generateCharacteristics();
+  let [step, setStep] = useState(0);
   let [upp, setUpp] = useState(generateUPP());
   let [homeworldName, setHomeworldName] = useState('');
   let [homeworldUPP, setHomeworldUPP] = useState(generateUWP());
   let [name, setName] = useState('');
   let [game, setGame] = useState("classic");
-  let [isGameSelected, setIsGameSelected] = useState(false);
+  let [options, setOptions] = useState({ rearrangeCharacteristics: false, });
+
+  function updateGameOptions(opts) {
+    let newopts = {};
+    for (let opt in options) {
+      if (options.hasOwnProperty(opt)) {
+        newopts[opt] = options[opt];
+      }
+    }
+
+    for (let opt in opts) {
+      if (opts.hasOwnProperty(opt)) {
+        newopts[opt] = opts[opt];
+      }
+    }
+
+    setOptions(newopts);
+  }
 
   function updateUPP(updated) {
     let newchars = {};
@@ -41,11 +59,20 @@ function App() {
         setName={setName} 
         game={game} 
         setGame={setGame} 
-        isGameSelected={isGameSelected} 
-        setIsGameSelected={setIsGameSelected} 
+        step={step} 
+        setStep={setStep}
+        options={options}
+        updateOptions={updateGameOptions}
       />
       <p class="Name">{name}</p>
-      <UPP game={game} characteristics={upp} updateUPP={updateUPP} />
+      <UPP 
+        options={options} 
+        updateOptions={updateGameOptions} 
+        characteristics={upp} 
+        updateUPP={updateUPP} 
+        step={step}
+        setStep={setStep}/>
+      {/* <input type="button" value="Select Career" /> */}
       {/* <Homeworld name={homeworldName} updateName={setHomeworldName} upp={homeworldUPP} updateUPP={setHomeworldUPP} /> */}
     </div>
     

@@ -5,37 +5,48 @@ import { num2tetra } from "./utils";
 import './UPP.css';
 import { ItemTypes } from "./constants";
 
-export function UPP({game, characteristics, updateUPP}) {
+export function UPP({options, updateOptions, characteristics, updateUPP, step, setStep}) {
+    function finalizeCharacteristics(ev) {
+        updateOptions({ rearrangeCharacteristics: false });
+        setStep(2);
+    }
+
     let stats = [];
 
     for (let char in characteristics) {
         if (characteristics.hasOwnProperty(char)) {
-            if (game === 'mt2e') {
-                stats.push(<Characteristic name={char} value={characteristics[char]} updateUPP={updateUPP} />);
+            if (options.rearrangeCharacteristics) {
+                stats.push(<CharacteristicEditable name={char} value={characteristics[char]} updateUPP={updateUPP} />);
             } else {
-                stats.push(<CharacteristicNoDND name={char} value={characteristics[char]} updateUPP={updateUPP} />);
+                stats.push(<Characteristic name={char} value={characteristics[char]} updateUPP={updateUPP} />);
             }
         }
     }
 
-    if (game === 'mt2e') {
+    if (options.rearrangeCharacteristics) {
         return (
+            <div className="UPPOuter">
             <DndProvider backend={HTML5Backend}>
                 <div className="UPP">
                     {stats}
                 </div>
             </DndProvider>
+            <input type="button" value="Finalize" onClick={finalizeCharacteristics} />
+            </div>
         );
     } else {
         return (
+            <div className="UPPOuter">
             <div className="UPP">
                 {stats}
             </div>
-        )
+            <input type="button" value="Finalize" onClick={finalizeCharacteristics} />
+            </div>
+        );
     }
 }
 
-function CharacteristicNoDND({ name, value, updateUPP }) {
+function Characteristic({ name, value, updateUPP }) {
     const displayValue = num2tetra(value);
 
     return (
@@ -48,7 +59,7 @@ function CharacteristicNoDND({ name, value, updateUPP }) {
     );
 }
 
-function Characteristic({name, value, updateUPP}) {
+function CharacteristicEditable({name, value, updateUPP}) {
     const [{ isDragging }, drag] = useDrag({
         item: { type: ItemTypes.CHARACTERISTIC, name: name, value: value },
         collect: monitor => ({

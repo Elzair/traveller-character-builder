@@ -1,10 +1,15 @@
 import Modal from 'react-modal';
 
-export function Game({name, setName, game, setGame, isGameSelected, setIsGameSelected}) {
+export function Game({name, setName, game, setGame, step, setStep, options, updateOptions}) {
     function handleSubmit(ev) {
         ev.preventDefault();
         if (name !== '') {
-            setIsGameSelected(true);
+            setStep(1);
+            if (game === 'mt2e') {
+                updateOptions({ rearrangeCharacteristics: true });
+            } else {
+                updateOptions({ rearrangeCharacteristics: false });
+            }
         }
     }
 
@@ -18,7 +23,7 @@ export function Game({name, setName, game, setGame, isGameSelected, setIsGameSel
 
     return (
         <Modal
-            isOpen={!isGameSelected}
+            isOpen={step===0}
             contentLabel="Select Game"
         >
             <form onSubmit={handleSubmit}>
