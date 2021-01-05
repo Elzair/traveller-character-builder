@@ -6,6 +6,7 @@ import { UPP } from './UPP';
 import { useState } from 'react';
 import { Homeworld } from './Homeworld';
 import { Game } from './Game';
+import { Career } from './Career';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
   let [name, setName] = useState('');
   let [game, setGame] = useState("classic");
   let [options, setOptions] = useState({ rearrangeCharacteristics: false, });
+  let [career, setCareer] = useState(null);
 
   function updateGameOptions(opts) {
     let newopts = {};
@@ -52,6 +54,23 @@ function App() {
     setUpp(newchars);
   }
 
+  function updateCareer(updated) {
+    let newcareer = {};
+    for (let opt in career) {
+      if (career.hasOwnProperty(opt)) {
+        newcareer[opt] = career[opt];
+      }
+    }
+
+    for (let opt in updated) {
+      if (updated.hasOwnProperty(opt)) {
+        newcareer[opt] = updated[opt];
+      }
+    }
+
+    setCareer(newcareer);
+  }
+
   return (
     <div className="App">
       <Game 
@@ -72,6 +91,7 @@ function App() {
         updateUPP={updateUPP} 
         step={step}
         setStep={setStep}/>
+      <Career game={game} step={step} setStep={setStep} career={career} updateCareer={updateCareer} upp={upp} setUpp={updateUPP} />
       {/* <input type="button" value="Select Career" /> */}
       {/* <Homeworld name={homeworldName} updateName={setHomeworldName} upp={homeworldUPP} updateUPP={setHomeworldUPP} /> */}
     </div>
