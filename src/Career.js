@@ -1,3 +1,7 @@
+import { useState } from 'react';
+import Modal from 'react-modal';
+import Switch from 'react-switch';
+
 import { capitalize, r1d6, r2d6 } from "./utils";
 
 export function Career({game, step, setStep, career, updateCareer, upp, setUPP, updateLog }) {
@@ -513,6 +517,12 @@ function draft() {
     return CTCAREERS.filter(career => career.draftNumber === roll)[0].name;
 }
 
+function survive(upp, careerName) {
+    const career = CTCAREERS.filter(career => career.name === careerName)[0];
+    const result = applyDMsToRoll(r2d6(), career.survival.dms, upp);
+    return result >= career.survival.target;
+}
+
 function CareerCT({step, setStep, career, updateCareer, upp, setUpp, updateLog }) {
     function selectCareer(ev) {
         ev.preventDefault();
@@ -548,7 +558,54 @@ function CareerCT({step, setStep, career, updateCareer, upp, setUpp, updateLog }
                 <input type="submit" value="Submit" />
             </form>
         );
+    } else if (step === 3) {
+        console.log('Got to step 3');
+        const didSurvive = survive(upp, career.branch);
+        console.log(`Survival: ${didSurvive}`);
+        let substep = 0;
+        if (didSurvive) {
+            return ( <Commission upp={upp} career={career} step={step} updateCareer={updateCareer} updateLog={updateLog} /> );
+        } else {
+            updateLog(['You have died.']);
+            setStep(10);
+        }
     }
 
+    return (<div></div>);
+}
+
+function Commission({upp, career, step, updateCareer, updateLog}) {
+    let [checked, setChecked] = useState(true);
+
+    function handleCheck(check) {  
+        setChecked(check);
+    }
+
+    function attemptCommission(ev) {
+        ev.preventDefault();
+        const input = ev.target[0];
+        if (input.checked) {
+            const careerData = CTCAREERS.filter(c => c.name === career.branch)[0];
+            const result = applyDMsToRoll(r2d6(), careerData.commission.dms, upp);
+            if (result >= careerData.commission.target) {
+                updateLog([`Congratulations! You are now a Rank 1 ${careerData.ranks[1].name}`]);
+                updateCareer({rank: 1});
+            } else {
+                updateLog([`Sorry, you failed to get a commission in term ${career.term+1}.`]);
+            }
+        }
+    }
+
+    const careerData = CTCAREERS.filter(c => c.name === career.branch)[0];
+    if (career.rank === 0 && careerData.commission && (!career.drafted || career.terms > 0)) {
+        return (
+            <form onSubmit={attemptCommission} className="Commission">
+                <p>Would you like to attempt a commission?</p>
+                <Switch checked={checked} onChange={handleCheck} />
+                <input type="submit" value="Ok" />
+            </form>
+        );
+    }
+    
     return (<div></div>);
 }
