@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { Homeworld } from './Homeworld';
 import { Game } from './Game';
 import { Career } from './Career';
+import { Log } from './Log';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
   let [game, setGame] = useState("classic");
   let [options, setOptions] = useState({ rearrangeCharacteristics: false, });
   let [career, setCareer] = useState(null);
+  let [log, setLog] = useState([]);
 
   function updateGameOptions(opts) {
     let newopts = {};
@@ -71,8 +73,20 @@ function App() {
     setCareer(newcareer);
   }
 
+  function updateLog(newEntries) {
+    let newlog = [];
+    for (let oldEntry of log) {
+      newlog.push(oldEntry);
+    }
+    for (let newEntry of newEntries) {
+      newlog.push(newEntry);
+    }
+
+    setLog(newlog);
+  }
+
   return (
-    <div className="App">
+    <div id="App" className="App">
       <Game 
         name={name} 
         setName={setName} 
@@ -82,16 +96,29 @@ function App() {
         setStep={setStep}
         options={options}
         updateOptions={updateGameOptions}
+        updateLog={updateLog}
       />
-      <p class="Name">{name}</p>
+      <p className="Name">{name}</p>
       <UPP 
         options={options} 
         updateOptions={updateGameOptions} 
         characteristics={upp} 
         updateUPP={updateUPP} 
         step={step}
-        setStep={setStep}/>
-      <Career game={game} step={step} setStep={setStep} career={career} updateCareer={updateCareer} upp={upp} setUpp={updateUPP} />
+        setStep={setStep}
+        updateLog={updateLog}
+      />
+      <Career 
+        game={game} 
+        step={step} 
+        setStep={setStep} 
+        career={career} 
+        updateCareer={updateCareer} 
+        upp={upp} 
+        setUpp={updateUPP}
+        updateLog={updateLog} 
+      />
+      <Log log={log} />
       {/* <input type="button" value="Select Career" /> */}
       {/* <Homeworld name={homeworldName} updateName={setHomeworldName} upp={homeworldUPP} updateUPP={setHomeworldUPP} /> */}
     </div>

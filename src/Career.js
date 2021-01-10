@@ -480,7 +480,6 @@ function CareerCT({step, setStep, career, updateCareer, upp, setUpp }) {
         for (let c of ev.target) {
             if (c.checked) {
                 // Determine if character can enlist.
-
                 updateCareer({branch: c.value, terms: 0, rank: 0});
                 setStep(3);
             }

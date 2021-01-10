@@ -1,9 +1,10 @@
 import Modal from 'react-modal';
 
-export function Game({name, setName, game, setGame, step, setStep, options, updateOptions}) {
+export function Game({name, setName, game, setGame, step, setStep, options, updateOptions, updateLog,}) {
     function handleSubmit(ev) {
         ev.preventDefault();
         if (name !== '') {
+            updateLog([`You have selected ${game}.`, `Your name is ${name}.`]);
             setStep(1);
             if (game === 'mt2e') {
                 updateOptions({ rearrangeCharacteristics: true });

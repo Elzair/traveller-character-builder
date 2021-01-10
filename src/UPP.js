@@ -5,8 +5,10 @@ import { num2tetra } from "./utils";
 import './UPP.css';
 import { ItemTypes } from "./constants";
 
-export function UPP({options, updateOptions, characteristics, updateUPP, step, setStep}) {
+export function UPP({options, updateOptions, characteristics, updateUPP, step, setStep, updateLog}) {
     function finalizeCharacteristics(ev) {
+        let upp = Object.entries(characteristics).map(ent => num2tetra(ent[1])).join('');
+        updateLog([`Your Universal Personality Profile is ${upp}.`])
         updateOptions({ rearrangeCharacteristics: false });
         setStep(2);
     }
