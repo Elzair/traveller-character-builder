@@ -11,15 +11,14 @@ export function constrain(num, min, max) {
 }
 
 export function num2tetra(num) {
-    let newnum = num;
-    if (newnum < 0 || newnum >= 34 ) {
-        throw new Error(`Number out of bounds: ${newnum}`);
+    if (num < 0 || num >= 34 ) {
+        throw new Error(`Number out of bounds: ${num}`);
     }
 
-    if (newnum >= 18) { newnum++; }
-    if (newnum >= 24) { newnum++; }
+    if (num >= 23) { num++; } // Skip 'I'
+    if (num >= 24) { num++; } // Skip 'O'
 
-    return newnum.toString(36).toUpperCase();
+    return num.toString(36).toUpperCase();
 }
 
 export function padToTwo(num) {
