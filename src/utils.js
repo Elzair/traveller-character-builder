@@ -28,3 +28,7 @@ export function padToTwo(num) {
     
     return ("0"+num).slice(-2);
 }
+
+export function capitalize(str) {
+    return str.replace(/^\w/, (c) => c.toUpperCase());
+}

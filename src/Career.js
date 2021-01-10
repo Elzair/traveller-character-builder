@@ -1,6 +1,17 @@
-export function Career({game, step, setStep, career, updateCareer, upp, setUPP }) {
+import { capitalize, r1d6, r2d6 } from "./utils";
+
+export function Career({game, step, setStep, career, updateCareer, upp, setUPP, updateLog }) {
     if (game === 'classic') {
-        return (<CareerCT step={step} setStep={setStep} career={career} updateCareer={updateCareer} upp={upp} setUpp={setUPP} />);
+        return (
+            <CareerCT 
+                step={step} 
+                setStep={setStep} 
+                career={career} 
+                updateCareer={updateCareer} 
+                upp={upp} 
+                setUpp={setUPP}
+                updateLog={updateLog}
+            />);
     } else {
         return (<div></div>);
     }
@@ -16,6 +27,7 @@ const CTCAREERS = [
                 { characteristic: "Education", value: 9, dm: 2, },
             ],
         },
+        draftNumber: 1,
         survival: {
             target: 5,
             dms: [
@@ -100,6 +112,7 @@ const CTCAREERS = [
                 { characteristic: "Strength", value: 8, dm: 2, },
             ],
         },
+        draftNumber: 2,
         survival: {
             target: 6,
             dms: [
@@ -184,6 +197,7 @@ const CTCAREERS = [
                 { characteristic: "Endurance", value: 5, dm: 2, },
             ],
         },
+        draftNumber: 3,
         survival: {
             target: 5,
             dms: [
@@ -268,6 +282,7 @@ const CTCAREERS = [
                 { characteristic: "Strength", value: 8, dm: 2, },
             ],
         },
+        draftNumber: 4,
         survival: {
             target: 7,
             dms: [
@@ -335,6 +350,7 @@ const CTCAREERS = [
                 { characteristic: "Intellect", value: 6, dm: 2, },
             ],
         },
+        draftNumber: 5,
         survival: {
             target: 5,
             dms: [
@@ -415,6 +431,7 @@ const CTCAREERS = [
             target: 3,
             dms: [],
         },
+        draftNumber: 6,
         survival: {
             target: 5,
             dms: [
@@ -473,14 +490,46 @@ const CTCAREERS = [
     },
 ];
 
+function applyDMsToRoll(roll, dms, upp) {
+    let oldroll = roll;
+    for (let dm of dms) {
+        if (upp[dm.characteristic] >= dm.value) {
+            console.log(`Because your ${dm.characteristic} of ${upp[dm.characteristic]} is greater than or equal to ${dm.value}, your roll of ${oldroll} has been increased by ${dm.dm}.`);
+            roll += dm.dm;
+        }
+    }
+    console.log(`Your final roll is ${roll}.`);
+    return roll;
+}
 
-function CareerCT({step, setStep, career, updateCareer, upp, setUpp }) {
+function canEnlist(upp, careerName) {
+    const career = CTCAREERS.filter(career => career.name === careerName)[0];
+    const result = applyDMsToRoll(r2d6(), career.enlistment.dms, upp);
+    return result >= career.enlistment.target;
+}
+
+function draft() {
+    const roll = r1d6();
+    return CTCAREERS.filter(career => career.draftNumber === roll)[0].name;
+}
+
+function CareerCT({step, setStep, career, updateCareer, upp, setUpp, updateLog }) {
     function selectCareer(ev) {
         ev.preventDefault();
         for (let c of ev.target) {
             if (c.checked) {
                 // Determine if character can enlist.
-                updateCareer({branch: c.value, terms: 0, rank: 0});
+                if (canEnlist(upp, c.value, updateLog)) {
+                    updateLog([`Congratulations! You have enlisted in the ${capitalize(c.value)}!`]);
+                    updateCareer({branch: c.value, terms: 0, rank: 0, drafted: false});
+                } else {
+                    const draftCareerName = draft();
+                    updateLog([
+                        `Sorry! You did not qualify for the ${capitalize(c.value)}.`,
+                        `Instead, you were drafted into the ${capitalize(draftCareerName)}.`,
+                    ]);
+                    updateCareer({branch: draftCareerName, terms: 0, rank: 0, drafted: true});
+                }
                 setStep(3);
             }
         }
@@ -494,7 +543,7 @@ function CareerCT({step, setStep, career, updateCareer, upp, setUpp }) {
                 <input type="radio" id="car2" name="career" value="marines"/> <label for="car2">Marines</label>
                 <input type="radio" id="car3" name="career" value="army"/> <label for="car3">Army</label>
                 <input type="radio" id="car4" name="career" value="scouts"/> <label for="car4">Scouts</label>
-                <input type="radio" id="car5" name="career" value="merchants"/> <label for="car5">Merchants</label>
+                <input type="radio" id="car5" name="career" value="merchant"/> <label for="car5">Merchants</label>
                 <input type="radio" id="car6" name="career" value="other"/> <label for="car6">Other</label>
                 <input type="submit" value="Submit" />
             </form>
