@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-import { useDrag } from 'react-dnd';
 import { r2d6 } from './utils';
 import { UPP } from './UPP';
 import { useState } from 'react';
@@ -8,6 +7,9 @@ import { Homeworld } from './Homeworld';
 import { Game } from './Game';
 import { Career } from './Career';
 import { Log } from './Log';
+import { Survival } from './Survival';
+import { Commission } from './Commission';
+import { Promotion } from './Promotion';
 
 
 function App() {
@@ -95,7 +97,7 @@ function App() {
     setStep(2);
   }
 
-  function careeerSelected() {
+  function selectCareer() {
     setStep(3);
   }
 
@@ -103,8 +105,12 @@ function App() {
     setStep(4);
   }
 
-  function commissionedOrNot() {
+  function commissioned() {
     setStep(5);
+  }
+  
+  function commissionFailed() {
+    setStep(6);
   }
 
   function promotedOrNot() {
@@ -123,7 +129,7 @@ function App() {
         game={game} 
         setGame={setGame} 
         display={step===0}
-        finish={finishGameOptions}
+        onFinished={finishGameOptions}
         options={options}
         updateOptions={updateGameOptions}
         updateLog={updateLog}
@@ -135,23 +141,47 @@ function App() {
         characteristics={upp} 
         updateUPP={updateUPP} 
         display={step===1}
-        finalize={finalizeUPP}
+        onFinalized={finalizeUPP}
         updateLog={updateLog}
       />
       <Career 
         game={game} 
-        step={step} 
-        setStep={setStep} 
         career={career} 
         updateCareer={updateCareer} 
         upp={upp} 
         setUpp={updateUPP}
+        display={step===2}
+        onSelection={selectCareer}
         updateLog={updateLog}
-        onSelection={careeerSelected}
-        onDeath={died} 
+      />
+      <Survival
+        game={game}
+        upp={upp}
+        career={career}
+        display={step===3}
         onSurvival={survived}
-        onCommission={commissionedOrNot}
-        onPromotion={promotedOrNot}
+        onDeath={died}
+        updateLog={updateLog}
+      />
+      <Commission
+        game={game}
+        upp={upp}
+        career={career}
+        updateCareer={updateCareer}
+        display={step===4}
+        onSuccess={commissioned}
+        onFailure={commissionFailed}
+        updateLog={updateLog}
+      />
+      <Promotion
+        game={game}
+        upp={upp}
+        career={career}
+        updateCareer={updateCareer}
+        display={step===5}
+        onSuccess={promotedOrNot}
+        onFailure={promotedOrNot}
+        updateLog={updateLog}
       />
       <Log log={log} />
       {/* <Homeworld name={homeworldName} updateName={setHomeworldName} upp={homeworldUPP} updateUPP={setHomeworldUPP} /> */}

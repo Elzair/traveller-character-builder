@@ -1,6 +1,6 @@
 import Modal from 'react-modal';
 
-export function Game({name, setName, game, setGame, display, finish, options, updateOptions, updateLog,}) {
+export function Game({name, setName, game, setGame, display, onFinished, options, updateOptions, updateLog,}) {
     function handleSubmit(ev) {
         ev.preventDefault();
         if (name !== '') {
@@ -11,7 +11,7 @@ export function Game({name, setName, game, setGame, display, finish, options, up
             } else {
                 updateOptions({ rearrangeCharacteristics: false });
             }
-            finish();
+            onFinished();
         }
     }
 
