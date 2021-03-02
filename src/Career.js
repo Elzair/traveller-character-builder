@@ -562,9 +562,13 @@ function CareerCT({step, setStep, career, updateCareer, upp, setUpp, updateLog }
         console.log('Got to step 3');
         const didSurvive = survive(upp, career.branch);
         console.log(`Survival: ${didSurvive}`);
-        let substep = 0;
         if (didSurvive) {
-            return ( <Commission upp={upp} career={career} step={step} updateCareer={updateCareer} updateLog={updateLog} /> );
+            return (
+                <div className="CommissionAndPromotion">
+                    <Commission upp={upp} career={career} step={step} updateCareer={updateCareer} updateLog={updateLog} /> 
+                    <Promotion upp={upp} career={career} step={step} updateCareer={updateCareer} updateLog={updateLog} /> 
+                </div>
+            );
         } else {
             updateLog(['You have died.']);
             setStep(10);
