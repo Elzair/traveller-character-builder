@@ -22,6 +22,7 @@ function App() {
   let [career, setCareer] = useState(null);
   let [log, setLog] = useState([]);
 
+  // Update State Functions
   function updateGameOptions(opts) {
     let newopts = {};
     for (let opt in options) {
@@ -85,6 +86,11 @@ function App() {
     setLog(newlog);
   }
 
+  // Finish Step Options
+  function finishGameOptions() {
+    setStep(1);
+  }
+
   return (
     <div id="App" className="App">
       <Game 
@@ -92,8 +98,10 @@ function App() {
         setName={setName} 
         game={game} 
         setGame={setGame} 
-        step={step} 
-        setStep={setStep}
+        // step={step} 
+        // setStep={setStep}
+        display={step===0}
+        finish={finishGameOptions}
         options={options}
         updateOptions={updateGameOptions}
         updateLog={updateLog}
@@ -119,7 +127,6 @@ function App() {
         updateLog={updateLog} 
       />
       <Log log={log} />
-      {/* <input type="button" value="Select Career" /> */}
       {/* <Homeworld name={homeworldName} updateName={setHomeworldName} upp={homeworldUPP} updateUPP={setHomeworldUPP} /> */}
     </div>
     
