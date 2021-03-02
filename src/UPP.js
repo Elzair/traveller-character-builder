@@ -5,12 +5,12 @@ import { num2tetra } from "./utils";
 import './UPP.css';
 import { ItemTypes } from "./constants";
 
-export function UPP({options, updateOptions, characteristics, updateUPP, step, setStep, updateLog}) {
+export function UPP({options, updateOptions, characteristics, updateUPP, display, finalize, updateLog}) {
     function finalizeCharacteristics(ev) {
         let upp = Object.entries(characteristics).map(ent => num2tetra(ent[1])).join('');
         updateLog([`Your Universal Personality Profile is ${upp}.`])
         updateOptions({ rearrangeCharacteristics: false });
-        setStep(2);
+        finalize();
     }
 
     let stats = [];
@@ -33,7 +33,7 @@ export function UPP({options, updateOptions, characteristics, updateUPP, step, s
                     {stats}
                 </div>
             </DndProvider>
-            {step===1 && <input type="button" value="Finalize" onClick={finalizeCharacteristics} />}
+            {display && <input type="button" value="Finalize" onClick={finalizeCharacteristics} />}
             </div>
         );
     } else {
@@ -42,7 +42,7 @@ export function UPP({options, updateOptions, characteristics, updateUPP, step, s
             <div className="UPP">
                 {stats}
             </div>
-            {step===1 && <input type="button" value="Finalize" onClick={finalizeCharacteristics} />}
+            {display && <input type="button" value="Finalize" onClick={finalizeCharacteristics} />}
             </div>
         );
     }

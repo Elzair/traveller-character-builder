@@ -91,6 +91,30 @@ function App() {
     setStep(1);
   }
 
+  function finalizeUPP() {
+    setStep(2);
+  }
+
+  function careeerSelected() {
+    setStep(3);
+  }
+
+  function survived() {
+    setStep(4);
+  }
+
+  function commissionedOrNot() {
+    setStep(5);
+  }
+
+  function promotedOrNot() {
+    setStep(6);
+  }
+
+  function died() {
+    setStep(10);
+  }
+
   return (
     <div id="App" className="App">
       <Game 
@@ -98,8 +122,6 @@ function App() {
         setName={setName} 
         game={game} 
         setGame={setGame} 
-        // step={step} 
-        // setStep={setStep}
         display={step===0}
         finish={finishGameOptions}
         options={options}
@@ -112,8 +134,8 @@ function App() {
         updateOptions={updateGameOptions} 
         characteristics={upp} 
         updateUPP={updateUPP} 
-        step={step}
-        setStep={setStep}
+        display={step===1}
+        finalize={finalizeUPP}
         updateLog={updateLog}
       />
       <Career 
@@ -124,7 +146,12 @@ function App() {
         updateCareer={updateCareer} 
         upp={upp} 
         setUpp={updateUPP}
-        updateLog={updateLog} 
+        updateLog={updateLog}
+        onSelection={careeerSelected}
+        onDeath={died} 
+        onSurvival={survived}
+        onCommission={commissionedOrNot}
+        onPromotion={promotedOrNot}
       />
       <Log log={log} />
       {/* <Homeworld name={homeworldName} updateName={setHomeworldName} upp={homeworldUPP} updateUPP={setHomeworldUPP} /> */}

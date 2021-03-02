@@ -1,6 +1,6 @@
 import Modal from 'react-modal';
 
-export function Game({name, setName, game, setGame, display, finish, setStep, options, updateOptions, updateLog,}) {
+export function Game({name, setName, game, setGame, display, finish, options, updateOptions, updateLog,}) {
     function handleSubmit(ev) {
         ev.preventDefault();
         if (name !== '') {
@@ -25,17 +25,17 @@ export function Game({name, setName, game, setGame, display, finish, setStep, op
 
     return (
         <div>
-        {display && <form onSubmit={handleSubmit}>
-            <label>Game:</label>
-            <select name="Game" onChange={handleSelectGame}>
-                <option value="classic">Classic Traveller</option>
-                <option value="cepheusengine">Cepheus Engine</option>
-                <option value="mt2e">Mongoose Traveller 2nd Edition</option>
-            </select>
-            <label>Character Name:</label>
-            <input type="text" value={name} onChange={handleText} />
-            <input type="submit" value="Ok" />
-        </form>}
+            {display && <form onSubmit={handleSubmit}>
+                <label>Game:</label>
+                <select name="Game" onChange={handleSelectGame}>
+                    <option value="classic">Classic Traveller</option>
+                    <option value="cepheusengine">Cepheus Engine</option>
+                    <option value="mt2e">Mongoose Traveller 2nd Edition</option>
+                </select>
+                <label>Character Name:</label>
+                <input type="text" value={name} onChange={handleText} />
+                <input type="submit" value="Ok" />
+            </form>}
         </div>
     );
 }
