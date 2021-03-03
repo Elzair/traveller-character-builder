@@ -58,7 +58,7 @@ function PromotionCT({ upp, updateUPP, career, updateCareer, skills, updateSkill
                     rank.benefits.map(benefit => {
                         if (benefit.type === 'SKILL') {
                             // TODO: Refactor this into a general method to set a skill to a value if it is lower than that value
-                            if (skills.hasOwnProperty(benefit.name) || skills[benefit.name] < benefit.value) {
+                            if (!skills.hasOwnProperty(benefit.name) || skills[benefit.name] < benefit.value) {
                                 let newSkills = {};
                                 newSkills[benefit.name] = benefit.value;
                                 updateSkills(newSkills);
