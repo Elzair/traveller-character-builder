@@ -287,14 +287,23 @@ function App() {
     setStep(10);
   }
 
-  function onBenefit() {
-    if (numBenefits === 1) {
+  function benefit() {
+    setNumBenefits(numBenefits-1);
+    if (numBenefits-1 === 0) {
       updateLog([`Happy Travels!`]);
-      setStep(11);
-    } else {
-      setNumBenefits(numBenefits-1);
-    }
+      setStep(13);
+    } 
   }
+
+  // function selectWeapon() {
+  //   if (numBenefits === 1) {
+  //     updateLog([`Happy Travels!`]);
+  //     setStep(13);
+  //   } else {
+  //     setNumBenefits(numBenefits-1);
+  //     setStep(10);
+  //   }
+  // }
 
   function died() {
     updateLog([`You have died.`]);
@@ -423,8 +432,9 @@ function App() {
         updateCredits={setCredits}
         items={items}
         updateItems={updateItems}
-        display={step===10}
-        onBenefit={onBenefit}
+        display={step===10 || step===11 || step===12}
+        onBenefit={benefit}
+        // onWeapon={selectWeapon}
         updateLog={updateLog}
       />
 

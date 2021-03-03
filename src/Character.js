@@ -32,7 +32,7 @@ function CharacterCT({name, career, upp, skills, age, credits, items}) {
 
     let uppStr = Object.entries(upp).map(ent => num2tetra(ent[1])).join('');
 
-    let charstr1 = `${name}&emsp&emsp${careerName} ${rank} ${uppStr} Age ${age} ${careerTerms} terms Cr${credits}`;
+    let charstr1 = `${name} ${careerName} ${rank} ${uppStr} Age ${age} ${careerTerms} terms Cr${credits}`;
     let charstr2 = Object.keys(skills).map(key => `${key}-${skills[key]}`).join(', ');
 
     // Count items in inventory
