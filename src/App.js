@@ -226,7 +226,6 @@ function App() {
   }
 
   function aged() {
-    updateLog([`You are now ${age+4}.`]);
     setAge(age+4);
     setStep(9);
   }
@@ -316,9 +315,13 @@ function App() {
       <Age
         game={game}
         upp={upp}
+        updateUPP={updateUPP}
         career={career}
+        age={age}
         display={step===8}
         onAged={aged}
+        onDeath={died}
+        updateLog={updateLog}
       />
       <Log log={log} />
       {/* <Homeworld name={homeworldName} updateName={setHomeworldName} upp={homeworldUPP} updateUPP={setHomeworldUPP} /> */}
