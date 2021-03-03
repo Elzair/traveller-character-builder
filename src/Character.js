@@ -11,7 +11,8 @@ export function Character({game, name, career, upp, skills, age, display}) {
                 career={career} 
                 skills={skills}
                 age={age}
-            />);
+            />
+        );
     } else {
         return (<div></div>);
     }

@@ -27,7 +27,8 @@ export function Commission({ game, upp, career, updateCareer, display, onSuccess
                 onSuccess={onSuccess}
                 onFailure={onFailure}
                 onNoAttempt={onNoAttempt}
-            />);
+            />
+        );
     } else {
         return (<div></div>);
     }

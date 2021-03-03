@@ -26,7 +26,8 @@ export function Promotion({game, upp, career, updateCareer, display, onSuccess, 
                 updateCareer={updateCareer} 
                 onSuccess={onSuccess}
                 onFailure={onFailure}
-            />);
+            />
+        );
     } else {
         return (<div></div>);
     }

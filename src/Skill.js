@@ -17,7 +17,8 @@ export function Skill({ game, upp, updateUPP, career, skills, updateSkills, disp
                 onSelected={onSelected}
                 onCascade={onCascade}
                 updateLog={updateLog}
-            />);
+            />
+        );
     } else {
         return (<div></div>);
     }

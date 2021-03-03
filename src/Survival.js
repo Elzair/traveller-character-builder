@@ -11,7 +11,8 @@ export function Survival({ game, upp, career, display, onSurvival, onDeath }) {
                 career={career}
                 onSurvival={onSurvival}
                 onDeath={onDeath}
-            />);
+            />
+        );
     } else {
         return (<div></div>);
     }
