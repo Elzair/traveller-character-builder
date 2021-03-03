@@ -110,7 +110,7 @@ function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, 
         const skillData = CTSKILLS[cascade.name];
         const optionElts = Object.keys(skillData).map(skill => (
             <label>
-                <input type="radio" id={skill} name="cascadeskill" value={`${cascade.name} (${skill})`} />
+                <input type="radio" id={skill} name="cascadeskill" value={skill} />
                 {skill}
             </label>
         ));
