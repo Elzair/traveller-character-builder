@@ -64,6 +64,4 @@ function CommissionCT({ upp, career, updateCareer, onSuccess, onFailure, onNoAtt
             <input type="submit" value="Ok" />
         </form>
     );
-
-    return (<div></div>);
 }

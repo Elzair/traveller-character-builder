@@ -12,6 +12,7 @@ import { Commission } from './Commission';
 import { Promotion } from './Promotion';
 import { Skill } from './Skill';
 import { Character } from './Character';
+import { Reenlist } from './Reenlist';
 
 import CTCAREERS from './data/ct/careers';
 import { Age } from './Age';
@@ -230,9 +231,23 @@ function App() {
     setStep(9);
   }
 
+  function reenlist() {
+    updateLog([`You have successfully reenlisted in the ${capitalize(career.branch)} for another term.`]);
+    setStep(3);
+  }
+
+  function ejected() {
+    updateLog([`Unfortunately, you are not eligible for reenlistment with the ${capitalize(career.branch)}.`]);
+    setStep(10)
+  }
+
+  function retired() {
+    setStep(10);
+  }
+
   function died() {
     updateLog([`You have died.`]);
-    setStep(10);
+    setStep(15);
   }
 
   return (
@@ -321,6 +336,15 @@ function App() {
         display={step===8}
         onAged={aged}
         onDeath={died}
+        updateLog={updateLog}
+      />
+      <Reenlist
+        game={game}
+        career={career}
+        display={step===9}
+        onSuccess={reenlist}
+        onFailure={ejected}
+        onRetirement={retired}
         updateLog={updateLog}
       />
       <Log log={log} />

@@ -57,12 +57,10 @@ function PromotionCT({upp, career, updateCareer, onSuccess, onFailure}) {
     }
 
     return (
-            <form onSubmit={attemptPromotion} className="Promotion">
-                <p>Would you like to try for a promotion?</p>
-                <Switch checked={checked} onChange={handleCheck} />
-                <input type="submit" value="Ok" />
-            </form>
-        );
-    
-    return (<div></div>);
+        <form onSubmit={attemptPromotion} className="Promotion">
+            <p>Would you like to try for a promotion?</p>
+            <Switch checked={checked} onChange={handleCheck} />
+            <input type="submit" value="Ok" />
+        </form>
+    );
 }
