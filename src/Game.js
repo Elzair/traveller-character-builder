@@ -1,5 +1,3 @@
-import Modal from 'react-modal';
-
 export function Game({name, setName, game, setGame, display, onFinished, options, updateOptions, updateLog,}) {
     function handleSubmit(ev) {
         ev.preventDefault();

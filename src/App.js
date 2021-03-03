@@ -10,6 +10,7 @@ import { Log } from './Log';
 import { Survival } from './Survival';
 import { Commission } from './Commission';
 import { Promotion } from './Promotion';
+import { Skill } from './Skill';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
   let [game, setGame] = useState("classic");
   let [options, setOptions] = useState({ rearrangeCharacteristics: false, });
   let [career, setCareer] = useState(null);
+  let [skills, setSkills] = useState(null);
   let [log, setLog] = useState([]);
 
   // Update State Functions
@@ -56,7 +58,7 @@ function App() {
       }
     }
 
-    setUpp(newchars);
+    setUpp(newchars); // TODO: Capitalize this
   }
 
   function updateCareer(updated) {
@@ -74,6 +76,23 @@ function App() {
     }
 
     setCareer(newcareer);
+  }
+
+  function updateSkills(updated) {
+    let newskills  = {};
+    for (let opt in skills) {
+      if (skills.hasOwnProperty(opt)) {
+        newskills[opt] = skills[opt];
+      }
+    }
+
+    for (let opt in updated) {
+      if (updated.hasOwnProperty(opt)) {
+        newskills[opt] = updated[opt];
+      }
+    }
+
+    setSkills(newskills);
   }
 
   function updateLog(newEntries) {
@@ -97,8 +116,12 @@ function App() {
     setStep(2);
   }
 
-  function selectCareer() {
+  function enlisted() {
     setStep(3);
+  }
+
+  function drafted() {
+    setStep(6);
   }
 
   function survived() {
@@ -115,6 +138,10 @@ function App() {
 
   function promotedOrNot() {
     setStep(6);
+  }
+
+  function choseSkill() {
+    setStep(7);
   }
 
   function died() {
@@ -151,7 +178,8 @@ function App() {
         upp={upp} 
         setUpp={updateUPP}
         display={step===2}
-        onSelection={selectCareer}
+        onEnlistment={enlisted}
+        onDraft={drafted}
         updateLog={updateLog}
       />
       <Survival
@@ -181,6 +209,15 @@ function App() {
         display={step===5}
         onSuccess={promotedOrNot}
         onFailure={promotedOrNot}
+        updateLog={updateLog}
+      />
+      <Skill
+        game={game}
+        upp={upp}
+        updateUPP={updateUPP} 
+        career={career}
+        display={step===6}
+        onSelected={choseSkill}
         updateLog={updateLog}
       />
       <Log log={log} />

@@ -1,19 +1,16 @@
-import { useState } from 'react';
-import Modal from 'react-modal';
-import Switch from 'react-switch';
-
 import { capitalize, r1d6, r2d6 } from "./utils";
 
 import CTCAREERS from './data/ct/careers';
 
-export function Career({ game, career, updateCareer, upp, display, onSelection, updateLog }) {
+export function Career({ game, career, updateCareer, upp, display, onEnlistment, onDraft, updateLog }) {
     if (display && game === 'classic') {
         return (
             <CareerCT
                 career={career}
                 updateCareer={updateCareer}
                 upp={upp}
-                onSelection={onSelection}
+                onEnlistment={onEnlistment}
+                onDraft={onDraft}
                 updateLog={updateLog}
             />);
     } else {
@@ -44,7 +41,7 @@ function draft() {
     return CTCAREERS.filter(career => career.draftNumber === roll)[0].name;
 }
 
-function CareerCT({ career, updateCareer, upp, onSelection, updateLog }) {
+function CareerCT({ career, updateCareer, upp, onEnlistment, onDraft, updateLog }) {
     function selectCareer(ev) {
         ev.preventDefault();
         for (let c of ev.target) {
@@ -53,6 +50,7 @@ function CareerCT({ career, updateCareer, upp, onSelection, updateLog }) {
                 if (canEnlist(upp, c.value, updateLog)) {
                     updateLog([`Congratulations! You have enlisted in the ${capitalize(c.value)}!`]);
                     updateCareer({ branch: c.value, term: 0, rank: 0, drafted: false });
+                    onEnlistment();
                 } else {
                     const draftCareerName = draft();
                     updateLog([
@@ -60,8 +58,8 @@ function CareerCT({ career, updateCareer, upp, onSelection, updateLog }) {
                         `Instead, you were drafted into the ${capitalize(draftCareerName)}.`,
                     ]);
                     updateCareer({ branch: draftCareerName, term: 0, rank: 0, drafted: true });
+                    onDraft();
                 }
-                onSelection();
             }
         }
     }

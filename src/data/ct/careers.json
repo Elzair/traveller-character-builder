@@ -259,7 +259,8 @@
                 "name": "Administration",
                 "value": 1
             }
-        ]
+        ],
+        "numSkillsPerTerm": 1
     },
     {
         "name": "marines",
@@ -528,7 +529,8 @@
                 "name": "Administration",
                 "value": 1
             }
-        ]
+        ],
+        "numSkillsPerTerm": 1
     },
     {
         "name": "army",
@@ -795,7 +797,8 @@
                 "name": "Administration",
                 "value": 1
             }
-        ]
+        ],
+        "numSkillsPerTerm": 1
     },
     {
         "name": "scouts",
@@ -1011,7 +1014,8 @@
                 "name": "Jack of All Trades",
                 "value": 1
             }
-        ]
+        ],
+        "numSkillsPerTerm": 2
     },
     {
         "name": "merchant",
@@ -1264,7 +1268,8 @@
                 "name": "Administration",
                 "value": 1
             }
-        ]
+        ],
+        "numSkillsPerTerm": 1
     },
     {
         "name": "other",
@@ -1459,6 +1464,7 @@
                 "name": "Jack of All Trades",
                 "value": 1
             }
-        ]
+        ],
+        "numSkillsPerTerm": 1
     }
 ]
