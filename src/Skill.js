@@ -49,7 +49,6 @@ function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, 
                         } else {
                             newSkill[adv.name] = skills[adv.name] + adv.value;
                         }
-                        setCascade(null); // Reset cascade skills.
                         updateLog([`You improved your ${adv.name} to ${newSkill[adv.name]}.`]);
                         updateSkills(newSkill);
                         onSelected();
@@ -72,6 +71,7 @@ function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, 
                 } else {
                     newSkill[t.value] = skills[t.value] + cascade.value;
                 }
+                setCascade(null); // Reset cascade skills.
                 updateSkills(newSkill);
                 updateLog([`You improved your ${t.value} to ${newSkill[t.value]}.`])
                 onSelected();
