@@ -181,7 +181,12 @@ function App() {
     if (game === 'classic') {
       const careerData = CTCAREERS.filter(c => career.branch === c.name)[0];
       // Reset the number of skill rolls for the term.
-      setNumSkillRolls(careerData.numSkillsPerTerm);
+      // If it is their first term, always give the travellers two skill rolls.
+      if (career.term+1 === 1) {
+        setNumSkillRolls(2);
+      } else {
+        setNumSkillRolls(careerData.numSkillsPerTerm);
+      }
 
       // Add a benefit for a successful term served.
       setNumBenefits(numBenefits+1);
@@ -282,9 +287,13 @@ function App() {
     setStep(10);
   }
 
-  function onMusterOut() {
-    updateLog([`Happy Travels!`]);
-    setStep(11);
+  function onBenefit() {
+    if (numBenefits === 1) {
+      updateLog([`Happy Travels!`]);
+      setStep(11);
+    } else {
+      setNumBenefits(numBenefits-1);
+    }
   }
 
   function died() {
@@ -415,7 +424,7 @@ function App() {
         items={items}
         updateItems={updateItems}
         display={step===10}
-        onExit={onMusterOut}
+        onBenefit={onBenefit}
         updateLog={updateLog}
       />
 

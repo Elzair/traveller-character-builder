@@ -4,7 +4,7 @@ import { r1d6 } from './utils';
 
 import CTCAREERS from './data/ct/careers';
 
-export function MusterOut({ game, upp, updateUPP, career, skills, updateSkills, credits, updateCredits, items, updateItems, display, onExit, updateLog }) {
+export function MusterOut({ game, upp, updateUPP, career, skills, updateSkills, credits, updateCredits, items, updateItems, display, onBenefit, updateLog }) {
     if (display && game === 'classic') {
         return (
             <MusterOutCT
@@ -17,7 +17,7 @@ export function MusterOut({ game, upp, updateUPP, career, skills, updateSkills, 
                 updateCredits={updateCredits}
                 items={items}
                 updateItems={updateItems}
-                onExit={onExit}
+                onBenefit={onBenefit}
                 updateLog={updateLog}
             />
         );
@@ -26,7 +26,7 @@ export function MusterOut({ game, upp, updateUPP, career, skills, updateSkills, 
     }
 }
 
-function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, updateCredits, items, updateItems, onExit, updateLog }) {
+function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, updateCredits, items, updateItems, onBenefit, updateLog }) {
     const MAXCASHROLLS = 3;
 
     let [numCashRolls, setNumCashRolls] = useState(MAXCASHROLLS);
@@ -44,7 +44,7 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
                     const amount = table[r1d6() - 1 + cashDM];
                     updateCredits(credits + amount);
                     setNumCashRolls(numCashRolls-1);
-                    updateLog(`You receive Cr${amount}.`);
+                    updateLog([`You receive Cr${amount}.`]);
                 } else if (t.value === 'benefits') {
                     // Give travellers of rank 5 or rank 6 a +1 DM on rolls on the benefits table.
                     const benefitsDM = career.rank >= 5 ? 1 : 0;
@@ -67,6 +67,8 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
                         updateLog([`You raised your ${benefit.name} to ${newUPP[benefit.name]}.`]);
                     }
                 }
+
+                onBenefit();
             }
         }
     }
