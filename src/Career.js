@@ -59,9 +59,10 @@ function CareerCT({ career, upp, updateUPP, skills, updateSkills, onEnlistment, 
                 }
                 // Apply any benefits for entering a career.
                 const careerData = CTCAREERS.filter(career => career.name === careerName)[0];
+                console.log(careerData);
                 const rank = careerData.ranks[0];
                 if (rank.hasOwnProperty('benefits')) {
-                    rank.benefits.map(benefit => {
+                    rank.benefits.forEach(benefit => {
                         if (benefit.type === 'SKILL') {
                             // TODO: Refactor this into a general method to set a skill to a value if it is lower than that value.
                             if (!skills.hasOwnProperty(benefit.name) || skills[benefit.name] < benefit.value) {

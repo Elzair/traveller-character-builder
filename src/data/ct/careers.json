@@ -326,7 +326,7 @@
             },
             {
                 "name": "Lieutenant",
-                "beneftis": [
+                "benefits": [
                     {
                         "type": "SKILL",
                         "name": "Revolver",
@@ -596,7 +596,7 @@
             },
             {
                 "name": "Lieutenant",
-                "beneftis": [
+                "benefits": [
                     {
                         "type": "SKILL",
                         "name": "SMG",

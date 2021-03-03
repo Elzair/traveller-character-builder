@@ -99,7 +99,6 @@ function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, 
                 {options[prop]}
             </label>
         ));
-        // console.log(optionElts);
 
         return (
             <div>

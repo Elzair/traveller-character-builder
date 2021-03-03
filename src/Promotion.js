@@ -55,7 +55,7 @@ function PromotionCT({ upp, updateUPP, career, updateCareer, skills, updateSkill
                 // Apply any benefits for entering a career.
                 const rank = careerData.ranks[career.rank+1];
                 if (rank.hasOwnProperty('benefits')) {
-                    rank.benefits.map(benefit => {
+                    rank.benefits.forEach(benefit => {
                         if (benefit.type === 'SKILL') {
                             // TODO: Refactor this into a general method to set a skill to a value if it is lower than that value
                             if (!skills.hasOwnProperty(benefit.name) || skills[benefit.name] < benefit.value) {
