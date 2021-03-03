@@ -24,10 +24,8 @@ function SurvivalCT({ upp, career, onSurvival, onDeath, updateLog }) {
     const didSurvive = result >= careerData.survival.target;
 
     if (didSurvive) {
-        updateLog([`You survived term ${career.term+1}.`])
         onSurvival();
     } else {
-        updateLog([`You have died.`]);
         onDeath();
     }
 

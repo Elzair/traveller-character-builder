@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { r2d6 } from './utils';
+import { capitalize, num2tetra, r2d6 } from './utils';
 import { UPP } from './UPP';
 import { useState } from 'react';
 import { Homeworld } from './Homeworld';
@@ -13,6 +13,7 @@ import { Promotion } from './Promotion';
 import { Skill } from './Skill';
 import { Character } from './Character';
 
+import CTCAREERS from './data/ct/careers';
 
 function App() {
   // let stats = generateCharacteristics();
@@ -26,6 +27,7 @@ function App() {
   let [career, setCareer] = useState(null);
   let [skills, setSkills] = useState({});
   let [age, setAge] = useState(18);
+  let [numSkillRolls, setNumSkillRolls] = useState(1);
   let [log, setLog] = useState([]);
 
   // Update State Functions
@@ -115,22 +117,56 @@ function App() {
   }
 
   function finalizeUPP() {
+    let uppStr = Object.entries(upp).map(ent => num2tetra(ent[1])).join('');
+    updateLog([`Your Universal Personality Profile is ${uppStr}.`]);
     setStep(2);
   }
 
-  function enlisted() {
+  function enlisted({branch, term, rank}) {
+    if (game === 'classic') {
+      const careerData = CTCAREERS.filter(c => branch === c.name)[0];
+      const numSkillRolls = careerData.numSkillsPerTerm;
+      setNumSkillRolls(numSkillRolls);
+      updateCareer({branch, term, rank, drafted: false});
+      updateLog([`Congratulations! You have enlisted in the ${capitalize(branch)}!`]);
+    }
     setStep(3);
   }
 
-  function drafted() {
+  function drafted({branch, failedBranch, term, rank}) {
+    if (game === 'classic') {
+      const careerData = CTCAREERS.filter(c => branch === c.name)[0];
+      const numSkillRolls = careerData.numSkillsPerTerm;
+      setNumSkillRolls(numSkillRolls);
+      updateCareer({branch, term, rank, drafted: true});
+      updateLog([
+        `Sorry! You did not qualify for the ${capitalize(failedBranch)}.`,
+        `Instead, you were drafted into the ${capitalize(branch)}.`,
+      ]);
+    }
     setStep(6);
   }
 
   function survived() {
-    setStep(4);
+    updateLog([`You survived term ${career.term+1}.`]);
+    if (game === 'classic') {
+      const careerData = CTCAREERS.filter(c => career.branch === c.name)[0];
+      // Reset the number of skill rolls for the term.
+      setNumSkillRolls(careerData.numSkillsPerTerm);
+
+      // If the career does not have commissions or advancements, go to skill rolls.
+      if (careerData.commission === null) {
+        setStep(6);
+      } else {
+        setStep(4);
+      }
+    } else {
+      setStep(4);
+    }
   }
 
   function commissioned() {
+    setNumSkillRolls(numSkillRolls+1);
     setStep(5);
   }
   
@@ -138,12 +174,22 @@ function App() {
     setStep(6);
   }
 
-  function promotedOrNot() {
+  function promoted() {
+    setNumSkillRolls(numSkillRolls+1);
+    setStep(6);
+  }
+
+  function notPromoted() {
     setStep(6);
   }
 
   function choseSkill() {
-    setStep(8);
+    setNumSkillRolls(numSkillRolls-1);
+    if (numSkillRolls-1 > 0) {
+      setStep(6);
+    } else {
+      setStep(8);
+    }
   }
 
   function cascadeSkill() {
@@ -151,6 +197,7 @@ function App() {
   }
 
   function died() {
+    updateLog([`You have died.`]);
     setStep(10);
   }
 
@@ -188,9 +235,7 @@ function App() {
       <Career 
         game={game} 
         career={career} 
-        updateCareer={updateCareer} 
         upp={upp} 
-        setUpp={updateUPP}
         display={step===2}
         onEnlistment={enlisted}
         onDraft={drafted}
@@ -221,8 +266,8 @@ function App() {
         career={career}
         updateCareer={updateCareer}
         display={step===5}
-        onSuccess={promotedOrNot}
-        onFailure={promotedOrNot}
+        onSuccess={promoted}
+        onFailure={notPromoted}
         updateLog={updateLog}
       />
       <Skill
