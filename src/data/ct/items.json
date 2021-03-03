@@ -1,0 +1,106 @@
+{
+    "Melee": {
+        "Dagger": {
+            "+DM": 8,
+            "-DM": 3,
+            "Wounds": "2D"
+        },
+        "Blade": {
+            "+DM": 9,
+            "-DM": 4,
+            "Wounds": "2D"
+        },
+        "Foil": {
+            "+DM": 10,
+            "-DM": 4,
+            "Wounds": "21"
+        },
+        "Sword": {
+            "+DM": 10,
+            "-DM": 5,
+            "Wounds": "2D"
+        },
+        "Cutlass": {
+            "+DM": 11,
+            "-DM": 7,
+            "Wounds": "3D"
+        },
+        "Broadsword": {
+            "+DM": 12,
+            "-DM": 7,
+            "Wounds": "4D"
+        },
+        "Bayonet": {
+            "+DM": 9,
+            "-DM": 4,
+            "Wounds": "3D"
+        },
+        "Spear": {
+            "+DM": 9,
+            "-DM": 4,
+            "Wounds": "2D"
+        },
+        "Halberd": {
+            "+DM": 10,
+            "-DM": 5,
+            "Wounds": "3D"
+        },
+        "Pike": {
+            "+DM": 10,
+            "-DM": 6,
+            "Wounds": "3D"
+        },
+        "Cudgel": {
+            "+DM": 8,
+            "-DM": 4,
+            "Wounds": "2D"
+        }
+    },
+    "Gun": {
+        "Body Pistol": {
+            "+DM": 11,
+            "-DM": 7,
+            "Wounds": "2D"
+        },
+        "Auto Pistol": {
+            "+DM": 10,
+            "-DM": 6,
+            "Wounds": "3D"
+        },
+        "Revolver": {
+            "+DM": 9,
+            "-DM": 6,
+            "Wounds": "3D"
+        },
+        "Carbine": {
+            "+DM": 9,
+            "-DM": 4,
+            "Wounds": "3D"
+        },
+        "Rifle": {
+            "+DM": 8,
+            "-DM": 5,
+            "Wounds": "3D"
+        },
+        "Auto Rifle": {
+            "+DM": 10,
+            "-DM": 6,
+            "Wounds": "3D"
+        },
+        "Shotgun": {
+            "+DM": 9,
+            "-DM": 3,
+            "Wounds": "4D"
+        },
+        "Laser Carbine": {
+            "+DM": 10,
+            "-DM": 5,
+            "Wounds": "$D"
+        },
+        "Laser Rifle": {
+            "+DM": 11,
+            "-DM": 6,
+            "Wounds": "5D"
+        }
+    }
+}
