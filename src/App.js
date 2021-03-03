@@ -12,10 +12,11 @@ import { Commission } from './Commission';
 import { Promotion } from './Promotion';
 import { Skill } from './Skill';
 import { Character } from './Character';
+import { Age } from './Age';
 import { Reenlist } from './Reenlist';
+import { MusterOut } from './MusterOut';
 
 import CTCAREERS from './data/ct/careers';
-import { Age } from './Age';
 
 function App() {
   // let stats = generateCharacteristics();
@@ -30,6 +31,9 @@ function App() {
   let [skills, setSkills] = useState({});
   let [age, setAge] = useState(18);
   let [numSkillRolls, setNumSkillRolls] = useState(1);
+  let [credits, setCredits] = useState(0);
+  let [items, setItems] = useState({});
+  let [numBenefits, setNumBenefits] = useState(0);
   let [log, setLog] = useState([]);
 
   // Update State Functions
@@ -101,6 +105,27 @@ function App() {
     setSkills(newskills);
   }
 
+  function updateItems(updated) {
+    let newItems = {};
+    for (let item in items) {
+      if (items.hasOwnProperty(item)) {
+        newItems[item] = items[item];
+      }
+    }
+
+    for (let item in updated) {
+      if (updated.hasOwnProperty(item)) {
+        if (newItems.hasOwnProperty(item)) {
+          newItems[item] += updated[item];
+        } else {
+          newItems[item] = updated[item];
+        }
+      }
+    }
+
+    setItems(newItems);
+  }
+
   function updateLog(newEntries) {
     let newlog = [];
     for (let oldEntry of log) {
@@ -129,7 +154,7 @@ function App() {
     if (game === 'classic') {
       const careerData = CTCAREERS.filter(c => branch === c.name)[0];
       const numSkillRolls = careerData.numSkillsPerTerm;
-      setNumSkillRolls(numSkillRolls);
+      setNumSkillRolls(numSkillRolls); // TODO: Move this to survived() and give travellers at least 2 skill rolls in 1st term
       updateCareer({branch, term, rank, drafted: false});
       updateLog([`Congratulations! You have enlisted in the ${capitalize(branch)}!`]);
     }
@@ -139,7 +164,7 @@ function App() {
   function drafted({branch, failedBranch, term, rank}) {
     if (game === 'classic') {
       const careerData = CTCAREERS.filter(c => branch === c.name)[0];
-      const numSkillRolls = careerData.numSkillsPerTerm;
+      const numSkillRolls = careerData.numSkillsPerTerm;// TODO: Move this to survived() and give travellers at least 2 skill rolls in 1st term
       setNumSkillRolls(numSkillRolls);
       updateCareer({branch, term, rank, drafted: true});
       updateLog([
@@ -158,8 +183,11 @@ function App() {
       // Reset the number of skill rolls for the term.
       setNumSkillRolls(careerData.numSkillsPerTerm);
 
+      // Add a benefit for a successful term served.
+      setNumBenefits(numBenefits+1);
+
       // If the career does not have commissions or advancements, go to skill rolls.
-      // Also go to skill rolls if the character was drafted and its their first term.
+      // Also skip commission & promotion if the character was drafted and its their first term.
       if (careerData.commission === null || (career.drafted === true && career.term+1 === 1)) {
         setStep(6);
       } else if (career.rank >= 1) { // Go directly to promotion if a commission has already been earned.
@@ -179,6 +207,7 @@ function App() {
     }
     updateCareer({rank: 1});
     setNumSkillRolls(numSkillRolls+1);
+    setNumBenefits(numBenefits+1);
     setStep(5);
   }
   
@@ -200,6 +229,14 @@ function App() {
     }
     updateCareer({rank: rank});
     setNumSkillRolls(numSkillRolls+1);
+    
+    // Add 1 additional benefit if rank 3 or 4 and 2 benefits if rank 5 or 6.
+    if (rank === 3) {
+      setNumBenefits(numBenefits+1);
+    } else if (rank === 5 ) {
+      setNumBenefits(numBenefits+1);
+    }
+
     setStep(6);
   }
 
@@ -245,6 +282,11 @@ function App() {
     setStep(10);
   }
 
+  function onMusterOut() {
+    updateLog([`Happy Travels!`]);
+    setStep(11);
+  }
+
   function died() {
     updateLog([`You have died.`]);
     setStep(15);
@@ -269,6 +311,8 @@ function App() {
         upp={upp}
         skills={skills}
         age={age}
+        credits={credits}
+        items={items}
         display={step>0}
       />
       <UPP 
@@ -359,6 +403,22 @@ function App() {
         onRetirement={retired}
         updateLog={updateLog}
       />
+      <MusterOut
+        game={game}
+        upp={upp}
+        updateUPP={updateUPP}
+        career={career}
+        skills={skills}
+        updateSkills={updateSkills}
+        credits={credits}
+        updateCredits={setCredits}
+        items={items}
+        updateItems={updateItems}
+        display={step===10}
+        onExit={onMusterOut}
+        updateLog={updateLog}
+      />
+
       <Log log={log} />
       {/* <Homeworld name={homeworldName} updateName={setHomeworldName} upp={homeworldUPP} updateUPP={setHomeworldUPP} /> */}
     </div>
