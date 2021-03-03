@@ -1,15 +1,15 @@
-export function Game({name, setName, game, setGame, display, onFinished, options, updateOptions, updateLog,}) {
+export function Game({name, setName, game, setGame, display, onFinished, options, updateOptions}) {
     function handleSubmit(ev) {
         ev.preventDefault();
         if (name !== '') {
-            updateLog([`You have selected ${game}.`, `Your name is ${name}.`]);
+            
             // setStep(1);
             if (game === 'mt2e') {
                 updateOptions({ rearrangeCharacteristics: true });
             } else {
                 updateOptions({ rearrangeCharacteristics: false });
             }
-            onFinished();
+            onFinished(game, name);
         }
     }
 

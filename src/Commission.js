@@ -17,7 +17,7 @@ function applyDMsToRoll(roll, dms, upp) {
     return roll;
 }
 
-export function Commission({ game, upp, career, updateCareer, display, onSuccess, onFailure, updateLog }) {
+export function Commission({ game, upp, career, updateCareer, display, onSuccess, onFailure, onNoAttempt }) {
     if (display && game === 'classic') {
         return (
             <CommissionCT
@@ -26,14 +26,14 @@ export function Commission({ game, upp, career, updateCareer, display, onSuccess
                 updateCareer={updateCareer}
                 onSuccess={onSuccess}
                 onFailure={onFailure}
-                updateLog={updateLog}
+                onNoAttempt={onNoAttempt}
             />);
     } else {
         return (<div></div>);
     }
 }
 
-function CommissionCT({ upp, career, updateCareer, onSuccess, onFailure, onNoAttempt, updateLog }) {
+function CommissionCT({ upp, career, updateCareer, onSuccess, onFailure, onNoAttempt }) {
     let [checked, setChecked] = useState(true);
 
     function handleCheck(check) {
@@ -52,7 +52,7 @@ function CommissionCT({ upp, career, updateCareer, onSuccess, onFailure, onNoAtt
                 onFailure();
             }
         } else {
-            onFailure();
+            onNoAttempt();
         }
     }
 

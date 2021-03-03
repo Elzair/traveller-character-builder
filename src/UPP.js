@@ -5,7 +5,7 @@ import { num2tetra } from "./utils";
 import './UPP.css';
 import { ItemTypes } from "./constants";
 
-export function UPP({ options, updateOptions, characteristics, updateUPP, display, onFinalized, updateLog }) {
+export function UPP({ options, updateOptions, characteristics, updateUPP, display, onFinalized }) {
     function finalizeCharacteristics(ev) {
         onFinalized();
     }

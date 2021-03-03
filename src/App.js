@@ -18,7 +18,7 @@ import CTCAREERS from './data/ct/careers';
 function App() {
   // let stats = generateCharacteristics();
   let [step, setStep] = useState(0);
-  let [upp, setUpp] = useState(generateUPP());
+  let [upp, setUPP] = useState(generateUPP());
   let [homeworldName, setHomeworldName] = useState('');
   let [homeworldUPP, setHomeworldUPP] = useState(generateUWP());
   let [name, setName] = useState('');
@@ -62,7 +62,7 @@ function App() {
       }
     }
 
-    setUpp(newchars); // TODO: Capitalize this
+    setUPP(newchars);
   }
 
   function updateCareer(updated) {
@@ -112,7 +112,8 @@ function App() {
   }
 
   // Finish Step Options
-  function finishGameOptions() {
+  function finishGameOptions(game, name) {
+    updateLog([`You have selected ${game}.`, `Your name is ${name}.`]);
     setStep(1);
   }
 
@@ -239,7 +240,6 @@ function App() {
         onFinished={finishGameOptions}
         options={options}
         updateOptions={updateGameOptions}
-        updateLog={updateLog}
       />
       <Character 
         game={game}
@@ -257,7 +257,6 @@ function App() {
         updateUPP={updateUPP} 
         display={step===1}
         onFinalized={finalizeUPP}
-        updateLog={updateLog}
       />
       <Career 
         game={game} 
@@ -266,7 +265,6 @@ function App() {
         display={step===2}
         onEnlistment={enlisted}
         onDraft={drafted}
-        updateLog={updateLog}
       />
       <Survival
         game={game}
@@ -275,7 +273,6 @@ function App() {
         display={step===3}
         onSurvival={survived}
         onDeath={died}
-        updateLog={updateLog}
       />
       <Commission
         game={game}
@@ -286,7 +283,6 @@ function App() {
         onSuccess={commissioned}
         onFailure={commissionFailed}
         onNoAttempt={commissionNotAttempted}
-        updateLog={updateLog}
       />
       <Promotion
         game={game}
@@ -297,7 +293,6 @@ function App() {
         onSuccess={promoted}
         onFailure={notPromoted}
         onNoAttempt={promotionNotAttempted}
-        updateLog={updateLog}
       />
       <Skill
         game={game}

@@ -2,16 +2,14 @@ import { capitalize, r1d6, r2d6 } from "./utils";
 
 import CTCAREERS from './data/ct/careers';
 
-export function Career({ game, career, /*updateCareer,*/ upp, display, onEnlistment, onDraft, updateLog }) {
+export function Career({ game, career, upp, display, onEnlistment, onDraft }) {
     if (display && game === 'classic') {
         return (
             <CareerCT
                 career={career}
-                // updateCareer={updateCareer}
                 upp={upp}
                 onEnlistment={onEnlistment}
                 onDraft={onDraft}
-                updateLog={updateLog}
             />);
     } else {
         return (<div></div>);
@@ -41,25 +39,16 @@ function draft() {
     return CTCAREERS.filter(career => career.draftNumber === roll)[0].name;
 }
 
-function CareerCT({ career, /*updateCareer,*/ upp, onEnlistment, onDraft, updateLog }) {
+function CareerCT({ career, upp, onEnlistment, onDraft }) {
     function selectCareer(ev) {
         ev.preventDefault();
         for (let c of ev.target) {
             if (c.checked) {
                 // Determine if character can enlist.
                 if (canEnlist(upp, c.value)) {
-                    // updateLog([`Congratulations! You have enlisted in the ${capitalize(c.value)}!`]);
-                    // updateCareer({ branch: c.value, term: 0, rank: 0, drafted: false });
-                    // onEnlistment();
                     onEnlistment({ branch: c.value, term: 0, rank: 0 });
                 } else {
                     const draftCareerName = draft();
-                    // updateLog([
-                    //     `Sorry! You did not qualify for the ${capitalize(c.value)}.`,
-                    //     `Instead, you were drafted into the ${capitalize(draftCareerName)}.`,
-                    // ]);
-                    // updateCareer({ branch: draftCareerName, term: 0, rank: 0, drafted: true });
-                    // onDraft();
                     onDraft({ branch: draftCareerName, failedBranch: c.value, term: 0, rank: 0 });
                 }
             }

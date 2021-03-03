@@ -17,7 +17,7 @@ function applyDMsToRoll(roll, dms, upp) {
     return roll;
 }
 
-export function Promotion({game, upp, career, updateCareer, display, onSuccess, onFailure, updateLog}) {
+export function Promotion({game, upp, career, updateCareer, display, onSuccess, onFailure}) {
     if (display && game === 'classic') {
         return (
             <PromotionCT
@@ -25,15 +25,14 @@ export function Promotion({game, upp, career, updateCareer, display, onSuccess, 
                 career={career} 
                 updateCareer={updateCareer} 
                 onSuccess={onSuccess}
-                onFailure={onFailure} 
-                updateLog={updateLog}
+                onFailure={onFailure}
             />);
     } else {
         return (<div></div>);
     }
 }
 
-function PromotionCT({upp, career, updateCareer, onSuccess, onFailure, updateLog}) {
+function PromotionCT({upp, career, updateCareer, onSuccess, onFailure}) {
     let [checked, setChecked] = useState(true);
 
     function handleCheck(check) {  

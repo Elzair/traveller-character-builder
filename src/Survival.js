@@ -2,7 +2,7 @@ import { capitalize, r1d6, r2d6 } from "./utils";
 
 import CTCAREERS from './data/ct/careers';
 
-export function Survival({ game, upp, career, display, onSurvival, onDeath, updateLog }) {
+export function Survival({ game, upp, career, display, onSurvival, onDeath }) {
     if (display && game === 'classic') {
         return (
             <SurvivalCT 
@@ -11,14 +11,13 @@ export function Survival({ game, upp, career, display, onSurvival, onDeath, upda
                 career={career}
                 onSurvival={onSurvival}
                 onDeath={onDeath}
-                updateLog={updateLog}
             />);
     } else {
         return (<div></div>);
     }
 }
 
-function SurvivalCT({ upp, career, onSurvival, onDeath, updateLog }) {
+function SurvivalCT({ upp, career, onSurvival, onDeath }) {
     const careerData = CTCAREERS.filter(career => career.name === career.name)[0];
     const result = applyDMsToRoll(r2d6(), careerData.survival.dms, upp);
     const didSurvive = result >= careerData.survival.target;
