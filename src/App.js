@@ -14,6 +14,7 @@ import { Skill } from './Skill';
 import { Character } from './Character';
 
 import CTCAREERS from './data/ct/careers';
+import { Age } from './Age';
 
 function App() {
   // let stats = generateCharacteristics();
@@ -224,6 +225,12 @@ function App() {
     setStep(7);
   }
 
+  function aged() {
+    updateLog([`You are now ${age+4}.`]);
+    setAge(age+4);
+    setStep(9);
+  }
+
   function died() {
     updateLog([`You have died.`]);
     setStep(10);
@@ -305,6 +312,13 @@ function App() {
         onSelected={choseSkill}
         onCascade={cascadeSkill}
         updateLog={updateLog}
+      />
+      <Age
+        game={game}
+        upp={upp}
+        career={career}
+        display={step===8}
+        onAged={aged}
       />
       <Log log={log} />
       {/* <Homeworld name={homeworldName} updateName={setHomeworldName} upp={homeworldUPP} updateUPP={setHomeworldUPP} /> */}
