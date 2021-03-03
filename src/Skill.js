@@ -3,14 +3,17 @@ import { r1d6 } from "./utils";
 import CTCAREERS from './data/ct/careers';
 import CTSKILLS from './data/ct/skills';
 
-export function Skill({game, upp, career, display, onFinished, updateLog}) {
+export function Skill({game, upp, updateUPP, career, skills, updateSkills, display, onSelected, updateLog}) {
     if (display && game === 'classic') {
         return (
             <SkillCT 
                 game={game}
                 upp={upp}
+                updateUPP={updateUPP}
                 career={career}
-                onFinished={onFinished}
+                skills={skills}
+                updateSkills={updateSkills}
+                onSelected={onSelected}
                 updateLog={updateLog}
             />);
     } else {
@@ -18,15 +21,37 @@ export function Skill({game, upp, career, display, onFinished, updateLog}) {
     }
 }
 
-function SkillCT({game, upp, career, display, onFinished, updateLog}) {
+function SkillCT({game, upp, updateUPP, career, skills, updateSkills, display, onSelected, updateLog}) {
     function handleSkillSelection(ev) {
         ev.preventDefault();
         for (let t of ev.target) {
             if (t.checked) {
                 const careerData = CTCAREERS.filter(c => c.name === career.branch)[0];
                 const table = careerData[t.value];
-                const skill = table[r1d6()-1];
-                console.log(skill);
+                const adv = table[r1d6()-1];
+
+                if (adv.type === 'CHARACTERISTIC') {
+                    let newChar = {};
+                    newChar[adv.name] = upp[adv.name] + adv.value;
+                    updateUPP(newChar);
+                    updateLog([`You have increased your ${adv.name} to ${newChar[adv.name]}.`]);
+                    onSelected();
+                } else if (adv.type === 'SKILL') {
+                    const skillData = CTSKILLS[adv.name];
+                    if (skillData === null) {
+                        let newSkill = {};
+                        if (!skills.hasOwnProperty(adv.name)) {
+                            newSkill[adv.name] = adv.value;
+                        } else {
+                            newSkill[adv.name] = skills[adv.name] + adv.value;
+                        }
+                        updateSkills(newSkill);
+                        onSelected();
+                    } else {
+                        console.log('Cascade skills are not yet implemented!');
+                        onSelected();
+                    }
+                }
             }
         }
     }
