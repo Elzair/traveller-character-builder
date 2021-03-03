@@ -22,8 +22,11 @@ export function Commission({ game, upp, updateUPP, career, updateCareer, skills,
         return (
             <CommissionCT
                 upp={upp}
+                updateUPP={updateUPP}
                 career={career}
                 updateCareer={updateCareer}
+                skills={skills}
+                updateSkills={updateSkills}
                 onSuccess={onSuccess}
                 onFailure={onFailure}
                 onNoAttempt={onNoAttempt}

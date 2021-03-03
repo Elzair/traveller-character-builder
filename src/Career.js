@@ -57,11 +57,9 @@ function CareerCT({ career, upp, updateUPP, skills, updateSkills, onEnlistment, 
                     careerName = draft();
                     onDraft({ branch: careerName, failedBranch: c.value, term: 0, rank: 0 });
                 }
-                console.log('Got here.');
                 // Apply any benefits for entering a career.
                 const careerData = CTCAREERS.filter(career => career.name === careerName)[0];
                 const rank = careerData.ranks[0];
-                console.log(rank);
                 if (rank.hasOwnProperty('benefits')) {
                     rank.benefits.map(benefit => {
                         if (benefit.type === 'SKILL') {
