@@ -17,7 +17,7 @@ function applyDMsToRoll(roll, dms, upp) {
     return roll;
 }
 
-export function Commission({ game, upp, career, updateCareer, display, onSuccess, onFailure, onNoAttempt }) {
+export function Commission({ game, upp, updateUPP, career, updateCareer, skills, updateSkills, display, onSuccess, onFailure, onNoAttempt, updateLog }) {
     if (display && game === 'classic') {
         return (
             <CommissionCT
@@ -27,6 +27,7 @@ export function Commission({ game, upp, career, updateCareer, display, onSuccess
                 onSuccess={onSuccess}
                 onFailure={onFailure}
                 onNoAttempt={onNoAttempt}
+                updateLog={updateLog}
             />
         );
     } else {
@@ -34,7 +35,7 @@ export function Commission({ game, upp, career, updateCareer, display, onSuccess
     }
 }
 
-function CommissionCT({ upp, career, updateCareer, onSuccess, onFailure, onNoAttempt }) {
+function CommissionCT({ upp, updateUPP, career, updateCareer, skills, updateSkills, onSuccess, onFailure, onNoAttempt, updateLog }) {
     let [checked, setChecked] = useState(true);
 
     function handleCheck(check) {
@@ -49,6 +50,26 @@ function CommissionCT({ upp, career, updateCareer, onSuccess, onFailure, onNoAtt
             const result = applyDMsToRoll(r2d6(), careerData.commission.dms, upp);
             if (result >= careerData.commission.target) {
                 onSuccess();
+                // Apply any benefits for entering a career.
+                const rank = careerData.ranks[career.rank+1];
+                if (rank.hasOwnProperty('benefits')) {
+                    rank.benefits.map(benefit => {
+                        if (benefit.type === 'SKILL') {
+                            // TODO: Refactor this into a general method to set a skill to a value if it is lower than that value
+                            if (skills.hasOwnProperty(benefit.name) || skills[benefit.name] < benefit.value) {
+                                let newSkills = {};
+                                newSkills[benefit.name] = benefit.value;
+                                updateSkills(newSkills);
+                                updateLog([`Because of your rank, you gain ${benefit.name}-${benefit.value}.`]);
+                            }
+                        } else if (benefit.type === 'CHARACTERISTIC') {
+                            let newUPP = {};
+                            newUPP[benefit.name] = upp[benefit.name] + benefit.value;
+                            updateUPP(newUPP);
+                            updateLog([`Because of your rank, your ${benefit.name} is now ${newUPP[benefit.name]}.`]);
+                        }
+                    });
+                }
             } else {
                 onFailure();
             }

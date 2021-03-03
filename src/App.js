@@ -282,10 +282,14 @@ function App() {
       <Career 
         game={game} 
         career={career} 
-        upp={upp} 
+        upp={upp}
+        updateUPP={updateUPP}
+        skills={skills}
+        updateSkills={updateSkills}
         display={step===2}
         onEnlistment={enlisted}
         onDraft={drafted}
+        updateLog={updateLog}
       />
       <Survival
         game={game}
@@ -298,22 +302,30 @@ function App() {
       <Commission
         game={game}
         upp={upp}
+        updateUPP={updateUPP}
         career={career}
         updateCareer={updateCareer}
+        skills={skills}
+        updateSkills={updateSkills}
         display={step===4}
         onSuccess={commissioned}
         onFailure={commissionFailed}
         onNoAttempt={commissionNotAttempted}
+        updateLog={updateLog}
       />
       <Promotion
         game={game}
         upp={upp}
+        updateUPP={updateUPP}
         career={career}
         updateCareer={updateCareer}
+        skills={skills}
+        updateSkills={updateSkills}
         display={step===5}
         onSuccess={promoted}
         onFailure={notPromoted}
         onNoAttempt={promotionNotAttempted}
+        updateLog={updateLog}
       />
       <Skill
         game={game}

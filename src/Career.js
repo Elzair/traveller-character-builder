@@ -2,14 +2,18 @@ import { capitalize, r1d6, r2d6 } from "./utils";
 
 import CTCAREERS from './data/ct/careers';
 
-export function Career({ game, career, upp, display, onEnlistment, onDraft }) {
+export function Career({ game, career, upp, updateUPP, skills, updateSkills, display, onEnlistment, onDraft, updateLog }) {
     if (display && game === 'classic') {
         return (
             <CareerCT
                 career={career}
                 upp={upp}
+                updateUPP={updateUPP}
+                skills={skills}
+                updateSkills={updateSkills}
                 onEnlistment={onEnlistment}
                 onDraft={onDraft}
+                updateLog={updateLog}
             />);
     } else {
         return (<div></div>);
@@ -39,17 +43,40 @@ function draft() {
     return CTCAREERS.filter(career => career.draftNumber === roll)[0].name;
 }
 
-function CareerCT({ career, upp, onEnlistment, onDraft }) {
+function CareerCT({ career, upp, updateUPP, skills, updateSkills, onEnlistment, onDraft, updateLog }) {
     function selectCareer(ev) {
         ev.preventDefault();
         for (let c of ev.target) {
             if (c.checked) {
+                let careerName = '';
                 // Determine if character can enlist.
                 if (canEnlist(upp, c.value)) {
-                    onEnlistment({ branch: c.value, term: 0, rank: 0 });
+                    careerName = c.value;
+                    onEnlistment({ branch: careerName, term: 0, rank: 0 });
                 } else {
-                    const draftCareerName = draft();
-                    onDraft({ branch: draftCareerName, failedBranch: c.value, term: 0, rank: 0 });
+                    careerName = draft();
+                    onDraft({ branch: careerName, failedBranch: c.value, term: 0, rank: 0 });
+                }
+                // Apply any benefits for entering a career.
+                const careerData = CTCAREERS.filter(career => career.name === careerName)[0];
+                const rank = careerData.ranks[0];
+                if (rank.hasOwnProperty('benefits')) {
+                    rank.benefits.map(benefit => {
+                        if (benefit.type === 'SKILL') {
+                            // TODO: Refactor this into a general method to set a skill to a value if it is lower than that value.
+                            if (skills.hasOwnProperty(benefit.name) || skills[benefit.name] < benefit.value) {
+                                let newSkills = {};
+                                newSkills[benefit.name] = benefit.value;
+                                updateSkills(newSkills);
+                                updateLog([`Because of your rank, you gain ${benefit.name}-${benefit.value}.`]);
+                            }
+                        } else if (benefit.type === 'CHARACTERISTIC') {
+                            let newUPP = {};
+                            newUPP[benefit.name] = upp[benefit.name] + benefit.value;
+                            updateUPP(newUPP);
+                            updateLog([`Because of your rank, your ${benefit.name} is now ${newUPP[benefit.name]}.`]);
+                        }
+                    });
                 }
             }
         }
