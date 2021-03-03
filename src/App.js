@@ -23,7 +23,7 @@ function App() {
   let [game, setGame] = useState("classic");
   let [options, setOptions] = useState({ rearrangeCharacteristics: false, });
   let [career, setCareer] = useState(null);
-  let [skills, setSkills] = useState(null);
+  let [skills, setSkills] = useState({});
   let [log, setLog] = useState([]);
 
   // Update State Functions
@@ -216,6 +216,8 @@ function App() {
         upp={upp}
         updateUPP={updateUPP} 
         career={career}
+        skills={skills}
+        updateSkills={updateSkills}
         display={step===6}
         onSelected={choseSkill}
         updateLog={updateLog}
