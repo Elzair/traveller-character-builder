@@ -11,6 +11,7 @@ import { Survival } from './Survival';
 import { Commission } from './Commission';
 import { Promotion } from './Promotion';
 import { Skill } from './Skill';
+import { Character } from './Character';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
   let [options, setOptions] = useState({ rearrangeCharacteristics: false, });
   let [career, setCareer] = useState(null);
   let [skills, setSkills] = useState({});
+  let [age, setAge] = useState(18);
   let [log, setLog] = useState([]);
 
   // Update State Functions
@@ -141,6 +143,10 @@ function App() {
   }
 
   function choseSkill() {
+    setStep(8);
+  }
+
+  function cascadeSkill() {
     setStep(7);
   }
 
@@ -161,7 +167,15 @@ function App() {
         updateOptions={updateGameOptions}
         updateLog={updateLog}
       />
-      <p className="Name">{name}</p>
+      <Character 
+        game={game}
+        name={name}
+        career={career}
+        upp={upp}
+        skills={skills}
+        age={age}
+        display={step>0}
+      />
       <UPP 
         options={options} 
         updateOptions={updateGameOptions} 
@@ -218,8 +232,9 @@ function App() {
         career={career}
         skills={skills}
         updateSkills={updateSkills}
-        display={step===6}
+        display={step===6 || step===7}
         onSelected={choseSkill}
+        onCascade={cascadeSkill}
         updateLog={updateLog}
       />
       <Log log={log} />

@@ -5,7 +5,7 @@ import { num2tetra } from "./utils";
 import './UPP.css';
 import { ItemTypes } from "./constants";
 
-export function UPP({options, updateOptions, characteristics, updateUPP, display, onFinalized, updateLog}) {
+export function UPP({ options, updateOptions, characteristics, updateUPP, display, onFinalized, updateLog }) {
     function finalizeCharacteristics(ev) {
         let upp = Object.entries(characteristics).map(ent => num2tetra(ent[1])).join('');
         updateLog([`Your Universal Personality Profile is ${upp}.`])
@@ -25,26 +25,30 @@ export function UPP({options, updateOptions, characteristics, updateUPP, display
         }
     }
 
-    if (options.rearrangeCharacteristics) {
-        return (
-            <div className="UPPOuter">
-            <DndProvider backend={HTML5Backend}>
-                <div className="UPP">
-                    {stats}
+    if (display) {
+        if (options.rearrangeCharacteristics) {
+            return (
+                <div className="UPPOuter">
+                    <DndProvider backend={HTML5Backend}>
+                        <div className="UPP">
+                            {stats}
+                        </div>
+                    </DndProvider>
+                    <input type="button" value="Finalize" onClick={finalizeCharacteristics} />
                 </div>
-            </DndProvider>
-            {display && <input type="button" value="Finalize" onClick={finalizeCharacteristics} />}
-            </div>
-        );
+            );
+        } else {
+            return (
+                <div className="UPPOuter">
+                    <div className="UPP">
+                        {stats}
+                    </div>
+                    <input type="button" value="Finalize" onClick={finalizeCharacteristics} />
+                </div>
+            );
+        }
     } else {
-        return (
-            <div className="UPPOuter">
-            <div className="UPP">
-                {stats}
-            </div>
-            {display && <input type="button" value="Finalize" onClick={finalizeCharacteristics} />}
-            </div>
-        );
+        return (<div></div>);
     }
 }
 
@@ -61,7 +65,7 @@ function Characteristic({ name, value, updateUPP }) {
     );
 }
 
-function CharacteristicEditable({name, value, updateUPP}) {
+function CharacteristicEditable({ name, value, updateUPP }) {
     const [{ isDragging }, drag] = useDrag({
         item: { type: ItemTypes.CHARACTERISTIC, name: name, value: value },
         collect: monitor => ({
@@ -70,7 +74,7 @@ function CharacteristicEditable({name, value, updateUPP}) {
     });
     const [{ isOver, }, drop] = useDrop({
         accept: ItemTypes.CHARACTERISTIC,
-        drop: ({name: dropName, value: dropValue}) => {
+        drop: ({ name: dropName, value: dropValue }) => {
             let newchars = {};
             newchars[dropName] = value;
             newchars[name] = dropValue;

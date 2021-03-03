@@ -1,12 +1,13 @@
+import { useState } from 'react';
 import { r1d6 } from "./utils";
 
 import CTCAREERS from './data/ct/careers';
 import CTSKILLS from './data/ct/skills';
 
-export function Skill({game, upp, updateUPP, career, skills, updateSkills, display, onSelected, updateLog}) {
+export function Skill({ game, upp, updateUPP, career, skills, updateSkills, display, onSelected, onCascade, updateLog }) {
     if (display && game === 'classic') {
         return (
-            <SkillCT 
+            <SkillCT
                 game={game}
                 upp={upp}
                 updateUPP={updateUPP}
@@ -14,6 +15,7 @@ export function Skill({game, upp, updateUPP, career, skills, updateSkills, displ
                 skills={skills}
                 updateSkills={updateSkills}
                 onSelected={onSelected}
+                onCascade={onCascade}
                 updateLog={updateLog}
             />);
     } else {
@@ -21,14 +23,16 @@ export function Skill({game, upp, updateUPP, career, skills, updateSkills, displ
     }
 }
 
-function SkillCT({game, upp, updateUPP, career, skills, updateSkills, display, onSelected, updateLog}) {
+function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, onSelected, onCascade, updateLog }) {
+    let [cascade, setCascade] = useState(null);
+
     function handleSkillSelection(ev) {
         ev.preventDefault();
         for (let t of ev.target) {
             if (t.checked) {
                 const careerData = CTCAREERS.filter(c => c.name === career.branch)[0];
                 const table = careerData[t.value];
-                const adv = table[r1d6()-1];
+                const adv = table[r1d6() - 1];
 
                 if (adv.type === 'CHARACTERISTIC') {
                     let newChar = {};
@@ -38,47 +42,85 @@ function SkillCT({game, upp, updateUPP, career, skills, updateSkills, display, o
                     onSelected();
                 } else if (adv.type === 'SKILL') {
                     const skillData = CTSKILLS[adv.name];
-                    if (skillData === null) {
+                    if (skillData === null) { // A non-cascade skill
                         let newSkill = {};
                         if (!skills.hasOwnProperty(adv.name)) {
                             newSkill[adv.name] = adv.value;
                         } else {
                             newSkill[adv.name] = skills[adv.name] + adv.value;
                         }
+                        updateLog([`You improved your ${adv.name} to ${newSkill[adv.name]}.`]);
                         updateSkills(newSkill);
                         onSelected();
                     } else {
-                        console.log('Cascade skills are not yet implemented!');
-                        onSelected();
+                        setCascade(adv);
+                        onCascade();
                     }
                 }
             }
         }
     }
 
-    let options = {
-        "pdt": "Personal Development",
-        "sst": "Service Skills",
-        "aet1": "Advanced Education",
-    };
-    if (upp.Education >= 8) {
-        options['aet2'] = "Advanced Education 2";
+    function handleCascadeSkillSelection(ev) {
+        ev.preventDefault();
+        for (let t of ev.target) {
+            if (t.checked) {
+                let newSkill = {};
+                if (!skills.hasOwnProperty(t.value)) {
+                    newSkill[t.value] = cascade.value;
+                } else {
+                    newSkill[t.value] = skills[t.value] + cascade.value;
+                }
+                updateSkills(newSkill);
+                updateLog([`You improved your ${t.value} to ${newSkill[t.value]}.`])
+                onSelected();
+            }
+        }
     }
-    const optionElts = Object.keys(options).map(prop => (
-        <label>
-            <input type="radio" id={prop} name="skilltable" value={prop}/>
-            {options[prop]}
-        </label>
-    ));
-    console.log(optionElts);
-    
-    return (
-        <div>
-            {<form onSubmit={handleSkillSelection}>
-                <label>Choose an area to improve:</label>
-                {optionElts}
-                <input type="submit" value="Submit"/>
-            </form>}
-        </div>
-    );
+
+    if (!cascade) {
+        let options = {
+            "pdt": "Personal Development",
+            "sst": "Service Skills",
+            "aet1": "Advanced Education",
+        };
+        if (upp.Education >= 8) {
+            options['aet2'] = "Advanced Education 2";
+        }
+        const optionElts = Object.keys(options).map(prop => (
+            <label>
+                <input type="radio" id={prop} name="skilltable" value={prop} />
+                {options[prop]}
+            </label>
+        ));
+        // console.log(optionElts);
+
+        return (
+            <div>
+                {<form onSubmit={handleSkillSelection}>
+                    <label>Choose an area to improve:</label>
+                    {optionElts}
+                    <input type="submit" value="Submit" />
+                </form>}
+            </div>
+        );
+    } else {
+        const skillData = CTSKILLS[cascade.name];
+        const optionElts = Object.keys(skillData).map(skill => (
+            <label>
+                <input type="radio" id={skill} name="cascadeskill" value={`${cascade.name} (${skill})`} />
+                {skill}
+            </label>
+        ));
+
+        return (
+            <div>
+                {<form onSubmit={handleCascadeSkillSelection}>
+                    <label>{`Choose a specific focus of ${cascade.name}:`}</label>
+                    {optionElts}
+                    <input type="submit" value="Submit" />
+                </form>}
+            </div>
+        );
+    }
 }
