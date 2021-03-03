@@ -144,19 +144,23 @@ function App() {
         `Instead, you were drafted into the ${capitalize(branch)}.`,
       ]);
     }
-    setStep(6);
+    setStep(3);
   }
 
   function survived() {
     updateLog([`You survived term ${career.term+1}.`]);
+    updateCareer({term: career.term+1});
     if (game === 'classic') {
       const careerData = CTCAREERS.filter(c => career.branch === c.name)[0];
       // Reset the number of skill rolls for the term.
       setNumSkillRolls(careerData.numSkillsPerTerm);
 
       // If the career does not have commissions or advancements, go to skill rolls.
-      if (careerData.commission === null) {
+      // Also go to skill rolls if the character was drafted and its their first term.
+      if (careerData.commission === null || (career.drafted === true && career.term+1 === 1)) {
         setStep(6);
+      } else if (career.rank >= 1) { // Go directly to promotion if a commission has already been earned.
+        setStep(5);
       } else {
         setStep(4);
       }
@@ -166,20 +170,43 @@ function App() {
   }
 
   function commissioned() {
+    if (game === 'classic') {
+      const careerData = CTCAREERS.filter(c => career.branch === c.name)[0];
+      updateLog([`Congratulations! You are now a Rank 1 ${careerData.ranks[1].name}.`]);
+    }
+    updateCareer({rank: 1});
     setNumSkillRolls(numSkillRolls+1);
     setStep(5);
   }
   
   function commissionFailed() {
+    updateLog([`Sorry, you failed to get a commission in term ${career.term}.`]);
+    setStep(6);
+  }
+
+  function commissionNotAttempted() {
+    updateLog([`You did not attempt a commission in term ${career.term}.`]);
     setStep(6);
   }
 
   function promoted() {
+    let rank = career.rank+1;
+    if (game === 'classic') {
+      const careerData = CTCAREERS.filter(c => career.branch === c.name)[0];
+      updateLog([`Congratulations! You are now a Rank ${rank} ${careerData.ranks[rank].name}.`]);
+    }
+    updateCareer({rank: rank});
     setNumSkillRolls(numSkillRolls+1);
     setStep(6);
   }
 
   function notPromoted() {
+    updateLog([`Sorry, you failed to get a promotion in term ${career.term}.`]);
+    setStep(6);
+  }
+
+  function promotionNotAttempted() {
+    updateLog([`You did not attempt a promotion in term ${career.term}.`]);
     setStep(6);
   }
 
@@ -258,6 +285,7 @@ function App() {
         display={step===4}
         onSuccess={commissioned}
         onFailure={commissionFailed}
+        onNoAttempt={commissionNotAttempted}
         updateLog={updateLog}
       />
       <Promotion
@@ -268,6 +296,7 @@ function App() {
         display={step===5}
         onSuccess={promoted}
         onFailure={notPromoted}
+        onNoAttempt={promotionNotAttempted}
         updateLog={updateLog}
       />
       <Skill

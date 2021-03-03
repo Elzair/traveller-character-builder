@@ -47,30 +47,22 @@ function PromotionCT({upp, career, updateCareer, onSuccess, onFailure, updateLog
             const careerData = CTCAREERS.filter(c => c.name === career.branch)[0];
             const result = applyDMsToRoll(r2d6(), careerData.promotion.dms, upp);
             if (result >= careerData.promotion.target) {
-                let rank = career.rank+1;
-                updateLog([`Congratulations! You are now a Rank ${rank} ${careerData.ranks[rank].name}.`]);
-                updateCareer({rank: rank});
                 onSuccess();
             } else {
-                updateLog([`Sorry, you failed to get a promotion in term ${career.term+1}.`]);
                 onFailure();
             }
         } else {
-            updateLog([`You did not attempt a promotion in term ${career.term+1}.`]);
             onFailure();
         }
     }
 
-    const careerData = CTCAREERS.filter(c => c.name === career.branch)[0];
-    if (career.rank > 0 && careerData.promotion && (!career.drafted || career.term > 0)) {
-        return (
+    return (
             <form onSubmit={attemptPromotion} className="Promotion">
                 <p>Would you like to try for a promotion?</p>
                 <Switch checked={checked} onChange={handleCheck} />
                 <input type="submit" value="Ok" />
             </form>
         );
-    }
     
     return (<div></div>);
 }
