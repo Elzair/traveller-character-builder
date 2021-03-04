@@ -33,7 +33,7 @@ function App() {
   let [numSkillRolls, setNumSkillRolls] = useState(1);
   let [credits, setCredits] = useState(0);
   let [items, setItems] = useState({});
-  let [numBenefits, setNumBenefits] = useState(0);
+  // let [numBenefits, setNumBenefits] = useState(0);
   let [log, setLog] = useState([]);
 
   // Update State Functions
@@ -127,15 +127,9 @@ function App() {
   }
 
   function updateLog(newEntries) {
-    let newlog = [];
-    for (let oldEntry of log) {
-      newlog.push(oldEntry);
-    }
-    for (let newEntry of newEntries) {
-      newlog.push(newEntry);
-    }
+    const newLog = log.concat(newEntries);
 
-    setLog(newlog);
+    setLog(newLog);
   }
 
   // Finish Step Options
@@ -153,8 +147,6 @@ function App() {
   function enlisted({branch, term, rank}) {
     if (game === 'classic') {
       const careerData = CTCAREERS.filter(c => branch === c.name)[0];
-      const numSkillRolls = careerData.numSkillsPerTerm;
-      setNumSkillRolls(numSkillRolls); // TODO: Move this to survived() and give travellers at least 2 skill rolls in 1st term
       updateCareer({branch, term, rank, drafted: false});
       updateLog([`Congratulations! You have enlisted in the ${capitalize(branch)}!`]);
     }
@@ -164,8 +156,6 @@ function App() {
   function drafted({branch, failedBranch, term, rank}) {
     if (game === 'classic') {
       const careerData = CTCAREERS.filter(c => branch === c.name)[0];
-      const numSkillRolls = careerData.numSkillsPerTerm;// TODO: Move this to survived() and give travellers at least 2 skill rolls in 1st term
-      setNumSkillRolls(numSkillRolls);
       updateCareer({branch, term, rank, drafted: true});
       updateLog([
         `Sorry! You did not qualify for the ${capitalize(failedBranch)}.`,
@@ -188,8 +178,8 @@ function App() {
         setNumSkillRolls(careerData.numSkillsPerTerm);
       }
 
-      // Add a benefit for a successful term served.
-      setNumBenefits(numBenefits+1);
+      // // Add a benefit for a successful term served.
+      // setNumBenefits(numBenefits+1);
 
       // If the career does not have commissions or advancements, go to skill rolls.
       // Also skip commission & promotion if the character was drafted and its their first term.
@@ -212,7 +202,7 @@ function App() {
     }
     updateCareer({rank: 1});
     setNumSkillRolls(numSkillRolls+1);
-    setNumBenefits(numBenefits+1);
+    // setNumBenefits(numBenefits+1);
     setStep(5);
   }
   
@@ -235,12 +225,12 @@ function App() {
     updateCareer({rank: rank});
     setNumSkillRolls(numSkillRolls+1);
     
-    // Add 1 additional benefit if rank 3 or 4 and 2 benefits if rank 5 or 6.
-    if (rank === 3) {
-      setNumBenefits(numBenefits+1);
-    } else if (rank === 5 ) {
-      setNumBenefits(numBenefits+1);
-    }
+    // // Add 1 additional benefit if rank 3 or 4 and 2 benefits if rank 5 or 6.
+    // if (rank === 3) {
+    //   setNumBenefits(numBenefits+1);
+    // } else if (rank === 5 ) {
+    //   setNumBenefits(numBenefits+1);
+    // }
 
     setStep(6);
   }
@@ -287,12 +277,15 @@ function App() {
     setStep(10);
   }
 
-  function benefit() {
-    setNumBenefits(numBenefits-1);
-    if (numBenefits-1 === 0) {
-      updateLog([`Happy Travels!`]);
-      setStep(13);
-    } 
+  // function benefit() {
+  function musterOut() {
+    // setNumBenefits(numBenefits-1);
+    // if (numBenefits-1 === 0) {
+    //   updateLog([`Happy Travels!`]);
+    //   setStep(13);
+    // }
+    updateLog(['Happy Travels!']);
+    setStep(11);
   }
 
   // function selectWeapon() {
@@ -432,8 +425,9 @@ function App() {
         updateCredits={setCredits}
         items={items}
         updateItems={updateItems}
-        display={step===10 || step===11 || step===12}
-        onBenefit={benefit}
+        display={step===10 /*|| step===11 || step===12*/}
+        // onBenefit={benefit}
+        onMusterOut={musterOut}
         // onWeapon={selectWeapon}
         updateLog={updateLog}
       />
