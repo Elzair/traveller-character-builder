@@ -128,7 +128,6 @@ function App() {
 
   function updateLog(newEntries) {
     const newLog = log.concat(newEntries);
-
     setLog(newLog);
   }
 

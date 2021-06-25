@@ -5,7 +5,7 @@ import { r1d6 } from './utils';
 import CTCAREERS from './data/ct/careers';
 import CTITEMS from './data/ct/items';
 
-export function MusterOut({ game, upp, updateUPP, career, skills, updateSkills, credits, updateCredits, items, updateItems, display, onBenefit/*, onWeapon*/, updateLog }) {
+export function MusterOut({ game, upp, updateUPP, career, skills, updateSkills, credits, updateCredits, items, updateItems, display, onMusterOut/*, onBenefit*//*, onWeapon*/, updateLog }) {
     if (display && game === 'classic') {
         return (
             <MusterOutCT
@@ -18,7 +18,8 @@ export function MusterOut({ game, upp, updateUPP, career, skills, updateSkills, 
                 updateCredits={updateCredits}
                 items={items}
                 updateItems={updateItems}
-                onBenefit={onBenefit}
+                // onBenefit={onBenefit}
+                onMusterOut={onMusterOut}
                 //onWeapon={onWeapon}
                 updateLog={updateLog}
             />
@@ -28,11 +29,20 @@ export function MusterOut({ game, upp, updateUPP, career, skills, updateSkills, 
     }
 }
 
-function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, updateCredits, items, updateItems, onBenefit/*, onWeapon*/, updateLog }) {
+function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, updateCredits, items, updateItems, onMusterOut/*, onBenefit*//*, onWeapon*/, updateLog }) {
     const MAXCASHROLLS = 3;
 
     let [numCashRolls, setNumCashRolls] = useState(MAXCASHROLLS);
     let [weapon, setWeapon] = useState(null);
+    let [numBenefitRolls, setNumBenefitRolls] = useState(99); // Use some large number first.
+
+    function decreaseBenefits() {
+        const curNumBenefitRolls = numBenefitRolls;
+        setNumBenefitRolls(numBenefitRolls-1);
+        if (curNumBenefitRolls === 1) {
+            onMusterOut();
+        }
+    }
 
     function handleBenefitSelection(ev) {
         ev.preventDefault();
@@ -48,7 +58,8 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
                     updateCredits(credits + amount);
                     setNumCashRolls(numCashRolls - 1);
                     updateLog([`You receive Cr${amount}.`]);
-                    onBenefit();
+                    decreaseBenefits();
+                    // onBenefit();
                 } else if (t.value === 'benefits') {
                     // Give travellers of rank 5 or rank 6 a +1 DM on rolls on the benefits table.
                     const benefitsDM = career.rank >= 5 ? 1 : 0;
@@ -64,13 +75,15 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
                         let newItems = {};
                         newItems[benefit.name] = 1;
                         updateItems(newItems);
-                        onBenefit();
+                        decreaseBenefits();
+                        // onBenefit();
                     } else if (benefit.type === 'CHARACTERISTIC') {
                         let newUPP = {};
                         newUPP[benefit.name] = upp[benefit.name] + benefit.value;
                         updateLog([`You raised your ${benefit.name} to ${newUPP[benefit.name]}.`]);
                         updateUPP(newUPP);
-                        onBenefit();
+                        decreaseBenefits();
+                        // onBenefit();
                     }
                 }
             }
@@ -85,9 +98,33 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
                 let newItems = {};
                 newItems[t.value] = 1;
                 updateItems(newItems);
+                decreaseBenefits();
                 setWeapon(null);
             }
         }
+    }
+
+    // Set the number of benefit rolls if it has not already been set.
+    // Travellers get one benefit roll for each term they serve plus the following:
+    // Ranks 1&2 1
+    // Ranks 3&4 2
+    // Ranks 5&6 3
+    if (numBenefitRolls === 99) {
+        let benefitRollMod = 0;
+        switch (career.rank) {
+            case 0: break;
+            case 1: 
+            case 2: benefitRollMod = 1;
+                    break;
+            case 3: 
+            case 4: benefitRollMod = 2;
+                    break;
+            case 5: 
+            case 6: benefitRollMod = 3;
+                    break;
+        }
+
+        setNumBenefitRolls(career.term + benefitRollMod);
     }
 
     if (weapon === null) {

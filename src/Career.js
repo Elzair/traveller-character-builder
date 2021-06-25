@@ -1,4 +1,4 @@
-import { capitalize, r1d6, r2d6 } from "./utils";
+import { /*capitalize,*/ r1d6, r2d6 } from "./utils";
 
 import CTCAREERS from './data/ct/careers';
 
@@ -24,7 +24,7 @@ function applyDMsToRoll(roll, dms, upp) {
     let oldroll = roll;
     for (let dm of dms) {
         if (upp[dm.characteristic] >= dm.value) {
-            console.log(`Because your ${dm.characteristic} of ${upp[dm.characteristic]} is greater than or equal to ${dm.value}, your roll of ${oldroll} has been increased by ${dm.dm}.`);
+            console.log(`Career: Because your ${dm.characteristic} of ${upp[dm.characteristic]} is greater than or equal to ${dm.value}, your roll of ${oldroll} has been increased by ${dm.dm}.`);
             roll += dm.dm;
         }
     }
