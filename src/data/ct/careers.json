@@ -1293,7 +1293,12 @@
         "reenlist": {
             "target": 5
         },
-        "ranks": [],
+        "ranks": [
+            {
+                "name": "Other",
+                "benefits": []
+            }
+        ],
         "benefits": [
             {
                 "type": "ITEM",
