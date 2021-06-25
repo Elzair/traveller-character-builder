@@ -6,14 +6,14 @@ import { r2d6 } from "./utils";
 import CTCAREERS from './data/ct/careers';
 
 function applyDMsToRoll(roll, dms, upp) {
-    let oldroll = roll;
+    // let oldroll = roll;
     for (let dm of dms) {
         if (upp[dm.characteristic] >= dm.value) {
-            console.log(`Commission: Because your ${dm.characteristic} of ${upp[dm.characteristic]} is greater than or equal to ${dm.value}, your roll of ${oldroll} has been increased by ${dm.dm}.`);
+            // console.log(`Commission: Because your ${dm.characteristic} of ${upp[dm.characteristic]} is greater than or equal to ${dm.value}, your roll of ${oldroll} has been increased by ${dm.dm}.`);
             roll += dm.dm;
         }
     }
-    console.log(`Your final roll is ${roll}.`);
+    // console.log(`Your final roll is ${roll}.`);
     return roll;
 }
 

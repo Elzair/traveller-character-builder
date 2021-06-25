@@ -54,7 +54,6 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
                     const cashDM = skills.hasOwnProperty('Gambling') && skills.Gambling >= 1 ? 1 : 0;
                     const amount = table[r1d6() - 1 + cashDM];
                     updateLog([`You receive Cr${amount}.`], true);
-                    console.log(`You receive Cr${amount}.`);
                     updateCredits(credits + amount);
                     setNumCashRolls(numCashRolls - 1);
                     decreaseBenefits();
@@ -63,7 +62,7 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
                     // Give travellers of rank 5 or rank 6 a +1 DM on rolls on the benefits table.
                     const benefitsDM = career.rank >= 5 ? 1 : 0;
                     const benefit = table[Math.min(r1d6() - 1 + benefitsDM, table.length - 1)]; // Cap roll because not every benefit table has enough values.
-                    console.log(benefit);
+                    // console.log(benefit);
                     if (benefit.type === 'WEAPON') {
                         // If the benefit is a weapon, and the traveller has already received one, then
                         // ask if the traveller would like a skill increase instead.

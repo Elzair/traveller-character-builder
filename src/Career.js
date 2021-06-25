@@ -21,14 +21,14 @@ export function Career({ game, career, upp, updateUPP, skills, updateSkills, dis
 }
 
 function applyDMsToRoll(roll, dms, upp) {
-    let oldroll = roll;
+    // let oldroll = roll;
     for (let dm of dms) {
         if (upp[dm.characteristic] >= dm.value) {
-            console.log(`Career: Because your ${dm.characteristic} of ${upp[dm.characteristic]} is greater than or equal to ${dm.value}, your roll of ${oldroll} has been increased by ${dm.dm}.`);
+            // console.log(`Career: Because your ${dm.characteristic} of ${upp[dm.characteristic]} is greater than or equal to ${dm.value}, your roll of ${oldroll} has been increased by ${dm.dm}.`);
             roll += dm.dm;
         }
     }
-    console.log(`Your final roll is ${roll}.`);
+    // console.log(`Your final roll is ${roll}.`);
     return roll;
 }
 
@@ -59,7 +59,6 @@ function CareerCT({ career, upp, updateUPP, skills, updateSkills, onEnlistment, 
                 }
                 // Apply any benefits for entering a career.
                 const careerData = CTCAREERS.filter(c => c.name === careerName)[0];
-                // console.log(careerData);
                 const rank = careerData.ranks[0];
                 if (rank.hasOwnProperty('benefits')) {
                     rank.benefits.forEach(benefit => {
