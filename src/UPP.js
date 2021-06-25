@@ -63,13 +63,13 @@ function Characteristic({ name, value, updateUPP }) {
 }
 
 function CharacteristicEditable({ name, value, updateUPP }) {
-    const [{ isDragging }, drag] = useDrag({
+    const [, drag] = useDrag({
         item: { type: ItemTypes.CHARACTERISTIC, name: name, value: value },
         collect: monitor => ({
             isDragging: !!monitor.isDragging(),
         }),
     });
-    const [{ isOver, }, drop] = useDrop({
+    const [, drop] = useDrop({
         accept: ItemTypes.CHARACTERISTIC,
         drop: ({ name: dropName, value: dropValue }) => {
             let newchars = {};

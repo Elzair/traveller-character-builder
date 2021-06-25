@@ -5,7 +5,7 @@ import { r1d6 } from './utils';
 import CTCAREERS from './data/ct/careers';
 import CTITEMS from './data/ct/items';
 
-export function MusterOut({ game, upp, updateUPP, career, skills, updateSkills, credits, updateCredits, items, updateItems, display, onMusterOut/*, onBenefit*//*, onWeapon*/, updateLog }) {
+export function MusterOut({ game, upp, updateUPP, career, skills, updateSkills, credits, updateCredits, items, updateItems, display, onMusterOut, updateLog }) {
     if (display && game === 'classic') {
         return (
             <MusterOutCT
@@ -18,9 +18,7 @@ export function MusterOut({ game, upp, updateUPP, career, skills, updateSkills, 
                 updateCredits={updateCredits}
                 items={items}
                 updateItems={updateItems}
-                // onBenefit={onBenefit}
                 onMusterOut={onMusterOut}
-                //onWeapon={onWeapon}
                 updateLog={updateLog}
             />
         );
@@ -29,7 +27,7 @@ export function MusterOut({ game, upp, updateUPP, career, skills, updateSkills, 
     }
 }
 
-function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, updateCredits, items, updateItems, onMusterOut/*, onBenefit*//*, onWeapon*/, updateLog }) {
+function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, updateCredits, items, updateItems, onMusterOut, updateLog }) {
     const MAXCASHROLLS = 3;
 
     let [numCashRolls, setNumCashRolls] = useState(MAXCASHROLLS);
@@ -123,6 +121,7 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
             case 5: 
             case 6: benefitRollMod = 3;
                     break;
+            default: throw new Error(`career rank ${career.rank} is not in range 0-6!`); 
         }
 
         setNumBenefitRolls(career.term + benefitRollMod);

@@ -1,9 +1,9 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import { capitalize, num2tetra, r2d6 } from './utils';
 import { UPP } from './UPP';
 import { useState } from 'react';
-import { Homeworld } from './Homeworld';
+// import { Homeworld } from './Homeworld';
 import { Game } from './Game';
 import { Career } from './Career';
 import { Log } from './Log';
@@ -22,8 +22,8 @@ function App() {
   // let stats = generateCharacteristics();
   let [step, setStep] = useState(0);
   let [upp, setUPP] = useState(generateUPP());
-  let [homeworldName, setHomeworldName] = useState('');
-  let [homeworldUPP, setHomeworldUPP] = useState(generateUWP());
+  // let [homeworldName, setHomeworldName] = useState('');
+  // let [homeworldUPP, setHomeworldUPP] = useState(generateUWP());
   let [name, setName] = useState('');
   let [game, setGame] = useState("classic");
   let [options, setOptions] = useState({ rearrangeCharacteristics: false, });
@@ -33,7 +33,6 @@ function App() {
   let [numSkillRolls, setNumSkillRolls] = useState(1);
   let [credits, setCredits] = useState(0);
   let [items, setItems] = useState({});
-  // let [numBenefits, setNumBenefits] = useState(0);
   let [log, setLog] = useState([]);
 
   // Update State Functions
@@ -178,9 +177,6 @@ function App() {
         setNumSkillRolls(careerData.numSkillsPerTerm);
       }
 
-      // // Add a benefit for a successful term served.
-      // setNumBenefits(numBenefits+1);
-
       // If the career does not have commissions or advancements, go to skill rolls.
       // Also skip commission & promotion if the character was drafted and its their first term.
       if (careerData.commission === null || (career.drafted === true && career.term+1 === 1)) {
@@ -202,7 +198,6 @@ function App() {
     }
     updateCareer({rank: 1});
     setNumSkillRolls(numSkillRolls+1);
-    // setNumBenefits(numBenefits+1);
     setStep(5);
   }
   
@@ -224,14 +219,6 @@ function App() {
     }
     updateCareer({rank: rank});
     setNumSkillRolls(numSkillRolls+1);
-    
-    // // Add 1 additional benefit if rank 3 or 4 and 2 benefits if rank 5 or 6.
-    // if (rank === 3) {
-    //   setNumBenefits(numBenefits+1);
-    // } else if (rank === 5 ) {
-    //   setNumBenefits(numBenefits+1);
-    // }
-
     setStep(6);
   }
 
@@ -277,26 +264,9 @@ function App() {
     setStep(10);
   }
 
-  // function benefit() {
   function musterOut() {
-    // setNumBenefits(numBenefits-1);
-    // if (numBenefits-1 === 0) {
-    //   updateLog([`Happy Travels!`]);
-    //   setStep(13);
-    // }
-    // updateLog(['Happy Travels!']);
     setStep(11);
   }
-
-  // function selectWeapon() {
-  //   if (numBenefits === 1) {
-  //     updateLog([`Happy Travels!`]);
-  //     setStep(13);
-  //   } else {
-  //     setNumBenefits(numBenefits-1);
-  //     setStep(10);
-  //   }
-  // }
 
   function died() {
     updateLog([`You have died.`]);
@@ -429,10 +399,8 @@ function App() {
         updateCredits={setCredits}
         items={items}
         updateItems={updateItems}
-        display={step===10 /*|| step===11 || step===12*/}
-        // onBenefit={benefit}
+        display={step===10}
         onMusterOut={musterOut}
-        // onWeapon={selectWeapon}
         updateLog={updateLog}
       />
       <Goodbye
@@ -470,17 +438,17 @@ function generateUPP() {
   return characteristics;
 }
 
-function generateUWP() {
-  return {
-    Starport: 8, 
-    Size: 8,
-    Atmosphere: 8,
-    Hydrographics: 8,
-    Population: 8,
-    Government: 8,
-    LawLevel: 8,
-    TechLevel: 8,
-  };
-}
+// function generateUWP() {
+//   return {
+//     Starport: 8, 
+//     Size: 8,
+//     Atmosphere: 8,
+//     Hydrographics: 8,
+//     Population: 8,
+//     Government: 8,
+//     LawLevel: 8,
+//     TechLevel: 8,
+//   };
+// }
 
 export default App;
