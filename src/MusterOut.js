@@ -53,7 +53,7 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
                     // Give travellers with Gambling-1 or higher a +1 DM on rolls on the Cash table.
                     const cashDM = skills.hasOwnProperty('Gambling') && skills.Gambling >= 1 ? 1 : 0;
                     const amount = table[r1d6() - 1 + cashDM];
-                    updateLog([`You receive Cr${amount}.`], true);
+                    updateLog([`You receive Cr${amount}.`]);
                     updateCredits(credits + amount);
                     setNumCashRolls(numCashRolls - 1);
                     decreaseBenefits();
@@ -69,7 +69,7 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
                         setWeapon(benefit);
                         // onWeapon();
                     } else if (benefit.type === 'ITEM') {
-                        updateLog([`You received a ${benefit.name}.`], true);
+                        updateLog([`You received a ${benefit.name}.`]);
                         let newItems = {};
                         newItems[benefit.name] = 1;
                         updateItems(newItems);
@@ -78,7 +78,7 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
                     } else if (benefit.type === 'CHARACTERISTIC') {
                         let newUPP = {};
                         newUPP[benefit.name] = upp[benefit.name] + benefit.value;
-                        updateLog([`You raised your ${benefit.name} to ${newUPP[benefit.name]}.`], true);
+                        updateLog([`You raised your ${benefit.name} to ${newUPP[benefit.name]}.`]);
                         updateUPP(newUPP);
                         decreaseBenefits();
                         // onBenefit();
