@@ -125,9 +125,8 @@ function App() {
     setItems(newItems);
   }
 
-  function updateLog(newEntries, notify=false) {
+  function updateLog(newEntries) {
     const newLog = log.concat(newEntries);
-    if (notify) console.log(newLog);
     setLog(newLog);
   }
 
@@ -145,7 +144,6 @@ function App() {
 
   function enlisted({branch, term, rank}) {
     if (game === 'classic') {
-      const careerData = CTCAREERS.filter(c => branch === c.name)[0];
       updateCareer({branch, term, rank, drafted: false});
       updateLog([`Congratulations! You have enlisted in the ${capitalize(branch)}!`]);
     }
@@ -154,7 +152,6 @@ function App() {
 
   function drafted({branch, failedBranch, term, rank}) {
     if (game === 'classic') {
-      const careerData = CTCAREERS.filter(c => branch === c.name)[0];
       updateCareer({branch, term, rank, drafted: true});
       updateLog([
         `Sorry! You did not qualify for the ${capitalize(failedBranch)}.`,
