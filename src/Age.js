@@ -10,6 +10,7 @@ export function Age({ game, upp, updateUPP, career, age, display, onAged, onDeat
                 age={age}
                 onAged={onAged}
                 onDeath={onDeath}
+                updateLog={updateLog}
             />
         );
     } else {
@@ -54,44 +55,52 @@ function AgeCT({ upp, updateUPP, career, age, onAged, onDeath, updateLog }) {
         }
         if (r2d6() < strRoll) {
             newUPP.Strength = upp.Strength + strDec;
+            updateLog([`Your Strength decreased to ${newUPP.Strength}`]);
             // Trigger an aging crisis if Strength falls to 0 or below.
             if (newUPP.Strength <= 0) {
                 if (r2d6() < 8) {
                     onDeath();
                 } else {
+                    updateLog(['You have had an aging crisis!']);
                     newUPP.Strength = 1;
                 }
             }
         }
         if (r2d6() < dexRoll) {
             newUPP.Dexterity = upp.Dexterity + dexDec;
+            updateLog([`Your Dexterity decreased to ${newUPP.Dexterity}`]);
             // Trigger an aging crisis if Dexterity falls to 0 or below.
             if (newUPP.Dexterity <= 0) {
                 if (r2d6() < 8) {
                     onDeath();
                 } else {
+                    updateLog(['You have had an aging crisis!']);
                     newUPP.Dexterity = 1;
                 }
             }
         }
         if (r2d6() < endRoll) {
             newUPP.Endurance = upp.Endurance + endDec;
+            updateLog([`Your Endurance decreased to ${newUPP.Endurance}`]);
             // Trigger an aging crisis if Endurance falls to 0 or below.
             if (newUPP.Endurance <= 0) {
                 if (r2d6() < 8) {
                     onDeath();
                 } else {
+                    updateLog(['You have had an aging crisis!']);
                     newUPP.Endurance = 1;
                 }
             }
         }
         if (r2d6() < intRoll) {
             newUPP.Intellect = upp.Intellect + intDec;
+            updateLog([`Your Intellect decreased to ${newUPP.Intellect}`]);
             // Trigger an aging crisis if Intellect falls to 0 or below.
             if (newUPP.Intellect <= 0) {
                 if (r2d6() < 8) {
                     onDeath();
                 } else {
+                    updateLog(['You have had an aging crisis!']);
                     newUPP.Intellect = 1;
                 }
             }
