@@ -33,12 +33,19 @@ function ReenlistCT({ career, onSuccess, onFailure, onRetirement, updateLog }) {
         let roll = r2d6();
         const input = ev.target[0];
         if (input.checked) {
-            const careerData = CTCAREERS.filter(c => c.name === career.branch)[0];
-            if (roll >= careerData.reenlist.target) {
-                onSuccess();
+            // If the character has served 7 terms, retirement is mandatory unless the roll is 12.
+            if (career.term === 7 && roll !== 12) {
+                updateLog('You have served the maximum number of terms.');
+                onRetirement();
             } else {
-                onFailure();
+                const careerData = CTCAREERS.filter(c => c.name === career.branch)[0];
+                if (roll >= careerData.reenlist.target) {
+                    onSuccess();
+                } else {
+                    onFailure();
+                }
             }
+            
         } else {
             // If the roll is a twelve, reenlistment is mandatory.
             if (roll === 12) {
