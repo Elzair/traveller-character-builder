@@ -126,8 +126,9 @@ function App() {
     setItems(newItems);
   }
 
-  function updateLog(newEntries) {
+  function updateLog(newEntries, notify=false) {
     const newLog = log.concat(newEntries);
+    if (notify) console.log(newLog);
     setLog(newLog);
   }
 
@@ -283,7 +284,7 @@ function App() {
     //   updateLog([`Happy Travels!`]);
     //   setStep(13);
     // }
-    updateLog(['Happy Travels!']);
+    // updateLog(['Happy Travels!']);
     setStep(11);
   }
 
@@ -300,6 +301,10 @@ function App() {
   function died() {
     updateLog([`You have died.`]);
     setStep(15);
+  }
+
+  function goodbye() {
+    setStep(12);
   }
 
   return (
@@ -430,11 +435,25 @@ function App() {
         // onWeapon={selectWeapon}
         updateLog={updateLog}
       />
-
+      <Goodbye
+        display={step===11}
+        updateLog={updateLog}
+        onGoodbye={goodbye}
+      />
       <Log log={log} />
       {/* <Homeworld name={homeworldName} updateName={setHomeworldName} upp={homeworldUPP} updateUPP={setHomeworldUPP} /> */}
     </div>
     
+  );
+}
+
+function Goodbye({display, updateLog, onGoodbye}) {
+  if (display) {
+    updateLog(['Happy Travels!']);
+    onGoodbye();
+  }
+  return (
+    <div className="blank" />
   );
 }
 

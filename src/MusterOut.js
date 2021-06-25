@@ -55,9 +55,10 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
                     // Give travellers with Gambling-1 or higher a +1 DM on rolls on the Cash table.
                     const cashDM = skills.hasOwnProperty('Gambling') && skills.Gambling >= 1 ? 1 : 0;
                     const amount = table[r1d6() - 1 + cashDM];
+                    updateLog([`You receive Cr${amount}.`], true);
+                    console.log(`You receive Cr${amount}.`);
                     updateCredits(credits + amount);
                     setNumCashRolls(numCashRolls - 1);
-                    updateLog([`You receive Cr${amount}.`]);
                     decreaseBenefits();
                     // onBenefit();
                 } else if (t.value === 'benefits') {
@@ -71,7 +72,7 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
                         setWeapon(benefit);
                         // onWeapon();
                     } else if (benefit.type === 'ITEM') {
-                        updateLog([`You received a ${benefit.name}.`]);
+                        updateLog([`You received a ${benefit.name}.`], true);
                         let newItems = {};
                         newItems[benefit.name] = 1;
                         updateItems(newItems);
@@ -80,7 +81,7 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
                     } else if (benefit.type === 'CHARACTERISTIC') {
                         let newUPP = {};
                         newUPP[benefit.name] = upp[benefit.name] + benefit.value;
-                        updateLog([`You raised your ${benefit.name} to ${newUPP[benefit.name]}.`]);
+                        updateLog([`You raised your ${benefit.name} to ${newUPP[benefit.name]}.`], true);
                         updateUPP(newUPP);
                         decreaseBenefits();
                         // onBenefit();
@@ -94,7 +95,7 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
         ev.preventDefault();
         for (let t of ev.target) {
             if (t.checked) {
-                updateLog([`You received a weapon ${t.value}.`]);
+                updateLog([`You received a weapon ${t.value}.`], true);
                 let newItems = {};
                 newItems[t.value] = 1;
                 updateItems(newItems);
