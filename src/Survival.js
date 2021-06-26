@@ -1,4 +1,4 @@
-import { r2d6 } from "./utils";
+import { applyDMsToRoll, r2d6 } from "./utils";
 
 import CTCAREERS from './data/ct/careers';
 
@@ -20,7 +20,7 @@ export function Survival({ game, upp, career, display, onSurvival, onDeath }) {
 
 function SurvivalCT({ upp, career, onSurvival, onDeath }) {
     const careerData = CTCAREERS.filter(c => c.name === career.branch)[0];
-    const result = applyDMsToRoll(r2d6(), careerData.survival.dms, upp);
+    const result = applyDMsToRoll(r2d6(), careerData.survival.dms, upp, career.term); // Belter's survival odds go up with each term they have.
     const didSurvive = result >= careerData.survival.target;
 
     if (didSurvive) {
@@ -32,17 +32,17 @@ function SurvivalCT({ upp, career, onSurvival, onDeath }) {
     return ( <div></div> )
 }
 
-function applyDMsToRoll(roll, dms, upp) {
-    // let oldroll = roll;
-    for (let dm of dms) {
-        if (upp[dm.characteristic] >= dm.value) {
-            // console.log(`Survival: Because your ${dm.characteristic} of ${upp[dm.characteristic]} is greater than or equal to ${dm.value}, your roll of ${oldroll} has been increased by ${dm.dm}.`);
-            roll += dm.dm;
-        }
-    }
-    // console.log(`Your final roll is ${roll}.`);
-    return roll;
-}
+// function applyDMsToRoll(roll, dms, upp) {
+//     // let oldroll = roll;
+//     for (let dm of dms) {
+//         if (upp[dm.characteristic] >= dm.value) {
+//             // console.log(`Survival: Because your ${dm.characteristic} of ${upp[dm.characteristic]} is greater than or equal to ${dm.value}, your roll of ${oldroll} has been increased by ${dm.dm}.`);
+//             roll += dm.dm;
+//         }
+//     }
+//     // console.log(`Your final roll is ${roll}.`);
+//     return roll;
+// }
 
 
 

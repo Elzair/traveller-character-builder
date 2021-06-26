@@ -2,6 +2,7 @@
     "Administration": null,
     "Air/Raft": null,
     "ATV": null,
+    "Battle Dress": null,
     "Blade Combat": {
         "Dagger": null,
         "Blade": null,
@@ -36,16 +37,26 @@
         "Laser Carbine": null,
         "Laser Rifle": null
     },
+    "Instruction": null,
     "Jack of All Trades": null,
     "Leader": null,
     "Mechanical": null,
     "Medical": null,
     "Navigation": null,
     "Pilot": null,
+    "Prospecting": null,
     "Ship's Boat": null,
+    "Ship Tactics": null,
     "Steward": null,
     "Streetwise": null,
     "Tactics": null,
-    "Vehicle": null,
-    "Vacc Suit": null
+    "Vehicle": {
+        "Grav Belt": null,
+        "Ground Car": null,
+        "Hovercraft": null,
+        "Water-craft": null,
+        "Winged Craft": null
+    },
+    "Vacc Suit": null,
+    "Zero-G Combat": null
 }

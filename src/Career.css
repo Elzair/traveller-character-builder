@@ -1,0 +1,20 @@
+.CTCareers {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+.CTCareer {
+    display: flex;
+    align-content: center;
+}
+
+.CTCareerLabel {
+    padding-top: 15px;
+}
+
+.Submit {
+    margin-top: 15px;
+    padding: 0;
+    height: 20px;
+}

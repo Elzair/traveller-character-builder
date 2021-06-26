@@ -32,3 +32,22 @@ export function padToTwo(num) {
 export function capitalize(str) {
     return str.replace(/^\w/, (c) => c.toUpperCase());
 }
+
+export function applyDMsToRoll(roll, dms, upp, terms=-1) {
+    // let oldroll = roll;
+    for (let dm of dms) {
+        if (dm.characteristic === "Terms" && terms >= 0) { // Handle the "Terms" characteristic specially for Survival rolls for Belters
+            roll += terms;
+        } else {
+            if (dm.lower && upp[dm.characteristic] <= dm.value) {
+                // console.log(`Career: Because your ${dm.characteristic} of ${upp[dm.characteristic]} is less than or equal to ${dm.value}, your roll of ${oldroll} has been increased by ${dm.dm}.`);
+                roll += dm.dm;
+            } else if (!dm.lower && upp[dm.characteristic] >= dm.value) {
+                // console.log(`Career: Because your ${dm.characteristic} of ${upp[dm.characteristic]} is greater than or equal to ${dm.value}, your roll of ${oldroll} has been increased by ${dm.dm}.`);
+                roll += dm.dm;
+            }
+        }
+    }
+    // console.log(`Your final roll is ${roll}.`);
+    return roll;
+}
