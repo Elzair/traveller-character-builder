@@ -90,7 +90,7 @@ function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, 
             "sst": "Service Skills",
             "aet1": "Advanced Education",
         };
-        if (upp.Education >= 8) {
+        if (upp.Education >= 8) { // Travellers with high education get to choose from another table of skills.
             options['aet2'] = "Advanced Education 2";
         }
         const optionElts = Object.keys(options).map(prop => (

@@ -92,12 +92,18 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
         ev.preventDefault();
         for (let t of ev.target) {
             if (t.checked) {
-                updateLog([`You received a weapon ${t.value}.`], true);
-                let newItems = {};
-                newItems[t.value] = 1;
-                updateItems(newItems);
-                decreaseBenefits();
-                setWeapon(null);
+                // Check if the selected value is a specific weapon or a category of weapons
+                // TODO: Improve this
+                if (CTITEMS.hasOwnProperty(t.value)) {
+                    setWeapon({name: t.value});
+                } else {
+                    updateLog([`You received a weapon ${t.value}.`]);
+                    let newItems = {};
+                    newItems[t.value] = 1;
+                    updateItems(newItems);
+                    decreaseBenefits();
+                    setWeapon(null);
+                }
             }
         }
     }
@@ -150,7 +156,7 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
                 </form>
             </div>
         );
-    } else if (weapon && weapon.hasOwnProperty('name') && (weapon.name === 'Blade' || weapon.name === 'Gun')) {
+    } else if (weapon && weapon.hasOwnProperty('name') /*&& (weapon.name === 'Blade' || weapon.name === 'Gun')*/) { // Handle cascading weapon selection
         const itemData = CTITEMS[weapon.name];
         const optionElts = Object.keys(itemData).map(item => (
             <label>

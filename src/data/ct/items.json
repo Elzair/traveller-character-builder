@@ -1,5 +1,5 @@
 {
-    "Blade": {
+    "Blades": {
         "Dagger": {
             "+DM": 8,
             "-DM": 3,
@@ -56,7 +56,7 @@
             "Wounds": "2D"
         }
     },
-    "Gun": {
+    "Guns": {
         "Body Pistol": {
             "+DM": 11,
             "-DM": 7,
@@ -102,5 +102,10 @@
             "-DM": 6,
             "Wounds": "5D"
         }
-    }
+    },
+    "Weapons": {
+        "Blades": "cascade",
+        "Guns": "cascade"
+    },
+    "Instruments": null
 }
