@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import { capitalize, num2tetra, r2d6 } from './utils';
+import { capitalize, num2tetra, r2d6, updateObject } from './utils';
 import { UPP } from './UPP';
 import { useState } from 'react';
 // import { Homeworld } from './Homeworld';
@@ -26,6 +26,7 @@ const STEPS = [
   Symbol('SURVIVAL'),
   Symbol('COMMISSION'),
   Symbol('PROMOTION'),
+  Symbol('AGE'),
   Symbol('SKILL-SELECTION'),
   Symbol('SKILL-SELECTION-CASCADE'),
   Symbol('REENLISTMENT'),
@@ -51,71 +52,19 @@ function App() {
 
   // Update State Functions
   function updateGameOptions(opts) {
-    let newopts = {};
-    for (let opt in options) {
-      if (options.hasOwnProperty(opt)) {
-        newopts[opt] = options[opt];
-      }
-    }
-
-    for (let opt in opts) {
-      if (opts.hasOwnProperty(opt)) {
-        newopts[opt] = opts[opt];
-      }
-    }
-
-    setOptions(newopts);
+    setOptions(updateObject(options, opts));
   }
 
   function updateUPP(updated) {
-    let newchars = {};
-    for (let char in upp) {
-      if (upp.hasOwnProperty(char)) {
-        newchars[char] = upp[char];
-      }
-    }
-
-    for (let char in updated) {
-      if (updated.hasOwnProperty(char)) {
-        newchars[char] = updated[char];
-      }
-    }
-
-    setUPP(newchars);
+    setUPP(updateObject(upp, updated));
   }
 
   function updateCareer(updated) {
-    let newcareer = {};
-    for (let opt in career) {
-      if (career.hasOwnProperty(opt)) {
-        newcareer[opt] = career[opt];
-      }
-    }
-
-    for (let opt in updated) {
-      if (updated.hasOwnProperty(opt)) {
-        newcareer[opt] = updated[opt];
-      }
-    }
-
-    setCareer(newcareer);
+    setCareer(updateObject(career, updated));
   }
 
   function updateSkills(updated) {
-    let newskills  = {};
-    for (let opt in skills) {
-      if (skills.hasOwnProperty(opt)) {
-        newskills[opt] = skills[opt];
-      }
-    }
-
-    for (let opt in updated) {
-      if (updated.hasOwnProperty(opt)) {
-        newskills[opt] = updated[opt];
-      }
-    }
-
-    setSkills(newskills);
+    setSkills(updateObject(skills, updated));
   }
 
   function updateItems(updated) {
@@ -252,10 +201,6 @@ function App() {
     }
   }
 
-  function cascadeSkill() {
-    setStep(7);
-  }
-
   function aged() {
     setAge(age+4);
     setStep(9);
@@ -376,7 +321,6 @@ function App() {
         updateSkills={updateSkills}
         display={step===6 || step===7}
         onSelected={choseSkill}
-        onCascade={cascadeSkill}
         updateLog={updateLog}
       />
       <Age

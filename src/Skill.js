@@ -4,7 +4,7 @@ import { r1d6 } from "./utils";
 import CTCAREERS from './data/ct/careers';
 import CTSKILLS from './data/ct/skills';
 
-export function Skill({ game, upp, updateUPP, career, skills, updateSkills, display, onSelected, onCascade, updateLog }) {
+export function Skill({ game, upp, updateUPP, career, skills, updateSkills, display, onSelected, updateLog }) {
     if (display && game === 'classic') {
         return (
             <SkillCT
@@ -15,7 +15,6 @@ export function Skill({ game, upp, updateUPP, career, skills, updateSkills, disp
                 skills={skills}
                 updateSkills={updateSkills}
                 onSelected={onSelected}
-                onCascade={onCascade}
                 updateLog={updateLog}
             />
         );
@@ -24,7 +23,7 @@ export function Skill({ game, upp, updateUPP, career, skills, updateSkills, disp
     }
 }
 
-function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, onSelected, onCascade, updateLog }) {
+function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, onSelected, updateLog }) {
     let [cascade, setCascade] = useState(null);
 
     function handleSkillSelection(ev) {
@@ -59,7 +58,6 @@ function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, 
                         onSelected();
                     } else {
                         setCascade(adv);
-                        onCascade();
                     }
                 }
             }

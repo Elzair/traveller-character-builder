@@ -33,6 +33,24 @@ export function capitalize(str) {
     return str.replace(/^\w/, (c) => c.toUpperCase());
 }
 
+export function updateObject(obj, updates) {
+    let newObj = {};
+    
+    for (let prop in obj) {
+      if (obj.hasOwnProperty(prop)) {
+        newObj[prop] = obj[prop];
+      }
+    }
+
+    for (let prop in updates) {
+      if (updates.hasOwnProperty(prop)) {
+        newObj[prop] = updates[prop];
+      }
+    }
+    
+    return newObj;
+}
+
 export function applyDMsToRoll(roll, dms, upp, terms=-1) {
     // let oldroll = roll;
     for (let dm of dms) {

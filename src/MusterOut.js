@@ -57,7 +57,6 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
                     updateCredits(credits + amount);
                     setNumCashRolls(numCashRolls - 1);
                     decreaseBenefits();
-                    // onBenefit();
                 } else if (t.value === 'benefits') {
                     // Give travellers of rank 5 or rank 6 a +1 DM on rolls on the benefits table.
                     const benefitsDM = career.rank >= 5 ? 1 : 0;
@@ -67,21 +66,18 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
                         // If the benefit is a weapon, and the traveller has already received one, then
                         // ask if the traveller would like a skill increase instead.
                         setWeapon(benefit);
-                        // onWeapon();
                     } else if (benefit.type === 'ITEM') {
                         updateLog([`You received a ${benefit.name}.`]);
                         let newItems = {};
                         newItems[benefit.name] = 1;
                         updateItems(newItems);
                         decreaseBenefits();
-                        // onBenefit();
                     } else if (benefit.type === 'CHARACTERISTIC') {
                         let newUPP = {};
                         newUPP[benefit.name] = upp[benefit.name] + benefit.value;
                         updateLog([`You raised your ${benefit.name} to ${newUPP[benefit.name]}.`]);
                         updateUPP(newUPP);
                         decreaseBenefits();
-                        // onBenefit();
                     }
                 }
             }
@@ -156,7 +152,7 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
                 </form>
             </div>
         );
-    } else if (weapon && weapon.hasOwnProperty('name') /*&& (weapon.name === 'Blade' || weapon.name === 'Gun')*/) { // Handle cascading weapon selection
+    } else if (weapon && weapon.hasOwnProperty('name')) { // Handle cascading weapon selection
         const itemData = CTITEMS[weapon.name];
         const optionElts = Object.keys(itemData).map(item => (
             <label>
