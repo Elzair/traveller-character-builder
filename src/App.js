@@ -18,6 +18,20 @@ import { MusterOut } from './MusterOut';
 
 import CTCAREERS from './data/ct/careers';
 
+const STEPS = [
+  Symbol('GAME'),
+  Symbol('UPP'),
+  Symbol('HOMEWORLD'),
+  Symbol('CAREER-SELECTION'),
+  Symbol('SURVIVAL'),
+  Symbol('COMMISSION'),
+  Symbol('PROMOTION'),
+  Symbol('SKILL-SELECTION'),
+  Symbol('SKILL-SELECTION-CASCADE'),
+  Symbol('REENLISTMENT'),
+  Symbol('MUSTER-OUT')
+];
+
 function App() {
   // let stats = generateCharacteristics();
   let [step, setStep] = useState(0);

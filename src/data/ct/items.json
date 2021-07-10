@@ -107,5 +107,37 @@
         "Blades": "cascade",
         "Guns": "cascade"
     },
-    "Instruments": null
+    "Instruments": null,
+    "Bows": {
+        "Sling": {
+            "+DM": 11,
+            "-DM": 3,
+            "Wounds": "2D"
+        },
+        "Short Bow": {
+            "+DM": 10,
+            "-DM": 5,
+            "Wounds": "1D"
+        },
+        "Long Bow": {
+            "+DM": 11,
+            "-DM": 7,
+            "Wounds": "2D"
+        },
+        "Sporting Crossbow": {
+            "+DM": 9,
+            "-DM": 4,
+            "Wounds": "2D"
+        },
+        "Military Crossbow": {
+            "+DM": 11,
+            "-DM": 6,
+            "Wounds": "3D"
+        },
+        "Repeating Crossbow": {
+            "+DM": 12,
+            "-DM": 8,
+            "Wounds": "2D"
+        }
+    }
 }
