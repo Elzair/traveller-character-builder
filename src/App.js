@@ -19,23 +19,24 @@ import { MusterOut } from './MusterOut';
 import CTCAREERS from './data/ct/careers';
 
 const STEPS = [
-  Symbol('GAME'),
-  Symbol('UPP'),
-  Symbol('HOMEWORLD'),
-  Symbol('CAREER-SELECTION'),
-  Symbol('SURVIVAL'),
-  Symbol('COMMISSION'),
-  Symbol('PROMOTION'),
-  Symbol('AGE'),
-  Symbol('SKILL-SELECTION'),
-  Symbol('SKILL-SELECTION-CASCADE'),
-  Symbol('REENLISTMENT'),
-  Symbol('MUSTER-OUT')
-];
+  'GAME',
+  'UPP',
+  'HOMEWORLD',
+  'CAREER',
+  'SURVIVAL',
+  'COMMISSION',
+  'PROMOTION',
+  'SKILL',
+  'AGE',
+  'REENLISTMENT',
+  'MUSTER-OUT',
+  'FINISHED',
+  'END'
+]
 
 function App() {
   // let stats = generateCharacteristics();
-  let [step, setStep] = useState(0);
+  let [step, setStep] = useState('GAME');
   let [upp, setUPP] = useState(generateUPP());
   // let [homeworldName, setHomeworldName] = useState('');
   // let [homeworldUPP, setHomeworldUPP] = useState(generateUWP());
@@ -96,13 +97,13 @@ function App() {
   // Finish Step Options
   function finishGameOptions(game, name) {
     updateLog([`You have selected ${game}.`, `Your name is ${name}.`]);
-    setStep(1);
+    setStep('UPP');
   }
 
   function finalizeUPP() {
     let uppStr = Object.entries(upp).map(ent => num2tetra(ent[1])).join('');
     updateLog([`Your Universal Personality Profile is ${uppStr}.`]);
-    setStep(2);
+    setStep('CAREER');
   }
 
   function enlisted({branch, term, rank}) {
@@ -110,7 +111,7 @@ function App() {
       updateCareer({branch, term, rank, drafted: false});
       updateLog([`Congratulations! You have enlisted in the ${capitalize(branch)}!`]);
     }
-    setStep(3);
+    setStep('SURVIVAL');
   }
 
   function drafted({branch, failedBranch, term, rank}) {
@@ -121,7 +122,7 @@ function App() {
         `Instead, you were drafted into the ${capitalize(branch)}.`,
       ]);
     }
-    setStep(3);
+    setStep('SURVIVAL');
   }
 
   function survived() {
@@ -130,7 +131,7 @@ function App() {
     if (game === 'classic') {
       const careerData = CTCAREERS.filter(c => career.branch === c.name)[0];
       // Reset the number of skill rolls for the term.
-      // If it is their first term, always give the travellers two skill rolls.
+      // If it is their first term, always give the traveller two skill rolls.
       if (career.term+1 === 1) {
         setNumSkillRolls(2);
       } else {
@@ -138,16 +139,16 @@ function App() {
       }
 
       // If the career does not have commissions or advancements, go to skill rolls.
-      // Also skip commission & promotion if the character was drafted and its their first term.
+      // Also skip commission & promotion if the traveller was drafted and its their first term.
       if (careerData.commission === null || (career.drafted === true && career.term+1 === 1)) {
-        setStep(6);
-      } else if (career.rank >= 1) { // Go directly to promotion if a commission has already been earned.
-        setStep(5);
+        setStep('SKILL');
+      } else if (career.rank >= 1 && career.rank < careerData.ranks.length-1) { // Go directly to promotion if a commission has already been earned
+        setStep('PROMOTION');                                                   // and the traveller has not yet achieved the maximum rank.
       } else {
-        setStep(4);
+        setStep('COMMISSION');
       }
     } else {
-      setStep(4);
+      setStep('NOT-IMPLEMENTED');
     }
   }
 
@@ -158,17 +159,17 @@ function App() {
     }
     updateCareer({rank: 1});
     setNumSkillRolls(numSkillRolls+1);
-    setStep(5);
+    setStep('PROMOTION');
   }
   
   function commissionFailed() {
     updateLog([`Sorry, you failed to get a commission in term ${career.term}.`]);
-    setStep(6);
+    setStep('SKILL');
   }
 
   function commissionNotAttempted() {
     updateLog([`You did not attempt a commission in term ${career.term}.`]);
-    setStep(6);
+    setStep('SKILL');
   }
 
   function promoted() {
@@ -179,58 +180,58 @@ function App() {
     }
     updateCareer({rank: rank});
     setNumSkillRolls(numSkillRolls+1);
-    setStep(6);
+    setStep('SKILL');
   }
 
   function notPromoted() {
     updateLog([`Sorry, you failed to get a promotion in term ${career.term}.`]);
-    setStep(6);
+    setStep('SKILL');
   }
 
   function promotionNotAttempted() {
     updateLog([`You did not attempt a promotion in term ${career.term}.`]);
-    setStep(6);
+    setStep('SKILL');
   }
 
   function choseSkill() {
     setNumSkillRolls(numSkillRolls-1);
     if (numSkillRolls-1 > 0) {
-      setStep(6);
+      setStep('SKILL');
     } else {
-      setStep(8);
+      setStep('AGE');
     }
   }
 
   function aged() {
     setAge(age+4);
-    setStep(9);
+    setStep('REENLIST');
   }
 
   function reenlist() {
     updateLog([`You have successfully reenlisted in the ${capitalize(career.branch)} for another term.`]);
-    setStep(3);
+    setStep('SURVIVAL');
   }
 
   function ejected() {
     updateLog([`Unfortunately, you are not eligible for reenlistment with the ${capitalize(career.branch)}.`]);
-    setStep(10)
+    setStep('MUSTER-OUT');
   }
 
   function retired() {
-    setStep(10);
+    setStep('MUSTER-OUT');
   }
 
   function musterOut() {
-    setStep(11);
+    setStep('FINISHED');
   }
 
   function died() {
     updateLog([`You have died.`]);
-    setStep(15);
+    setStep('END');
   }
 
   function goodbye() {
-    setStep(12);
+    setStep('END');
   }
 
   return (
@@ -240,7 +241,7 @@ function App() {
         setName={setName} 
         game={game} 
         setGame={setGame} 
-        display={step===0}
+        display={step==='GAME'}
         onFinished={finishGameOptions}
         options={options}
         updateOptions={updateGameOptions}
@@ -254,14 +255,14 @@ function App() {
         age={age}
         credits={credits}
         items={items}
-        display={step>0}
+        display={step!=='GAME'}
       />
       <UPP 
         options={options} 
         updateOptions={updateGameOptions} 
         characteristics={upp} 
         updateUPP={updateUPP} 
-        display={step===1}
+        display={step==='UPP'}
         onFinalized={finalizeUPP}
       />
       <Career 
@@ -271,7 +272,7 @@ function App() {
         updateUPP={updateUPP}
         skills={skills}
         updateSkills={updateSkills}
-        display={step===2}
+        display={step==='CAREER'}
         onEnlistment={enlisted}
         onDraft={drafted}
         updateLog={updateLog}
@@ -280,7 +281,7 @@ function App() {
         game={game}
         upp={upp}
         career={career}
-        display={step===3}
+        display={step==='SURVIVAL'}
         onSurvival={survived}
         onDeath={died}
       />
@@ -292,7 +293,7 @@ function App() {
         updateCareer={updateCareer}
         skills={skills}
         updateSkills={updateSkills}
-        display={step===4}
+        display={step==='COMMISSION'}
         onSuccess={commissioned}
         onFailure={commissionFailed}
         onNoAttempt={commissionNotAttempted}
@@ -306,7 +307,7 @@ function App() {
         updateCareer={updateCareer}
         skills={skills}
         updateSkills={updateSkills}
-        display={step===5}
+        display={step==='PROMOTION'}
         onSuccess={promoted}
         onFailure={notPromoted}
         onNoAttempt={promotionNotAttempted}
@@ -319,7 +320,7 @@ function App() {
         career={career}
         skills={skills}
         updateSkills={updateSkills}
-        display={step===6 || step===7}
+        display={step==='SKILL'}
         onSelected={choseSkill}
         updateLog={updateLog}
       />
@@ -329,7 +330,7 @@ function App() {
         updateUPP={updateUPP}
         career={career}
         age={age}
-        display={step===8}
+        display={step==='AGE'}
         onAged={aged}
         onDeath={died}
         updateLog={updateLog}
@@ -337,7 +338,7 @@ function App() {
       <Reenlist
         game={game}
         career={career}
-        display={step===9}
+        display={step==='REENLIST'}
         onSuccess={reenlist}
         onFailure={ejected}
         onRetirement={retired}
@@ -354,13 +355,13 @@ function App() {
         updateCredits={setCredits}
         items={items}
         updateItems={updateItems}
-        display={step===10}
+        display={step==='MUSTER-OUT'}
         onMusterOut={musterOut}
         updateLog={updateLog}
       />
       <Goodbye
-        display={step===11}
         updateLog={updateLog}
+        display={step==='FINISHED'}
         onGoodbye={goodbye}
       />
       <Log log={log} />
