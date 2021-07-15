@@ -16,8 +16,17 @@
         "Pike": null,
         "Cudgel": null
     },
+    "Bow Combat": {
+        "Sling": null,
+        "Short Bow": null,
+        "Long Bow": null,
+        "Sporting Crossbow": null,
+        "Military Crossbow": null,
+        "Repeating Crossbow": null
+    },
     "Brawling": null,
     "Bribery": null,
+    "Carousing": null,
     "Computer": null,
     "Demolition": null,
     "Electronics": null,
