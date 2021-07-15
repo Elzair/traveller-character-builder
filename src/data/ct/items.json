@@ -105,7 +105,8 @@
     },
     "Weapons": {
         "Blades": "cascade",
-        "Guns": "cascade"
+        "Guns": "cascade",
+        "Bows": "cascade"
     },
     "Instruments": null,
     "Bows": {

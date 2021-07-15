@@ -2979,7 +2979,9 @@
                 "name": "Warrior",
                 "benefits": [
                     {
-                        "type": "Blade"
+                        "type": "SKILL",
+                        "name": "Blade Combat",
+                        "value": 1
                     }
                 ]
             },
