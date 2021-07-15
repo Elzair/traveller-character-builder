@@ -84,10 +84,10 @@ function CareerCT({ career, upp, updateUPP, skills, updateSkills, onEnlistment, 
         }
     }
 
-    let careers = CTCAREERS.map(c => <div className="CTCareer">
-        <input type="radio" id={`career-${c.name}`} name="career" value={c.name} /> <label className="CTCareerLabel" for={`career-${c.name}`} >{capitalize(c.name)}</label>
+    let careers = CTCAREERS.map(c => <div key={`career-${c.name}-div`} className="CTCareer">
+        <input type="radio" id={`career-${c.name}`} name="career" value={c.name} /> <label className="CTCareerLabel" htmlFor={`career-${c.name}`} >{capitalize(c.name)}</label>
     </div>);
-    console.log(careers);
+    // console.log(careers);
 
     // return (
     //     <form onSubmit={selectCareer}>

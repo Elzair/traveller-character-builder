@@ -15,9 +15,9 @@ export function UPP({ options, updateOptions, characteristics, updateUPP, displa
     for (let char in characteristics) {
         if (characteristics.hasOwnProperty(char)) {
             if (options.rearrangeCharacteristics) {
-                stats.push(<CharacteristicEditable name={char} value={characteristics[char]} updateUPP={updateUPP} />);
+                stats.push(<CharacteristicEditable name={char} key={`upp-${char}-edit`} value={characteristics[char]} updateUPP={updateUPP} />);
             } else {
-                stats.push(<Characteristic name={char} value={characteristics[char]} updateUPP={updateUPP} />);
+                stats.push(<Characteristic name={char} key={`upp-${char}`} value={characteristics[char]} updateUPP={updateUPP} />);
             }
         }
     }
