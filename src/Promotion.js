@@ -41,10 +41,14 @@ function PromotionCT({ upp, updateUPP, career, updateCareer, skills, updateSkill
             const careerData = CTCAREERS.filter(c => c.name === career.branch)[0];
             const result = applyDMsToRoll(r2d6(), careerData.promotion.dms, upp);
             if (result >= careerData.promotion.target) {
+                let newRank = career.rank + 1;
+                let newLog = [
+                    `Congratulations! You are now a Rank ${newRank} ${careerData.ranks[newRank].name}.`
+                ];
+
                 // Apply any benefits for entering a career.
-                const rank = careerData.ranks[career.rank + 1];
-                if (rank.hasOwnProperty('benefit')) {
-                    const benefit = rank.benefit;
+                if (careerData.ranks[newRank].hasOwnProperty('benefit')) {
+                    const benefit = careerData.ranks[newRank].benefit;
                     if (benefit.type === 'SKILL') {
                         // TODO: Find a better way to do this. If there is more than one cascading benefit,
                         // setting the state will likely screw up everything.
@@ -54,19 +58,25 @@ function PromotionCT({ upp, updateUPP, career, updateCareer, skills, updateSkill
                                 let newSkills = {};
                                 newSkills[benefit.name] = benefit.value;
                                 updateSkills(newSkills);
-                                updateLog([`Because of your rank, you gain ${benefit.name}-${benefit.value}.`]);
+                                newLog.push(`Because of your rank, you gain ${benefit.name}-${benefit.value}.`);
                             }
+
+                            updateLog(newLog);
+                            onSuccess();
                         } else {
+                            updateLog(newLog);
                             setCascade(benefit);
                         }
                     } else if (benefit.type === 'CHARACTERISTIC') {
                         let newUPP = {};
                         newUPP[benefit.name] = upp[benefit.name] + benefit.value;
                         updateUPP(newUPP);
-                        updateLog([`Because of your rank, your ${benefit.name} is now ${newUPP[benefit.name]}.`]);
+                        newLog.push(`Because of your rank, your ${benefit.name} is now ${newUPP[benefit.name]}.`);
+
+                        updateLog(newLog);
+                        onSuccess();
                     }
                 }
-                onSuccess();
             } else {
                 onFailure();
             }
@@ -88,6 +98,7 @@ function PromotionCT({ upp, updateUPP, career, updateCareer, skills, updateSkill
                 setCascade(null); // Reset cascade skills.
                 updateSkills(newSkill);
                 updateLog([`You improved your ${t.value} to ${newSkill[t.value]}.`]);
+                onSuccess();
             }
         }
     }
