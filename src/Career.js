@@ -62,23 +62,22 @@ function CareerCT({ career, upp, updateUPP, skills, updateSkills, onEnlistment, 
                 // Apply any benefits for entering a career.
                 const careerData = CTCAREERS.filter(c => c.name === careerName)[0];
                 const rank = careerData.ranks[0];
-                if (rank.hasOwnProperty('benefits')) {
-                    rank.benefits.forEach(benefit => {
-                        if (benefit.type === 'SKILL') {
-                            // TODO: Refactor this into a general method to set a skill to a value if it is lower than that value.
-                            if (!skills.hasOwnProperty(benefit.name) || skills[benefit.name] < benefit.value) {
-                                let newSkills = {};
-                                newSkills[benefit.name] = benefit.value;
-                                updateSkills(newSkills);
-                                updateLog([`Because of your rank, you gain ${benefit.name}-${benefit.value}.`]);
-                            }
-                        } else if (benefit.type === 'CHARACTERISTIC') {
-                            let newUPP = {};
-                            newUPP[benefit.name] = upp[benefit.name] + benefit.value;
-                            updateUPP(newUPP);
-                            updateLog([`Because of your rank, your ${benefit.name} is now ${newUPP[benefit.name]}.`]);
+                if (rank.hasOwnProperty('benefit')) {
+                    let benefit = rank.benefit;
+                    if (benefit.type === 'SKILL') {
+                        // TODO: Refactor this into a general method to set a skill to a value if it is lower than that value.
+                        if (!skills.hasOwnProperty(benefit.name) || skills[benefit.name] < benefit.value) {
+                            let newSkills = {};
+                            newSkills[benefit.name] = benefit.value;
+                            updateSkills(newSkills);
+                            updateLog([`Because of your rank, you gain ${benefit.name}-${benefit.value}.`]);
                         }
-                    });
+                    } else if (benefit.type === 'CHARACTERISTIC') {
+                        let newUPP = {};
+                        newUPP[benefit.name] = upp[benefit.name] + benefit.value;
+                        updateUPP(newUPP);
+                        updateLog([`Because of your rank, your ${benefit.name} is now ${newUPP[benefit.name]}.`]);
+                    }
                 }
             }
         }

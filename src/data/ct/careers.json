@@ -68,23 +68,19 @@
             },
             {
                 "name": "Captain",
-                "benefits": [
-                    {
-                        "type": "CHARACTERISTIC",
-                        "name": "Social",
-                        "value": 1
-                    }
-                ]
+                "benefit": {
+                    "type": "CHARACTERISTIC",
+                    "name": "Social",
+                    "value": 1
+                }
             },
             {
                 "name": "Admiral",
-                "benefits": [
-                    {
-                        "type": "CHARACTERISTIC",
-                        "name": "Social",
-                        "value": 1
-                    }
-                ]
+                "benefit": {
+                    "type": "CHARACTERISTIC",
+                    "name": "Social",
+                    "value": 1
+                }
             }
         ],
         "benefits": [
@@ -316,23 +312,19 @@
         "ranks": [
             {
                 "name": "Private",
-                "benefits": [
-                    {
-                        "type": "SKILL",
-                        "name": "Cutlass",
-                        "value": 1
-                    }
-                ]
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Cutlass",
+                    "value": 1
+                }
             },
             {
                 "name": "Lieutenant",
-                "benefits": [
-                    {
-                        "type": "SKILL",
-                        "name": "Revolver",
-                        "value": 1
-                    }
-                ]
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Revolver",
+                    "value": 1
+                }
             },
             {
                 "name": "Captain"
@@ -586,23 +578,19 @@
         "ranks": [
             {
                 "name": "Private",
-                "benefits": [
-                    {
-                        "type": "SKILL",
-                        "name": "Rifle",
-                        "value": 1
-                    }
-                ]
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Rifle",
+                    "value": 1
+                }
             },
             {
                 "name": "Lieutenant",
-                "benefits": [
-                    {
-                        "type": "SKILL",
-                        "name": "SMG",
-                        "value": 1
-                    }
-                ]
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "SMG",
+                    "value": 1
+                }
             },
             {
                 "name": "Captain"
@@ -836,13 +824,11 @@
         "ranks": [
             {
                 "name": "Scout",
-                "benefits": [
-                    {
-                        "type": "SKILL",
-                        "name": "Pilot",
-                        "value": 1
-                    }
-                ]
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Pilot",
+                    "value": 1
+                }
             }
         ],
         "benefits": [
@@ -1083,13 +1069,11 @@
             },
             {
                 "name": "1st Officer",
-                "benefits": [
-                    {
-                        "type": "SKILL",
-                        "name": "Pilot",
-                        "value": 1
-                    }
-                ]
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Pilot",
+                    "value": 1
+                }
             },
             {
                 "name": "Captain"
@@ -1295,8 +1279,7 @@
         },
         "ranks": [
             {
-                "name": "Other",
-                "benefits": []
+                "name": "Other"
             }
         ],
         "benefits": [
@@ -1526,13 +1509,11 @@
         "ranks": [
             {
                 "name": "Pirate",
-                "benefits": [
-                    {
-                        "type": "SKILL",
-                        "name": "Brawling",
-                        "value": 1
-                    }
-                ]
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Brawling",
+                    "value": 1
+                }
             },
             {
                 "name": "Henchman"
@@ -1545,13 +1526,11 @@
             },
             {
                 "name": "Lieutenant",
-                "benefits": [
-                    {
-                        "type": "SKILL",
-                        "name": "Pilot",
-                        "value": 1
-                    }
-                ]
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Pilot",
+                    "value": 1
+                }
             },
             {
                 "name": "Leader"
@@ -1764,13 +1743,11 @@
         "ranks": [
             {
                 "name": "Belter",
-                "benefits": [
-                    {
-                        "type": "SKILL",
-                        "name": "Vacc Suit",
-                        "value": 1
-                    }
-                ]
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Vacc Suit",
+                    "value": 1
+                }
             }
         ],
         "benefits": [
@@ -2240,13 +2217,11 @@
         "ranks": [
             {
                 "name": "Diplomat",
-                "benefits": [
-                    {
-                        "type": "SKILL",
-                        "name": "Liason",
-                        "value": 1
-                    }
-                ]
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Liason",
+                    "value": 1
+                }
             },
             {
                 "name": "3rd Secretary"
@@ -2478,13 +2453,11 @@
         "ranks": [
             {
                 "name": "Doctor",
-                "benefits": [
-                    {
-                        "type": "SKILL",
-                        "name": "Medical",
-                        "value": 1
-                    }
-                ]
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Medical",
+                    "value": 1
+                }
             }
         ],
         "benefits": [
@@ -2708,13 +2681,11 @@
         "ranks": [
             {
                 "name": "Flyer",
-                "benefits": [
-                    {
-                        "type": "SKILL",
-                        "name": "Air Craft",
-                        "value": 1
-                    }
-                ]
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Air Craft",
+                    "value": 1
+                }
             },
             {
                 "name": "Pilot"
@@ -2964,26 +2935,22 @@
         "ranks": [
             {
                 "name": "Barbarian",
-                "benefits": [
-                    {
-                        "type": "SKILL",
-                        "name": "Sword",
-                        "value": 1
-                    }
-                ]
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Sword",
+                    "value": 1
+                }
             },
             {
                 "name": "Barbarian"
             },
             {
                 "name": "Warrior",
-                "benefits": [
-                    {
-                        "type": "SKILL",
-                        "name": "Blade Combat",
-                        "value": 1
-                    }
-                ]
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Blade Combat",
+                    "value": 1
+                }
             },
             {
                 "name": "Warrior"
@@ -2993,13 +2960,11 @@
             },
             {
                 "name": "Chief",
-                "benefits": [
-                    {
-                        "type": "SKILL",
-                        "name": "Leader",
-                        "value": 1
-                    }
-                ]
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Leader",
+                    "value": 1
+                }
             },
             {
                 "name": "Chief"

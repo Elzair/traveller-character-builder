@@ -32,11 +32,12 @@ function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, 
             if (t.checked) {
                 // Give travellers of rank 5 or 6 a +1 DM on skill table.
                 const skillDM = career.rank >= 5 ? 1 : 0;
-
+                console.log(t.value);
                 // Pick a random skill from the skill table.
                 const careerData = CTCAREERS.filter(c => c.name === career.branch)[0];
                 const table = careerData[t.value];
                 const adv = table[Math.min(r1d6() - 1 + skillDM, 5)];
+                // console.log(adv);
 
                 if (adv.type === 'CHARACTERISTIC') {
                     let newChar = {};
