@@ -107,27 +107,19 @@ function App() {
   }
 
   function enlisted({branch, term, rank}) {
-    // if (game === 'classic') {
     updateCareer({branch, term, rank, drafted: false});
-      // updateLog([`Congratulations! You have enlisted in the ${capitalize(branch)}!`]);
-    // }
     setStep('SURVIVAL');
   }
 
   function drafted({branch, failedBranch, term, rank}) {
-    // if (game === 'classic') {
     updateCareer({branch, term, rank, drafted: true});
-      // updateLog([
-      //   `Sorry! You did not qualify for the ${capitalize(failedBranch)}.`,
-      //   `Instead, you were drafted into the ${capitalize(branch)}.`,
-      // ]);
-    // }
     setStep('SURVIVAL');
   }
 
   function survived() {
     updateLog([`You survived term ${career.term+1}.`]);
     updateCareer({term: career.term+1});
+
     if (game === 'classic') {
       const careerData = CTCAREERS.filter(c => career.branch === c.name)[0];
       // Reset the number of skill rolls for the term.
@@ -153,12 +145,12 @@ function App() {
   }
 
   function commissioned() {
-    // if (game === 'classic') {
-    //   const careerData = CTCAREERS.filter(c => career.branch === c.name)[0];
-    //   updateLog([`Congratulations! You are now a Rank 1 ${careerData.ranks[1].name}.`]);
-    // }
     updateCareer({rank: 1});
-    setNumSkillRolls(numSkillRolls+1);
+
+    if (game === 'classic') {
+      setNumSkillRolls(numSkillRolls+1); // If the traveller was commissioned this term, give them an extra skill roll
+    }
+
     setStep('PROMOTION');
   }
   
@@ -174,12 +166,12 @@ function App() {
 
   function promoted() {
     let rank = career.rank+1;
-    // if (game === 'classic') {
-    //   const careerData = CTCAREERS.filter(c => career.branch === c.name)[0];
-    //   updateLog([`Congratulations! You are now a Rank ${rank} ${careerData.ranks[rank].name}.`]);
-    // }
     updateCareer({rank: rank});
-    setNumSkillRolls(numSkillRolls+1);
+
+    if (game === 'classic') {
+      setNumSkillRolls(numSkillRolls+1); // If the traveller was promoted this term, give them an extra skill roll
+    }
+    
     setStep('SKILL');
   }
 
