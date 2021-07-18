@@ -32,6 +32,7 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
 
     let [numCashRolls, setNumCashRolls] = useState(MAXCASHROLLS);
     let [weapon, setWeapon] = useState(null);
+    // let [skill, setSkill] = useState(null);
     let [numBenefitRolls, setNumBenefitRolls] = useState(99); // Use some large number first.
 
     function decreaseBenefits() {
@@ -93,6 +94,7 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
                 if (CTITEMS.hasOwnProperty(t.value)) {
                     setWeapon({name: t.value});
                 } else {
+
                     updateLog([`You received a weapon ${t.value}.`]);
                     let newItems = {};
                     newItems[t.value] = 1;

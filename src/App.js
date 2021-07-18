@@ -18,6 +18,7 @@ import { MusterOut } from './MusterOut';
 
 import CTCAREERS from './data/ct/careers';
 
+// eslint-disable-next-line
 const STEPS = [
   'GAME',
   'UPP',
@@ -46,7 +47,7 @@ function App() {
   let [career, setCareer] = useState(null);
   let [skills, setSkills] = useState({});
   let [age, setAge] = useState(18);
-  let [numSkillRolls, setNumSkillRolls] = useState(1);
+  // let [numSkillRolls, setNumSkillRolls] = useState(1);
   let [credits, setCredits] = useState(0);
   let [items, setItems] = useState({});
   let [log, setLog] = useState([]);
@@ -107,12 +108,12 @@ function App() {
   }
 
   function enlisted({branch, term, rank}) {
-    updateCareer({branch, term, rank, drafted: false});
+    updateCareer({branch, term, rank, drafted: false, rankPrev: 0});
     setStep('SURVIVAL');
   }
 
   function drafted({branch, failedBranch, term, rank}) {
-    updateCareer({branch, term, rank, drafted: true});
+    updateCareer({branch, term, rank, drafted: true, rankPrev: 0});
     setStep('SURVIVAL');
   }
 
@@ -122,13 +123,6 @@ function App() {
 
     if (game === 'classic') {
       const careerData = CTCAREERS.filter(c => career.branch === c.name)[0];
-      // Reset the number of skill rolls for the term.
-      // If it is their first term, always give the traveller two skill rolls.
-      if (career.term+1 === 1) {
-        setNumSkillRolls(2);
-      } else {
-        setNumSkillRolls(careerData.numSkillsPerTerm);
-      }
 
       // If the career does not have commissions or advancements, go to skill rolls.
       // Also skip commission & promotion if the traveller was drafted and its their first term.
@@ -145,10 +139,8 @@ function App() {
   }
 
   function commissioned() {
-    updateCareer({rank: 1});
-
     if (game === 'classic') {
-      setNumSkillRolls(numSkillRolls+1); // If the traveller was commissioned this term, give them an extra skill roll
+      updateCareer({ rank: 1 });
     }
 
     setStep('PROMOTION');
@@ -167,11 +159,6 @@ function App() {
   function promoted() {
     let rank = career.rank+1;
     updateCareer({rank: rank});
-
-    if (game === 'classic') {
-      setNumSkillRolls(numSkillRolls+1); // If the traveller was promoted this term, give them an extra skill roll
-    }
-    
     setStep('SKILL');
   }
 
@@ -186,12 +173,7 @@ function App() {
   }
 
   function choseSkill() {
-    setNumSkillRolls(numSkillRolls-1);
-    if (numSkillRolls-1 > 0) {
-      setStep('SKILL');
-    } else {
-      setStep('AGE');
-    }
+    setStep('AGE');
   }
 
   function aged() {
@@ -201,6 +183,11 @@ function App() {
 
   function reenlist() {
     updateLog([`You have successfully reenlisted in the ${capitalize(career.branch)} for another term.`]);
+
+    if (game === 'classic') {
+      updateCareer({ rankPrev: career.rank }); // Reset rankPrev to the rank at the end of the term
+    }
+
     setStep('SURVIVAL');
   }
 

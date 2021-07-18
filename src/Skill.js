@@ -24,63 +24,90 @@ export function Skill({ game, upp, updateUPP, career, skills, updateSkills, disp
 }
 
 function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, onSelected, updateLog }) {
+    let [numSkillRolls, setNumSkillRolls] = useState(99); // Use some large number first.
     let [cascade, setCascade] = useState(null);
+
+    function decreaseSkillRolls() {
+        const curNumSkillRolls = numSkillRolls;
+        setNumSkillRolls(numSkillRolls - 1);
+        if (numSkillRolls === 1) { // React takes a while to update state, so we compare with 1 rather than 0
+            onSelected();
+        }
+    }
 
     function handleSkillSelection(ev) {
         ev.preventDefault();
+
+        let tbl;
         for (let t of ev.target) {
             if (t.checked) {
-                // Give travellers of rank 5 or 6 a +1 DM on skill table.
-                const skillDM = career.rank >= 5 ? 1 : 0;
-                console.log(t.value);
-                // Pick a random skill from the skill table.
-                const careerData = CTCAREERS.filter(c => c.name === career.branch)[0];
-                const table = careerData[t.value];
-                const adv = table[Math.min(r1d6() - 1 + skillDM, 5)];
-                // console.log(adv);
+                tbl = t.value;
+            }
+        }
+        console.log(tbl);
 
-                if (adv.type === 'CHARACTERISTIC') {
-                    let newChar = {};
-                    newChar[adv.name] = upp[adv.name] + adv.value;
-                    updateUPP(newChar);
-                    updateLog([`You have increased your ${adv.name} to ${newChar[adv.name]}.`]);
-                    onSelected();
-                } else if (adv.type === 'SKILL') {
-                    const skillData = CTSKILLS[adv.name];
-                    if (skillData === null) { // A non-cascade skill
-                        let newSkill = {};
-                        if (!skills.hasOwnProperty(adv.name)) {
-                            newSkill[adv.name] = adv.value;
-                        } else {
-                            newSkill[adv.name] = skills[adv.name] + adv.value;
-                        }
-                        updateLog([`You improved your ${adv.name} to ${newSkill[adv.name]}.`]);
-                        updateSkills(newSkill);
-                        onSelected();
-                    } else {
-                        setCascade(adv);
-                    }
+        // Give travellers of rank 5 or 6 a +1 DM on skill table.
+        const skillDM = career.rank >= 5 ? 1 : 0;
+        // Pick a random skill from the skill table.
+        const careerData = CTCAREERS.filter(c => c.name === career.branch)[0];
+        const table = careerData[tbl];
+        const adv = table[Math.min(r1d6() - 1 + skillDM, 5)];
+        console.log(adv);
+
+        if (adv.type === 'CHARACTERISTIC') {
+            let newChar = {};
+            newChar[adv.name] = upp[adv.name] + adv.value;
+            updateUPP(newChar);
+            updateLog([`You have increased your ${adv.name} to ${newChar[adv.name]}.`]);
+            decreaseSkillRolls();
+        } else if (adv.type === 'SKILL') {
+            const skillData = CTSKILLS[adv.name];
+            if (skillData === null) { // A non-cascade skill
+                let newSkill = {};
+                if (!skills.hasOwnProperty(adv.name)) {
+                    newSkill[adv.name] = adv.value;
+                } else {
+                    newSkill[adv.name] = skills[adv.name] + adv.value;
                 }
+                updateLog([`You improved your ${adv.name} to ${newSkill[adv.name]}.`]);
+                updateSkills(newSkill);
+                decreaseSkillRolls();
+            } else {
+                setCascade(adv);
             }
         }
     }
 
     function handleCascadeSkillSelection(ev) {
         ev.preventDefault();
+
+        let skill;
         for (let t of ev.target) {
             if (t.checked) {
-                let newSkill = {};
-                if (!skills.hasOwnProperty(t.value)) {
-                    newSkill[t.value] = cascade.value;
-                } else {
-                    newSkill[t.value] = skills[t.value] + cascade.value;
-                }
-                setCascade(null); // Reset cascade skills.
-                updateSkills(newSkill);
-                updateLog([`You improved your ${t.value} to ${newSkill[t.value]}.`])
-                onSelected();
+                skill = t.value;
             }
         }
+
+        let newSkill = {};
+        if (!skills.hasOwnProperty(skill)) {
+            newSkill[skill] = cascade.value;
+        } else {
+            newSkill[skill] = skills[skill] + cascade.value;
+        }
+        setCascade(null); // Reset cascade skills.
+        decreaseSkillRolls();
+        updateSkills(newSkill);
+        updateLog([`You improved your ${skill} to ${newSkill[skill]}.`]);
+    }
+
+    // Set the number of skill rolls for this term.
+    // If it is the traveller's first term, give them 2 skill rolls.
+    // Otherwise, default to the number of skill rolls give by the career.
+    // For each rank the traveller has advanced, give them an extra skill roll.
+    if (numSkillRolls == 99) {
+        const careerData = CTCAREERS.filter(c => career.branch === c.name)[0];
+        const numRolls = (career.term === 1 ? 2 : careerData.numSkillsPerTerm) + (career.rank - career.rankPrev);
+        setNumSkillRolls(numRolls);
     }
 
     if (!cascade) {
