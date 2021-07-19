@@ -22,18 +22,6 @@ export function Career({ game, career, upp, updateUPP, skills, updateSkills, dis
     }
 }
 
-// function applyDMsToRoll(roll, dms, upp) {
-//     // let oldroll = roll;
-//     for (let dm of dms) {
-//         if (upp[dm.characteristic] >= dm.value) {
-//             // console.log(`Career: Because your ${dm.characteristic} of ${upp[dm.characteristic]} is greater than or equal to ${dm.value}, your roll of ${oldroll} has been increased by ${dm.dm}.`);
-//             roll += dm.dm;
-//         }
-//     }
-//     // console.log(`Your final roll is ${roll}.`);
-//     return roll;
-// }
-
 function canEnlist(upp, careerName) {
     const career = CTCAREERS.filter(career => career.name === careerName)[0];
     const result = applyDMsToRoll(r2d6(), career.enlistment.dms, upp);
@@ -50,6 +38,7 @@ function CareerCT({ career, upp, updateUPP, skills, updateSkills, onEnlistment, 
         ev.preventDefault();
         for (let c of ev.target) {
             if (c.checked) {
+                console.log(`Enlisting in the ${c.value}`);
                 let careerName = '';
                 // Determine if character can enlist.
                 if (canEnlist(upp, c.value)) {

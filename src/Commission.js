@@ -38,13 +38,28 @@ function CommissionCT({ upp, updateUPP, career, updateCareer, skills, updateSkil
         const input = ev.target[0];
         if (input.checked) {
             const careerData = CTCAREERS.filter(c => c.name === career.branch)[0];
-            const result = applyDMsToRoll(r2d6(), careerData.commission.dms, upp);
-            if (result >= careerData.commission.target) {
-                let newLog = [`Congratulations! You are now a Rank 1 ${careerData.ranks[1].name}.`];
+            const commission = careerData.commission;
+
+            const result = applyDMsToRoll(r2d6(), commission.dms, upp);
+            if (result >= commission.target) {
+                let newLog = [];
+                let rank = 0;
+
+                // Some careers have initial ranks correspond to Social Standing
+                if (commission.hasOwnProperty('correspondToSocial') && commission.correspondToSocial) {
+                    rank = careerData.ranks.findIndex(r => r.hasOwnProperty('social') && r.social === upp.Social);
+                    if (rank === -1) {
+                        rank = 1;
+                    }
+                } else {
+                    rank = 1;
+                }
+
+                newLog.push(`Congratulations! You are now a Rank ${rank} ${careerData.ranks[rank].name}.`);
 
                 // Apply any benefits for entering a career.
-                if (careerData.ranks[1].hasOwnProperty('benefit')) {
-                    const benefit = careerData.ranks[1].benefit;
+                if (careerData.ranks[rank].hasOwnProperty('benefit')) {
+                    const benefit = careerData.ranks[rank].benefit;
 
                     if (benefit.type === 'SKILL') {
                         // TODO: Refactor this into a general method to set a skill to a value if it is lower than that value
@@ -56,7 +71,13 @@ function CommissionCT({ upp, updateUPP, career, updateCareer, skills, updateSkil
                         }
                     } else if (benefit.type === 'CHARACTERISTIC') {
                         let newUPP = {};
-                        newUPP[benefit.name] = upp[benefit.name] + benefit.value;
+
+                        if (benefit.hasOwnProperty('set') && benefit.set) {
+                            newUPP[benefit.name] = benefit.value;
+                        } else {
+                            newUPP[benefit.name] = upp[benefit.name] + benefit.value;
+                        }
+                        
                         updateUPP(newUPP);
                         newLog.push(`Because of your rank, your ${benefit.name} is now ${newUPP[benefit.name]}.`);
                     }

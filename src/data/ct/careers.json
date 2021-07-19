@@ -1563,7 +1563,7 @@
                 "name": "Mid Passage Ticket"
             },
             {
-                "type": "Item",
+                "type": "SHIP",
                 "name": "Corsair"
             }
         ],
@@ -3388,6 +3388,909 @@
             {
                 "type": "SKILL",
                 "name": "Leader",
+                "value": 1
+            }
+        ],
+        "numSkillsPerTerm": 1
+    },
+    {
+        "name": "rogues",
+        "enlistment": {
+            "target": 5,
+            "dms": [
+                {
+                    "characteristic": "Social",
+                    "value": 8,
+                    "dm": 1,
+                    "lower": true
+                },
+                {
+                    "characteristic": "Endurance",
+                    "value": 7,
+                    "dm": 2
+                }
+            ]
+        },
+        "survival": {
+            "target": 4,
+            "dms": [
+                {
+                    "characteristic": "Intellect",
+                    "value": 9,
+                    "dm": 2
+                }
+            ]
+        },
+        "commission": null,
+        "promotion": null,
+        "reenlist": {
+            "target": 5
+        },
+        "ranks": [
+            {
+                "name": "Rogue",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Streetwise",
+                    "value": 1
+                }
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage Ticket"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            },
+            {
+                "type": "WEAPON",
+                "name": "Guns",
+                "altSkill": "Gun Combat"
+            },
+            {
+                "type": "WEAPON",
+                "name": "Blades",
+                "altSkill": "Blade Combat"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage Ticket"
+            },
+            {
+                "type": "SPECIAL",
+                "name": "Traveller's Aid Society Membership"
+            }
+        ],
+        "cash": [
+            0,
+            0,
+            10000,
+            10000,
+            5000,
+            100000,
+            100000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Brawling",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Blade Combat",
+                "value": 1,
+                "cascade": true
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1,
+                "cascade": true
+            },
+            {
+                "type": "SKILL",
+                "name": "Demolition",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1,
+                "cascade": true
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1,
+                "cascade": true
+            }
+        ],
+        "aet1": [
+            {
+                "type": "SKILL",
+                "name": "Streetwise",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Forgery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Bribery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Liason",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Ship Tactics",
+                "value": 1
+            }
+        ],
+        "aet2": [
+            {
+                "type": "SKILL",
+                "name": "Medical",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Bribery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Forgery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Leader",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Jack of All Trades",
+                "value": 1
+            }
+        ],
+        "numSkillsPerTerm": 1
+    },
+    {
+        "name": "nobles",
+        "enlistment": {
+            "target": 13,
+            "dms": [
+                {
+                    "characteristic": "Social",
+                    "value": 10,
+                    "dm": 13
+                }
+            ]
+        },
+        "survival": {
+            "target": 3
+        },
+        "commission": {
+            "target": 5,
+            "dms": [
+                {
+                    "characteristic": "Education",
+                    "value": 9,
+                    "dm": 1
+                }
+            ],
+            "correspondToSocial": true
+        },
+        "promotion": {
+            "target": 12,
+            "dms": [
+                {
+                    "characteristic": "Intellect",
+                    "value": 10,
+                    "dm": 1
+                }
+            ]
+        },
+        "reenlist": {
+            "target": 4
+        },
+        "ranks": [
+            {
+                "name": "Noble"
+            },
+            {
+                "name": "Knight",
+                "social": 11,
+                "benefit": {
+                    "type": "CHARACTERISTIC",
+                    "name": "Social",
+                    "value": 11,
+                    "set": true
+                } 
+            },
+            {
+                "name": "Baron",
+                "social": 12,
+                "benefit": {
+                    "type": "CHARACTERISTIC",
+                    "name": "Social",
+                    "value": 12,
+                    "set": true
+                }
+            },
+            {
+                "name": "Marquis",
+                "social": 13,
+                "benefit": {
+                    "type": "CHARACTERISTIC",
+                    "name": "Social",
+                    "value": 13,
+                    "set": true
+                }
+            },
+            {
+                "name": "Count",
+                "social": 14,
+                "benefit": {
+                    "type": "CHARACTERISTIC",
+                    "name": "Social",
+                    "value": 14,
+                    "set": true
+                }
+            },
+            {
+                "name": "Duke",
+                "social": 15,
+                "benefit": {
+                    "type": "CHARACTERISTIC",
+                    "name": "Social",
+                    "value": 15,
+                    "set": true
+                }
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "High Passage Ticket"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage Ticket"
+            },
+            {
+                "type": "WEAPON",
+                "name": "Guns",
+                "altSkill": "Gun Combat"
+            },
+            {
+                "type": "WEAPON",
+                "name": "Blades",
+                "altSkill": "Blade Combat"
+            },
+            {
+                "type": "SPECIAL",
+                "name": "Traveller's Aid Society Membership"
+            },
+            {
+                "type": "SHIP",
+                "name": "Yacht"
+            }
+        ],
+        "cash": [
+            10000,
+            50000,
+            50000,
+            100000,
+            100000,
+            100000,
+            200000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Brawling",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1,
+                "cascade": true
+            },
+            {
+                "type": "SKILL",
+                "name": "Blade Combat",
+                "value": 1,
+                "cascade": true
+            },
+            {
+                "type": "SKILL",
+                "name": "Hunting",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1,
+                "cascade": true
+            },
+            {
+                "type": "SKILL",
+                "name": "Bribery",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            }
+        ],
+        "aet1": [
+            {
+                "type": "SKILL",
+                "name": "Pilot",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Ship's Boat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1,
+                "cascade": true
+            },
+            {
+                "type": "SKILL",
+                "name": "Navigation",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Engineering",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Leader",
+                "value": 1
+            }
+        ],
+        "aet2": [
+            {
+                "type": "SKILL",
+                "name": "Medical",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Administration",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Liason",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Leader",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Jack of All Trades",
+                "value": 1
+            }
+        ],
+        "numSkillsPerTerm": 1
+    },
+    {
+        "name": "scientists",
+        "enlistment": {
+            "target": 6,
+            "dms": [
+                {
+                    "characteristic": "Intellect",
+                    "value": 9,
+                    "dm": 1
+                },
+                {
+                    "characteristic": "Education",
+                    "value": 10,
+                    "dm": 2
+                }
+            ]
+        },
+        "survival": {
+            "target": 5,
+            "dms": [
+                {
+                    "characteristic": "Education",
+                    "value": 9,
+                    "dm": 2
+                }
+            ]
+        },
+        "commission": null,
+        "promotion": null,
+        "reenlist": {
+            "target": 5
+        },
+        "ranks": [
+            {
+                "name": "Scientist",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Computer",
+                    "value": 1
+                }
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage Ticket"
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage Ticket"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage Ticket"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            },
+            {
+                "type": "WEAPON",
+                "name": "Guns",
+                "altSkill": "Gun Combat"
+            },
+            {
+                "type": "SHIP",
+                "name": "Lab Ship"
+            }
+        ],
+        "cash": [
+            1000,
+            2000,
+            5000,
+            10000,
+            20000,
+            30000,
+            40000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1,
+                "cascade": true
+            },
+            {
+                "type": "SKILL",
+                "name": "Blade Combat",
+                "value": 1,
+                "cascade": true
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1,
+                "cascade": true
+            },
+            {
+                "type": "SKILL",
+                "name": "Jack of All Trades",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Navigation",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Survival",
+                "value": 1
+            }
+        ],
+        "aet1": [
+            {
+                "type": "SKILL",
+                "name": "Mechanical",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Electronics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gravitics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            }
+        ],
+        "aet2": [
+            {
+                "type": "SKILL",
+                "name": "Medical",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Administration",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Leader",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Jack of All Trades",
+                "value": 1
+            }
+        ],
+        "numSkillsPerTerm": 1
+    },
+    {
+        "name": "hunters",
+        "enlistment": {
+            "target": 9,
+            "dms": [
+                {
+                    "characteristic": "Dexterity",
+                    "value": 10,
+                    "dm": 1
+                },
+                {
+                    "characteristic": "Endurance",
+                    "value": 9,
+                    "dm": 2
+                }
+            ]
+        },
+        "survival": {
+            "target": 6,
+            "dms": [
+                {
+                    "characteristic": "Strength",
+                    "value": 10,
+                    "dm": 2
+                }
+            ]
+        },
+        "commission": null,
+        "promotion": null,
+        "reenlist": {
+            "target": 5
+        },
+        "ranks": [
+            {
+                "name": "Hunter",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Hunting",
+                    "value": 1
+                }
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage Ticket"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage Ticket"
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapons"
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapons"
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapons"
+            },
+            {
+                "type": "SHIP",
+                "name": "Safari Ship"
+            }
+        ],
+        "cash": [
+            1000,
+            1000,
+            5000,
+            5000,
+            10000,
+            100000,
+            100000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1,
+                "cascade": true
+            },
+            {
+                "type": "SKILL",
+                "name": "Blade Combat",
+                "value": 1,
+                "cascade": true
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1,
+                "cascade": true
+            },
+            {
+                "type": "SKILL",
+                "name": "Blade Combat",
+                "value": 1,
+                "cascade": true
+            },
+            {
+                "type": "SKILL",
+                "name": "Survival",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Hunting",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Navigation",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Survival",
+                "value": 1
+            }
+        ],
+        "aet1": [
+            {
+                "type": "SKILL",
+                "name": "Mechanical",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Electronics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gravitics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Hunting",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Administration",
+                "value": 1
+            }
+        ],
+        "aet2": [
+            {
+                "type": "SKILL",
+                "name": "Medical",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Hunting",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Leader",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Survival",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Administration",
                 "value": 1
             }
         ],
