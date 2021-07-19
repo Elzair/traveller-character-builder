@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Switch from 'react-switch';
 
 import { r1d6 } from './utils';
 
@@ -32,12 +33,13 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
 
     let [numCashRolls, setNumCashRolls] = useState(MAXCASHROLLS);
     let [weapon, setWeapon] = useState(null);
-    // let [skill, setSkill] = useState(null);
+    let [skill, setSkill] = useState(null);
+    let [skillChecked, setSkillChecked] = useState(true);
     let [numBenefitRolls, setNumBenefitRolls] = useState(99); // Use some large number first.
 
     function decreaseBenefits() {
         const curNumBenefitRolls = numBenefitRolls;
-        setNumBenefitRolls(numBenefitRolls-1);
+        setNumBenefitRolls(numBenefitRolls - 1);
         if (curNumBenefitRolls === 1) {
             onMusterOut();
         }
@@ -45,65 +47,108 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
 
     function handleBenefitSelection(ev) {
         ev.preventDefault();
+
+        let val = '';
         for (let t of ev.target) {
             if (t.checked) {
-                const careerData = CTCAREERS.filter(c => c.name === career.branch)[0];
-                const table = careerData[t.value];
+                val = t.value;
+            }
+        }
+        const careerData = CTCAREERS.filter(c => c.name === career.branch)[0];
+        const table = careerData[val];
 
-                if (t.value === 'cash') {
-                    // Give travellers with Gambling-1 or higher a +1 DM on rolls on the Cash table.
-                    const cashDM = skills.hasOwnProperty('Gambling') && skills.Gambling >= 1 ? 1 : 0;
-                    const amount = table[r1d6() - 1 + cashDM];
-                    updateLog([`You receive Cr${amount}.`]);
-                    updateCredits(credits + amount);
-                    setNumCashRolls(numCashRolls - 1);
-                    decreaseBenefits();
-                } else if (t.value === 'benefits') {
-                    // Give travellers of rank 5 or rank 6 a +1 DM on rolls on the benefits table.
-                    const benefitsDM = career.rank >= 5 ? 1 : 0;
-                    const benefit = table[Math.min(r1d6() - 1 + benefitsDM, table.length - 1)]; // Cap roll because not every benefit table has enough values.
-                    // console.log(benefit);
-                    if (benefit.type === 'WEAPON') {
-                        // If the benefit is a weapon, and the traveller has already received one, then
-                        // ask if the traveller would like a skill increase instead.
-                        setWeapon(benefit);
-                    } else if (benefit.type === 'ITEM') {
-                        updateLog([`You received a ${benefit.name}.`]);
-                        let newItems = {};
-                        newItems[benefit.name] = 1;
-                        updateItems(newItems);
-                        decreaseBenefits();
-                    } else if (benefit.type === 'CHARACTERISTIC') {
-                        let newUPP = {};
-                        newUPP[benefit.name] = upp[benefit.name] + benefit.value;
-                        updateLog([`You raised your ${benefit.name} to ${newUPP[benefit.name]}.`]);
-                        updateUPP(newUPP);
-                        decreaseBenefits();
-                    }
-                }
+        if (val === 'cash') {
+            // Give travellers with Gambling-1 or higher a +1 DM on rolls on the Cash table.
+            const cashDM = skills.hasOwnProperty('Gambling') && skills.Gambling >= 1 ? 1 : 0;
+            const amount = table[r1d6() - 1 + cashDM];
+            updateLog([`You receive Cr${amount}.`]);
+            updateCredits(credits + amount);
+            setNumCashRolls(numCashRolls - 1);
+            decreaseBenefits();
+        } else if (val === 'benefits') {
+            // Give travellers of rank 5 or rank 6 a +1 DM on rolls on the benefits table.
+            const benefitsDM = career.rank >= 5 ? 1 : 0;
+            const benefit = table[Math.min(r1d6() - 1 + benefitsDM, table.length - 1)]; // Cap roll because not every benefit table has enough values.
+            // console.log(benefit);
+            if (benefit.type === 'WEAPON') {
+                // If the benefit is a weapon, and the traveller has already received one, then
+                // ask if the traveller would like a skill increase instead.
+                setWeapon(benefit);
+            } else if (benefit.type === 'ITEM') {
+                updateLog([`You received a ${benefit.name}.`]);
+                let newItems = {};
+                newItems[benefit.name] = 1;
+                updateItems(newItems);
+                decreaseBenefits();
+            } else if (benefit.type === 'CHARACTERISTIC') {
+                let newUPP = {};
+                newUPP[benefit.name] = upp[benefit.name] + benefit.value;
+                updateLog([`You raised your ${benefit.name} to ${newUPP[benefit.name]}.`]);
+                updateUPP(newUPP);
+                decreaseBenefits();
             }
         }
     }
 
     function handleWeaponSelection(ev) {
         ev.preventDefault();
+
+        let weapon = '';
         for (let t of ev.target) {
             if (t.checked) {
-                // Check if the selected value is a specific weapon or a category of weapons
-                // TODO: Improve this
-                if (CTITEMS.hasOwnProperty(t.value)) {
-                    setWeapon({name: t.value});
-                } else {
-
-                    updateLog([`You received a weapon ${t.value}.`]);
-                    let newItems = {};
-                    newItems[t.value] = 1;
-                    updateItems(newItems);
-                    decreaseBenefits();
-                    setWeapon(null);
-                }
+                weapon = t.value;
             }
         }
+
+        // Check if the selected value is a specific weapon or a category of weapons
+        // TODO: Improve this
+        if (CTITEMS.hasOwnProperty(weapon)) {
+            setWeapon({ name: weapon });
+        } else if (items.hasOwnProperty(weapon) && items[weapon] > 0) {
+            console.log(`Item already present selected: ${weapon}`);
+            // If the traveller already has taken that weapon as a benefit, offer them
+            // an increase in the corresponding skill instead.
+            setSkill(weapon);
+            setWeapon(null);
+        }
+        else {
+            updateLog([`You received a weapon ${weapon}.`]);
+            let newItems = {};
+            newItems[weapon] = 1;
+            updateItems(newItems);
+            decreaseBenefits();
+            setWeapon(null);
+        }
+    }
+
+    function handleCheck(check) {
+        setSkillChecked(check);
+    }
+
+    function handleSkillOrWeapon(ev) {
+        console.log('Got to handleSkillOrWeapon');
+        ev.preventDefault();
+
+        const input = ev.target[0];
+        if (input.checked) {
+            let newSkill = {};
+            if (!skills.hasOwnProperty(skill)) {
+                newSkill[skill] = 1;
+            } else {
+                newSkill[skill] = skills[skill] + 1;
+            }
+            
+            updateLog([`You improved your ${skill} to ${newSkill[skill]}.`]);
+            updateSkills(newSkill);
+        } else {
+            updateLog([`You received a weapon ${skill}.`]);
+            let newItems = {};
+            newItems[skill] = 1;
+            updateItems(newItems);
+        }
+
+        decreaseBenefits();
+        setSkill(null);
     }
 
     // Set the number of benefit rolls if it has not already been set.
@@ -115,22 +160,22 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
         let benefitRollMod = 0;
         switch (career.rank) {
             case 0: break;
-            case 1: 
+            case 1:
             case 2: benefitRollMod = 1;
-                    break;
-            case 3: 
+                break;
+            case 3:
             case 4: benefitRollMod = 2;
-                    break;
-            case 5: 
+                break;
+            case 5:
             case 6: benefitRollMod = 3;
-                    break;
-            default: throw new Error(`career rank ${career.rank} is not in range 0-6!`); 
+                break;
+            default: throw new Error(`career rank ${career.rank} is not in range 0-6!`);
         }
 
         setNumBenefitRolls(career.term + benefitRollMod);
     }
 
-    if (weapon === null) {
+    if (weapon === null && skill === null) {
         // Add cash option only if traveller has not already rolled three times on the cash table.
         let options = {
             "benefits": "Benefits",
@@ -171,6 +216,14 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
                     <input type="submit" value="Submit" />
                 </form>}
             </div>
+        );
+    } else if (skill) { // Handle skill increase with an already selected weapon
+        return (
+            <form onSubmit={handleSkillOrWeapon} className="SkillOrWeapon">
+                <p>You already have that weapon. Would you like an increase in that skill instead?</p>
+                <Switch checked={skillChecked} onChange={handleCheck} />
+                <input type="submit" value="Ok" />
+            </form>
         );
     } else {
         return (<div></div>);

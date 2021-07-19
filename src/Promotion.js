@@ -87,19 +87,25 @@ function PromotionCT({ upp, updateUPP, career, updateCareer, skills, updateSkill
 
     function handleCascadeSkillSelection(ev) {
         ev.preventDefault();
+
+        let skill = '';
         for (let t of ev.target) {
             if (t.checked) {
-                let newSkill = {};
-                if (!skills.hasOwnProperty(t.value)) {
-                    newSkill[t.value] = cascade.value;
-                } else {
-                    newSkill[t.value] = skills[t.value] + cascade.value;
-                }
-                setCascade(null); // Reset cascade skills.
-                updateSkills(newSkill);
-                updateLog([`You improved your ${t.value} to ${newSkill[t.value]}.`]);
-                onSuccess();
+                skill = t.value;
             }
+        }
+
+        if (skill !== '') {
+            let newSkill = {};
+            if (!skills.hasOwnProperty(skill)) {
+                newSkill[skill] = cascade.value;
+            } else {
+                newSkill[skill] = skills[skill] + cascade.value;
+            }
+            setCascade(null); // Reset cascade skills.
+            updateSkills(newSkill);
+            updateLog([`You improved your ${skill} to ${newSkill[skill]}.`]);
+            onSuccess();
         }
     }
 
