@@ -3144,5 +3144,253 @@
             }
         ],
         "numSkillsPerTerm": 1
+    },
+    {
+        "name": "bureaucrats",
+        "enlistment": {
+            "target": 5,
+            "dms": [
+                {
+                    "characteristic": "Education",
+                    "value": 8,
+                    "dm": 1
+                },
+                {
+                    "characteristic": "Strength",
+                    "value": 8,
+                    "dm": 2,
+                    "lower": true
+                }
+            ]
+        },
+        "survival": {
+            "target": 4,
+            "dms": [
+                {
+                    "characteristic": "Education",
+                    "value": 10,
+                    "dm": 2
+                }
+            ]
+        },
+        "commission": {
+            "target": 6,
+            "dms": [
+                {
+                    "characteristic": "Social",
+                    "value": 9,
+                    "dm": 1
+                }
+            ]
+        },
+        "promotion": {
+            "target": 7,
+            "dms": [
+                {
+                    "characteristic": "Intellect",
+                    "value": 9,
+                    "dm": 1
+                }
+            ]
+        },
+        "reenlist": {
+            "target": 3,
+            "toLeave": true
+        },
+        "ranks": [
+            {
+                "name": "Bureaucrat"
+            },
+            {
+                "name": "Clerk"
+            },
+            {
+                "name": "Supervisor"
+            },
+            {
+                "name": "Assistant Manager"
+            },
+            {
+                "name": "Manager"
+            },
+            {
+                "name": "Executive"
+            },
+            {
+                "name": "Director"
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage Ticket"
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage Ticket"
+            },
+            {
+                "type": "NOTHING"
+            },
+            {
+                "type": "ITEM",
+                "name": "Watch"
+            },
+            {
+                "type": "NOTHING"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage Ticket"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            }
+        ],
+        "cash": [
+            0,
+            0,
+            10000,
+            20000,
+            4000,
+            40000,
+            80000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Brawling",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1,
+                "cascade": true
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1,
+                "cascade": true
+            },
+            {
+                "type": "SKILL",
+                "name": "Blade Combat",
+                "value": 1,
+                "cascade": true
+            },
+            {
+                "type": "SKILL",
+                "name": "Instruction",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1,
+                "cascade": true
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            }
+        ],
+        "aet1": [
+            {
+                "type": "SKILL",
+                "name": "Recruiting",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1,
+                "cascade": true
+            },
+            {
+                "type": "SKILL",
+                "name": "Liason",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Interrogation",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Administration",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Administration",
+                "value": 1
+            }
+        ],
+        "aet2": [
+            {
+                "type": "SKILL",
+                "name": "Administration",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Administration",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Administration",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Jack of All Trades",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Leader",
+                "value": 1
+            }
+        ],
+        "numSkillsPerTerm": 1
     }
 ]
