@@ -1,0 +1,22 @@
+{
+  "name": "fmt",
+  "version": "1.0.0",
+  "description": "Functional version of the Mersenne Twister algorithm",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "mt",
+    "mersenne",
+    "mersennetwister",
+    "rand"
+  ],
+  "author": "Elzair",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "^7.14.8",
+    "jest": "^27.0.6"
+  }
+}
