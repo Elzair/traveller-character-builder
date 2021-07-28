@@ -321,6 +321,7 @@ function App() {
       <Reenlist
         game={game}
         career={career}
+        options={options}
         display={step==='REENLIST'}
         onSuccess={reenlist}
         onFailure={ejected}

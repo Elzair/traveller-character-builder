@@ -6,11 +6,12 @@ import { r2d6 } from './utils';
 
 import CTCAREERS from './data/ct/careers';
 
-export function Reenlist({ game, career, display, onSuccess, onFailure, onRetirement, updateLog }) {
+export function Reenlist({ game, career, options, display, onSuccess, onFailure, onRetirement, updateLog }) {
     if (display && game === 'classic') {
         return (
             <ReenlistCT
                 career={career}
+                options={options}
                 onSuccess={onSuccess}
                 onFailure={onFailure}
                 onRetirement={onRetirement}
@@ -22,7 +23,7 @@ export function Reenlist({ game, career, display, onSuccess, onFailure, onRetire
     }
 }
 
-function ReenlistCT({ career, onSuccess, onFailure, onRetirement, updateLog }) {
+function ReenlistCT({ career, options, onSuccess, onFailure, onRetirement, updateLog }) {
     let [checked, setChecked] = useState(true);
 
     function handleCheck(check) {  
@@ -39,8 +40,8 @@ function ReenlistCT({ career, onSuccess, onFailure, onRetirement, updateLog }) {
 
         const input = ev.target[0];
         if (input.checked) {
-            // If the character has served 7 terms, retirement is mandatory unless the roll is 12.
-            if (career.term >= 7 && roll !== 12) {
+            // If the character has served the maximum # of terms, retirement is mandatory unless the roll is 12.
+            if (career.term >= options.maxTerms && roll !== 12) {
                 updateLog('You have served the maximum number of terms.');
                 onRetirement();
             } else {
