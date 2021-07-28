@@ -69,3 +69,7 @@ export function applyDMsToRoll(roll, dms, upp, terms=-1) {
     // console.log(`Your final roll is ${roll}.`);
     return roll;
 }
+
+function mod(n) { 
+    return Math.min(Math.floor(n/3)-2, 9); 
+}
