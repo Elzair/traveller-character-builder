@@ -1,3 +1,5 @@
+import React from 'react';
+
 export function Game({name, setName, game, setGame, display, onFinished, options, updateOptions}) {
     function handleSubmit(ev) {
         ev.preventDefault();

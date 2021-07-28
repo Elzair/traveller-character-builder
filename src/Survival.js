@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { applyDMsToRoll, r2d6 } from "./utils";
 
 import CTCAREERS from './data/ct/careers';

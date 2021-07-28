@@ -1,8 +1,11 @@
+import React from 'react';
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+
 import { num2tetra } from "./utils";
 
 import './UPP.css';
+
 import { ItemTypes } from "./constants";
 
 export function UPP({ options, updateOptions, characteristics, updateUPP, display, onFinalized }) {

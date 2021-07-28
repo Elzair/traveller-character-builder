@@ -1,3 +1,4 @@
+import React from 'react';
 import { capitalize, num2tetra } from "./utils";
 
 import CTCAREERS from './data/ct/careers';

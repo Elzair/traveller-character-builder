@@ -1,3 +1,4 @@
+import React from 'react';
 import { r2d6 } from './utils';
 
 export function Age({ game, upp, updateUPP, career, age, display, onAged, onDeath, updateLog }) {

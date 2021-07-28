@@ -1,8 +1,12 @@
-// import logo from './logo.svg';
-import './App.css';
-import { capitalize, num2tetra, r2d6, updateObject } from './utils';
-import { UPP } from './UPP';
+import React from 'react';
 import { useState } from 'react';
+// import logo from './logo.svg';
+
+import './App.css';
+
+import { capitalize, num2tetra, r2d6, updateObject } from './utils';
+
+import { UPP } from './UPP';
 // import { Homeworld } from './Homeworld';
 import { Game } from './Game';
 import { Career } from './Career';
