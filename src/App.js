@@ -6,11 +6,11 @@ import './App.css';
 
 import { capitalize, num2tetra, r2d6, updateObject } from './utils';
 
+import { Game } from './Game';
 import { UPP } from './UPP';
 import { Homeworld } from './Homeworld';
-import { Game } from './Game';
+import { Background } from './Background';
 import { Career } from './Career';
-import { Log } from './Log';
 import { Survival } from './Survival';
 import { Commission } from './Commission';
 import { Promotion } from './Promotion';
@@ -19,6 +19,7 @@ import { Character } from './Character';
 import { Age } from './Age';
 import { Reenlist } from './Reenlist';
 import { MusterOut } from './MusterOut';
+import { Log } from './Log';
 
 import CTCAREERS from './data/ct/careers';
 
@@ -41,7 +42,6 @@ const STEPS = [
 ]
 
 function App() {
-  // let stats = generateCharacteristics();
   let [step, setStep] = useState('GAME');
   let [upp, setUPP] = useState(generateUPP());
   // let [homeworldName, setHomeworldName] = useState('');
@@ -53,7 +53,6 @@ function App() {
   let [career, setCareer] = useState(null);
   let [skills, setSkills] = useState({});
   let [age, setAge] = useState(18);
-  // let [numSkillRolls, setNumSkillRolls] = useState(1);
   let [credits, setCredits] = useState(0);
   let [items, setItems] = useState({});
   let [log, setLog] = useState([]);
@@ -124,6 +123,10 @@ function App() {
 
   function finalizeHomeworld() {
     setStep('BACKGROUND');
+  }
+
+  function selectBackgroundSkills() {
+    setStep('CAREER');
   }
 
   function enlisted({branch, term, rank}) {
@@ -270,6 +273,17 @@ function App() {
         updateTradeCodes={setHomeworldTradeCodes}
         display={step==='HOMEWORLD'}
         onFinalized={finalizeHomeworld}
+      />
+      <Background
+        game={game}
+        upp={upp}
+        homeworldUWP={homeworldUWP}
+        homeworldTradeCodes={homeworldTradeCodes}
+        skills={skills}
+        updateSkills={updateSkills}
+        display={step==='BACKGROUND'}
+        onFinalized={selectBackgroundSkills}
+        updateLog={updateLog}
       />
       <Career 
         game={game} 

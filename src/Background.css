@@ -1,0 +1,9 @@
+.BackgroundSkills {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.BackgroundSubmit {
+    width: 80px;
+}

@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { UwpInput } from './UwpInput';
-import { mod } from './utils';
 
 import './Homeworld.css';
+import './default.css';
 
 export function Homeworld({ uwp, updateUWP, tradeCodes, updateTradeCodes, display, onFinalized }) {
     function handleHomeworldSelection(ev) {
@@ -23,10 +23,9 @@ export function Homeworld({ uwp, updateUWP, tradeCodes, updateTradeCodes, displa
     );
 
     if (display) {
-        console.log(uwp);
         return (
             <div className="Homeworld">
-                <p className="HomeworldHeader">Input UWP of your homeworld</p>
+                <p className="Header">Input UWP of your homeworld</p>
                 <form onSubmit={handleHomeworldSelection}>
                     <div className="UWP">
                         <UwpInput name="St" value={uwp.Starport} setValue={val => updateUWP({ Starport: val })} />

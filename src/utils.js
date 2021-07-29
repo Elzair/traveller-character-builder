@@ -34,21 +34,25 @@ export function capitalize(str) {
 }
 
 export function updateObject(obj, updates) {
-    let newObj = {};
+    // let newObj = {};
     
-    for (let prop in obj) {
-      if (obj.hasOwnProperty(prop)) {
-        newObj[prop] = obj[prop];
-      }
-    }
+    // for (let prop in obj) {
+    //   if (obj.hasOwnProperty(prop)) {
+    //     newObj[prop] = obj[prop];
+    //   }
+    // }
 
-    for (let prop in updates) {
-      if (updates.hasOwnProperty(prop)) {
-        newObj[prop] = updates[prop];
-      }
-    }
+    // for (let prop in updates) {
+    //   if (updates.hasOwnProperty(prop)) {
+    //     newObj[prop] = updates[prop];
+    //   }
+    // }
     
-    return newObj;
+    // return newObj;
+    return {
+        ...obj,
+        ...updates
+    };
 }
 
 export function applyDMsToRoll(roll, dms, upp, terms=-1) {
@@ -70,6 +74,10 @@ export function applyDMsToRoll(roll, dms, upp, terms=-1) {
     return roll;
 }
 
-function mod(n) { 
-    return Math.min(Math.floor(n/3)-2, 9); 
+export function modCE(n) { 
+    return Math.min(Math.floor(n / 3) - 2, 9); 
+}
+
+export function modMT2E(n) {
+    return n === 0 ? -3 : Math.min(Math.floor(n / 3) - 2, 3);
 }

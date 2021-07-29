@@ -7,7 +7,6 @@ const MAX = 15;
 const MIN = 0;
 
 export function UwpInput({ name, value, setValue }) {
-    console.log(value);
     return (
         <div className="UwpInputOuter">
             <p className="UwpName">{name}</p>
