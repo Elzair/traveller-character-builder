@@ -3,10 +3,21 @@
     flex-flow: column;
 }
 
+.UwpInputOuter {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
 .UwpInput {
     display: flex;
     flex-flow: row;
     align-content: center;
+    justify-content: center;
+}
+
+.UwpName {
+    font-size: 18pt;
 }
 
 .UWPValue {

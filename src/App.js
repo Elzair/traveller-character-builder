@@ -7,7 +7,7 @@ import './App.css';
 import { capitalize, num2tetra, r2d6, updateObject } from './utils';
 
 import { UPP } from './UPP';
-// import { Homeworld } from './Homeworld';
+import { Homeworld } from './Homeworld';
 import { Game } from './Game';
 import { Career } from './Career';
 import { Log } from './Log';
@@ -27,6 +27,7 @@ const STEPS = [
   'GAME',
   'UPP',
   'HOMEWORLD',
+  'BACKGROUND',
   'CAREER',
   'SURVIVAL',
   'COMMISSION',
@@ -44,7 +45,8 @@ function App() {
   let [step, setStep] = useState('GAME');
   let [upp, setUPP] = useState(generateUPP());
   // let [homeworldName, setHomeworldName] = useState('');
-  // let [homeworldUPP, setHomeworldUPP] = useState(generateUWP());
+  let [homeworldUWP, setHomeworldUWP] = useState(generateUWP());
+  let [homeworldTradeCodes, setHomeworldTradeCodes] = useState([]);
   let [name, setName] = useState('');
   let [game, setGame] = useState("classic");
   let [options, setOptions] = useState({ rearrangeCharacteristics: false, });
@@ -63,6 +65,10 @@ function App() {
 
   function updateUPP(updated) {
     setUPP(updateObject(upp, updated));
+  }
+
+  function updateHomeworldUWP(updated) {
+    setHomeworldUWP(updateObject(homeworldUWP, updated));
   }
 
   function updateCareer(updated) {
@@ -108,7 +114,16 @@ function App() {
   function finalizeUPP() {
     let uppStr = Object.entries(upp).map(ent => num2tetra(ent[1])).join('');
     updateLog([`Your Universal Personality Profile is ${uppStr}.`]);
-    setStep('CAREER');
+
+    if (game === 'cepheusengine') {
+      setStep('HOMEWORLD');
+    } else {
+      setStep('CAREER');
+    }
+  }
+
+  function finalizeHomeworld() {
+    setStep('BACKGROUND');
   }
 
   function enlisted({branch, term, rank}) {
@@ -248,6 +263,14 @@ function App() {
         display={step==='UPP'}
         onFinalized={finalizeUPP}
       />
+      <Homeworld
+        uwp={homeworldUWP}
+        updateUWP={updateHomeworldUWP}
+        tradeCodes={homeworldTradeCodes}
+        updateTradeCodes={setHomeworldTradeCodes}
+        display={step==='HOMEWORLD'}
+        onFinalized={finalizeHomeworld}
+      />
       <Career 
         game={game} 
         career={career} 
@@ -378,17 +401,17 @@ function generateUPP() {
   return characteristics;
 }
 
-// function generateUWP() {
-//   return {
-//     Starport: 8, 
-//     Size: 8,
-//     Atmosphere: 8,
-//     Hydrographics: 8,
-//     Population: 8,
-//     Government: 8,
-//     LawLevel: 8,
-//     TechLevel: 8,
-//   };
-// }
+function generateUWP() {
+  return {
+    Starport: 8, 
+    Size: 8,
+    Atmosphere: 8,
+    Hydrographics: 8,
+    Population: 8,
+    Government: 8,
+    LawLevel: 8,
+    TechLevel: 8,
+  };
+}
 
 export default App;

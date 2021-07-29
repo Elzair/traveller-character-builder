@@ -44,7 +44,7 @@ export function Game({name, setName, game, setGame, display, onFinished, options
                 onChange={() => setRearrangeCharacteristics(!rearrangeCharacteristics)}
             />
         );
-        gameOpts.push(<label for="rearrangeCharacteristics">Rearrange Characteristics</label>);
+        gameOpts.push(<label htmlFor="rearrangeCharacteristics">Rearrange Characteristics</label>);
         gameOpts.push(
             <input 
                 type="checkbox" 
@@ -54,8 +54,8 @@ export function Game({name, setName, game, setGame, display, onFinished, options
                 onChange={() => setMishap(!mishap)}
             />
         );
-        gameOpts.push(<label for="mishap">Use Mishaps</label>);
-        gameOpts.push(<label for="maxTerms">Max Terms</label>);
+        gameOpts.push(<label htmlFor="mishap">Use Mishaps</label>);
+        gameOpts.push(<label htmlFor="maxTerms">Max Terms</label>);
         gameOpts.push(
             <input
                 type="number"

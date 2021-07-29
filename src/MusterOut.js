@@ -127,7 +127,7 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
     }
 
     function handleSkillOrWeapon(ev) {
-        console.log('Got to handleSkillOrWeapon');
+        // console.log('Got to handleSkillOrWeapon');
         ev.preventDefault();
 
         const input = ev.target[0];

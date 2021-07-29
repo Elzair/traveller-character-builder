@@ -1,0 +1,9 @@
+.UWP {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
+.HomeworldHeader {
+    font-size: 22pt;
+}

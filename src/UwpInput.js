@@ -1,13 +1,22 @@
+import React from 'react';
+
 import { num2tetra } from './utils';
 import './UwpInput.css';
 
-export function UwpInput({value}) {
+const MAX = 15;
+const MIN = 0;
+
+export function UwpInput({ name, value, setValue }) {
+    console.log(value);
     return (
-        <div className="UwpInput">
-            <input className="UWPValue" type="text" value={num2tetra(value)} />
-            <div className="IncDec">
-                <input className="Inc" type="button" value="▲" />
-                <input className="Dec" type="button" value="▼" />
+        <div className="UwpInputOuter">
+            <p className="UwpName">{name}</p>
+            <div className="UwpInput">
+                <input className="UWPValue" type="text" name={name} value={num2tetra(value)} readOnly={true} />
+                <div className="IncDec">
+                    <input className="Inc" type="button" value="▲" onClick={() => setValue(Math.min(value + 1, MAX))} />
+                    <input className="Dec" type="button" value="▼" onClick={() => setValue(Math.max(value - 1, MIN))} />
+                </div>
             </div>
         </div>
     );
