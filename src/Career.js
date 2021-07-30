@@ -5,11 +5,12 @@ import CTCAREERS from './data/ct/careers';
 
 import './Career.css';
 
-export function Career({ game, career, upp, updateUPP, skills, updateSkills, display, onEnlistment, onDraft, updateLog }) {
+export function Career({ game, career, updateCareer, upp, updateUPP, skills, updateSkills, display, onEnlistment, onDraft, updateLog }) {
     if (display && game === 'classic') {
         return (
             <CareerCT
                 career={career}
+                updateCareer={updateCareer}
                 upp={upp}
                 updateUPP={updateUPP}
                 skills={skills}
@@ -34,7 +35,7 @@ function draft() {
     return CTCAREERS.filter(career => career.draftNumber === roll)[0].name;
 }
 
-function CareerCT({ career, upp, updateUPP, skills, updateSkills, onEnlistment, onDraft, updateLog }) {
+function CareerCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, onEnlistment, onDraft, updateLog }) {
     function selectCareer(ev) {
         ev.preventDefault();
         for (let c of ev.target) {
@@ -68,7 +69,11 @@ function CareerCT({ career, upp, updateUPP, skills, updateSkills, onEnlistment, 
                     }
 
                     updateLog(newLog);
-                    onEnlistment({ branch: careerName, term: 0, rank: 0 });
+                    // onEnlistment({ branch: careerName, term: 0, rank: 0 });
+                    let newCareer = [...career];
+                    newCareer.push({branch: careerName, term: 0, rank: 0, drafted: false, rankPrev: 0});
+                    updateCareer(newCareer);
+                    onEnlistment();
                 } else {
                     careerName = draft();
                     let newLog = [
@@ -98,7 +103,11 @@ function CareerCT({ career, upp, updateUPP, skills, updateSkills, onEnlistment, 
                     }
 
                     updateLog(newLog);
-                    onDraft({ branch: careerName, failedBranch: c.value, term: 0, rank: 0 });
+                    let newCareer = [...career];
+                    newCareer.push({ branch: careerName, failedBranch: c.value, term: 0, rank: 0, drafted: true, rankPrev: 0 });
+                    updateCareer(newCareer);
+                    onDraft();
+                    // onDraft({ branch: careerName, failedBranch: c.value, term: 0, rank: 0 });
                 }
             }
         }

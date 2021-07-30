@@ -37,8 +37,10 @@ function CommissionCT({ upp, updateUPP, career, updateCareer, skills, updateSkil
     function attemptCommission(ev) {
         ev.preventDefault();
         const input = ev.target[0];
+        const curCareer = career[career.length-1]; // Get latest career
+
         if (input.checked) {
-            const careerData = CTCAREERS.filter(c => c.name === career.branch)[0];
+            const careerData = CTCAREERS.filter(c => c.name === curCareer.branch)[0];
             const commission = careerData.commission;
 
             const result = applyDMsToRoll(r2d6(), commission.dms, upp);
@@ -85,13 +87,22 @@ function CommissionCT({ upp, updateUPP, career, updateCareer, skills, updateSkil
                 }
 
                 updateLog(newLog);
+
+                // Update current career
+                let newCareer = [...career];
+                newCareer[career.length-1].rank = rank;
+                updateCareer(newCareer);
+
                 onSuccess();
             } else {
+                updateLog([`Sorry, you failed to get a commission in term ${curCareer.term}.`]);
                 onFailure();
             }
         } else {
             onNoAttempt();
         }
+
+        setChecked(true); // Reset `checked`
     }
 
     return (

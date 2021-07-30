@@ -55,7 +55,9 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
                 val = t.value;
             }
         }
-        const careerData = CTCAREERS.filter(c => c.name === career.branch)[0];
+
+        const curCareer = career[career.length-1]; // Get latest career
+        const careerData = CTCAREERS.filter(c => c.name === curCareer.branch)[0];
         const table = careerData[val];
 
         if (val === 'cash') {
@@ -68,7 +70,7 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
             decreaseBenefits();
         } else if (val === 'benefits') {
             // Give travellers of rank 5 or rank 6 a +1 DM on rolls on the benefits table.
-            const benefitsDM = career.rank >= 5 ? 1 : 0;
+            const benefitsDM = curCareer.rank >= 5 ? 1 : 0;
             const benefit = table[Math.min(r1d6() - 1 + benefitsDM, table.length - 1)]; // Cap roll because not every benefit table has enough values.
             // console.log(benefit);
             if (benefit.type === 'WEAPON') {
@@ -158,8 +160,10 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
     // Ranks 3&4 2
     // Ranks 5&6 3
     if (numBenefitRolls === 99) {
+        const curCareer = career[career.length-1]; // Get latest career
         let benefitRollMod = 0;
-        switch (career.rank) {
+        
+        switch (curCareer.rank) {
             case 0: break;
             case 1:
             case 2: benefitRollMod = 1;
@@ -170,10 +174,10 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
             case 5:
             case 6: benefitRollMod = 3;
                 break;
-            default: throw new Error(`career rank ${career.rank} is not in range 0-6!`);
+            default: throw new Error(`career rank ${curCareer.rank} is not in range 0-6!`);
         }
 
-        setNumBenefitRolls(career.term + benefitRollMod);
+        setNumBenefitRolls(curCareer.term + benefitRollMod);
     }
 
     if (weapon === null && skill === null) {

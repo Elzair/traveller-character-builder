@@ -38,11 +38,13 @@ function PromotionCT({ upp, updateUPP, career, updateCareer, skills, updateSkill
     function attemptPromotion(ev) {
         ev.preventDefault();
         const input = ev.target[0];
+        const curCareer = career[career.length-1]; // Get latest career
+
         if (input.checked) {
-            const careerData = CTCAREERS.filter(c => c.name === career.branch)[0];
+            const careerData = CTCAREERS.filter(c => c.name === curCareer.branch)[0];
             const result = applyDMsToRoll(r2d6(), careerData.promotion.dms, upp);
             if (result >= careerData.promotion.target) {
-                let newRank = career.rank + 1;
+                let newRank = curCareer.rank + 1;
                 let newLog = [
                     `Congratulations! You are now a Rank ${newRank} ${careerData.ranks[newRank].name}.`
                 ];
@@ -63,6 +65,11 @@ function PromotionCT({ upp, updateUPP, career, updateCareer, skills, updateSkill
                             }
 
                             updateLog(newLog);
+
+                            let newCareer = [...career];
+                            newCareer[career.length-1].rank += 1;
+                            updateCareer(newCareer);
+
                             onSuccess();
                         } else {
                             updateLog(newLog);
@@ -72,18 +79,27 @@ function PromotionCT({ upp, updateUPP, career, updateCareer, skills, updateSkill
                         let newUPP = {};
                         newUPP[benefit.name] = upp[benefit.name] + benefit.value;
                         updateUPP(newUPP);
-                        newLog.push(`Because of your rank, your ${benefit.name} is now ${newUPP[benefit.name]}.`);
 
+                        newLog.push(`Because of your rank, your ${benefit.name} is now ${newUPP[benefit.name]}.`);
                         updateLog(newLog);
+
+                        let newCareer = [...career];
+                        newCareer[career.length-1].rank += 1;
+                        updateCareer(newCareer);
+
                         onSuccess();
                     }
                 }
             } else {
+                updateLog([`Sorry, you failed to get a promotion in term ${curCareer.term}.`])
                 onFailure();
             }
         } else {
+            updateLog([`You did not attempt a promotion in term ${curCareer.term}.`]);
             onFailure();
         }
+
+        setChecked(true); // Reset `checked`
     }
 
     function handleCascadeSkillSelection(ev) {
@@ -104,8 +120,14 @@ function PromotionCT({ upp, updateUPP, career, updateCareer, skills, updateSkill
                 newSkill[skill] = skills[skill] + cascade.value;
             }
             setCascade(null); // Reset cascade skills.
+
             updateSkills(newSkill);
             updateLog([`You improved your ${skill} to ${newSkill[skill]}.`]);
+            
+            let newCareer = [...career];
+            newCareer[career.length-1].rank += 1;
+            updateCareer(newCareer);
+
             onSuccess();
         }
     }

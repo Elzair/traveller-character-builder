@@ -22,13 +22,13 @@ export function Character({game, name, career, upp, skills, age, credits, items,
 }
 
 function CharacterCT({name, career, upp, skills, age, credits, items}) {
-    const careerName = career !== null ? capitalize(career['branch']) : 'Unemployed';
-    const careerTerms = career !== null ? career['term'] : 0;
+    const careerName = career.length > 0 ? capitalize(career[career.length-1].branch) : 'Unemployed';
+    const careerTerms = career.length > 0 ? career[career.length-1].term : 0;
     
     let rank = '';
     if (careerName !== 'Unemployed') {
-        const careerData = CTCAREERS.filter(c => c.name === career.branch)[0];
-        rank = careerData.ranks[career.rank].name;
+        const careerData = CTCAREERS.filter(c => c.name === career[career.length-1].branch)[0];
+        rank = careerData.ranks[career[career.length-1].rank].name;
     }
 
     let uppStr = Object.entries(upp).map(ent => num2tetra(ent[1])).join('');

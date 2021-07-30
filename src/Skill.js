@@ -48,11 +48,13 @@ function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, 
         // console.log(tbl);
 
         if (tbl !== '') {
+            const curCareer = career[career.length-1]; // Get latest career
+            
             // Give travellers of rank 5 or 6 a +1 DM on skill table.
-            const skillDM = career.rank >= 5 ? 1 : 0;
+            const skillDM = curCareer.rank >= 5 ? 1 : 0;
             
             // Pick a random skill from the skill table.
-            const careerData = CTCAREERS.filter(c => c.name === career.branch)[0];
+            const careerData = CTCAREERS.filter(c => c.name === curCareer.branch)[0];
             const table = careerData[tbl];
             const adv = table[Math.min(r1d6() - 1 + skillDM, 5)];
             // console.log(adv);
@@ -111,8 +113,9 @@ function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, 
     // Otherwise, default to the number of skill rolls give by the career.
     // For each rank the traveller has advanced, give them an extra skill roll.
     if (numSkillRolls === 99) {
-        const careerData = CTCAREERS.filter(c => career.branch === c.name)[0];
-        const numRolls = (career.term === 1 ? 2 : careerData.numSkillsPerTerm) + (career.rank - career.rankPrev);
+        const curCareer = career[career.length-1]; // Get latest career
+        const careerData = CTCAREERS.filter(c => curCareer.branch === c.name)[0];
+        const numRolls = (career.term === 1 ? 2 : careerData.numSkillsPerTerm) + (curCareer.rank - curCareer.rankPrev);
         setNumSkillRolls(numRolls);
     }
 
