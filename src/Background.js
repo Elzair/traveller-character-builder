@@ -6,7 +6,7 @@ import { modCE } from './utils';
 import './Background.css';
 import './default.css';
 
-const DEFAULTSKILLNUM = 99;
+const DEFAULTNUMSKILLSELECTIONS = 99;
 
 export function Background({ game, upp, homeworldUWP, homeworldTradeCodes, skills, updateSkills, display, onFinalized, updateLog }) {
     if (display && game === 'cepheusengine') {
@@ -27,8 +27,8 @@ export function Background({ game, upp, homeworldUWP, homeworldTradeCodes, skill
 }
 
 function BackgroundCE({ upp, homeworldUWP, codes, skills, updateSkills, onFinalized, updateLog }) {
-    let [numBgSkills, setNumBgSkills] = useState(99); // Default to a high number
-    // `checks` and `bgSkills` should be arrays of the same length since they correspond to each other.
+    let [numBgSkillSelections, setNumBgSkillSelections] = useState(99); // Default to a high number
+    // `checks` and `bgSkills` should be arrays of the SAME length since they correspond to each other.
     // If `checks[i]===true` then `bgSkills[i]` has been selected.
     let [checks, setChecks] = useState([]);
     let [bgSkills, setBgSkills] = useState([]);
@@ -36,17 +36,20 @@ function BackgroundCE({ upp, homeworldUWP, codes, skills, updateSkills, onFinali
     function selectSkills() {
         let newSkills = {};
 
+        // Add all skills that have been checked to `newSkills`.
         for (let i=0; i<checks.length; i++) {
             if (checks[i]) {
                 newSkills[bgSkills[i][0]] = bgSkills[i][1];
             }
         }
-        console.log(newSkills);
 
         updateSkills(newSkills);
+
+        // Reset `Background` component
         setChecks([]);
         setBgSkills({});
-        setNumBgSkills(DEFAULTSKILLNUM);
+        setNumBgSkillSelections(DEFAULTNUMSKILLSELECTIONS);
+
         onFinalized();
     }
 
@@ -55,14 +58,16 @@ function BackgroundCE({ upp, homeworldUWP, codes, skills, updateSkills, onFinali
         let newChecks = [...checks];
 
         // Only allow checks if the traveller still has background skills to select
-        if (numBgSkills > 0) {
+        // or the player is deselecting a skill.
+        if (numBgSkillSelections > 0 || newChecks[idx]) {
             newChecks[idx] = !newChecks[idx];
             setChecks(newChecks);
-            setNumBgSkills(newChecks[idx] ? numBgSkills-1 : numBgSkills+1);
+            setNumBgSkillSelections(newChecks[idx] ? numBgSkillSelections-1 : numBgSkillSelections+1);
         }
     }
 
-    if (numBgSkills === DEFAULTSKILLNUM) {
+    // Initialize `Background` component
+    if (numBgSkillSelections === DEFAULTNUMSKILLSELECTIONS) {
         let numSkills = 5 + modCE(upp.Education);
         let backgroundSkills = getSkillListCE(codes, homeworldUWP);
         let newChecks = new Array(backgroundSkills.length);
@@ -70,7 +75,7 @@ function BackgroundCE({ upp, homeworldUWP, codes, skills, updateSkills, onFinali
             newChecks[i] = false;
         }
 
-        setNumBgSkills(numSkills);
+        setNumBgSkillSelections(numSkills);
         setBgSkills(backgroundSkills);
         setChecks(newChecks);
 
@@ -85,10 +90,10 @@ function BackgroundCE({ upp, homeworldUWP, codes, skills, updateSkills, onFinali
 
         return (
             <div className="BackgroundSkills">
-                <p className="Header">{`Select ${numBgSkills} background skills`}</p>
+                <p className="Header">{`Select ${numBgSkillSelections} background skills`}</p>
                 <form className="BackgroundSkills" onSubmit={selectSkills}>
                     {backgroundSkills}
-                    <input className="BackgroundSubmit" type="submit" value="Finalize" disabled={numBgSkills>0} />
+                    <input className="BackgroundSubmit" type="submit" value="Finalize" disabled={numBgSkillSelections>0} />
                 </form>
             </div>
         );
@@ -148,8 +153,8 @@ function getSkillListCE(codes, uwp) {
         backgroundSkills["Broker"] = 0;
     }
 
-    // Turn `backgroundSkills` into a sorted array for easier use.
-    const backSk = Object.entries(backgroundSkills).sort((a, b) => {
+    // Turn `backgroundSkills` from an object into a sorted array for easier use.
+    return Object.entries(backgroundSkills).sort((a, b) => {
         if (a[0].toUpperCase() < b[0].toUpperCase()) {
             return -1;
         } else if (a[0].toUpperCase() > b[0].toUpperCase()) {
@@ -158,7 +163,5 @@ function getSkillListCE(codes, uwp) {
             return 0;
         }
     });
-
-    return backSk;
 }
 
