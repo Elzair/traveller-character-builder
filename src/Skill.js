@@ -115,7 +115,7 @@ function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, 
     if (numSkillRolls === 99) {
         const curCareer = career[career.length-1]; // Get latest career
         const careerData = CTCAREERS.filter(c => curCareer.branch === c.name)[0];
-        const numRolls = (career.term === 1 ? 2 : careerData.numSkillsPerTerm) + (curCareer.rank - curCareer.rankPrev);
+        const numRolls = (curCareer.term === 1 ? 2 : careerData.numSkillsPerTerm) + (curCareer.rank - curCareer.rankPrev);
         setNumSkillRolls(numRolls);
     }
 
