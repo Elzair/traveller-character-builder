@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 // import logo from './logo.svg';
 
@@ -407,10 +407,12 @@ function App() {
 }
 
 function Goodbye({ display, updateLog, onGoodbye }) {
-  if (display) {
-    updateLog(['Happy Travels!']);
-    onGoodbye();
-  }
+  useEffect(() => {
+    if (display) {
+      updateLog(['Happy Travels!']);
+      onGoodbye();
+    }
+  })
   return (
     <div className="blank" />
   );

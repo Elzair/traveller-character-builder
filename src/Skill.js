@@ -63,6 +63,7 @@ function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, 
                 let newChar = {};
                 newChar[adv.name] = upp[adv.name] + adv.value;
                 updateUPP(newChar);
+
                 updateLog([`You have increased your ${adv.name} to ${newChar[adv.name]}.`]);
                 decreaseSkillRolls();
             } else if (adv.type === 'SKILL') {
@@ -74,8 +75,9 @@ function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, 
                     } else {
                         newSkill[adv.name] = skills[adv.name] + adv.value;
                     }
-                    updateLog([`You improved your ${adv.name} to ${newSkill[adv.name]}.`]);
                     updateSkills(newSkill);
+
+                    updateLog([`You improved your ${adv.name} to ${newSkill[adv.name]}.`]);
                     decreaseSkillRolls();
                 } else {
                     setCascade(adv);
@@ -101,10 +103,11 @@ function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, 
             } else {
                 newSkill[skill] = skills[skill] + cascade.value;
             }
-            setCascade(null); // Reset cascade skills.
-            decreaseSkillRolls();
             updateSkills(newSkill);
             updateLog([`You improved your ${skill} to ${newSkill[skill]}.`]);
+            
+            setCascade(null); // Reset cascade skills.
+            decreaseSkillRolls();
         }
     }
 

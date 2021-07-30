@@ -33,8 +33,8 @@ function SurvivalCT({ upp, career, updateCareer, onSurvival, onDeath }) {
 
     const didSurvive = roll >= careerData.survival.target;
 
-    if (didSurvive) {
-        useEffect(() => {
+    useEffect(() => {
+        if (didSurvive) {
             // Increase career `term`
             let term = career[career.length - 1].term + 1;
             // console.log(`Term: ${term}`);
@@ -43,12 +43,10 @@ function SurvivalCT({ upp, career, updateCareer, onSurvival, onDeath }) {
             updateCareer(newCareer);
 
             onSurvival();
-        });
-
-        // onSurvival();
-    } else {
-        onDeath();
-    }
+        } else {
+            onDeath();
+        }
+    });
 
     return (<div></div>)
 }
