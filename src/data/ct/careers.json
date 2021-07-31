@@ -100,8 +100,7 @@
             },
             {
                 "type": "WEAPON",
-                "name": "Blades",
-                "altSkill": "Blade Combat"
+                "name": "Blades"
             },
             {
                 "type": "SPECIAL",
@@ -182,14 +181,12 @@
             {
                 "type": "SKILL",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             }
         ],
         "aet1": [
@@ -359,8 +356,7 @@
             },
             {
                 "type": "WEAPON",
-                "name": "Blades",
-                "altSkill": "Blade Combat"
+                "name": "Blades"
             },
             {
                 "type": "SPECIAL",
@@ -414,16 +410,14 @@
             {
                 "type": "SKILL",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             }
         ],
         "sst": [
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -433,34 +427,29 @@
             {
                 "type": "SKILL",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             }
         ],
         "aet1": [
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -480,14 +469,12 @@
             {
                 "type": "SKILL",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             }
         ],
         "aet2": [
@@ -625,8 +612,7 @@
             },
             {
                 "type": "WEAPON",
-                "name": "Guns",
-                "altSkill": "Gun Combat"
+                "name": "Guns"
             },
             {
                 "type": "ITEM",
@@ -687,8 +673,7 @@
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -698,8 +683,7 @@
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -709,22 +693,19 @@
             {
                 "type": "SKILL",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             }
         ],
         "aet1": [
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -744,14 +725,12 @@
             {
                 "type": "SKILL",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             }
         ],
         "aet2": [
@@ -848,13 +827,11 @@
             },
             {
                 "type": "WEAPON",
-                "name": "Blades",
-                "altSkill": "Blade Combat"
+                "name": "Blades"
             },
             {
                 "type": "WEAPON",
-                "name": "Guns",
-                "altSkill": "Gun Combat"
+                "name": "Guns"
             },
             {
                 "type": "SHIP",
@@ -899,16 +876,14 @@
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             }
         ],
         "sst": [
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -940,8 +915,7 @@
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -1096,13 +1070,11 @@
             },
             {
                 "type": "WEAPON",
-                "name": "Guns",
-                "altSkill": "Gun Combat"
+                "name": "Guns"
             },
             {
                 "type": "WEAPON",
-                "name": "Blades",
-                "altSkill": "Blade Combat"
+                "name": "Blades"
             },
             {
                 "type": "ITEM",
@@ -1146,8 +1118,7 @@
             {
                 "type": "SKILL",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -1159,8 +1130,7 @@
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -1185,8 +1155,7 @@
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             }
         ],
         "aet1": [
@@ -1299,13 +1268,11 @@
             },
             {
                 "type": "WEAPON",
-                "name": "Guns",
-                "altSkill": "Gun Combat"
+                "name": "Guns"
             },
             {
                 "type": "WEAPON",
-                "name": "Blades",
-                "altSkill": "Blade Combat"
+                "name": "Blades"
             },
             {
                 "type": "ITEM",
@@ -1340,8 +1307,7 @@
             {
                 "type": "SKILL",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -1358,8 +1324,7 @@
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -1379,14 +1344,12 @@
             {
                 "type": "SKILL",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             }
         ],
         "aet1": [
@@ -1605,16 +1568,14 @@
             {
                 "type": "Skill",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             }
         ],
         "sst": [
             {
                 "type": "Skill",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -1624,8 +1585,7 @@
             {
                 "type": "Skill",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -1640,8 +1600,7 @@
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             }
         ],
         "aet1": [
@@ -2066,8 +2025,7 @@
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -2082,14 +2040,12 @@
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -2138,8 +2094,7 @@
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -2303,14 +2258,12 @@
             {
                 "type": "SKILL",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -2332,14 +2285,12 @@
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -2558,8 +2509,7 @@
             {
                 "type": "SKILL",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             }
         ],
         "aet1": [
@@ -2793,26 +2743,22 @@
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             }
         ],
         "aet1": [
@@ -2839,8 +2785,7 @@
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -3049,40 +2994,34 @@
             {
                 "type": "SKILL",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Bow Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Bow Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             }
         ],
         "aet1": [
             {
                 "type": "SKILL",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -3107,8 +3046,7 @@
             {
                 "type": "SKILL",
                 "name": "Bow Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             }
         ],
         "aet2": [
@@ -3294,20 +3232,17 @@
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -3317,8 +3252,7 @@
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "CHARACTERISTIC",
@@ -3335,8 +3269,7 @@
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -3448,13 +3381,11 @@
             },
             {
                 "type": "WEAPON",
-                "name": "Guns",
-                "altSkill": "Gun Combat"
+                "name": "Guns"
             },
             {
                 "type": "WEAPON",
-                "name": "Blades",
-                "altSkill": "Blade Combat"
+                "name": "Blades"
             },
             {
                 "type": "ITEM",
@@ -3510,14 +3441,12 @@
             {
                 "type": "SKILL",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -3527,8 +3456,7 @@
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "CHARACTERISTIC",
@@ -3538,8 +3466,7 @@
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             }
         ],
         "aet1": [
@@ -3713,13 +3640,11 @@
             },
             {
                 "type": "WEAPON",
-                "name": "Guns",
-                "altSkill": "Gun Combat"
+                "name": "Guns"
             },
             {
                 "type": "WEAPON",
-                "name": "Blades",
-                "altSkill": "Blade Combat"
+                "name": "Blades"
             },
             {
                 "type": "SPECIAL",
@@ -3775,14 +3700,12 @@
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -3792,8 +3715,7 @@
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -3820,8 +3742,7 @@
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -3935,8 +3856,7 @@
             },
             {
                 "type": "WEAPON",
-                "name": "Guns",
-                "altSkill": "Gun Combat"
+                "name": "Guns"
             },
             {
                 "type": "SHIP",
@@ -3988,20 +3908,17 @@
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Vehicle",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
@@ -4186,28 +4103,24 @@
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             }
         ],
         "sst": [
             {
                 "type": "SKILL",
                 "name": "Gun Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",
                 "name": "Blade Combat",
-                "value": 1,
-                "cascade": true
+                "value": 1
             },
             {
                 "type": "SKILL",

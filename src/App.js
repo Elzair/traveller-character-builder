@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import './App.css';
 
-import { capitalize, num2tetra, r2d6, updateObject } from './utils';
+import { num2tetra, r2d6, updateObject } from './utils';
 
 import { Game } from './Game';
 import { UPP } from './UPP';
@@ -43,15 +43,15 @@ const STEPS = [
 
 function App() {
   let [step, setStep] = useState('GAME');
+  let [game, setGame] = useState("classic");
+  let [options, setOptions] = useState({ rearrangeCharacteristics: false, });
+  let [name, setName] = useState('');
   let [upp, setUPP] = useState(generateUPP());
   // let [homeworldName, setHomeworldName] = useState('');
   let [homeworldUWP, setHomeworldUWP] = useState(generateUWP());
   let [homeworldTradeCodes, setHomeworldTradeCodes] = useState([]);
-  let [name, setName] = useState('');
-  let [game, setGame] = useState("classic");
-  let [options, setOptions] = useState({ rearrangeCharacteristics: false, });
-  let [career, setCareer] = useState([]);
   let [skills, setSkills] = useState({});
+  let [career, setCareer] = useState([]);
   let [age, setAge] = useState(18);
   let [credits, setCredits] = useState(0);
   let [items, setItems] = useState({});
@@ -105,7 +105,7 @@ function App() {
     setLog(newLog);
   }
 
-  // Finish Step Options
+  // Step Transition Functions
   function finishGameOptions(game, name) {
     updateLog([`You have selected ${game}.`, `Your name is ${name}.`]);
     setStep('UPP');
@@ -129,16 +129,6 @@ function App() {
   function selectBackgroundSkills() {
     setStep('CAREER');
   }
-
-  // function enlisted({branch, term, rank}) {
-  //   updateCareer({branch, term, rank, drafted: false, rankPrev: 0});
-  //   setStep('SURVIVAL');
-  // }
-
-  // function drafted({branch, failedBranch, term, rank}) {
-  //   updateCareer({branch, term, rank, drafted: true, rankPrev: 0});
-  //   setStep('SURVIVAL');
-  // }
 
   function enlisted() {
     setStep('SURVIVAL');
