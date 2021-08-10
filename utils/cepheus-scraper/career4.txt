@@ -1,0 +1,59 @@
+Career 	Pirate 	Rogue 	Scientist 	Scout 	Surface Defense 	Technician
+Qualifications 	Dex 5+ 	Dex 5+ 	Edu 6+ 	Int 6+ 	End 5+ 	Edu 6+
+Survival 	Dex 6+ 	Dex 4+ 	Edu 5+ 	End 7+ 	Edu 5+ 	Dex 4+
+Commission 	Str 7+ 	Str 6+ 	Int 7+ 	— 	End 6+ 	Edu 5+
+Advancement 	Int 6+ 	Int 7+ 	Int 6+ 	— 	Edu 7+ 	Int 8+
+Re-enlistment 	5+ 	4+ 	5+ 	6+ 	5+ 	5+
+Ranks and Skills 	Pirate 	Rogue 	Scientist 	Scout 	Surface Defense 	Technician
+0 	Crewman [Gunnery-1] 	Independent [Streetwise-1] 	Instructor [Sciences-1] 	[Pilot-1] 	Private [Gun Combat-1] 	Technician [Computer-1]
+1 	Corporal 	Associate 	Adjunct Professor 	— 	Lieutenant 	Team Lead
+2 	Lieutenant [Pilot-1] 	Soldier [Gun Combat-1] 	Research Professor 	— 	Captain 	Supervisor
+3 	Lt Commander 	Lieutenant 	Assistant Professor [Computer-1] 	— 	Major [Leadership-1] 	Manager
+4 	Commander 	Underboss 	Associate Professor 	— 	Lt Colonel 	Director [Admin-1]
+5 	Captain 	Consigliere 	Professor 	— 	Colonel 	Vice-President
+6 	Commodore 	Boss 	Distinguished Professor 	— 	General 	Executive Officer
+Material Benefits 	Pirate 	Rogue 	Scientist 	Scout 	Surface Defense 	Technician
+1 	Low Passage 	Low Passage 	Low Passage 	Low Passage 	Low Passage 	Low Passage
+2 	+1 Int 	+1 Int 	+1 Edu 	+1 Edu 	+1 Int 	+1 Edu
+3 	Weapon 	Weapon 	+1 Int 	Weapon 	Weapon 	+1 Int
+4 	High Passage 	Mid Passage 	Mid Passage 	Mid Passage 	Mid Passage 	Mid Passage
+5 	+1 Soc 	Weapon 	+1 Soc 	Explorers' Society 	Weapon 	Mid Passage
+6 	High Passage 	High Passage 	High Passage 	Courier Vessel 	High Passage 	High Passage
+7 	1D6 Ship Shares 	+1 Soc 	Research Vessel 	— 	+1 Soc 	+1 Soc
+Cash Benefits 	Pirate 	Rogue 	Scientist 	Scout 	Surface Defense 	Technician
+1 	1000 	1000 	1000 	1000 	1000 	1000
+2 	5000 	5000 	5000 	5000 	5000 	5000
+3 	10000 	5000 	10000 	10000 	10000 	10000
+4 	20000 	5000 	10000 	10000 	10000 	10000
+5 	20000 	10000 	20000 	20000 	20000 	20000
+6 	50000 	20000 	50000 	50000 	50000 	50000
+7 	100000 	50000 	50000 	50000 	50000 	50000
+Skills and Training
+Personal Development 	Pirate 	Rogue 	Scientist 	Scout 	Surface Defense 	Technician
+1 	+1 Str 	+1 Str 	+1 Str 	+1 Str 	+1 Str 	+1 Str
+2 	+1 Dex 	+1 Dex 	+1 Dex 	+1 Dex 	+1 Dex 	+1 Dex
+3 	+1 End 	+1 End 	+1 End 	+1 End 	+1 End 	+1 End
+4 	Melee Combat 	Melee Combat 	+1 Int 	Jack o' Trades 	Athletics 	+1 Int
+5 	Bribery 	Bribery 	+1 Edu 	+1 Edu 	Melee Combat 	+1 Edu
+6 	Gambling 	Gambling 	Gun Combat 	Melee Combat 	Vehicle 	Gun Combat
+Service Skills 	Pirate 	Rogue 	Scientist 	Scout 	Surface Defense 	Technician
+1 	Streetwise 	Streetwise 	Admin 	Comms 	Mechanics 	Admin
+2 	Electronics 	Mechanics 	Computer 	Electronics 	Gun Combat 	Computer
+3 	Gun Combat 	Gun Combat 	Electronics 	Gun Combat 	Gunnery 	Mechanics
+4 	Melee Combat 	Melee Combat 	Medicine 	Gunnery 	Melee Combat 	Medicine
+5 	Recon 	Recon 	Bribery 	Recon 	Recon 	Electronics
+6 	Vehicle 	Vehicle 	Sciences 	Piloting 	Battle Dress 	Sciences
+Specialist 	Pirate 	Rogue 	Scientist 	Scout 	Surface Defense 	Technician
+1 	Zero-G 	Computer 	Navigation 	Engineering 	Comms 	Computer
+2 	Comms 	Electronics 	Admin 	Gunnery 	Demolitions 	Electronics
+3 	Engineering 	Bribery 	Sciences 	Demolitions 	Gun Combat 	Gravitics
+4 	Gunnery 	Broker 	Sciences 	Navigation 	Melee Combat 	Linguistics
+5 	Navigation 	Recon 	Animals 	Medicine 	Survival 	Engineering
+6 	Piloting 	Vehicle 	Vehicle 	Vehicle 	Vehicle 	Animals
+Adv Education 	Pirate 	Rogue 	Scientist 	Scout 	Surface Defense 	Technician
+1 	Computer 	Computer 	Advocate 	Advocate 	Advocate 	Advocate
+2 	Gravitics 	Gravitics 	Computer 	Computer 	Computer 	Computer
+3 	Jack o' Trades 	Jack o' Trades 	Jack o' Trades 	Linguistics 	Jack o' Trades 	Jack o' Trades
+4 	Medicine 	Medicine 	Linguistics 	Medicine 	Medicine 	Linguistics
+5 	Advocate 	Advocate 	Medicine 	Navigation 	Leadership 	Medicine
+6 	Tactics 	Tactics 	Sciences 	Tactics 	Tactics 	Sciences

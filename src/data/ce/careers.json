@@ -1,0 +1,5257 @@
+[
+    {
+        "name": "athlete",
+        "description": "Individual that has achieved celebrity status for their proficiency in sports and other forms of physical exercise.",
+        "draftNumber": -1,
+        "enlistment": {
+            "characteristic": "Endurance",
+            "target": 8
+        },
+        "survival": {
+            "characteristic": "Dexterity",
+            "target": 5
+        },
+        "commission": null,
+        "numSkillsPerTerm": 2,
+        "promotion": null,
+        "reenlist": {
+            "target": 6
+        },
+        "ranks": [
+            {
+                "name": "athlete",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Athletics",
+                    "value": 1
+                }
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "SPECIAL",
+                "name": "Explorers' Society"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "NOTHING"
+            }
+        ],
+        "cash": [
+            2000,
+            10000,
+            20000,
+            20000,
+            50000,
+            100000,
+            100000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Athletics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Admin",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gambling",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Zero-G",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Athletics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Athletics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Leadership",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gambling",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Liaison",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Linguistics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Sciences",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "aerospace defense",
+        "description": "Member of a planetary armed military force operating within a world's atmosphere and close orbit. Also known as the \"planetary air force\".",
+        "draftNumber": -1,
+        "enlistment": {
+            "characteristic": "Endurance",
+            "target": 5
+        },
+        "survival": {
+            "characteristic": "Dexterity",
+            "target": 5
+        },
+        "commission": {
+            "characteristic": "Education",
+            "target": 6
+        },
+        "numSkillsPerTerm": 1,
+        "promotion": {
+            "characteristic": "Education",
+            "target": 7
+        },
+        "reenlist": {
+            "target": 5
+        },
+        "ranks": [
+            {
+                "name": "Airman",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Aircraft",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Flight Officer"
+            },
+            {
+                "name": "Flight Lieutenant"
+            },
+            {
+                "name": "Squadron Leader",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Leadership",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Wing Commander"
+            },
+            {
+                "name": "Group Captain"
+            },
+            {
+                "name": "Air Commodore"
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage"
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            }
+        ],
+        "cash": [
+            1000,
+            5000,
+            10000,
+            10000,
+            20000,
+            50000,
+            50000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Athletics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Electronics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gunnery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Survival",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Aircraft",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Comms",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gravitics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gunnery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Recon",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Piloting",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Jack o' Trades",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Leadership",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Tactics",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "agent",
+        "description": "Individual that secretly collects and reports information on the activities, movements and plans of a political or corporate enemy or competitor. Also known as a spy or intelligence operative.",
+        "draftNumber": -1,
+        "enlistment": {
+            "characteristic": "Social",
+            "target": 6
+        },
+        "survival": {
+            "characteristic": "Intellect",
+            "target": 6
+        },
+        "commission": {
+            "characteristic": "Education",
+            "target": 7
+        },
+        "numSkillsPerTerm": 1,
+        "promotion": {
+            "characteristic": "Education",
+            "target": 6
+        },
+        "reenlist": {
+            "target": 6
+        },
+        "ranks": [
+            {
+                "name": "Agent",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Streetwise",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Special Agent"
+            },
+            {
+                "name": "Sp Agent in Charge"
+            },
+            {
+                "name": "Unit Chief"
+            },
+            {
+                "name": "Section Chief",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Admin",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Assistant Directory"
+            },
+            {
+                "name": "Director"
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "SPECIAL",
+                "name": "Explorers' Society"
+            }
+        ],
+        "cash": [
+            1000,
+            5000,
+            10000,
+            10000,
+            20000,
+            50000,
+            50000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Athletics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Admin",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Streetwise",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Bribery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Leadership",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Bribery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Leadership",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Recon",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Survival",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Liaison",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Linguistics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Leadership",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "barbarian",
+        "description": "Individual from a primitive world (TL4 or less) capable of surviving on their world without support from a technologically advanced civilization.",
+        "draftNumber": -1,
+        "enlistment": {
+            "characteristic": "Endurance",
+            "target": 5
+        },
+        "survival": {
+            "characteristic": "Strength",
+            "target": 6
+        },
+        "commission": null,
+        "numSkillsPerTerm": 2,
+        "promotion": null,
+        "reenlist": {
+            "target": 5
+        },
+        "ranks": [
+            {
+                "name": "barbarian",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Melee Combat",
+                    "value": 1
+                }
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage"
+            },
+            {
+                "type": "NOTHING"
+            }
+        ],
+        "cash": [
+            0,
+            1000,
+            2000,
+            5000,
+            5000,
+            10000,
+            10000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Athletics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Mechanics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Recon",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Survival",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Animals",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Jack o' Trades",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Recon",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Animals",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Tactics",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Linguistics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Leadership",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Tactics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Broker",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "belter",
+        "description": "Individual that explores asteroid belts in search of mineral deposits and salvageable material for profit.",
+        "draftNumber": -1,
+        "enlistment": {
+            "characteristic": "Intellect",
+            "target": 4
+        },
+        "survival": {
+            "characteristic": "Dexterity",
+            "target": 7
+        },
+        "commission": null,
+        "numSkillsPerTerm": 2,
+        "promotion": null,
+        "reenlist": {
+            "target": 5
+        },
+        "ranks": [
+            {
+                "name": "belter",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Zero-G",
+                    "value": 1
+                }
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage"
+            },
+            {
+                "type": "SHIPSHARE",
+                "name": "Ship Shares",
+                "value": {
+                    "num": 1,
+                    "dice": 6
+                }
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "NOTHING"
+            }
+        ],
+        "cash": [
+            1000,
+            5000,
+            5000,
+            5000,
+            10000,
+            20000,
+            50000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Zero-G",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gambling",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Comms",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Demolitions",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gunnery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Prospecting",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Piloting",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Zero-G",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Electronics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Prospecting",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Sciences",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Engineering",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Navigation",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Comms",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Tactics",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "bureaucrat",
+        "description": "Official in a government department, charged with following the details of administrative process.",
+        "draftNumber": -1,
+        "enlistment": {
+            "characteristic": "Social",
+            "target": 6
+        },
+        "survival": {
+            "characteristic": "Education",
+            "target": 4
+        },
+        "commission": {
+            "characteristic": "Social",
+            "target": 5
+        },
+        "numSkillsPerTerm": 1,
+        "promotion": {
+            "characteristic": "Intellect",
+            "target": 8
+        },
+        "reenlist": {
+            "target": 5
+        },
+        "ranks": [
+            {
+                "name": "Assistant",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Admin",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Clerk"
+            },
+            {
+                "name": "Supervisor"
+            },
+            {
+                "name": "Manager"
+            },
+            {
+                "name": "Chief",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Advocate",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Director"
+            },
+            {
+                "name": "Minister"
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage"
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            }
+        ],
+        "cash": [
+            1000,
+            5000,
+            10000,
+            10000,
+            20000,
+            50000,
+            50000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Athletics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Admin",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Bribery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Leadership",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Admin",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Perception",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Leadership",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Steward",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Liaison",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Linguistics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Admin",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "colonist",
+        "description": "Individual that moves to a new world or settles in a new planetary colony.",
+        "draftNumber": -1,
+        "enlistment": {
+            "characteristic": "Endurance",
+            "target": 5
+        },
+        "survival": {
+            "characteristic": "Endurance",
+            "target": 6
+        },
+        "commission": {
+            "characteristic": "Intellect",
+            "target": 7
+        },
+        "numSkillsPerTerm": 1,
+        "promotion": {
+            "characteristic": "Education",
+            "target": 6
+        },
+        "reenlist": {
+            "target": 5
+        },
+        "ranks": [
+            {
+                "name": "Citizen",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Survival",
+                    "value": 1
+                }
+            },
+            {
+                "name": "District Leader"
+            },
+            {
+                "name": "District Delegate"
+            },
+            {
+                "name": "Council Advisor",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Liaision",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Councilor"
+            },
+            {
+                "name": "Lieutenant Governor"
+            },
+            {
+                "name": "Governor"
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage"
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            }
+        ],
+        "cash": [
+            1000,
+            5000,
+            5000,
+            5000,
+            10000,
+            20000,
+            50000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Athletics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Mechanics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Animals",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Electronics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Survival",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Athletics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Jack o' Trades",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Engineering",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Animals",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Linguistics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Liaison",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Admin",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Animals",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "diplomat",
+        "description": "Individual that is appointed by a planetary or interstellar government to conduct official negotiations and maintain political, economic and social relations with another polity or polities.",
+        "draftNumber": -1,
+        "enlistment": {
+            "characteristic": "Social",
+            "target": 6
+        },
+        "survival": {
+            "characteristic": "Education",
+            "target": 5
+        },
+        "commission": {
+            "characteristic": "Intellect",
+            "target": 7
+        },
+        "numSkillsPerTerm": 1,
+        "promotion": {
+            "characteristic": "Social",
+            "target": 7
+        },
+        "reenlist": {
+            "target": 5
+        },
+        "ranks": [
+            {
+                "name": "Attaché",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Liaison",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Third Secretary"
+            },
+            {
+                "name": "Second Secretary"
+            },
+            {
+                "name": "First Secretary",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Admin",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Counselor"
+            },
+            {
+                "name": "Minister"
+            },
+            {
+                "name": "Ambassador"
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "SPECIAL",
+                "name": "Explorers' Society"
+            }
+        ],
+        "cash": [
+            1000,
+            5000,
+            10000,
+            20000,
+            20000,
+            50000,
+            100000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Athletics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Admin",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Bribery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Liaison",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Linguistics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Bribery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Liaison",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Steward",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Liaison",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Linguistics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Leadership",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "drifter",
+        "description": "Individual that continually moves from place to place, without any fixed home or job.",
+        "draftNumber": -1,
+        "enlistment": {
+            "characteristic": "Dexterity",
+            "target": 5
+        },
+        "survival": {
+            "characteristic": "Endurance",
+            "target": 5
+        },
+        "commission": null,
+        "numSkillsPerTerm": 2,
+        "promotion": null,
+        "reenlist": {
+            "target": 5
+        },
+        "ranks": [
+            {
+                "name": "drifter"
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage"
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage"
+            },
+            {
+                "type": "NOTHING"
+            }
+        ],
+        "cash": [
+            0,
+            1000,
+            2000,
+            5000,
+            5000,
+            10000,
+            10000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Bribery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gambling",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Streetwise",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Mechanics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Recon",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Electronics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Bribery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Streetwise",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gambling",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Recon",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Engineering",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Jack o' Trades",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Liaison",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Tactics",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "entertainer",
+        "description": "Individual that has achieved celebrity status for their proficiency in publicly entertaining others.",
+        "draftNumber": -1,
+        "enlistment": {
+            "characteristic": "Social",
+            "target": 8
+        },
+        "survival": {
+            "characteristic": "Intellect",
+            "target": 4
+        },
+        "commission": null,
+        "numSkillsPerTerm": 2,
+        "promotion": null,
+        "reenlist": {
+            "target": 6
+        },
+        "ranks": [
+            {
+                "name": "entertainer",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Carousing",
+                    "value": 1
+                }
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "SPECIAL",
+                "name": "Explorers' Society"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "NOTHING"
+            }
+        ],
+        "cash": [
+            2000,
+            10000,
+            20000,
+            20000,
+            50000,
+            100000,
+            100000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Athletics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Admin",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Bribery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gambling",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Bribery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Liaison",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gambling",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Recon",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Linguistics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Sciences",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "hunter",
+        "description": "Individual that kills or traps large game, almost always large terrestrial mammals, for meat, other animal by-products (such as horn or bone), trophy or sport.",
+        "draftNumber": -1,
+        "enlistment": {
+            "characteristic": "Endurance",
+            "target": 5
+        },
+        "survival": {
+            "characteristic": "Strength",
+            "target": 8
+        },
+        "commission": null,
+        "numSkillsPerTerm": 2,
+        "promotion": null,
+        "reenlist": {
+            "target": 6
+        },
+        "ranks": [
+            {
+                "name": "hunter",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Survival",
+                    "value": 1
+                }
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "SHIPSHARE",
+                "name": "Ship Shares",
+                "value": {
+                    "num": 1,
+                    "dice": 6
+                }
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "NOTHING"
+            }
+        ],
+        "cash": [
+            1000,
+            5000,
+            10000,
+            20000,
+            20000,
+            50000,
+            100000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Athletics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Mechanics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Recon",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Survival",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Admin",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Comms",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Electronics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Recon",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Animals",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Linguistics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Liaison",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Tactics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Animals",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "marine",
+        "description": "Member of an interstellar armed military force trained to serve in a variety of environments, often carried on board starships as an adjunct to an interstellar navy. Also known as the \"space marines\".",
+        "draftNumber": 2,
+        "enlistment": {
+            "characteristic": "Intellect",
+            "target": 6
+        },
+        "survival": {
+            "characteristic": "Endurance",
+            "target": 6
+        },
+        "commission": {
+            "characteristic": "Education",
+            "target": 6
+        },
+        "numSkillsPerTerm": 1,
+        "promotion": {
+            "characteristic": "Social",
+            "target": 7
+        },
+        "reenlist": {
+            "target": 6
+        },
+        "ranks": [
+            {
+                "name": "Trooper",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Zero-G",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Lieutenant"
+            },
+            {
+                "name": "Captain"
+            },
+            {
+                "name": "Major",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Tactics",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Lt Colonel"
+            },
+            {
+                "name": "Colonel"
+            },
+            {
+                "name": "Brigadier"
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "SPECIAL",
+                "name": "Explorers' Society"
+            }
+        ],
+        "cash": [
+            1000,
+            5000,
+            10000,
+            10000,
+            20000,
+            50000,
+            50000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Comms",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Demolitions",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gunnery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Battle Dress",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Electronics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Survival",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Recon",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gravitics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Navigation",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Tactics",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "maritime defense",
+        "description": "Member of a planetary armed military force operating within and on the surface of a world's oceans. Also known as the \"planetary wet navy\".",
+        "draftNumber": 3,
+        "enlistment": {
+            "characteristic": "Endurance",
+            "target": 5
+        },
+        "survival": {
+            "characteristic": "Endurance",
+            "target": 5
+        },
+        "commission": {
+            "characteristic": "Intellect",
+            "target": 6
+        },
+        "numSkillsPerTerm": 1,
+        "promotion": {
+            "characteristic": "Education",
+            "target": 7
+        },
+        "reenlist": {
+            "target": 5
+        },
+        "ranks": [
+            {
+                "name": "Seaman",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Watercraft",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Ensign"
+            },
+            {
+                "name": "Lieutenant"
+            },
+            {
+                "name": "Lt Commander",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Leadership",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Commander"
+            },
+            {
+                "name": "Captain"
+            },
+            {
+                "name": "Admiral"
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage"
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            }
+        ],
+        "cash": [
+            1000,
+            5000,
+            10000,
+            10000,
+            20000,
+            50000,
+            50000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Athletics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Mechanics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gunnery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Survival",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Watercraft",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Comms",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Electronics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Demolitions",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Recon",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Watercraft",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Jack o' Trades",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Leadership",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Tactics",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "mercenary",
+        "description": "Professional soldier hired to serve in a foreign military force or perform a specific military action.",
+        "draftNumber": -1,
+        "enlistment": {
+            "characteristic": "Intellect",
+            "target": 4
+        },
+        "survival": {
+            "characteristic": "Endurance",
+            "target": 6
+        },
+        "commission": {
+            "characteristic": "Intellect",
+            "target": 7
+        },
+        "numSkillsPerTerm": 1,
+        "promotion": {
+            "characteristic": "Intellect",
+            "target": 6
+        },
+        "reenlist": {
+            "target": 5
+        },
+        "ranks": [
+            {
+                "name": "Private",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Gun Combat",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Lieutenant"
+            },
+            {
+                "name": "Captain"
+            },
+            {
+                "name": "Major",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Tactics",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Lt Colonel"
+            },
+            {
+                "name": "Colonel"
+            },
+            {
+                "name": "Brigadier"
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "SHIPSHARE",
+                "name": "Ship Shares",
+                "value": {
+                    "num": 1,
+                    "dice": 6
+                }
+            }
+        ],
+        "cash": [
+            1000,
+            5000,
+            10000,
+            20000,
+            20000,
+            50000,
+            100000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Zero-G",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gambling",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Comms",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Mechanics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gambling",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Battle Dress",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Gravitics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gunnery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Recon",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Engineering",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Navigation",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Sciences",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Tactics",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "merchant",
+        "description": "Individual involved in wholesale interstellar trade, particularly between individual worlds or polities.",
+        "draftNumber": -1,
+        "enlistment": {
+            "characteristic": "Intellect",
+            "target": 4
+        },
+        "survival": {
+            "characteristic": "Intellect",
+            "target": 5
+        },
+        "commission": {
+            "characteristic": "Intellect",
+            "target": 5
+        },
+        "numSkillsPerTerm": 1,
+        "promotion": {
+            "characteristic": "Education",
+            "target": 8
+        },
+        "reenlist": {
+            "target": 4
+        },
+        "ranks": [
+            {
+                "name": "Crewman",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Steward",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Deck Cadet"
+            },
+            {
+                "name": "Fourth Officer"
+            },
+            {
+                "name": "Third Officer",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Pilot",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Second Officer"
+            },
+            {
+                "name": "First Officer"
+            },
+            {
+                "name": "Captain"
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "SHIPSHARE",
+                "name": "Ship Shares",
+                "value": {
+                    "num": 1,
+                    "dice": 6
+                }
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "SPECIAL",
+                "name": "Explorers' Society"
+            }
+        ],
+        "cash": [
+            1000,
+            5000,
+            10000,
+            20000,
+            20000,
+            50000,
+            100000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Zero-G",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Steward",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Comms",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Engineering",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Broker",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gunnery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Jack o' Trades",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Navigation",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Piloting",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Engineering",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Navigation",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Sciences",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Tactics",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "navy",
+        "description": "Member of an interstellar armed military force that conducts military operations in interplanetary or interstellar space. Also known as the \"space navy\".",
+        "draftNumber": 4,
+        "enlistment": {
+            "characteristic": "Intellect",
+            "target": 6
+        },
+        "survival": {
+            "characteristic": "Intellect",
+            "target": 5
+        },
+        "commission": {
+            "characteristic": "Social",
+            "target": 7
+        },
+        "numSkillsPerTerm": 1,
+        "promotion": {
+            "characteristic": "Education",
+            "target": 6
+        },
+        "reenlist": {
+            "target": 5
+        },
+        "ranks": [
+            {
+                "name": "Starman",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Zero-G",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Midshipman"
+            },
+            {
+                "name": "Lieutenant"
+            },
+            {
+                "name": "Lt Commander",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Tactics",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Commander"
+            },
+            {
+                "name": "Captain"
+            },
+            {
+                "name": "Commodore"
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "SPECIAL",
+                "name": "Explorers' Society"
+            }
+        ],
+        "cash": [
+            1000,
+            5000,
+            10000,
+            10000,
+            20000,
+            50000,
+            50000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Comms",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Engineering",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gunnery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Gravitics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Jack o' Trades",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Navigation",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Leadership",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Piloting",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Engineering",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Navigation",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Tactics",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "noble",
+        "description": "Member of an elite upper class, having high social or political status.",
+        "draftNumber": -1,
+        "enlistment": {
+            "characteristic": "Social",
+            "target": 8
+        },
+        "survival": {
+            "characteristic": "Social",
+            "target": 4
+        },
+        "commission": {
+            "characteristic": "Education",
+            "target": 5
+        },
+        "numSkillsPerTerm": 1,
+        "promotion": {
+            "characteristic": "Intellect",
+            "target": 8
+        },
+        "reenlist": {
+            "target": 6
+        },
+        "ranks": [
+            {
+                "name": "Courtier",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Carousing",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Knight"
+            },
+            {
+                "name": "Baron"
+            },
+            {
+                "name": "Marquis"
+            },
+            {
+                "name": "Count",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Advocate",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Duke"
+            },
+            {
+                "name": "Archduke"
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "SPECIAL",
+                "name": "Explorers' Society"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "SHIPSHARE",
+                "name": "Ship Shares",
+                "value": {
+                    "num": 1,
+                    "dice": 6
+                }
+            }
+        ],
+        "cash": [
+            2000,
+            10000,
+            20000,
+            20000,
+            50000,
+            100000,
+            100000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Athletics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Admin",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Leadership",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gambling",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Liaison",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Animals",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Liaison",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Linguistics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Sciences",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "physician",
+        "description": "Individual that is skilled in the science of medicine and is trained and licensed to treat sick and injured people.",
+        "draftNumber": -1,
+        "enlistment": {
+            "characteristic": "Education",
+            "target": 6
+        },
+        "survival": {
+            "characteristic": "Intellect",
+            "target": 4
+        },
+        "commission": {
+            "characteristic": "Intellect",
+            "target": 5
+        },
+        "numSkillsPerTerm": 1,
+        "promotion": {
+            "characteristic": "Education",
+            "target": 8
+        },
+        "reenlist": {
+            "target": 5
+        },
+        "ranks": [
+            {
+                "name": "Intern",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Medicine",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Resident"
+            },
+            {
+                "name": "Senior Resident"
+            },
+            {
+                "name": "Chief Resident"
+            },
+            {
+                "name": "Attending Phys.",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Admin",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Service Chief"
+            },
+            {
+                "name": "Hospital Admin."
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "SPECIAL",
+                "name": "Explorers' Society"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            }
+        ],
+        "cash": [
+            2000,
+            10000,
+            20000,
+            20000,
+            50000,
+            100000,
+            100000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Admin",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Mechanics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Leadership",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Sciences",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Carousing",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Electronics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Sciences",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Jack o' Trades",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Linguistics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Sciences",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "pirate",
+        "description": "Individual that attacks and steals from interplanetary and interstellar ships in space.",
+        "draftNumber": -1,
+        "enlistment": {
+            "characteristic": "Dexterity",
+            "target": 5
+        },
+        "survival": {
+            "characteristic": "Dexterity",
+            "target": 6
+        },
+        "commission": {
+            "characteristic": "Strength",
+            "target": 7
+        },
+        "numSkillsPerTerm": 1,
+        "promotion": {
+            "characteristic": "Intellect",
+            "target": 6
+        },
+        "reenlist": {
+            "target": 5
+        },
+        "ranks": [
+            {
+                "name": "Crewman",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Gunnery",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Corporal"
+            },
+            {
+                "name": "Lieutenant",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Pilot",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Lt Commander"
+            },
+            {
+                "name": "Commander"
+            },
+            {
+                "name": "Captain"
+            },
+            {
+                "name": "Commodore"
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "SHIPSHARE",
+                "name": "Ship Shares",
+                "value": {
+                    "num": 1,
+                    "dice": 6
+                }
+            }
+        ],
+        "cash": [
+            1000,
+            5000,
+            10000,
+            20000,
+            20000,
+            50000,
+            100000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Bribery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gambling",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Streetwise",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Electronics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Recon",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Zero-G",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Comms",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Engineering",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gunnery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Navigation",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Piloting",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gravitics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Jack o' Trades",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Tactics",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "rogue",
+        "description": "Individual that makes their living through illicit means.",
+        "draftNumber": -1,
+        "enlistment": {
+            "characteristic": "Dexterity",
+            "target": 5
+        },
+        "survival": {
+            "characteristic": "Dexterity",
+            "target": 4
+        },
+        "commission": {
+            "characteristic": "Strength",
+            "target": 6
+        },
+        "numSkillsPerTerm": 1,
+        "promotion": {
+            "characteristic": "Intellect",
+            "target": 7
+        },
+        "reenlist": {
+            "target": 4
+        },
+        "ranks": [
+            {
+                "name": "Independent",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Streetwise",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Associate"
+            },
+            {
+                "name": "Soldier",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Gun Combat",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Lieutenant"
+            },
+            {
+                "name": "Underboss"
+            },
+            {
+                "name": "Consigliere"
+            },
+            {
+                "name": "Boss"
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage"
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            }
+        ],
+        "cash": [
+            1000,
+            5000,
+            5000,
+            5000,
+            10000,
+            20000,
+            50000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Bribery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gambling",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Streetwise",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Mechanics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Recon",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Electronics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Bribery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Broker",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Recon",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gravitics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Jack o' Trades",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Tactics",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "scientist",
+        "description": "Individual that is engaged in and has expert knowledge of a science, especially a biological or physical science.",
+        "draftNumber": -1,
+        "enlistment": {
+            "characteristic": "Education",
+            "target": 6
+        },
+        "survival": {
+            "characteristic": "Education",
+            "target": 5
+        },
+        "commission": {
+            "characteristic": "Intellect",
+            "target": 7
+        },
+        "numSkillsPerTerm": 1,
+        "promotion": {
+            "characteristic": "Intellect",
+            "target": 6
+        },
+        "reenlist": {
+            "target": 5
+        },
+        "ranks": [
+            {
+                "name": "Instructor",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Sciences",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Adjunct Professor"
+            },
+            {
+                "name": "Research Professor"
+            },
+            {
+                "name": "Assistant Professor",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Computer",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Associate Professor"
+            },
+            {
+                "name": "Professor"
+            },
+            {
+                "name": "Distinguished Professor"
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "SHIP",
+                "name": "Research Vessel"
+            }
+        ],
+        "cash": [
+            1000,
+            5000,
+            10000,
+            10000,
+            20000,
+            50000,
+            50000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Admin",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Electronics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Bribery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Sciences",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Navigation",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Admin",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Sciences",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Sciences",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Animals",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Jack o' Trades",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Linguistics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Sciences",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "scout",
+        "description": "Member of an interplanetary exploratory service, surveying unfamiliar territory in space.",
+        "draftNumber": 5,
+        "enlistment": {
+            "characteristic": "Intellect",
+            "target": 6
+        },
+        "survival": {
+            "characteristic": "Endurance",
+            "target": 7
+        },
+        "commission": null,
+        "numSkillsPerTerm": 2,
+        "promotion": null,
+        "reenlist": {
+            "target": 6
+        },
+        "ranks": [
+            {
+                "name": "scout",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Pilot",
+                    "value": 1
+                }
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage"
+            },
+            {
+                "type": "SPECIAL",
+                "name": "Explorers' Society"
+            },
+            {
+                "type": "SHIP",
+                "name": "Courier Vessel"
+            },
+            {
+                "type": "NOTHING"
+            }
+        ],
+        "cash": [
+            1000,
+            5000,
+            10000,
+            10000,
+            20000,
+            50000,
+            50000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Jack o' Trades",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Comms",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Electronics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gunnery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Recon",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Piloting",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Engineering",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gunnery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Demolitions",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Navigation",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Linguistics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Navigation",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Tactics",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "surface defense",
+        "description": "Member of a planetary armed military force operating on the non-hydrographic surface of a world. Also known as the \"planetary army\".",
+        "draftNumber": 6,
+        "enlistment": {
+            "characteristic": "Endurance",
+            "target": 5
+        },
+        "survival": {
+            "characteristic": "Education",
+            "target": 5
+        },
+        "commission": {
+            "characteristic": "Endurance",
+            "target": 6
+        },
+        "numSkillsPerTerm": 1,
+        "promotion": {
+            "characteristic": "Education",
+            "target": 7
+        },
+        "reenlist": {
+            "target": 5
+        },
+        "ranks": [
+            {
+                "name": "Private",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Gun Combat",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Lieutenant"
+            },
+            {
+                "name": "Captain"
+            },
+            {
+                "name": "Major",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Leadership",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Lt Colonel"
+            },
+            {
+                "name": "Colonel"
+            },
+            {
+                "name": "General"
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage"
+            },
+            {
+                "type": "WEAPON",
+                "name": "Weapon"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            }
+        ],
+        "cash": [
+            1000,
+            5000,
+            10000,
+            10000,
+            20000,
+            50000,
+            50000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Athletics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Mechanics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gunnery",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Recon",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Battle Dress",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Comms",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Demolitions",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Melee Combat",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Survival",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Vehicle",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Jack o' Trades",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Leadership",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Tactics",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "name": "technician",
+        "description": "Individual that is skilled in mechanical or industrial techniques or in a particular technical field.",
+        "draftNumber": -1,
+        "enlistment": {
+            "characteristic": "Education",
+            "target": 6
+        },
+        "survival": {
+            "characteristic": "Dexterity",
+            "target": 4
+        },
+        "commission": {
+            "characteristic": "Education",
+            "target": 5
+        },
+        "numSkillsPerTerm": 1,
+        "promotion": {
+            "characteristic": "Intellect",
+            "target": 8
+        },
+        "reenlist": {
+            "target": 5
+        },
+        "ranks": [
+            {
+                "name": "Technician",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Computer",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Team Lead"
+            },
+            {
+                "name": "Supervisor"
+            },
+            {
+                "name": "Manager"
+            },
+            {
+                "name": "Director",
+                "benefit": {
+                    "type": "SKILL",
+                    "name": "Admin",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Vice-President"
+            },
+            {
+                "name": "Executive Officer"
+            }
+        ],
+        "benefits": [
+            {
+                "type": "ITEM",
+                "name": "Low Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage"
+            },
+            {
+                "type": "ITEM",
+                "name": "Mid Passage"
+            },
+            {
+                "type": "ITEM",
+                "name": "High Passage"
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Social",
+                "value": 1
+            }
+        ],
+        "cash": [
+            1000,
+            5000,
+            10000,
+            10000,
+            20000,
+            50000,
+            50000
+        ],
+        "pdt": [
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Strength",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Dexterity",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Endurance",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Intellect",
+                "value": 1
+            },
+            {
+                "type": "CHARACTERISTIC",
+                "name": "Education",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gun Combat",
+                "value": 1
+            }
+        ],
+        "sst": [
+            {
+                "type": "SKILL",
+                "name": "Admin",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Mechanics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Electronics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Sciences",
+                "value": 1
+            }
+        ],
+        "spst": [
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Electronics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Gravitics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Linguistics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Engineering",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Animals",
+                "value": 1
+            }
+        ],
+        "aet": [
+            {
+                "type": "SKILL",
+                "name": "Advocate",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Computer",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Jack o' Trades",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Linguistics",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Medicine",
+                "value": 1
+            },
+            {
+                "type": "SKILL",
+                "name": "Sciences",
+                "value": 1
+            }
+        ]
+    }
+]

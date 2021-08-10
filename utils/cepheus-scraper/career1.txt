@@ -1,0 +1,59 @@
+Career 	Athlete 	Aerospace Defense 	Agent 	Barbarian 	Belter 	Bureaucrat
+Qualifications 	End 8+ 	End 5+ 	Soc 6+ 	End 5+ 	Int 4+ 	Soc 6+
+Survival 	Dex 5+ 	Dex 5+ 	Int 6+ 	Str 6+ 	Dex 7+ 	Edu 4+
+Commission 	— 	Edu 6+ 	Edu 7+ 	— 	— 	Soc 5+
+Advancement 	— 	Edu 7+ 	Edu 6+ 	— 	— 	Int 8+
+Re-enlistment 	6+ 	5+ 	6+ 	5+ 	5+ 	5+
+Ranks and Skills 	Athlete 	Aerospace 	Agent 	Barbarian 	Belter 	Bureaucrat
+0 	[Athletics-1] 	Airman [Aircraft-1] 	Agent [Streetwise-1] 	[Melee Combat-1] 	[Zero-G-1] 	Assistant [Admin-1]
+1 	— 	Flight Officer 	Special Agent 	— 	— 	Clerk
+2 	— 	Flight Lieutenant 	Sp Agent in Charge 	— 	— 	Supervisor
+3 	— 	Squadron Leader [Leadership-1] 	Unit Chief 	— 	— 	Manager
+4 	— 	Wing Commander 	Section Chief [Admin-1] 	— 	— 	Chief [Advocate-1]
+5 	— 	Group Captain 	Assistant Directory 	— 	— 	Director
+6 	— 	Air Commodore 	Director 	— 	— 	Minister
+Material Benefits 	Athlete 	Aerospace 	Agent 	Barbarian 	Belter 	Bureaucrat
+1 	Low Passage 	Low Passage 	Low Passage 	Low Passage 	Low Passage 	Low Passage
+2 	+1 Int 	+1 Edu 	+1 Int 	+1 Int 	+1 Int 	+1 Edu
+3 	Weapon 	Weapon 	Weapon 	Weapon 	Weapon 	+1 Int
+4 	High Passage 	Mid Passage 	Mid Passage 	Weapon 	Mid Passage 	Mid Passage
+5 	Explorers' Society 	Weapon 	+1 Soc 	+1 End 	1D6 Ship Shares 	Mid Passage
+6 	High Passage 	High Passage 	High Passage 	Mid Passage 	High Passage 	High Passage
+7 	— 	+1 Soc 	Explorers' Society 	— 	— 	+1 Soc
+Cash Benefits 	Athlete 	Aerospace 	Agent 	Barbarian 	Belter 	Bureaucrat
+1 	2000 	1000 	1000 	0 	1000 	1000
+2 	10000 	5000 	5000 	1000 	5000 	5000
+3 	20000 	10000 	10000 	2000 	5000 	10000
+4 	20000 	10000 	10000 	5000 	5000 	10000
+5 	50000 	20000 	20000 	5000 	10000 	20000
+6 	100000 	50000 	50000 	10000 	20000 	50000
+7 	100000 	50000 	50000 	10000 	50000 	50000
+Skills and Training
+Personal Development 	Athlete 	Aerospace 	Agent 	Barbarian 	Belter 	Bureaucrat
+1 	+1 Dex 	+1 Str 	+1 Dex 	+1 Str 	+1 Str 	+1 Dex
+2 	+1 Int 	+1 Dex 	+1 End 	+1 Dex 	+1 Dex 	+1 End
+3 	+1 Edu 	+1 End 	+1 Int 	+1 End 	+1 End 	+1 Int
+4 	+1 Soc 	Athletics 	+1 Edu 	+1 Int 	Zero-G 	+1 Edu
+5 	Carousing 	Melee Combat 	Athletics 	Athletics 	Melee Combat 	Athletics
+6 	Melee Combat 	Vehicle 	Carousing 	Gun Combat 	Gambling 	Carousing
+Service Skills 	Athlete 	Aerospace 	Agent 	Barbarian 	Belter 	Bureaucrat
+1 	Athletics 	Electronics 	Admin 	Mechanics 	Comms 	Admin
+2 	Admin 	Gun Combat 	Computer 	Gun Combat 	Demolitions 	Computer
+3 	Carousing 	Gunnery 	Streetwise 	Melee Combat 	Gun Combat 	Carousing
+4 	Computer 	Melee Combat 	Bribery 	Recon 	Gunnery 	Bribery
+5 	Gambling 	Survival 	Leadership 	Survival 	Prospecting 	Leadership
+6 	Vehicle 	Aircraft 	Vehicle 	Animals 	Piloting 	Vehicle
+Specialist 	Athlete 	Aerospace 	Agent 	Barbarian 	Belter 	Bureaucrat
+1 	Zero-G 	Comms 	Gun Combat 	Gun Combat 	Zero-G 	Admin
+2 	Athletics 	Gravitics 	Melee Combat 	Jack o' Trades 	Computer 	Computer
+3 	Athletics 	Gun Combat 	Bribery 	Melee Combat 	Electronics 	Perception
+4 	Computer 	Gunnery 	Leadership 	Recon 	Prospecting 	Leadership
+5 	Leadership 	Recon 	Recon 	Animals 	Sciences 	Steward
+6 	Gambling 	Piloting 	Survival 	Tactics 	Vehicle 	Vehicle
+Adv Education 	Athlete 	Aerospace 	Agent 	Barbarian 	Belter 	Bureaucrat
+1 	Advocate 	Advocate 	Advocate 	Advocate 	Advocate 	Advocate
+2 	Computer 	Computer 	Computer 	Linguistics 	Engineering 	Computer
+3 	Liaison 	Jack o' Trades 	Liaison 	Medicine 	Medicine 	Liaison
+4 	Linguistics 	Medicine 	Linguistics 	Leadership 	Navigation 	Linguistics
+5 	Medicine 	Leadership 	Medicine 	Tactics 	Comms 	Medicine
+6 	Sciences 	Tactics 	Leadership 	Broker 	Tactics 	Admin

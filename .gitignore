@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 lib/fmt/node_modules
+utils/cepheus-scraper/node_modules
 
 # testing
 /coverage

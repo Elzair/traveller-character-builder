@@ -1,0 +1,59 @@
+Career 	Maritime Defense 	Mercenary 	Merchant 	Navy 	Noble 	Physician
+Qualifications 	End 5+ 	Int 4+ 	Int 4+ 	Int 6+ 	Soc 8+ 	Edu 6+
+Survival 	End 5+ 	End 6+ 	Int 5+ 	Int 5+ 	Soc 4+ 	Int 4+
+Commission 	Int 6+ 	Int 7+ 	Int 5+ 	Soc 7+ 	Edu 5+ 	Int 5+
+Advancement 	Edu 7+ 	Int 6+ 	Edu 8+ 	Edu 6+ 	Int 8+ 	Edu 8+
+Re-enlistment 	5+ 	5+ 	4+ 	5+ 	6+ 	5+
+Ranks and Skills 	Maritime Defense 	Mercenary 	Merchant 	Navy 	Noble 	Physician
+0 	Seaman [Watercraft-1] 	Private [Gun Combat-1] 	Crewman [Steward-1] 	Starman [Zero-G-1] 	Courtier [Carousing-1] 	Intern [Medicine-1]
+1 	Ensign 	Lieutenant 	Deck Cadet 	Midshipman 	Knight 	Resident
+2 	Lieutenant 	Captain 	Fourth Officer 	Lieutenant 	Baron 	Senior Resident
+3 	Lt Commander [Leadership-1] 	Major [Tactics-1] 	Third Officer [Pilot-1] 	Lt Commander [Tactics-1] 	Marquis 	Chief Resident
+4 	Commander 	Lt Colonel 	Second Officer 	Commander 	Count [Advocate-1] 	Attending Phys. [Admin-1]
+5 	Captain 	Colonel 	First Officer 	Captain 	Duke 	Service Chief
+6 	Admiral 	Brigadier 	Captain 	Commodore 	Archduke 	Hospital Admin.
+Material Benefits 	Maritime Defense 	Mercenary 	Merchant 	Navy 	Noble 	Physician
+1 	Low Passage 	Low Passage 	Low Passage 	Low Passage 	High Passage 	Low Passage
+2 	+1 Edu 	+1 Int 	+1 Edu 	+1 Edu 	+1 Edu 	+1 Edu
+3 	Weapon 	Weapon 	Weapon 	Weapon 	+1 Int 	+1 Int
+4 	Mid Passage 	High Passage 	High Passage 	Mid Passage 	High Passage 	High Passage
+5 	Weapon 	+1 Soc 	1D6 Ship Shares 	+1 Soc 	Explorers' Society 	Explorers' Society
+6 	High Passage 	High Passage 	High Passage 	High Passage 	High Passage 	High Passage
+7 	+1 Soc 	1D6 Ship Shares 	Explorers' Society 	Explorers' Society 	1D6 Ship Shares 	+1 Soc
+Cash Benefits 	Maritime Defense 	Mercenary 	Merchant 	Navy 	Noble 	Physician
+1 	1000 	1000 	1000 	1000 	2000 	2000
+2 	5000 	5000 	5000 	5000 	10000 	10000
+3 	10000 	10000 	10000 	10000 	20000 	20000
+4 	10000 	20000 	20000 	10000 	20000 	20000
+5 	20000 	20000 	20000 	20000 	50000 	50000
+6 	50000 	50000 	50000 	50000 	100000 	100000
+7 	50000 	100000 	100000 	50000 	100000 	100000
+Skills and Training
+Personal Development 	Maritime Defense 	Mercenary 	Merchant 	Navy 	Noble 	Physician
+1 	+1 Str 	+1 Str 	+1 Str 	+1 Str 	+1 Dex 	+1 Str
+2 	+1 Dex 	+1 Dex 	+1 Dex 	+1 Dex 	+1 Int 	+1 Dex
+3 	+1 End 	+1 End 	+1 End 	+1 End 	+1 Edu 	+1 End
+4 	Athletics 	Zero-G 	Zero-G 	+1 Int 	+1 Soc 	+1 Int
+5 	Melee Combat 	Melee Combat 	Melee Combat 	+1 Edu 	Carousing 	+1 Edu
+6 	Vehicle 	Gambling 	Steward 	Melee Combat 	Melee Combat 	Gun Combat
+Service Skills 	Maritime Defense 	Mercenary 	Merchant 	Navy 	Noble 	Physician
+1 	Mechanics 	Comms 	Comms 	Comms 	Athletics 	Admin
+2 	Gun Combat 	Mechanics 	Engineering 	Engineering 	Admin 	Computer
+3 	Gunnery 	Gun Combat 	Gun Combat 	Gun Combat 	Carousing 	Mechanics
+4 	Melee Combat 	Melee Combat 	Melee Combat 	Gunnery 	Leadership 	Medicine
+5 	Survival 	Gambling 	Broker 	Melee Combat 	Gambling 	Leadership
+6 	Watercraft 	Battle Dress 	Vehicle 	Vehicle 	Vehicle 	Sciences
+Specialist 	Maritime Defense 	Mercenary 	Merchant 	Navy 	Noble 	Physician
+1 	Comms 	Gravitics 	Carousing 	Gravitics 	Computer 	Computer
+2 	Electronics 	Gun Combat 	Gunnery 	Jack o' Trades 	Carousing 	Carousing
+3 	Gun Combat 	Gunnery 	Jack o' Trades 	Melee Combat 	Gun Combat 	Electronics
+4 	Demolitions 	Melee Combat 	Medicine 	Navigation 	Melee Combat 	Medicine
+5 	Recon 	Recon 	Navigation 	Leadership 	Liaison 	Medicine
+6 	Watercraft 	Vehicle 	Piloting 	Piloting 	Animals 	Sciences
+Adv Education 	Maritime Defense 	Mercenary 	Merchant 	Navy 	Noble 	Physician
+1 	Advocate 	Advocate 	Advocate 	Advocate 	Advocate 	Advocate
+2 	Computer 	Engineering 	Engineering 	Computer 	Computer 	Computer
+3 	Jack o' Trades 	Medicine 	Medicine 	Engineering 	Liaison 	Jack o' Trades
+4 	Medicine 	Navigation 	Navigation 	Medicine 	Linguistics 	Linguistics
+5 	Leadership 	Sciences 	Sciences 	Navigation 	Medicine 	Medicine
+6 	Tactics 	Tactics 	Tactics 	Tactics 	Sciences 	Sciences

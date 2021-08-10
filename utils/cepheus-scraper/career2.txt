@@ -1,0 +1,59 @@
+Career 	Colonist 	Diplomat 	Drifter 	Entertainer 	Hunter 	Marine
+Qualifications 	End 5+ 	Soc 6+ 	Dex 5+ 	Soc 8+ 	End 5+ 	Int 6+
+Survival 	End 6+ 	Edu 5+ 	End 5+ 	Int 4+ 	Str 8+ 	End 6+
+Commission 	Int 7+ 	Int 7+ 	— 	— 	— 	Edu 6+
+Advancement 	Edu 6+ 	Soc 7+ 	— 	— 	— 	Soc 7+
+Re-enlistment 	5+ 	5+ 	5+ 	6+ 	6+ 	6+
+Ranks and Skills 	Colonist 	Diplomat 	Drifter 	Entertainer 	Hunter 	Marine
+0 	Citizen [Survival-1] 	Attaché [Liaison-1] 	— 	[Carousing-1] 	[Survival-1] 	Trooper [Zero-G-1]
+1 	District Leader 	Third Secretary 	— 	— 	— 	Lieutenant
+2 	District Delegate 	Second Secretary 	— 	— 	— 	Captain
+3 	Council Advisor [Liaision-1] 	First Secretary [Admin-1] 	— 	— 	— 	Major [Tactics-1]
+4 	Councilor 	Counselor 	— 	— 	— 	Lt Colonel
+5 	Lieutenant Governor 	Minister 	— 	— 	— 	Colonel
+6 	Governor 	Ambassador 	— 	— 	— 	Brigadier
+Material Benefits 	Colonist 	Diplomat 	Drifter 	Entertainer 	Hunter 	Marine
+1 	Low Passage 	Low Passage 	Low Passage 	Low Passage 	Low Passage 	Low Passage
+2 	+1 Int 	+1 Edu 	+1 Int 	+1 Edu 	+1 Int 	+1 Edu
+3 	Weapon 	Mid Passage 	Weapon 	+1 Soc 	Weapon 	Weapon
+4 	Mid Passage 	High Passage 	Weapon 	High Passage 	High Passage 	Mid Passage
+5 	Mid Passage 	+1 Soc 	Mid Passage 	Explorers' Society 	1D6 Ship Shares 	+1 Soc
+6 	High Passage 	High Passage 	Mid Passage 	High Passage 	High Passage 	High Passage
+7 	+1 Soc 	Explorers' Society 	— 	— 	— 	Explorers' Society
+Cost Benefits 	Colonist 	Diplomat 	Drifter 	Entertainer 	Hunter 	Marine
+1 	1000 	1000 	0 	2000 	1000 	1000
+2 	5000 	5000 	1000 	10000 	5000 	5000
+3 	5000 	10000 	2000 	20000 	10000 	10000
+4 	5000 	20000 	5000 	20000 	20000 	10000
+5 	10000 	20000 	5000 	50000 	20000 	20000
+6 	20000 	50000 	10000 	100000 	50000 	50000
+7 	50000 	100000 	10000 	100000 	100000 	50000
+Skills and Training
+Personal Development 	Colonist 	Diplomat 	Drifter 	Entertainer 	Hunter 	Marine
+1 	+1 Str 	+1 Dex 	+1 Str 	+1 Dex 	+1 Str 	+1 Str
+2 	+1 Dex 	+1 End 	+1 Dex 	+1 Int 	+1 Dex 	+1 Dex
+3 	+1 End 	+1 Int 	+1 End 	+1 Edu 	+1 End 	+1 End
+4 	+1 Int 	+1 Edu 	Melee Combat 	+1 Soc 	+1 Int 	+1 Int
+5 	Athletics 	Athletics 	Bribery 	Carousing 	Athletics 	+1 Edu
+6 	Gun Combat 	Carousing 	Gambling 	Melee Combat 	Gun Combat 	Melee Combat
+Service Skills 	Colonist 	Diplomat 	Drifter 	Entertainer 	Hunter 	Marine
+1 	Mechanics 	Admin 	Streetwise 	Athletics 	Mechanics 	Comms
+2 	Gun Combat 	Computer 	Mechanics 	Admin 	Gun Combat 	Demolitions
+3 	Animals 	Carousing 	Gun Combat 	Carousing 	Melee Combat 	Gun Combat
+4 	Electronics 	Bribery 	Melee Combat 	Bribery 	Recon 	Gunnery
+5 	Survival 	Liaison 	Recon 	Gambling 	Survival 	Melee Combat
+6 	Vehicle 	Vehicle 	Vehicle 	Vehicle 	Vehicle 	Battle Dress
+Specialist 	Colonist 	Diplomat 	Drifter 	Entertainer 	Hunter 	Marine
+1 	Athletics 	Carousing 	Electronics 	Computer 	Admin 	Electronics
+2 	Carousing 	Linguistics 	Melee Combat 	Carousing 	Comms 	Gun Combat
+3 	Jack o' Trades 	Bribery 	Bribery 	Bribery 	Electronics 	Melee Combat
+4 	Engineering 	Liaison 	Streetwise 	Liaison 	Recon 	Survival
+5 	Animals 	Steward 	Gambling 	Gambling 	Animals 	Recon
+6 	Vehicle 	Vehicle 	Recon 	Recon 	Vehicle 	Vehicle
+Adv Education 	Colonist 	Diplomat 	Drifter 	Entertainer 	Hunter 	Marine
+1 	Advocate 	Advocate 	Computer 	Advocate 	Advocate 	Advocate
+2 	Linguistics 	Computer 	Engineering 	Computer 	Linguistics 	Computer
+3 	Medicine 	Liaison 	Jack o' Trades 	Carousing 	Medicine 	Gravitics
+4 	Liaison 	Linguistics 	Medicine 	Linguistics 	Liaison 	Medicine
+5 	Admin 	Medicine 	Liaison 	Medicine 	Tactics 	Navigation
+6 	Animals 	Leadership 	Tactics 	Sciences 	Animals 	Tactics
