@@ -13,6 +13,7 @@ import { Background } from './Background';
 import { Career } from './Career';
 import { Draft } from './Draft';
 import { EntrySkill } from './EntrySkill';
+import { Anagathics } from './Anagathics';
 import { Survival } from './Survival';
 import { Commission } from './Commission';
 import { Promotion } from './Promotion';
@@ -34,6 +35,7 @@ const STEPS = [
   'CAREER',
   'DRAFT',
   'ENTRYSKILLS',
+  'ANAGATHICS',
   'SURVIVAL',
   'COMMISSION',
   'PROMOTION',
@@ -57,6 +59,7 @@ function App() {
   let [skills, setSkills] = useState({});
   let [career, setCareer] = useState([]);
   let [age, setAge] = useState(18);
+  let [anagathics, setAnagathics] = useState({ current: false, terms: 0 });
   let [credits, setCredits] = useState(0);
   let [items, setItems] = useState({});
   let [log, setLog] = useState([]);
@@ -83,23 +86,41 @@ function App() {
     setSkills(updateObject(skills, updated));
   }
 
-  function updateItems(updated) {
-    let newItems = {};
-    for (let item in items) {
-      if (items.hasOwnProperty(item)) {
-        newItems[item] = items[item];
-      }
+  function updateAnagathics(taking) {
+    if (taking) {
+      setAnagathics({
+        current: true,
+        terms: anagathics.terms+1
+      });
+    } else {
+      setAnagathics({
+        current: false,
+        terms: anagathics.terms
+      });
     }
+  }
 
-    for (let item in updated) {
-      if (updated.hasOwnProperty(item)) {
-        if (newItems.hasOwnProperty(item)) {
-          newItems[item] += updated[item];
-        } else {
-          newItems[item] = updated[item];
-        }
-      }
-    }
+  function updateItems(updated) {
+    // let newItems = {};
+    // for (let item in items) {
+    //   if (items.hasOwnProperty(item)) {
+    //     newItems[item] = items[item];
+    //   }
+    // }
+    let newItems = { ...items };
+
+    // for (let item in updated) {
+    //   if (updated.hasOwnProperty(item)) {
+    //     if (newItems.hasOwnProperty(item)) {
+    //       newItems[item] += updated[item];
+    //     } else {
+    //       newItems[item] = updated[item];
+    //     }
+    //   }
+    // }
+    Object.entries(updated).forEach(([name, val]) => {
+      newItems[name] = newItems.hasOwnProperty(name) ? newItems[name] + val : val;
+    });
 
     setItems(newItems);
   }
@@ -156,6 +177,14 @@ function App() {
 
   function entrySkillSelection() {
     if (game === 'cepheusengine') {
+      setStep('ANAGATHICS');
+    } else {
+      setStep('END'); // Not implemented
+    }
+  }
+
+  function anagathicsDecision() {
+    if (game === 'cepheusengine') {
       setStep('SURVIVAL');
     } else {
       setStep('END'); // Not implemented
@@ -176,7 +205,7 @@ function App() {
       if (careerData.commission === null || (curCareer.drafted === true && curCareer.term === 1)) {
         setStep('SKILL');
       } else if (curCareer.rank >= 1 && curCareer.rank < careerData.ranks.length - 1) { // Go directly to promotion if a commission has already been earned
-        setStep('PROMOTION');                                                         // and the traveller has not yet achieved the maximum rank.
+        setStep('PROMOTION');                                                           // and the traveller has not yet achieved the maximum rank.
       } else {
         setStep('COMMISSION');
       }
@@ -344,6 +373,14 @@ function App() {
         updateSkills={updateSkills}
         display={step === 'ENTRYSKILLS'}
         onSkillSelection={entrySkillSelection}
+        updateLog={updateLog}
+      />
+      <Anagathics
+        game={game}
+        anagathics={anagathics}
+        updateAnagathics={updateAnagathics}
+        display={step === 'ANAGATHICS'}
+        onAnagathicsDecision={anagathicsDecision}
         updateLog={updateLog}
       />
       <Survival
