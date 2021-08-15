@@ -35,15 +35,18 @@ function BackgroundCE({ upp, homeworldUWP, codes, skills, updateSkills, onFinali
 
     function selectSkills() {
         let newSkills = {};
+        let newLog = [];
 
         // Add all skills that have been checked to `newSkills`.
         for (let i=0; i<checks.length; i++) {
             if (checks[i]) {
                 newSkills[bgSkills[i][0]] = bgSkills[i][1];
+                newLog.push(`You gain ${bgSkills[i].join('-')}.`);
             }
         }
 
         updateSkills(newSkills);
+        updateLog(newLog);
 
         // Reset `Background` component
         setChecks([]);

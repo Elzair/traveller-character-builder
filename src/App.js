@@ -11,6 +11,8 @@ import { UPP } from './UPP';
 import { Homeworld } from './Homeworld';
 import { Background } from './Background';
 import { Career } from './Career';
+import { Draft } from './Draft';
+import { EntrySkill } from './EntrySkill';
 import { Survival } from './Survival';
 import { Commission } from './Commission';
 import { Promotion } from './Promotion';
@@ -30,6 +32,8 @@ const STEPS = [
   'HOMEWORLD',
   'BACKGROUND',
   'CAREER',
+  'DRAFT',
+  'ENTRYSKILLS',
   'SURVIVAL',
   'COMMISSION',
   'PROMOTION',
@@ -130,12 +134,32 @@ function App() {
     setStep('CAREER');
   }
 
-  function enlisted() {
-    setStep('SURVIVAL');
+  function enlisted(success) {
+    if (game === 'classic') {
+      setStep('SURVIVAL');
+    } else if (game === 'cepheusengine') {
+      setStep(success ? 'ENTRYSKILLS' : 'DRAFT');
+    } else {
+      setStep('END'); // Not implemented
+    }
   }
 
   function drafted() {
-    setStep('SURVIVAL');
+    if (game === 'classic') {
+      setStep('SURVIVAL');
+    } else if (game === 'cepheusengine') {
+      setStep('ENTRYSKILLS');
+    } else {
+      setStep('END'); // Not implemented
+    }
+  }
+
+  function entrySkillSelection() {
+    if (game === 'cepheusengine') {
+      setStep('SURVIVAL');
+    } else {
+      setStep('END'); // Not implemented
+    }
   }
 
   function survived() {
@@ -145,7 +169,7 @@ function App() {
     if (game === 'classic') {
       const curCareer = career[career.length - 1]; // Get latest career
       const careerData = CTCAREERS.filter(c => curCareer.branch === c.name)[0];
-      console.log(`${curCareer.drafted} ${curCareer.term+1}`);
+      console.log(`${curCareer.drafted} ${curCareer.term + 1}`);
 
       // If the career does not have commissions or advancements, go to skill rolls.
       // Also skip commission & promotion if the traveller was drafted and its their first term.
@@ -296,7 +320,30 @@ function App() {
         updateSkills={updateSkills}
         display={step === 'CAREER'}
         onEnlistment={enlisted}
+        // onDraft={drafted}
+        updateLog={updateLog}
+      />
+      <Draft
+        game={game}
+        career={career}
+        updateCareer={updateCareer}
+        upp={upp}
+        updateUPP={updateUPP}
+        skills={skills}
+        updateSkills={updateSkills}
+        display={step === 'DRAFT'}
         onDraft={drafted}
+        updateLog={updateLog}
+      />
+      <EntrySkill
+        game={game}
+        career={career}
+        upp={upp}
+        updateUPP={updateUPP}
+        skills={skills}
+        updateSkills={updateSkills}
+        display={step === 'ENTRYSKILLS'}
+        onSkillSelection={entrySkillSelection}
         updateLog={updateLog}
       />
       <Survival
