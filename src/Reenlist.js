@@ -40,8 +40,7 @@ function ReenlistCT({ career, updateCareer, options, onSuccess, onFailure, onRet
 
         let roll = r2d6();
 
-        const input = ev.target[0];
-        if (input.checked) {
+        if (checked) {
             // If the character has served the maximum # of terms, retirement is mandatory unless the roll is 12.
             if (curCareer.term >= options.maxTerms && roll !== 12) {
                 updateLog('You have served the maximum number of terms.');

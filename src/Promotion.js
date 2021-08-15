@@ -37,10 +37,9 @@ function PromotionCT({ upp, updateUPP, career, updateCareer, skills, updateSkill
 
     function attemptPromotion(ev) {
         ev.preventDefault();
-        const input = ev.target[0];
         const curCareer = career[career.length-1]; // Get latest career
 
-        if (input.checked) {
+        if (checked) {
             const careerData = CTCAREERS.filter(c => c.name === curCareer.branch)[0];
             const result = applyDMsToRoll(r2d6(), careerData.promotion.dms, upp);
             if (result >= careerData.promotion.target) {
