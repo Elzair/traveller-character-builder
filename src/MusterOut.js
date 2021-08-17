@@ -7,7 +7,7 @@ import { r1d6 } from './utils';
 import CTCAREERS from './data/ct/careers';
 import CTITEMS from './data/ct/items';
 
-export function MusterOut({ game, upp, updateUPP, career, skills, updateSkills, credits, updateCredits, items, updateItems, display, onMusterOut, updateLog }) {
+export function MusterOut({ game, upp, updateUPP, career, skills, updateSkills, /*credits,*/ updateCredits, items, updateItems, display, onMusterOut, updateLog }) {
     if (display && game === 'classic') {
         return (
             <MusterOutCT
@@ -16,7 +16,7 @@ export function MusterOut({ game, upp, updateUPP, career, skills, updateSkills, 
                 career={career}
                 skills={skills}
                 updateSkills={updateSkills}
-                credits={credits}
+                // credits={credits}
                 updateCredits={updateCredits}
                 items={items}
                 updateItems={updateItems}
@@ -29,7 +29,7 @@ export function MusterOut({ game, upp, updateUPP, career, skills, updateSkills, 
     }
 }
 
-function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, updateCredits, items, updateItems, onMusterOut, updateLog }) {
+function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, /*credits,*/ updateCredits, items, updateItems, onMusterOut, updateLog }) {
     const MAXCASHROLLS = 3;
 
     let [numCashRolls, setNumCashRolls] = useState(MAXCASHROLLS);
@@ -65,7 +65,8 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, credits, up
             const cashDM = skills.hasOwnProperty('Gambling') && skills.Gambling >= 1 ? 1 : 0;
             const amount = table[r1d6() - 1 + cashDM];
             updateLog([`You receive Cr${amount}.`]);
-            updateCredits(credits + amount);
+            // updateCredits(credits + amount);
+            updateCredits(amount);
             setNumCashRolls(numCashRolls - 1);
             decreaseBenefits();
         } else if (val === 'benefits') {

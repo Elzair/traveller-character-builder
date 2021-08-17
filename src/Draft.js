@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Switch from 'react-switch';
 
-import { r1d6 } from "./utils";
+import { capitalize, r1d6 } from "./utils";
 
 import CECAREERS from './data/ce/careers';
 
@@ -36,17 +36,20 @@ function DraftCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, o
     function handleSelection(ev) {
         ev.preventDefault();
 
+        let newLog = [];
         let careerName = '';
+
         if (checked) { // Submit to the draft
-            careerName= CECAREERS.filter(career => career.draftNumber === r1d6())[0].name;
+            careerName = CECAREERS.filter(career => career.draftNumber === r1d6())[0].name;
+            newLog.push(`You were drafted into the ${capitalize(careerName)}`);
         } else  {
             careerName = 'drifter';
+            newLog.push('You became a drifter.');
         }
 
         // Apply any benefits for entering a career.
         const careerData = CECAREERS.filter(c => c.name === 'drifter')[0];
         const rank = careerData.ranks[0];
-        let newLog = [];
 
         if (rank.hasOwnProperty('benefit')) {
             let benefit = rank.benefit;

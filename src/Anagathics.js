@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import Switch from 'react-switch';
 
-// import { r2d6 } from "./utils";
+import { r1d6 } from './utils';
 
 import CECAREERS from './data/ce/careers';
 
-export function Anagathics({ game, anagathics, updateAnagathics, display, onAnagathicsDecision, updateLog }) {
+export function Anagathics({ game, anagathics, updateAnagathics, /*updateDebt,*/ updateCredits, display, onAnagathicsDecision, updateLog }) {
     if (display && game === 'cepheusengine') {
         return (
             <AnagathicsCE
                 anagathics={anagathics}
                 updateAnagathics={updateAnagathics}
+                // updateDebt={updateDebt}
+                updateCredits={updateCredits}
                 onAnagathicsDecision={onAnagathicsDecision}
                 updateLog={updateLog}
             />
@@ -20,7 +22,7 @@ export function Anagathics({ game, anagathics, updateAnagathics, display, onAnag
     }
 }
 
-function AnagathicsCE({ anagathics, updateAnagathics, onAnagathicsDecision, updateLog }) {
+function AnagathicsCE({ anagathics, updateAnagathics, /*updateDebt,*/ updateCredits, onAnagathicsDecision, updateLog }) {
     let [checked, setChecked] = useState(true);
 
     function handleCheck(check) {
@@ -34,6 +36,8 @@ function AnagathicsCE({ anagathics, updateAnagathics, onAnagathicsDecision, upda
         if (checked) {
             updateLog(`You decided to take Anagathics for this term.`);
             updateAnagathics(true);
+            // updateDebt(r1d6() * 2500);
+            updateCredits(r1d6() * -2500);
         } else {
             updateLog(`You decided to not take Anagathics for this term.`);
             updateAnagathics(false);

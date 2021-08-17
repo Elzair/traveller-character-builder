@@ -89,3 +89,7 @@ export function modMT2E(n) {
 export function isObject(val) {
     return typeof val === 'object' && val !== null && !Array.isArray(val);
 }
+
+export function randElt(arr) {
+    return arr[Math.floor(Math.random()*arr.length)];
+}

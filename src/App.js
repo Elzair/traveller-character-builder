@@ -15,6 +15,7 @@ import { Draft } from './Draft';
 import { EntrySkill } from './EntrySkill';
 import { Anagathics } from './Anagathics';
 import { Survival } from './Survival';
+import { Mishap } from './Mishap';
 import { Commission } from './Commission';
 import { Promotion } from './Promotion';
 import { Skill } from './Skill';
@@ -37,6 +38,7 @@ const STEPS = [
   'ENTRYSKILLS',
   'ANAGATHICS',
   'SURVIVAL',
+  'MISHAP',
   'COMMISSION',
   'PROMOTION',
   'SKILL',
@@ -45,7 +47,7 @@ const STEPS = [
   'MUSTER-OUT',
   'FINISHED',
   'END'
-]
+];
 
 function App() {
   let [step, setStep] = useState('GAME');
@@ -58,9 +60,12 @@ function App() {
   let [homeworldTradeCodes, setHomeworldTradeCodes] = useState([]);
   let [skills, setSkills] = useState({});
   let [career, setCareer] = useState([]);
+  let [mishap, setMishap] = useState('NONE');
+  let [injury, setInjury] = useState(0);
   let [age, setAge] = useState(18);
   let [anagathics, setAnagathics] = useState({ current: false, terms: 0 });
   let [credits, setCredits] = useState(0);
+  // let [debt, setDebt] = useState(0);
   let [items, setItems] = useState({});
   let [log, setLog] = useState([]);
 
@@ -99,6 +104,20 @@ function App() {
       });
     }
   }
+
+  function updateMishap(newMishap) {
+    console.log(mishap);
+    setMishap(newMishap);
+    console.log(mishap);
+  }
+
+  function updateCredits(newCredits) {
+    setCredits(credits + newCredits);
+  }
+
+  // function updateDebt(newDebt) {
+  //   setDebt(debt + newDebt);
+  // }
 
   function updateItems(updated) {
     // let newItems = {};
@@ -184,7 +203,9 @@ function App() {
   }
 
   function anagathicsDecision() {
+    console.log('Got here');
     if (game === 'cepheusengine') {
+      console.log('Got here too');
       setStep('SURVIVAL');
     } else {
       setStep('END'); // Not implemented
@@ -198,7 +219,7 @@ function App() {
     if (game === 'classic') {
       const curCareer = career[career.length - 1]; // Get latest career
       const careerData = CTCAREERS.filter(c => curCareer.branch === c.name)[0];
-      console.log(`${curCareer.drafted} ${curCareer.term + 1}`);
+      // console.log(`${curCareer.drafted} ${curCareer.term + 1}`);
 
       // If the career does not have commissions or advancements, go to skill rolls.
       // Also skip commission & promotion if the traveller was drafted and its their first term.
@@ -211,6 +232,31 @@ function App() {
       }
     } else {
       setStep('NOT-IMPLEMENTED');
+    }
+  }
+
+  function mishapHappened() {
+    setStep('MISHAP');
+  }
+
+  function mishapResolved(newMishap) {
+    if (game === 'cepheusengine') {
+      console.log(newMishap);
+      switch (newMishap) {
+        case 'HONORABLE-DISCHARGE':
+        case 'DISHONORABLE-DISCHARGE':
+        case 'PRISON':
+          setStep('AGE');
+          break;
+        case 'MEDICAL-DISCHARGE':
+          setStep('INJURY');
+          break;
+        default:
+          throw new Error('mishapHappened: Invalid mishap type!');
+      }
+      updateMishap(newMishap);
+    } else {
+      setStep('END'); // Not implemented yet
     }
   }
 
@@ -379,18 +425,41 @@ function App() {
         game={game}
         anagathics={anagathics}
         updateAnagathics={updateAnagathics}
+        // updateDebt={updateDebt}
+        updateCredits={updateCredits}
         display={step === 'ANAGATHICS'}
         onAnagathicsDecision={anagathicsDecision}
         updateLog={updateLog}
       />
       <Survival
         game={game}
+        options={options}
         upp={upp}
         career={career}
         updateCareer={updateCareer}
+        anagathics={anagathics}
         display={step === 'SURVIVAL'}
         onSurvival={survived}
+        onMishap={mishapHappened}
         onDeath={died}
+        updateLog={updateLog}
+      />
+      <Mishap
+        game={game}
+        options={options}
+        upp={upp}
+        updateUPP={updateUPP}
+        career={career}
+        updateCareer={updateCareer}
+        // updateDebt={updateDebt}
+        updateCredits={updateCredits}
+        updateInjury={setInjury}
+        // updateMishap={updateMishap}
+        display={step === 'MISHAP'}
+        onSurvival={survived}
+        onMishap={mishapResolved}
+        onDeath={died}
+        updateLog={updateLog}
       />
       <Commission
         game={game}
@@ -460,8 +529,9 @@ function App() {
         career={career}
         skills={skills}
         updateSkills={updateSkills}
-        credits={credits}
-        updateCredits={setCredits}
+        // credits={credits}
+        // updateCredits={setCredits}
+        updateCredits={updateCredits}
         items={items}
         updateItems={updateItems}
         display={step === 'MUSTER-OUT'}
