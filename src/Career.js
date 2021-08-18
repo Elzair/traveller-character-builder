@@ -187,7 +187,7 @@ function CareerCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
             // Determine if character can enlist.
             if (canEnlistCE(upp, careerName)) {
                 newLog.push(`Congratulations! You have enlisted in the ${capitalize(careerName)}!`);
-                console.log(`You enlisted in the ${careerName}`);
+                // console.log(`You enlisted in the ${careerName}`);
 
                 // Apply any benefits for entering a career.
                 const careerData = CECAREERS.filter(c => c.name === careerName)[0];
@@ -226,38 +226,12 @@ function CareerCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
 
                 onEnlistment(true);
             } else {
-                // failedCareer = careerName;
-                // careerName = draftCE();
-                // newLog.push(`Sorry! You did not qualify for the ${capitalize(failedCareer)}.`);
-                // newLog.push(`Instead, you were drafted into the ${capitalize(careerName)}.`);
-
                 newLog.push(`Sorry! You did not qualify for the ${capitalize(careerName)}.`);
-                console.log(`You failed to enlist in the ${careerName}`);
+                // console.log(`You failed to enlist in the ${careerName}`);
                 onEnlistment(false);
             }
 
             updateLog(newLog);
-
-
-
-            // updateLog(newLog);
-
-            // let newCareer = [...career];
-            // newCareer.push({
-            //     branch: careerName,
-            //     term: 0,
-            //     rank: 0,
-            //     drafted: failedCareer === '' ? false : true,
-            //     failedBranch: failedCareer,
-            //     rankPrev: 0
-            // });
-            // updateCareer(newCareer);
-
-            // if (failedCareer === '') {
-            //     onEnlistment();
-            // } else {
-            //     onDraft();
-            // }
         }
     }
 

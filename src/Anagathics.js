@@ -3,8 +3,6 @@ import Switch from 'react-switch';
 
 import { r1d6 } from './utils';
 
-import CECAREERS from './data/ce/careers';
-
 export function Anagathics({ game, anagathics, updateAnagathics, /*updateDebt,*/ updateCredits, display, onAnagathicsDecision, updateLog }) {
     if (display && game === 'cepheusengine') {
         return (
@@ -31,7 +29,6 @@ function AnagathicsCE({ anagathics, updateAnagathics, /*updateDebt,*/ updateCred
 
     function decision(ev) {
         ev.preventDefault();
-        const input = ev.target[0];
 
         if (checked) {
             updateLog(`You decided to take Anagathics for this term.`);

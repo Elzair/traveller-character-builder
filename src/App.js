@@ -16,6 +16,7 @@ import { EntrySkill } from './EntrySkill';
 import { Anagathics } from './Anagathics';
 import { Survival } from './Survival';
 import { Mishap } from './Mishap';
+import { Injury } from './Injury';
 import { Commission } from './Commission';
 import { Promotion } from './Promotion';
 import { Skill } from './Skill';
@@ -39,6 +40,8 @@ const STEPS = [
   'ANAGATHICS',
   'SURVIVAL',
   'MISHAP',
+  'INJURY',
+  'MEDICAL',
   'COMMISSION',
   'PROMOTION',
   'SKILL',
@@ -61,7 +64,7 @@ function App() {
   let [skills, setSkills] = useState({});
   let [career, setCareer] = useState([]);
   let [mishap, setMishap] = useState('NONE');
-  let [injury, setInjury] = useState(0);
+  let [injury, setInjury] = useState({ roll: 0, crisis: false, injuries: {} });
   let [age, setAge] = useState(18);
   let [anagathics, setAnagathics] = useState({ current: false, terms: 0 });
   let [credits, setCredits] = useState(0);
@@ -95,7 +98,7 @@ function App() {
     if (taking) {
       setAnagathics({
         current: true,
-        terms: anagathics.terms+1
+        terms: anagathics.terms + 1
       });
     } else {
       setAnagathics({
@@ -106,9 +109,13 @@ function App() {
   }
 
   function updateMishap(newMishap) {
-    console.log(mishap);
+    // console.log(mishap);
     setMishap(newMishap);
-    console.log(mishap);
+    // console.log(mishap);
+  }
+
+  function updateInjury(newInjury) {
+    setInjury(newInjury);
   }
 
   function updateCredits(newCredits) {
@@ -241,7 +248,7 @@ function App() {
 
   function mishapResolved(newMishap) {
     if (game === 'cepheusengine') {
-      console.log(newMishap);
+      // console.log(newMishap);
       switch (newMishap) {
         case 'HONORABLE-DISCHARGE':
         case 'DISHONORABLE-DISCHARGE':
@@ -254,10 +261,14 @@ function App() {
         default:
           throw new Error('mishapHappened: Invalid mishap type!');
       }
-      updateMishap(newMishap);
+      // updateMishap(newMishap);
     } else {
       setStep('END'); // Not implemented yet
     }
+  }
+
+  function injuryResolved() {
+    setStep('MEDICAL');
   }
 
   function commissioned() {
@@ -452,12 +463,28 @@ function App() {
         career={career}
         updateCareer={updateCareer}
         // updateDebt={updateDebt}
+        injury={injury}
+        updateInjury={updateInjury}
+        updateMishap={updateMishap}
         updateCredits={updateCredits}
-        updateInjury={setInjury}
-        // updateMishap={updateMishap}
         display={step === 'MISHAP'}
         onSurvival={survived}
         onMishap={mishapResolved}
+        onDeath={died}
+        updateLog={updateLog}
+      />
+      <Injury
+        game={game}
+        upp={upp}
+        updateUPP={updateUPP}
+        career={career}
+        // updateDebt={updateDebt}
+        injury={injury}
+        updateInjury={updateInjury}
+        credits={credits}
+        updateCredits={updateCredits}
+        display={step === 'INJURY'}
+        onInjury={injuryResolved}
         onDeath={died}
         updateLog={updateLog}
       />
