@@ -34,21 +34,6 @@ export function capitalize(str) {
 }
 
 export function updateObject(obj, updates) {
-    // let newObj = {};
-    
-    // for (let prop in obj) {
-    //   if (obj.hasOwnProperty(prop)) {
-    //     newObj[prop] = obj[prop];
-    //   }
-    // }
-
-    // for (let prop in updates) {
-    //   if (updates.hasOwnProperty(prop)) {
-    //     newObj[prop] = updates[prop];
-    //   }
-    // }
-    
-    // return newObj;
     return {
         ...obj,
         ...updates

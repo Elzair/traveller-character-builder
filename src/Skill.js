@@ -29,9 +29,9 @@ function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, 
     let [cascade, setCascade] = useState(null);
 
     function decreaseSkillRolls() {
-        const curNumSkillRolls = numSkillRolls;
-        setNumSkillRolls(numSkillRolls - 1);
-        if (curNumSkillRolls === 1) { // React takes a while to update state, so we compare with 1 rather than 0
+        const curNumSkillRolls = numSkillRolls - 1;
+        setNumSkillRolls(curNumSkillRolls);
+        if (curNumSkillRolls === 0) { // React takes a while to update state, so we compare with `curNumSkillRolls` rather than `numSkillRolls`.
             onSelected();
         }
     }
@@ -45,7 +45,6 @@ function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, 
                 tbl = t.value;
             }
         }
-        // console.log(tbl);
 
         if (tbl !== '') {
             const curCareer = career[career.length-1]; // Get latest career
@@ -57,7 +56,6 @@ function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, 
             const careerData = CTCAREERS.filter(c => c.name === curCareer.branch)[0];
             const table = careerData[tbl];
             const adv = table[Math.min(r1d6() - 1 + skillDM, 5)];
-            // console.log(adv);
 
             if (adv.type === 'CHARACTERISTIC') {
                 let newChar = {};

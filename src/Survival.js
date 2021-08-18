@@ -43,7 +43,7 @@ function SurvivalCT({ upp, career, updateCareer, onSurvival, onDeath }) {
         let roll = r2d6();
 
         if (careerData.survival.hasOwnProperty('dms')) {
-            roll = applyDMsToRoll(r2d6(), careerData.survival.dms, upp, curCareer.term); // Belter's survival odds go up with each term they have.
+            roll = applyDMsToRoll(r2d6(), careerData.survival.dms, upp, curCareer.term); // Belter's survival odds go up with each term they serve.
         }
 
         const didSurvive = roll >= careerData.survival.target;
@@ -51,7 +51,6 @@ function SurvivalCT({ upp, career, updateCareer, onSurvival, onDeath }) {
         if (didSurvive) {
             // Increase career `term`
             let term = career[career.length - 1].term + 1;
-            // console.log(`Term: ${term}`);
             let newCareer = [...career];
             newCareer[newCareer.length - 1].term = term;
             updateCareer(newCareer);
@@ -82,7 +81,6 @@ function SurvivalCE({ options, upp, career, updateCareer, anagathics, onSurvival
         if (didSurvive) {
             // Increase career `term`
             let term = career[career.length - 1].term + 1;
-            // console.log(`Term: ${term}`);
             let newCareer = [...career];
             newCareer[newCareer.length - 1].term = term;
             updateCareer(newCareer);

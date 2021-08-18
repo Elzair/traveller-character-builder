@@ -122,13 +122,6 @@ function getTradeCodes(starport, size, atmo, hydro, pop, gov, law, tech) {
     if (atmo === 0) {
         codes.push('Va'); // Vacuum
     }
-
-    // // Return trade codes array with a helper method to check if the planet has a specific trade code.
-    // return {
-    //     codes,
-    //     contains: function(elt) {
-    //         return this.codes.findIndex(el => el === elt) !== -1;
-    //     }
-    // };
+    
     return codes;
 }

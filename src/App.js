@@ -68,7 +68,6 @@ function App() {
   let [age, setAge] = useState(18);
   let [anagathics, setAnagathics] = useState({ current: false, terms: 0 });
   let [credits, setCredits] = useState(0);
-  // let [debt, setDebt] = useState(0);
   let [items, setItems] = useState({});
   let [log, setLog] = useState([]);
 
@@ -86,7 +85,6 @@ function App() {
   }
 
   function updateCareer(updated) {
-    // setCareer(updateObject(career, updated));
     setCareer(updated);
   }
 
@@ -109,9 +107,7 @@ function App() {
   }
 
   function updateMishap(newMishap) {
-    // console.log(mishap);
     setMishap(newMishap);
-    // console.log(mishap);
   }
 
   function updateInjury(newInjury) {
@@ -122,28 +118,9 @@ function App() {
     setCredits(credits + newCredits);
   }
 
-  // function updateDebt(newDebt) {
-  //   setDebt(debt + newDebt);
-  // }
-
   function updateItems(updated) {
-    // let newItems = {};
-    // for (let item in items) {
-    //   if (items.hasOwnProperty(item)) {
-    //     newItems[item] = items[item];
-    //   }
-    // }
     let newItems = { ...items };
 
-    // for (let item in updated) {
-    //   if (updated.hasOwnProperty(item)) {
-    //     if (newItems.hasOwnProperty(item)) {
-    //       newItems[item] += updated[item];
-    //     } else {
-    //       newItems[item] = updated[item];
-    //     }
-    //   }
-    // }
     Object.entries(updated).forEach(([name, val]) => {
       newItems[name] = newItems.hasOwnProperty(name) ? newItems[name] + val : val;
     });
@@ -220,13 +197,9 @@ function App() {
   }
 
   function survived() {
-    // updateLog([`You survived term ${career.term+1}.`]);
-    // updateCareer({term: career.term+1});
-
     if (game === 'classic') {
       const curCareer = career[career.length - 1]; // Get latest career
       const careerData = CTCAREERS.filter(c => curCareer.branch === c.name)[0];
-      // console.log(`${curCareer.drafted} ${curCareer.term + 1}`);
 
       // If the career does not have commissions or advancements, go to skill rolls.
       // Also skip commission & promotion if the traveller was drafted and its their first term.
@@ -248,7 +221,6 @@ function App() {
 
   function mishapResolved(newMishap) {
     if (game === 'cepheusengine') {
-      // console.log(newMishap);
       switch (newMishap) {
         case 'HONORABLE-DISCHARGE':
         case 'DISHONORABLE-DISCHARGE':
@@ -261,7 +233,6 @@ function App() {
         default:
           throw new Error('mishapHappened: Invalid mishap type!');
       }
-      // updateMishap(newMishap);
     } else {
       setStep('END'); // Not implemented yet
     }
@@ -272,36 +243,26 @@ function App() {
   }
 
   function commissioned() {
-    // if (game === 'classic') {
-    //   updateCareer({ rank: 1 });
-    // }
-
     setStep('PROMOTION');
   }
 
   function commissionFailed() {
-    // updateLog([`Sorry, you failed to get a commission in term ${career[career.length-1].term}.`]);
     setStep('SKILL');
   }
 
   function commissionNotAttempted() {
-    // updateLog([`You did not attempt a commission in term ${career[career.length-1].term}.`]);
     setStep('SKILL');
   }
 
   function promoted() {
-    // let rank = career[career.length-1].rank+1;
-    // updateCareer({rank: rank});
     setStep('SKILL');
   }
 
   function notPromoted() {
-    // updateLog([`Sorry, you failed to get a promotion in term ${career[career.length-1].term}.`]);
     setStep('SKILL');
   }
 
   function promotionNotAttempted() {
-    // updateLog([`You did not attempt a promotion in term ${career[career.length-1].term}.`]);
     setStep('SKILL');
   }
 
@@ -315,17 +276,10 @@ function App() {
   }
 
   function reenlist() {
-    // updateLog([`You have successfully reenlisted in the ${capitalize(career[career.length-1].branch)} for another term.`]);
-
-    // if (game === 'classic') {
-    //   updateCareer({ rankPrev: career[career.length-1].rank }); // Reset rankPrev to the rank at the end of the term
-    // }
-
     setStep('SURVIVAL');
   }
 
   function ejected() {
-    // updateLog([`Unfortunately, you are not eligible for reenlistment with the ${capitalize(career.branch)}.`]);
     setStep('MUSTER-OUT');
   }
 
@@ -436,7 +390,6 @@ function App() {
         game={game}
         anagathics={anagathics}
         updateAnagathics={updateAnagathics}
-        // updateDebt={updateDebt}
         updateCredits={updateCredits}
         display={step === 'ANAGATHICS'}
         onAnagathicsDecision={anagathicsDecision}
@@ -462,7 +415,6 @@ function App() {
         updateUPP={updateUPP}
         career={career}
         updateCareer={updateCareer}
-        // updateDebt={updateDebt}
         injury={injury}
         updateInjury={updateInjury}
         updateMishap={updateMishap}
@@ -478,7 +430,6 @@ function App() {
         upp={upp}
         updateUPP={updateUPP}
         career={career}
-        // updateDebt={updateDebt}
         injury={injury}
         updateInjury={updateInjury}
         credits={credits}
@@ -556,8 +507,6 @@ function App() {
         career={career}
         skills={skills}
         updateSkills={updateSkills}
-        // credits={credits}
-        // updateCredits={setCredits}
         updateCredits={updateCredits}
         items={items}
         updateItems={updateItems}
@@ -571,7 +520,6 @@ function App() {
         onGoodbye={goodbye}
       />
       <Log log={log} />
-      {/* <Homeworld name={homeworldName} updateName={setHomeworldName} upp={homeworldUPP} updateUPP={setHomeworldUPP} /> */}
     </div>
 
   );

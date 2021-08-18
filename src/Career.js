@@ -61,8 +61,6 @@ function CareerCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
         }
 
         if (careerName !== '') {
-            // console.log(`Enlisting in the ${c.value}`);
-
             // Determine if character can enlist.
             if (canEnlistCT(upp, careerName)) {
                 let newLog = [`Congratulations! You have enlisted in the ${capitalize(careerName)}!`]
@@ -133,7 +131,7 @@ function CareerCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
 
                 updateLog(newLog);
                 let newCareer = [...career];
-                newCareer.push({ branch: draftName, /*failedBranch: careerName,*/ term: 0, rank: 0, drafted: true, rankPrev: 0 });
+                newCareer.push({ branch: draftName, term: 0, rank: 0, drafted: true, rankPrev: 0 });
                 updateCareer(newCareer);
                 onEnlistment(true);
             }
@@ -153,7 +151,6 @@ function CareerCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
     );
 }
 
-
 function canEnlistCE(upp, careerName) {
     console.log(upp);
     console.log(careerName);
@@ -161,11 +158,6 @@ function canEnlistCE(upp, careerName) {
     const result = modRollCE(upp, career.enlistment.characteristic);
     return result >= career.enlistment.target;
 }
-
-// function draftCE() {
-//     const roll = r1d6();
-//     return CECAREERS.filter(career => career.draftNumber === roll)[0].name;
-// }
 
 function CareerCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, onEnlistment, /*onDraft,*/ updateLog }) {
     function selectCareer(ev) {
@@ -179,10 +171,7 @@ function CareerCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
         }
 
         if (careerName !== '') {
-            // console.log(`Enlisting in the ${c.value}`);
-
             let newLog = [];
-            // let failedCareer = '';
 
             // Determine if character can enlist.
             if (canEnlistCE(upp, careerName)) {
