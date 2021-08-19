@@ -17,6 +17,11 @@
         "reenlist": {
             "target": 6
         },
+        "medical": {
+            "4": 0.5,
+            "8": 0.75,
+            "12": 1.0
+        },
         "ranks": [
             {
                 "name": "athlete",
@@ -218,6 +223,11 @@
         },
         "reenlist": {
             "target": 5
+        },
+        "medical": {
+            "4": 0.75,
+            "8": 1.0,
+            "12": 1.0
         },
         "ranks": [
             {
@@ -446,6 +456,11 @@
         "reenlist": {
             "target": 6
         },
+        "medical": {
+            "4": 0.5,
+            "8": 0.75,
+            "12": 1.0
+        },
         "ranks": [
             {
                 "name": "Agent",
@@ -667,6 +682,11 @@
         "reenlist": {
             "target": 5
         },
+        "medical": {
+            "4": 0.0,
+            "8": 0.5,
+            "12": 0.75
+        },
         "ranks": [
             {
                 "name": "barbarian",
@@ -863,6 +883,11 @@
         "promotion": null,
         "reenlist": {
             "target": 5
+        },
+        "medical": {
+            "4": 0.0,
+            "8": 0.5,
+            "12": 0.75
         },
         "ranks": [
             {
@@ -1069,6 +1094,11 @@
         },
         "reenlist": {
             "target": 5
+        },
+        "medical": {
+            "4": 0.5,
+            "8": 0.75,
+            "12": 1.0
         },
         "ranks": [
             {
@@ -1298,6 +1328,11 @@
         "reenlist": {
             "target": 5
         },
+        "medical": {
+            "4": 0.0,
+            "8": 0.5,
+            "12": 0.75
+        },
         "ranks": [
             {
                 "name": "Citizen",
@@ -1525,6 +1560,11 @@
         "reenlist": {
             "target": 5
         },
+        "medical": {
+            "4": 0.0,
+            "8": 0.5,
+            "12": 0.75
+        },
         "ranks": [
             {
                 "name": "Attaché",
@@ -1746,6 +1786,11 @@
         "reenlist": {
             "target": 5
         },
+        "medical": {
+            "4": 0.0,
+            "8": 0.5,
+            "12": 0.75
+        },
         "ranks": [
             {
                 "name": "drifter"
@@ -1936,6 +1981,11 @@
         "promotion": null,
         "reenlist": {
             "target": 6
+        },
+        "medical": {
+            "4": 0.5,
+            "8": 0.75,
+            "12": 1.0
         },
         "ranks": [
             {
@@ -2133,6 +2183,11 @@
         "promotion": null,
         "reenlist": {
             "target": 6
+        },
+        "medical": {
+            "4": 0.5,
+            "8": 0.75,
+            "12": 1.0
         },
         "ranks": [
             {
@@ -2339,6 +2394,11 @@
         },
         "reenlist": {
             "target": 6
+        },
+        "medical": {
+            "4": 0.75,
+            "8": 1.0,
+            "12": 1.0
         },
         "ranks": [
             {
@@ -2567,6 +2627,11 @@
         "reenlist": {
             "target": 5
         },
+        "medical": {
+            "4": 0.75,
+            "8": 1.0,
+            "12": 1.0
+        },
         "ranks": [
             {
                 "name": "Seaman",
@@ -2793,6 +2858,11 @@
         },
         "reenlist": {
             "target": 5
+        },
+        "medical": {
+            "4": 0.5,
+            "8": 0.75,
+            "12": 1.0
         },
         "ranks": [
             {
@@ -3025,6 +3095,11 @@
         "reenlist": {
             "target": 4
         },
+        "medical": {
+            "4": 0.5,
+            "8": 0.75,
+            "12": 1.0
+        },
         "ranks": [
             {
                 "name": "Crewman",
@@ -3255,6 +3330,11 @@
         "reenlist": {
             "target": 5
         },
+        "medical": {
+            "4": 0.75,
+            "8": 1.0,
+            "12": 1.0
+        },
         "ranks": [
             {
                 "name": "Starman",
@@ -3481,6 +3561,11 @@
         },
         "reenlist": {
             "target": 6
+        },
+        "medical": {
+            "4": 0.5,
+            "8": 0.75,
+            "12": 1.0
         },
         "ranks": [
             {
@@ -3713,6 +3798,11 @@
         "reenlist": {
             "target": 5
         },
+        "medical": {
+            "4": 0.5,
+            "8": 0.75,
+            "12": 1.0
+        },
         "ranks": [
             {
                 "name": "Intern",
@@ -3940,6 +4030,11 @@
         },
         "reenlist": {
             "target": 5
+        },
+        "medical": {
+            "4": 0.5,
+            "8": 0.75,
+            "12": 1.0
         },
         "ranks": [
             {
@@ -4172,6 +4267,11 @@
         "reenlist": {
             "target": 4
         },
+        "medical": {
+            "4": 0.0,
+            "8": 0.5,
+            "12": 0.75
+        },
         "ranks": [
             {
                 "name": "Independent",
@@ -4399,6 +4499,11 @@
         "reenlist": {
             "target": 5
         },
+        "medical": {
+            "4": 0.5,
+            "8": 0.75,
+            "12": 1.0
+        },
         "ranks": [
             {
                 "name": "Instructor",
@@ -4621,6 +4726,11 @@
         "reenlist": {
             "target": 6
         },
+        "medical": {
+            "4": 0.75,
+            "8": 1.0,
+            "12": 1.0
+        },
         "ranks": [
             {
                 "name": "scout",
@@ -4822,6 +4932,11 @@
         },
         "reenlist": {
             "target": 5
+        },
+        "medical": {
+            "4": 0.75,
+            "8": 1.0,
+            "12": 1.0
         },
         "ranks": [
             {
@@ -5049,6 +5164,11 @@
         },
         "reenlist": {
             "target": 5
+        },
+        "medical": {
+            "4": 0.5,
+            "8": 0.75,
+            "12": 1.0
         },
         "ranks": [
             {
