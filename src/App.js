@@ -17,6 +17,7 @@ import { Anagathics } from './Anagathics';
 import { Survival } from './Survival';
 import { Mishap } from './Mishap';
 import { Injury } from './Injury';
+import { Medical } from './Medical';
 import { Commission } from './Commission';
 import { Promotion } from './Promotion';
 import { Skill } from './Skill';
@@ -67,7 +68,8 @@ function App() {
   let [injury, setInjury] = useState({ roll: 0, crisis: false, injuries: {} });
   let [age, setAge] = useState(18);
   let [anagathics, setAnagathics] = useState({ current: false, terms: 0 });
-  let [credits, setCredits] = useState(0);
+  // let [credits, setCredits] = useState(0);
+  let [credits, setCredits] = useState(100000);
   let [items, setItems] = useState({});
   let [log, setLog] = useState([]);
 
@@ -240,6 +242,10 @@ function App() {
 
   function injuryResolved() {
     setStep('MEDICAL');
+  }
+
+  function medicalResolved() {
+    setStep('AGE');
   }
 
   function commissioned() {
@@ -437,6 +443,19 @@ function App() {
         display={step === 'INJURY'}
         onInjury={injuryResolved}
         onDeath={died}
+        updateLog={updateLog}
+      />
+      <Medical
+        game={game}
+        upp={upp}
+        updateUPP={updateUPP}
+        career={career}
+        injury={injury}
+        updateInjury={updateInjury}
+        credits={credits}
+        updateCredits={updateCredits}
+        display={step === 'MEDICAL'}
+        onMedical={medicalResolved}
         updateLog={updateLog}
       />
       <Commission
