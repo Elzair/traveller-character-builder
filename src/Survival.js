@@ -69,13 +69,13 @@ function SurvivalCE({ options, upp, career, updateCareer, anagathics, onSurvival
         const curCareer = career[career.length - 1]; // Get latest career
         const careerData = CECAREERS.filter(c => c.name === curCareer.branch)[0];
 
-        let roll = modRollCE(upp, careerData.survival.characteristic);
-        let didSurvive = roll >= careerData.survival.target;
+        let roll = modRollCE(upp, careerData.survival.characteristic, true);
+        let didSurvive = roll >= careerData.survival.target && roll !== 2;
 
         // Travellers taking anagathics need to make two survival rolls.
         if (anagathics.current) {
-            roll = modRollCE(upp, careerData.survival.characteristic);
-            didSurvive = roll >= careerData.survival.target;
+            roll = modRollCE(upp, careerData.survival.characteristic, true);
+            didSurvive = roll >= careerData.survival.target && roll !== 2;
         }
 
         if (didSurvive) {
