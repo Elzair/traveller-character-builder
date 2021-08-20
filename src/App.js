@@ -28,6 +28,7 @@ import { MusterOut } from './MusterOut';
 import { Log } from './Log';
 
 import CTCAREERS from './data/ct/careers';
+import CECAREERS from './data/ce/careers';
 
 // eslint-disable-next-line
 const STEPS = [
@@ -212,6 +213,19 @@ function App() {
       } else {
         setStep('COMMISSION');
       }
+    } else if (game === 'cepheusengine') {
+      const curCareer = career[career.length - 1]; // Get latest career
+      const careerData = CECAREERS.filter(c => curCareer.branch === c.name)[0];
+
+      // If the career does not have commissions or advancements, go to skill rolls.
+      // Also skip commission & promotion if the traveller was drafted and its their first term.
+      if (careerData.commission === null || (curCareer.drafted === true && curCareer.term === 1)) {
+        setStep('SKILL');
+      } else if (curCareer.rank >= 1 && curCareer.rank < careerData.ranks.length - 1) { // Go directly to promotion if a commission has already been earned
+        setStep('PROMOTION');                                                           // and the traveller has not yet achieved the maximum rank.
+      } else {
+        setStep('COMMISSION');
+      }
     } else {
       setStep('NOT-IMPLEMENTED');
     }
@@ -233,7 +247,7 @@ function App() {
           setStep('INJURY');
           break;
         default:
-          throw new Error('mishapHappened: Invalid mishap type!');
+          throw new Error('mishapResolved: Invalid mishap type!');
       }
     } else {
       setStep('END'); // Not implemented yet

@@ -4,6 +4,7 @@ import Switch from 'react-switch';
 import { capitalize, r1d6 } from "./utils";
 
 import CECAREERS from './data/ce/careers';
+import CESKILLS from './data/ce/skills';
 
 import './default.css';
 
@@ -28,6 +29,7 @@ export function Draft({ game, career, updateCareer, upp, updateUPP, skills, upda
 
 function DraftCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, onDraft, updateLog }) {
     let [checked, setChecked] = useState(false);
+    let [cascade, setCascade] = useState(null);
 
     function handleChange(change) {
         setChecked(change);
@@ -38,11 +40,12 @@ function DraftCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, o
 
         let newLog = [];
         let careerName = '';
+        let tmpCascade = null;
 
         if (checked) { // Submit to the draft
             careerName = CECAREERS.filter(career => career.draftNumber === r1d6())[0].name;
             newLog.push(`You were drafted into the ${capitalize(careerName)}`);
-        } else  {
+        } else {
             careerName = 'drifter';
             newLog.push('You became a drifter.');
         }
@@ -55,13 +58,16 @@ function DraftCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, o
             let benefit = rank.benefit;
 
             if (benefit.type === 'SKILL') {
-                // Set a skill to a value if it is lower than that value.
-                if (!skills.hasOwnProperty(benefit.name) || skills[benefit.name] < benefit.value) {
+                const skillData = CESKILLS[benefit.name];
+
+                if (skillData === null) { // a non-cascade skill
                     let newSkills = {};
-                    newSkills[benefit.name] = benefit.value;
+                    newSkills[benefit.name] = (skills[benefit.name] || 0) + benefit.value;
                     updateSkills(newSkills);
 
                     newLog.push(`Because of your rank, you gain ${benefit.name}-${benefit.value}.`);
+                } else { // Transition to cascade skill selection
+                    tmpCascade = benefit;
                 }
             } else if (benefit.type === 'CHARACTERISTIC') {
                 let newUPP = {};
@@ -83,12 +89,40 @@ function DraftCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, o
         updateCareer(newCareer);
 
         updateLog(newLog);
-        onDraft();
+
+        if (!tmpCascade) {
+            setCascade(tmpCascade);
+        } else {
+            onDraft();
+        }
+    }
+
+    function handleCascadeSkillSelection(ev) {
+        ev.preventDefault();
+
+        let skill = '';
+        for (let t of ev.target) {
+            if (t.checked) {
+                skill = t.value;
+            }
+        }
+
+        if (skill !== '') {
+            let newSkills = {};
+            newSkills[skill] = (skills[skill] || 0) + cascade.value;
+
+            setCascade(null); // Reset cascade skills.
+            updateSkills(newSkills);
+            updateLog([`You improved your ${skill} to ${newSkills[skill]}.`]);
+
+            onDraft(true);
+        }
     }
 
     // Only allow a traveller to submit to the draft if they have not already done so before.
-    if (career.filter(c => c.drafted).length > 0) {
-        useEffect(() => {
+    useEffect(() => {
+        if (career.filter(c => c.drafted).length > 0) {
+            let tmpCascade = null;
             let newLog = [];
 
             // Apply any benefits for entering a career.
@@ -99,13 +133,16 @@ function DraftCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, o
                 let benefit = rank.benefit;
 
                 if (benefit.type === 'SKILL') {
-                    // Set a skill to a value if it is lower than that value.
-                    if (!skills.hasOwnProperty(benefit.name) || skills[benefit.name] < benefit.value) {
+                    const skillData = CESKILLS[benefit.name];
+
+                    if (skillData === null) { // a non-cascade skill
                         let newSkills = {};
-                        newSkills[benefit.name] = benefit.value;
+                        newSkills[benefit.name] = (skills[benefit.name] || 0) + benefit.value;
                         updateSkills(newSkills);
 
                         newLog.push(`Because of your rank, you gain ${benefit.name}-${benefit.value}.`);
+                    } else { // Transition to cascade skill selection
+                        tmpCascade = benefit;
                     }
                 } else if (benefit.type === 'CHARACTERISTIC') {
                     let newUPP = {};
@@ -128,51 +165,79 @@ function DraftCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, o
             updateCareer(newCareer);
 
             updateLog(newLog);
-            onDraft();
-        });
 
-        return (<div></div>);
+            if (tmpCascade) {
+                setCascade(tmpCascade);
+            } else {
+                onDraft();
+            }
+        }
+    });
+
+    if (!cascade) {
+        // Only allow a traveller to submit to the draft if they have not already done so before.
+        if (career.filter(c => c.drafted).length > 0) {
+            return (<div></div>);
+        } else {
+            return (
+                <div className="Draft">
+                    <p className="Header">Do you want to become a Drifter or attempt the Draft?</p>
+                    <form onSubmit={handleSelection} className="Draft">
+                        <Switch
+                            checked={checked}
+                            onChange={handleChange}
+                            offColor="#0aa"
+                            onColor="#a00"
+                            offHandleColor="#0ff"
+                            onHandleColor="#f00"
+                            uncheckedIcon={
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                        color: 'black'
+                                    }}
+                                >
+                                    Drifter
+                                </div>
+                            }
+                            checkedIcon={
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                        color: 'white'
+                                    }}
+                                >
+                                    Draft
+                                </div>
+                            }
+                        />
+                        <input className="Submit" type="submit" value="Submit" />
+                    </form>
+                </div>
+            );
+        }
+    } else {
+        const skillData = CESKILLS[cascade.name];
+        const optionElts = Object.keys(skillData).map(skill => (
+            <label>
+                <input type="radio" id={skill} name="cascadeskill" value={skill} />
+                {skill}
+            </label>
+        ));
+
+        return (
+            <div>
+                {<form onSubmit={handleCascadeSkillSelection}>
+                    <label>{`Choose a specific focus of ${cascade.name}:`}</label>
+                    {optionElts}
+                    <input type="submit" value="Submit" />
+                </form>}
+            </div>
+        );
     }
-
-    return (
-        <div className="Draft">
-            <p className="Header">Do you want to become a Drifter or attempt the Draft?</p>
-            <form onSubmit={handleSelection} className="Draft">
-                <Switch
-                    checked={checked}
-                    onChange={handleChange}
-                    offColor="#0aa"
-                    onColor="#a00"
-                    offHandleColor="#0ff"
-                    onHandleColor="#f00"
-                    uncheckedIcon={
-                        <div
-                            style={{
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                color: 'black'
-                            }}
-                        >
-                            Drifter
-                        </div>
-                    }
-                    checkedIcon={
-                        <div
-                            style={{
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                color: 'white'
-                            }}
-                        >
-                            Draft
-                        </div>
-                    }
-                />
-                <input className="Submit" type="submit" value="Submit" />
-            </form>
-        </div>
-    );
 }
 
