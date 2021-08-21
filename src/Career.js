@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React/*, { useState }*/ from 'react';
 import { applyDMsToRoll, capitalize, modRollCE, r1d6, r2d6 } from "./utils";
 
 import CTCAREERS from './data/ct/careers';
@@ -7,7 +7,7 @@ import CESKILLS from './data/ce/skills';
 
 import './Career.css';
 
-export function Career({ game, career, updateCareer, upp, updateUPP, skills, updateSkills, display, onEnlistment, updateLog }) {
+export function Career({ game, career, updateCareer, upp, updateUPP, skills, updateSkills, cascadeSkill, updateCascadeSkill, display, onEnlistment, updateLog }) {
     if (display && game === 'classic') {
         return (
             <CareerCT
@@ -17,6 +17,8 @@ export function Career({ game, career, updateCareer, upp, updateUPP, skills, upd
                 updateUPP={updateUPP}
                 skills={skills}
                 updateSkills={updateSkills}
+                cascadeSkill={cascadeSkill}
+                updateCascadeSkill={updateCascadeSkill}
                 onEnlistment={onEnlistment}
                 updateLog={updateLog}
             />
@@ -30,6 +32,8 @@ export function Career({ game, career, updateCareer, upp, updateUPP, skills, upd
                 updateUPP={updateUPP}
                 skills={skills}
                 updateSkills={updateSkills}
+                cascadeSkill={cascadeSkill}
+                updateCascadeSkill={updateCascadeSkill}
                 onEnlistment={onEnlistment}
                 updateLog={updateLog}
             />
@@ -50,7 +54,7 @@ function draftCT() {
     return CTCAREERS.filter(career => career.draftNumber === roll)[0].name;
 }
 
-function CareerCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, onEnlistment, updateLog }) {
+function CareerCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, cascadeSkill, updateCascadeSkill, onEnlistment, updateLog }) {
     function selectCareer(ev) {
         ev.preventDefault();
 
@@ -97,7 +101,7 @@ function CareerCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
                 newCareer.push({ branch: careerName, term: 0, rank: 0, drafted: false, rankPrev: 0 });
                 updateCareer(newCareer);
 
-                onEnlistment(true);
+                onEnlistment(true, false);
             } else {
                 const draftName = draftCT();
                 let newLog = [
@@ -130,11 +134,13 @@ function CareerCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
                     }
                 }
 
-                updateLog(newLog);
                 let newCareer = [...career];
                 newCareer.push({ branch: draftName, term: 0, rank: 0, drafted: true, rankPrev: 0 });
                 updateCareer(newCareer);
-                onEnlistment(true);
+
+                updateLog(newLog);
+
+                onEnlistment(true, false);
             }
         }
     }
@@ -153,15 +159,15 @@ function CareerCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
 }
 
 function canEnlistCE(upp, careerName) {
-    console.log(upp);
-    console.log(careerName);
+    // console.log(upp);
+    // console.log(careerName);
     const career = CECAREERS.filter(career => career.name === careerName)[0];
     const result = modRollCE(upp, career.enlistment.characteristic);
     return result >= career.enlistment.target;
 }
 
-function CareerCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, onEnlistment, updateLog }) {
-    let [cascade, setCascade] = useState(null);
+function CareerCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, cascadeSkill, updateCascadeSkill, onEnlistment, updateLog }) {
+    // let [cascade, setCascade] = useState(null);
 
     function selectCareer(ev) {
         ev.preventDefault();
@@ -222,43 +228,44 @@ function CareerCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
                 updateCareer(newCareer);
 
                 if (tmpCascade) {
-                    setCascade(tmpCascade);
-                } else {
-                    onEnlistment(true);
+                    // setCascade(tmpCascade);
+                    updateCascadeSkill(tmpCascade);
                 }
+
+                onEnlistment(true, tmpCascade ? true : false);
             } else {
                 newLog.push(`Sorry! You did not qualify for the ${capitalize(careerName)}.`);
 
-                onEnlistment(false);
+                onEnlistment(false, false);
             }
 
             updateLog(newLog);
         }
     }
 
-    function handleCascadeSkillSelection(ev) {
-        ev.preventDefault();
+    // function handleCascadeSkillSelection(ev) {
+    //     ev.preventDefault();
 
-        let skill = '';
-        for (let t of ev.target) {
-            if (t.checked) {
-                skill = t.value;
-            }
-        }
+    //     let skill = '';
+    //     for (let t of ev.target) {
+    //         if (t.checked) {
+    //             skill = t.value;
+    //         }
+    //     }
 
-        if (skill !== '') {
-            let newSkills = {};
-            newSkills[skill] = (skills[skill] || 0) + cascade.value;
+    //     if (skill !== '') {
+    //         let newSkills = {};
+    //         newSkills[skill] = (skills[skill] || 0) + cascade.value;
 
-            setCascade(null); // Reset cascade skills.
-            updateSkills(newSkills);
-            updateLog([`You improved your ${skill} to ${newSkills[skill]}.`]);
+    //         setCascade(null); // Reset cascade skills.
+    //         updateSkills(newSkills);
+    //         updateLog([`You improved your ${skill} to ${newSkills[skill]}.`]);
 
-            onEnlistment(true);
-        }
-    }
+    //         onEnlistment(true);
+    //     }
+    // }
 
-    if (!cascade) {
+    //if (!cascade) {
         let careers = CECAREERS.map(c => <div key={`career-${c.name}-div`} className="CTCareer">
             <input type="radio" id={`career-${c.name}`} name="career" value={c.name} /> <label className="CTCareerLabel" htmlFor={`career-${c.name}`} >{capitalize(c.name)}</label>
         </div>);
@@ -270,23 +277,23 @@ function CareerCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
                 <input className="Submit" type="submit" value="Submit" />
             </form>
         );
-    } else {
-        const skillData = CESKILLS[cascade.name];
-        const optionElts = Object.keys(skillData).map(skill => (
-            <label>
-                <input type="radio" id={skill} name="cascadeskill" value={skill} />
-                {skill}
-            </label>
-        ));
+    // } else {
+    //     const skillData = CESKILLS[cascade.name];
+    //     const optionElts = Object.keys(skillData).map(skill => (
+    //         <label>
+    //             <input type="radio" id={skill} name="cascadeskill" value={skill} />
+    //             {skill}
+    //         </label>
+    //     ));
 
-        return (
-            <div>
-                {<form onSubmit={handleCascadeSkillSelection}>
-                    <label>{`Choose a specific focus of ${cascade.name}:`}</label>
-                    {optionElts}
-                    <input type="submit" value="Submit" />
-                </form>}
-            </div>
-        );
-    }
+    //     return (
+    //         <div>
+    //             {<form onSubmit={handleCascadeSkillSelection}>
+    //                 <label>{`Choose a specific focus of ${cascade.name}:`}</label>
+    //                 {optionElts}
+    //                 <input type="submit" value="Submit" />
+    //             </form>}
+    //         </div>
+    //     );
+    // }
 }

@@ -7,7 +7,7 @@ import CTCAREERS from './data/ct/careers';
 import CECAREERS from './data/ce/careers';
 import CESKILLS from './data/ce/skills';
 
-export function Commission({ game, upp, updateUPP, career, updateCareer, skills, updateSkills, display, onSuccess, onFailure, onNoAttempt, updateLog }) {
+export function Commission({ game, upp, updateUPP, career, updateCareer, skills, updateSkills, cascadeSkill, updateCascadeSkill, display, onSuccess, onFailure, onNoAttempt, updateLog }) {
     if (display && game === 'classic') {
         return (
             <CommissionCT
@@ -17,6 +17,8 @@ export function Commission({ game, upp, updateUPP, career, updateCareer, skills,
                 updateCareer={updateCareer}
                 skills={skills}
                 updateSkills={updateSkills}
+                cascadeSkill={cascadeSkill}
+                updateCascadeSkill={updateCascadeSkill}
                 onSuccess={onSuccess}
                 onFailure={onFailure}
                 onNoAttempt={onNoAttempt}
@@ -32,6 +34,8 @@ export function Commission({ game, upp, updateUPP, career, updateCareer, skills,
                 updateCareer={updateCareer}
                 skills={skills}
                 updateSkills={updateSkills}
+                cascadeSkill={cascadeSkill}
+                updateCascadeSkill={updateCascadeSkill}
                 onSuccess={onSuccess}
                 onFailure={onFailure}
                 onNoAttempt={onNoAttempt}
@@ -43,7 +47,7 @@ export function Commission({ game, upp, updateUPP, career, updateCareer, skills,
     }
 }
 
-function CommissionCT({ upp, updateUPP, career, updateCareer, skills, updateSkills, onSuccess, onFailure, onNoAttempt, updateLog }) {
+function CommissionCT({ upp, updateUPP, career, updateCareer, skills, updateSkills, cascadeSkill, updateCascadeSkill, onSuccess, onFailure, onNoAttempt, updateLog }) {
     let [checked, setChecked] = useState(true);
 
     function handleCheck(check) {
@@ -129,9 +133,9 @@ function CommissionCT({ upp, updateUPP, career, updateCareer, skills, updateSkil
     );
 }
 
-function CommissionCE({ upp, updateUPP, career, updateCareer, skills, updateSkills, onSuccess, onFailure, onNoAttempt, updateLog }) {
+function CommissionCE({ upp, updateUPP, career, updateCareer, skills, updateSkills, cascadeSkill, updateCascadeSkill, onSuccess, onFailure, onNoAttempt, updateLog }) {
     let [checked, setChecked] = useState(true);
-    let [cascade, setCascade] = useState(null);
+    // let [cascade, setCascade] = useState(null);
 
     function handleCheck(check) {
         setChecked(check);
@@ -188,10 +192,12 @@ function CommissionCE({ upp, updateUPP, career, updateCareer, skills, updateSkil
                 updateCareer(newCareer);
 
                 if (tmpCascade) {
-                    setCascade(tmpCascade);
-                } else {
+                    // setCascade(tmpCascade);
+                    updateCascadeSkill(tmpCascade);
+                } /*else {
                     onSuccess();
-                }
+                }*/
+                onSuccess(tmpCascade ? true : false);
             } else {
                 updateLog([`Sorry, you failed to get a commission in term ${curCareer.term}.`]);
                 onFailure();
@@ -203,30 +209,30 @@ function CommissionCE({ upp, updateUPP, career, updateCareer, skills, updateSkil
         setChecked(true); // Reset `checked`
     }
 
-    function handleCascadeSkillSelection(ev) {
-        ev.preventDefault();
+    // function handleCascadeSkillSelection(ev) {
+    //     ev.preventDefault();
 
-        let skill = '';
-        for (let t of ev.target) {
-            if (t.checked) {
-                skill = t.value;
-            }
-        }
+    //     let skill = '';
+    //     for (let t of ev.target) {
+    //         if (t.checked) {
+    //             skill = t.value;
+    //         }
+    //     }
 
-        if (skill !== '') {
-            let newSkills = {};
-            newSkills[skill] = (skills[skill] || 0) + cascade.value;
+    //     if (skill !== '') {
+    //         let newSkills = {};
+    //         newSkills[skill] = (skills[skill] || 0) + cascade.value;
 
-            setCascade(null); // Reset cascade skills.
+    //         setCascade(null); // Reset cascade skills.
 
-            updateSkills(newSkills);
-            updateLog([`You improved your ${skill} to ${newSkills[skill]}.`]);
+    //         updateSkills(newSkills);
+    //         updateLog([`You improved your ${skill} to ${newSkills[skill]}.`]);
 
-            onSuccess();
-        }
-    }
+    //         onSuccess();
+    //     }
+    // }
 
-    if (!cascade) {
+    // if (!cascade) {
         return (
             <form onSubmit={attemptCommission} className="Commission">
                 <p>Would you like to try for a commission?</p>
@@ -234,23 +240,23 @@ function CommissionCE({ upp, updateUPP, career, updateCareer, skills, updateSkil
                 <input type="submit" value="Ok" />
             </form>
         );
-    } else {
-        const skillData = CESKILLS[cascade.name];
-        const optionElts = Object.keys(skillData).map(skill => (
-            <label>
-                <input type="radio" id={skill} name="cascadeskill" value={skill} />
-                {skill}
-            </label>
-        ));
+    // } else {
+    //     const skillData = CESKILLS[cascade.name];
+    //     const optionElts = Object.keys(skillData).map(skill => (
+    //         <label>
+    //             <input type="radio" id={skill} name="cascadeskill" value={skill} />
+    //             {skill}
+    //         </label>
+    //     ));
 
-        return (
-            <div>
-                {<form onSubmit={handleCascadeSkillSelection}>
-                    <label>{`Choose a specific focus of ${cascade.name}:`}</label>
-                    {optionElts}
-                    <input type="submit" value="Submit" />
-                </form>}
-            </div>
-        );
-    }
+    //     return (
+    //         <div>
+    //             {<form onSubmit={handleCascadeSkillSelection}>
+    //                 <label>{`Choose a specific focus of ${cascade.name}:`}</label>
+    //                 {optionElts}
+    //                 <input type="submit" value="Submit" />
+    //             </form>}
+    //         </div>
+    //     );
+    // }
 }

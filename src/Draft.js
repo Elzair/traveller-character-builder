@@ -8,7 +8,7 @@ import CESKILLS from './data/ce/skills';
 
 import './default.css';
 
-export function Draft({ game, career, updateCareer, upp, updateUPP, skills, updateSkills, display, onDraft, updateLog }) {
+export function Draft({ game, career, updateCareer, upp, updateUPP, skills, updateSkills, cascadeSkill, updateCascadeSkill, display, onDraft, updateLog }) {
     if (display && game === 'cepheusengine') {
         return (
             <DraftCE
@@ -18,6 +18,8 @@ export function Draft({ game, career, updateCareer, upp, updateUPP, skills, upda
                 updateUPP={updateUPP}
                 skills={skills}
                 updateSkills={updateSkills}
+                cascadeSkill={cascadeSkill}
+                updateCascadeSkill={updateCascadeSkill}
                 onDraft={onDraft}
                 updateLog={updateLog}
             />
@@ -27,9 +29,9 @@ export function Draft({ game, career, updateCareer, upp, updateUPP, skills, upda
     }
 }
 
-function DraftCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, onDraft, updateLog }) {
+function DraftCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, cascadeSkill, updateCascadeSkill, onDraft, updateLog }) {
     let [checked, setChecked] = useState(false);
-    let [cascade, setCascade] = useState(null);
+    // let [cascade, setCascade] = useState(null);
 
     function handleChange(change) {
         setChecked(change);
@@ -91,33 +93,37 @@ function DraftCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, o
         updateLog(newLog);
 
         if (!tmpCascade) {
-            setCascade(tmpCascade);
-        } else {
+            // setCascade(tmpCascade);
+            updateCascadeSkill(tmpCascade);
+        } /*else {
             onDraft();
-        }
+        }*/
+
+        onDraft(tmpCascade ? true : false);
+
     }
 
-    function handleCascadeSkillSelection(ev) {
-        ev.preventDefault();
+    // function handleCascadeSkillSelection(ev) {
+    //     ev.preventDefault();
 
-        let skill = '';
-        for (let t of ev.target) {
-            if (t.checked) {
-                skill = t.value;
-            }
-        }
+    //     let skill = '';
+    //     for (let t of ev.target) {
+    //         if (t.checked) {
+    //             skill = t.value;
+    //         }
+    //     }
 
-        if (skill !== '') {
-            let newSkills = {};
-            newSkills[skill] = (skills[skill] || 0) + cascade.value;
+    //     if (skill !== '') {
+    //         let newSkills = {};
+    //         newSkills[skill] = (skills[skill] || 0) + cascade.value;
 
-            setCascade(null); // Reset cascade skills.
-            updateSkills(newSkills);
-            updateLog([`You improved your ${skill} to ${newSkills[skill]}.`]);
+    //         setCascade(null); // Reset cascade skills.
+    //         updateSkills(newSkills);
+    //         updateLog([`You improved your ${skill} to ${newSkills[skill]}.`]);
 
-            onDraft(true);
-        }
-    }
+    //         onDraft(true);
+    //     }
+    // }
 
     // Only allow a traveller to submit to the draft if they have not already done so before.
     useEffect(() => {
@@ -167,14 +173,15 @@ function DraftCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, o
             updateLog(newLog);
 
             if (tmpCascade) {
-                setCascade(tmpCascade);
-            } else {
+                // setCascade(tmpCascade);
+            } /*else {
                 onDraft();
-            }
+            }*/
+            onDraft(tmpCascade ? true : false);
         }
     });
 
-    if (!cascade) {
+    // if (!cascade) {
         // Only allow a traveller to submit to the draft if they have not already done so before.
         if (career.filter(c => c.drafted).length > 0) {
             return (<div></div>);
@@ -220,24 +227,24 @@ function DraftCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, o
                 </div>
             );
         }
-    } else {
-        const skillData = CESKILLS[cascade.name];
-        const optionElts = Object.keys(skillData).map(skill => (
-            <label>
-                <input type="radio" id={skill} name="cascadeskill" value={skill} />
-                {skill}
-            </label>
-        ));
+    // } else {
+    //     const skillData = CESKILLS[cascade.name];
+    //     const optionElts = Object.keys(skillData).map(skill => (
+    //         <label>
+    //             <input type="radio" id={skill} name="cascadeskill" value={skill} />
+    //             {skill}
+    //         </label>
+    //     ));
 
-        return (
-            <div>
-                {<form onSubmit={handleCascadeSkillSelection}>
-                    <label>{`Choose a specific focus of ${cascade.name}:`}</label>
-                    {optionElts}
-                    <input type="submit" value="Submit" />
-                </form>}
-            </div>
-        );
-    }
+    //     return (
+    //         <div>
+    //             {<form onSubmit={handleCascadeSkillSelection}>
+    //                 <label>{`Choose a specific focus of ${cascade.name}:`}</label>
+    //                 {optionElts}
+    //                 <input type="submit" value="Submit" />
+    //             </form>}
+    //         </div>
+    //     );
+    // }
 }
 

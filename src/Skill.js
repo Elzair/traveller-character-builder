@@ -5,6 +5,8 @@ import { r1d6 } from "./utils";
 import CTCAREERS from './data/ct/careers';
 import CTSKILLS from './data/ct/skills';
 
+const INITIALNUMSKILLROLLS = 99; // Use some large number first.
+
 export function Skill({ game, upp, updateUPP, career, skills, updateSkills, display, onSelected, updateLog }) {
     if (display && game === 'classic') {
         return (
@@ -25,13 +27,14 @@ export function Skill({ game, upp, updateUPP, career, skills, updateSkills, disp
 }
 
 function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, onSelected, updateLog }) {
-    let [numSkillRolls, setNumSkillRolls] = useState(99); // Use some large number first.
+    let [numSkillRolls, setNumSkillRolls] = useState(INITIALNUMSKILLROLLS); 
     let [cascade, setCascade] = useState(null);
 
     function decreaseSkillRolls() {
         const curNumSkillRolls = numSkillRolls - 1;
         setNumSkillRolls(curNumSkillRolls);
         if (curNumSkillRolls === 0) { // React takes a while to update state, so we compare with `curNumSkillRolls` rather than `numSkillRolls`.
+            setNumSkillRolls(INITIALNUMSKILLROLLS);
             onSelected();
         }
     }
@@ -113,7 +116,7 @@ function SkillCT({ game, upp, updateUPP, career, skills, updateSkills, display, 
     // If it is the traveller's first term, give them 2 skill rolls.
     // Otherwise, default to the number of skill rolls give by the career.
     // For each rank the traveller has advanced, give them an extra skill roll.
-    if (numSkillRolls === 99) {
+    if (numSkillRolls === INITIALNUMSKILLROLLS) {
         const curCareer = career[career.length-1]; // Get latest career
         const careerData = CTCAREERS.filter(c => curCareer.branch === c.name)[0];
         const numRolls = (curCareer.term === 1 ? 2 : careerData.numSkillsPerTerm) + (curCareer.rank - curCareer.rankPrev);

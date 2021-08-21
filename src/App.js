@@ -21,6 +21,7 @@ import { Medical } from './Medical';
 import { Commission } from './Commission';
 import { Promotion } from './Promotion';
 import { Skill } from './Skill';
+import { CascadeSkill } from './CascadeSkill';
 import { Character } from './Character';
 import { Age } from './Age';
 import { Reenlist } from './Reenlist';
@@ -47,6 +48,7 @@ const STEPS = [
   'COMMISSION',
   'PROMOTION',
   'SKILL',
+  'CASCADESKILL',
   'AGE',
   'REENLISTMENT',
   'MUSTER-OUT',
@@ -56,6 +58,7 @@ const STEPS = [
 
 function App() {
   let [step, setStep] = useState('GAME');
+  let [nextStep, setNextStep] = useState(null);
   let [game, setGame] = useState("classic");
   let [options, setOptions] = useState({ rearrangeCharacteristics: false, });
   let [name, setName] = useState('');
@@ -64,6 +67,7 @@ function App() {
   let [homeworldUWP, setHomeworldUWP] = useState(generateUWP());
   let [homeworldTradeCodes, setHomeworldTradeCodes] = useState([]);
   let [skills, setSkills] = useState({});
+  let [cascadeSkill, setCascadeSkill] = useState(null);
   let [career, setCareer] = useState([]);
   let [mishap, setMishap] = useState('NONE');
   let [injury, setInjury] = useState({ roll: 0, crisis: false, injuries: {} });
@@ -161,21 +165,32 @@ function App() {
     setStep('CAREER');
   }
 
-  function enlisted(success) {
+  function enlisted(success, cascade) {
     if (game === 'classic') {
       setStep('SURVIVAL');
     } else if (game === 'cepheusengine') {
-      setStep(success ? 'ENTRYSKILLS' : 'DRAFT');
+      if (!cascade) {
+        setStep(success ? 'ENTRYSKILLS' : 'DRAFT');
+      } else {
+        setStep('CASCADESKILL');
+        setNextStep(success ? 'ENTRYSKILLS' : 'DRAFT');
+      }
     } else {
       setStep('END'); // Not implemented
     }
   }
 
-  function drafted() {
+  function drafted(cascade) {
     if (game === 'classic') {
       setStep('SURVIVAL');
     } else if (game === 'cepheusengine') {
-      setStep('ENTRYSKILLS');
+      // setStep('ENTRYSKILLS');
+      if (!cascade) {
+        setStep('ENTRYSKILLS');
+      } else {
+        setStep('CASCADESKILL');
+        setNextStep('ENTRYSKILLS');
+      }
     } else {
       setStep('END'); // Not implemented
     }
@@ -262,8 +277,13 @@ function App() {
     setStep('AGE');
   }
 
-  function commissioned() {
-    setStep('PROMOTION');
+  function commissioned(cascade) {
+    if (cascade) {
+      setStep('CASCADESKILL');
+      setNextStep('PROMOTION');
+    } else {
+      setStep('PROMOTION');
+    }
   }
 
   function commissionFailed() {
@@ -274,8 +294,13 @@ function App() {
     setStep('SKILL');
   }
 
-  function promoted() {
-    setStep('SKILL');
+  function promoted(cascade) {
+    if (cascade) {
+      setStep('CASCADESKILL');
+      setNextStep('SKILL');
+    } else {
+      setStep('SKILL');
+    }
   }
 
   function notPromoted() {
@@ -288,6 +313,11 @@ function App() {
 
   function choseSkill() {
     setStep('AGE');
+  }
+
+  function choseCascadeSkill() {
+    setStep(nextStep);
+    setNextStep(null);
   }
 
   function aged() {
@@ -378,6 +408,8 @@ function App() {
         updateUPP={updateUPP}
         skills={skills}
         updateSkills={updateSkills}
+        cascadeSkill={cascadeSkill}
+        updateCascadeSkill={setCascadeSkill}
         display={step === 'CAREER'}
         onEnlistment={enlisted}
         // onDraft={drafted}
@@ -391,6 +423,8 @@ function App() {
         updateUPP={updateUPP}
         skills={skills}
         updateSkills={updateSkills}
+        cascadeSkill={cascadeSkill}
+        updateCascadeSkill={setCascadeSkill}
         display={step === 'DRAFT'}
         onDraft={drafted}
         updateLog={updateLog}
@@ -480,6 +514,8 @@ function App() {
         updateCareer={updateCareer}
         skills={skills}
         updateSkills={updateSkills}
+        cascadeSkill={cascadeSkill}
+        updateCascadeSkill={setCascadeSkill}
         display={step === 'COMMISSION'}
         onSuccess={commissioned}
         onFailure={commissionFailed}
@@ -494,6 +530,8 @@ function App() {
         updateCareer={updateCareer}
         skills={skills}
         updateSkills={updateSkills}
+        cascadeSkill={cascadeSkill}
+        updateCascadeSkill={setCascadeSkill}
         display={step === 'PROMOTION'}
         onSuccess={promoted}
         onFailure={notPromoted}
@@ -509,6 +547,16 @@ function App() {
         updateSkills={updateSkills}
         display={step === 'SKILL'}
         onSelected={choseSkill}
+        updateLog={updateLog}
+      />
+      <CascadeSkill
+        game={game}
+        skills={skills}
+        updateSkills={updateSkills}
+        cascadeSkill={cascadeSkill}
+        updateCascadeSkill={setCascadeSkill}
+        display={step === 'CASCADESKILL'}
+        onSelected={choseCascadeSkill}
         updateLog={updateLog}
       />
       <Age
