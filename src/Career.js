@@ -1,7 +1,8 @@
 import React/*, { useState }*/ from 'react';
-import { applyDMsToRoll, capitalize, modRollCE, r1d6, r2d6 } from "./utils";
+import { applyDMsToRoll, capitalize, modRollCE, /*r1d6,*/ r2d6 } from "./utils";
 
 import CTCAREERS from './data/ct/careers';
+import CTSKILLS from './data/ce/skills';
 import CECAREERS from './data/ce/careers';
 import CESKILLS from './data/ce/skills';
 
@@ -49,10 +50,10 @@ function canEnlistCT(upp, careerName) {
     return result >= career.enlistment.target;
 }
 
-function draftCT() {
-    const roll = r1d6();
-    return CTCAREERS.filter(career => career.draftNumber === roll)[0].name;
-}
+// function draftCT() {
+//     const roll = r1d6();
+//     return CTCAREERS.filter(career => career.draftNumber === roll)[0].name;
+// }
 
 function CareerCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, cascadeSkill, updateCascadeSkill, onEnlistment, updateLog }) {
     function selectCareer(ev) {
@@ -68,7 +69,8 @@ function CareerCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
         if (careerName !== '') {
             // Determine if character can enlist.
             if (canEnlistCT(upp, careerName)) {
-                let newLog = [`Congratulations! You have enlisted in the ${capitalize(careerName)}!`]
+                let newLog = [`Congratulations! You have enlisted in the ${capitalize(careerName)}!`];
+                let tmpCascade = null;
 
                 // Apply any benefits for entering a career.
                 const careerData = CTCAREERS.filter(c => c.name === careerName)[0];
@@ -78,13 +80,16 @@ function CareerCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
                     let benefit = rank.benefit;
 
                     if (benefit.type === 'SKILL') {
-                        // Set a skill to a value if it is lower than that value.
-                        if (!skills.hasOwnProperty(benefit.name) || skills[benefit.name] < benefit.value) {
+                        const skillData = CTSKILLS[benefit.name];
+
+                        if (skillData === null) { // a non-cascade skill
                             let newSkills = {};
-                            newSkills[benefit.name] = benefit.value;
+                            newSkills[benefit.name] = (skills[benefit.name] || 0) + benefit.value;
                             updateSkills(newSkills);
 
                             newLog.push(`Because of your rank, you gain ${benefit.name}-${benefit.value}.`);
+                        } else {
+                            tmpCascade = benefit;
                         }
                     } else if (benefit.type === 'CHARACTERISTIC') {
                         let newUPP = {};
@@ -101,46 +106,49 @@ function CareerCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
                 newCareer.push({ branch: careerName, term: 0, rank: 0, drafted: false, rankPrev: 0 });
                 updateCareer(newCareer);
 
-                onEnlistment(true, false);
-            } else {
-                const draftName = draftCT();
-                let newLog = [
-                    `Sorry! You did not qualify for the ${capitalize(careerName)}.`,
-                    `Instead, you were drafted into the ${capitalize(draftName)}.`,
-                ];
-
-                // Apply any benefits for entering a career.
-                const careerData = CTCAREERS.filter(c => c.name === draftName)[0];
-                const rank = careerData.ranks[0];
-
-                if (rank.hasOwnProperty('benefit')) {
-                    let benefit = rank.benefit;
-
-                    if (benefit.type === 'SKILL') {
-                        // Set a skill to a value if it is lower than that value.
-                        if (!skills.hasOwnProperty(benefit.name) || skills[benefit.name] < benefit.value) {
-                            let newSkills = {};
-                            newSkills[benefit.name] = benefit.value;
-                            updateSkills(newSkills);
-
-                            newLog.push(`Because of your rank, you gain ${benefit.name}-${benefit.value}.`);
-                        }
-                    } else if (benefit.type === 'CHARACTERISTIC') {
-                        let newUPP = {};
-                        newUPP[benefit.name] = upp[benefit.name] + benefit.value;
-                        updateUPP(newUPP);
-
-                        newLog.push(`Because of your rank, your ${benefit.name} is now ${newUPP[benefit.name]}.`);
-                    }
+                if (tmpCascade) {
+                    updateCascadeSkill(tmpCascade);
                 }
 
-                let newCareer = [...career];
-                newCareer.push({ branch: draftName, term: 0, rank: 0, drafted: true, rankPrev: 0 });
-                updateCareer(newCareer);
-
-                updateLog(newLog);
-
                 onEnlistment(true, false);
+            } else {
+                // const draftName = draftCT();
+                // let newLog = [
+                //     `Sorry! You did not qualify for the ${capitalize(careerName)}.`,
+                //     `Instead, you were drafted into the ${capitalize(draftName)}.`,
+                // ];
+
+                // // Apply any benefits for entering a career.
+                // const careerData = CTCAREERS.filter(c => c.name === draftName)[0];
+                // const rank = careerData.ranks[0];
+
+                // if (rank.hasOwnProperty('benefit')) {
+                //     let benefit = rank.benefit;
+
+                //     if (benefit.type === 'SKILL') {
+                //         // Set a skill to a value if it is lower than that value.
+                //         if (!skills.hasOwnProperty(benefit.name) || skills[benefit.name] < benefit.value) {
+                //             let newSkills = {};
+                //             newSkills[benefit.name] = benefit.value;
+                //             updateSkills(newSkills);
+
+                //             newLog.push(`Because of your rank, you gain ${benefit.name}-${benefit.value}.`);
+                //         }
+                //     } else if (benefit.type === 'CHARACTERISTIC') {
+                //         let newUPP = {};
+                //         newUPP[benefit.name] = upp[benefit.name] + benefit.value;
+                //         updateUPP(newUPP);
+
+                //         newLog.push(`Because of your rank, your ${benefit.name} is now ${newUPP[benefit.name]}.`);
+                //     }
+                // }
+
+                // let newCareer = [...career];
+                // newCareer.push({ branch: draftName, term: 0, rank: 0, drafted: true, rankPrev: 0 });
+                // updateCareer(newCareer);
+
+                // updateLog(newLog);
+                onEnlistment(false, false);
             }
         }
     }
@@ -193,10 +201,10 @@ function CareerCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
 
                 if (rank.hasOwnProperty('benefit')) {
                     let benefit = rank.benefit;
-                    console.log('You have a benefit');
+                    // console.log('You have a benefit');
 
                     if (benefit.type === 'SKILL') {
-                        console.log(benefit);
+                        // console.log(benefit);
                         const skillData = CESKILLS[benefit.name];
 
                         if (skillData === null) { // a non-cascade skill
@@ -266,17 +274,17 @@ function CareerCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
     // }
 
     //if (!cascade) {
-        let careers = CECAREERS.map(c => <div key={`career-${c.name}-div`} className="CTCareer">
-            <input type="radio" id={`career-${c.name}`} name="career" value={c.name} /> <label className="CTCareerLabel" htmlFor={`career-${c.name}`} >{capitalize(c.name)}</label>
-        </div>);
+    let careers = CECAREERS.map(c => <div key={`career-${c.name}-div`} className="CTCareer">
+        <input type="radio" id={`career-${c.name}`} name="career" value={c.name} /> <label className="CTCareerLabel" htmlFor={`career-${c.name}`} >{capitalize(c.name)}</label>
+    </div>);
 
-        return (
-            <form className="CECareers" onSubmit={selectCareer}>
-                <p>Select Career: </p>
-                {careers}
-                <input className="Submit" type="submit" value="Submit" />
-            </form>
-        );
+    return (
+        <form className="CECareers" onSubmit={selectCareer}>
+            <p>Select Career: </p>
+            {careers}
+            <input className="Submit" type="submit" value="Submit" />
+        </form>
+    );
     // } else {
     //     const skillData = CESKILLS[cascade.name];
     //     const optionElts = Object.keys(skillData).map(skill => (

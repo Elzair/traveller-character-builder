@@ -167,7 +167,12 @@ function App() {
 
   function enlisted(success, cascade) {
     if (game === 'classic') {
-      setStep('SURVIVAL');
+      if (!cascade) {
+        setStep(success ? 'SURVIVAL' : 'DRAFT');
+      } else {
+        setStep('CASCADESKILL');
+        setNextStep(success ? 'SURIVAL' : 'DRAFT');
+      }
     } else if (game === 'cepheusengine') {
       if (!cascade) {
         setStep(success ? 'ENTRYSKILLS' : 'DRAFT');
@@ -182,7 +187,12 @@ function App() {
 
   function drafted(cascade) {
     if (game === 'classic') {
-      setStep('SURVIVAL');
+      if (!cascade) {
+        setStep('SURVIVAL');
+      } else {
+        setStep('CASCADESKILL');
+        setNextStep('SURVIVAL');
+      }
     } else if (game === 'cepheusengine') {
       // setStep('ENTRYSKILLS');
       if (!cascade) {
@@ -221,7 +231,8 @@ function App() {
 
       // If the career does not have commissions or advancements, go to skill rolls.
       // Also skip commission & promotion if the traveller was drafted and its their first term.
-      if (careerData.commission === null || (curCareer.drafted === true && curCareer.term === 1)) {
+      // Furthermore, skip commission & promotion if the traveller has reached the maximum rank in their career.
+      if (careerData.commission === null || (curCareer.drafted === true && curCareer.term === 1) || (curCareer.rank === careerData.ranks.length-1)) {
         setStep('SKILL');
       } else if (curCareer.rank >= 1 && curCareer.rank < careerData.ranks.length - 1) { // Go directly to promotion if a commission has already been earned
         setStep('PROMOTION');                                                           // and the traveller has not yet achieved the maximum rank.
@@ -234,7 +245,8 @@ function App() {
 
       // If the career does not have commissions or advancements, go to skill rolls.
       // Also skip commission & promotion if the traveller was drafted and its their first term.
-      if (careerData.commission === null || (curCareer.drafted === true && curCareer.term === 1)) {
+      // Furthermore, skip commission & promotion if the traveller has reached the maximum rank in their career.
+      if (careerData.commission === null || (curCareer.drafted === true && curCareer.term === 1) || (curCareer.rank === careerData.ranks.length-1)) {
         setStep('SKILL');
       } else if (curCareer.rank >= 1 && curCareer.rank < careerData.ranks.length - 1) { // Go directly to promotion if a commission has already been earned
         setStep('PROMOTION');                                                           // and the traveller has not yet achieved the maximum rank.
@@ -277,24 +289,25 @@ function App() {
     setStep('AGE');
   }
 
-  function commissioned(cascade) {
+  function commissioned(success, cascade) {
     if (cascade) {
       setStep('CASCADESKILL');
-      setNextStep('PROMOTION');
+      setNextStep(success ? 'PROMOTION' : 'SKILL');
     } else {
-      setStep('PROMOTION');
+      setStep(success ? 'PROMOTION' : 'SKILL');
     }
   }
 
-  function commissionFailed() {
-    setStep('SKILL');
-  }
+  // function commissionFailed() {
+  //   setStep('SKILL');
+  // }
 
-  function commissionNotAttempted() {
-    setStep('SKILL');
-  }
+  // function commissionNotAttempted() {
+  //   setStep('SKILL');
+  // }
 
   function promoted(cascade) {
+    console.log('Got here');
     if (cascade) {
       setStep('CASCADESKILL');
       setNextStep('SKILL');
@@ -303,13 +316,13 @@ function App() {
     }
   }
 
-  function notPromoted() {
-    setStep('SKILL');
-  }
+  // function notPromoted() {
+  //   setStep('SKILL');
+  // }
 
-  function promotionNotAttempted() {
-    setStep('SKILL');
-  }
+  // function promotionNotAttempted() {
+  //   setStep('SKILL');
+  // }
 
   function choseSkill() {
     setStep('AGE');
@@ -518,8 +531,8 @@ function App() {
         updateCascadeSkill={setCascadeSkill}
         display={step === 'COMMISSION'}
         onSuccess={commissioned}
-        onFailure={commissionFailed}
-        onNoAttempt={commissionNotAttempted}
+        // onFailure={commissionFailed}
+        // onNoAttempt={commissionNotAttempted}
         updateLog={updateLog}
       />
       <Promotion
@@ -534,8 +547,8 @@ function App() {
         updateCascadeSkill={setCascadeSkill}
         display={step === 'PROMOTION'}
         onSuccess={promoted}
-        onFailure={notPromoted}
-        onNoAttempt={promotionNotAttempted}
+        // onFailure={notPromoted}
+        // onNoAttempt={promotionNotAttempted}
         updateLog={updateLog}
       />
       <Skill

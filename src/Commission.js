@@ -4,10 +4,11 @@ import Switch from 'react-switch';
 import { applyDMsToRoll, modRollCE, r2d6 } from "./utils";
 
 import CTCAREERS from './data/ct/careers';
+import CTSKILLS from './data/ct/skills';
 import CECAREERS from './data/ce/careers';
 import CESKILLS from './data/ce/skills';
 
-export function Commission({ game, upp, updateUPP, career, updateCareer, skills, updateSkills, cascadeSkill, updateCascadeSkill, display, onSuccess, onFailure, onNoAttempt, updateLog }) {
+export function Commission({ game, upp, updateUPP, career, updateCareer, skills, updateSkills, cascadeSkill, updateCascadeSkill, display, onSuccess, /*onFailure, onNoAttempt,*/ updateLog }) {
     if (display && game === 'classic') {
         return (
             <CommissionCT
@@ -20,8 +21,8 @@ export function Commission({ game, upp, updateUPP, career, updateCareer, skills,
                 cascadeSkill={cascadeSkill}
                 updateCascadeSkill={updateCascadeSkill}
                 onSuccess={onSuccess}
-                onFailure={onFailure}
-                onNoAttempt={onNoAttempt}
+                // onFailure={onFailure}
+                // onNoAttempt={onNoAttempt}
                 updateLog={updateLog}
             />
         );
@@ -37,8 +38,8 @@ export function Commission({ game, upp, updateUPP, career, updateCareer, skills,
                 cascadeSkill={cascadeSkill}
                 updateCascadeSkill={updateCascadeSkill}
                 onSuccess={onSuccess}
-                onFailure={onFailure}
-                onNoAttempt={onNoAttempt}
+                // onFailure={onFailure}
+                // onNoAttempt={onNoAttempt}
                 updateLog={updateLog}
             />
         );
@@ -63,9 +64,11 @@ function CommissionCT({ upp, updateUPP, career, updateCareer, skills, updateSkil
             const commission = careerData.commission;
 
             const result = applyDMsToRoll(r2d6(), commission.dms, upp);
+
             if (result >= commission.target) {
                 let newLog = [];
                 let rank = 0;
+                let tmpCascade = null;
 
                 // Some careers have initial ranks correspond to Social Standing
                 if (commission.hasOwnProperty('correspondToSocial') && commission.correspondToSocial) {
@@ -84,12 +87,16 @@ function CommissionCT({ upp, updateUPP, career, updateCareer, skills, updateSkil
                     const benefit = careerData.ranks[rank].benefit;
 
                     if (benefit.type === 'SKILL') {
-                        // TODO: Refactor this into a general method to set a skill to a value if it is lower than that value
-                        if (!skills.hasOwnProperty(benefit.name) || skills[benefit.name] < benefit.value) {
+                        const skillData = CTSKILLS[benefit.name];
+
+                        if (skillData === null) { // a non-cascade skill
                             let newSkills = {};
-                            newSkills[benefit.name] = benefit.value;
+                            newSkills[benefit.name] = (skills[benefit.name] || 0) + benefit.value;
                             updateSkills(newSkills);
+        
                             newLog.push(`Because of your rank, you gain ${benefit.name}-${benefit.value}.`);
+                        } else { // Transition to cascade skill selection
+                            tmpCascade = benefit;
                         }
                     } else if (benefit.type === 'CHARACTERISTIC') {
                         let newUPP = {};
@@ -105,20 +112,27 @@ function CommissionCT({ upp, updateUPP, career, updateCareer, skills, updateSkil
                     }
                 }
 
-                updateLog(newLog);
-
                 // Update current career
                 let newCareer = [...career];
                 newCareer[career.length - 1].rank = rank;
                 updateCareer(newCareer);
 
-                onSuccess();
+                updateLog(newLog);
+
+                if (tmpCascade) {
+                    updateCascadeSkill(tmpCascade);
+                }
+
+                onSuccess(true, tmpCascade ? true : false);
             } else {
                 updateLog([`Sorry, you failed to get a commission in term ${curCareer.term}.`]);
-                onFailure();
+                // onFailure();
+                onSuccess(false, false);
             }
         } else {
-            onNoAttempt();
+            updateLog([`You did not attempt a commission in term ${curCareer.term}.`]);
+            // onNoAttempt();
+            onSuccess(false, false);
         }
 
         setChecked(true); // Reset `checked`
@@ -133,7 +147,7 @@ function CommissionCT({ upp, updateUPP, career, updateCareer, skills, updateSkil
     );
 }
 
-function CommissionCE({ upp, updateUPP, career, updateCareer, skills, updateSkills, cascadeSkill, updateCascadeSkill, onSuccess, onFailure, onNoAttempt, updateLog }) {
+function CommissionCE({ upp, updateUPP, career, updateCareer, skills, updateSkills, cascadeSkill, updateCascadeSkill, onSuccess, /*onFailure, onNoAttempt,*/ updateLog }) {
     let [checked, setChecked] = useState(true);
     // let [cascade, setCascade] = useState(null);
 
@@ -184,12 +198,12 @@ function CommissionCE({ upp, updateUPP, career, updateCareer, skills, updateSkil
                     }
                 }
 
-                updateLog(newLog);
-
                 // Update current career
                 let newCareer = [...career];
                 newCareer[career.length - 1].rank = rank;
                 updateCareer(newCareer);
+
+                updateLog(newLog);
 
                 if (tmpCascade) {
                     // setCascade(tmpCascade);
@@ -197,13 +211,15 @@ function CommissionCE({ upp, updateUPP, career, updateCareer, skills, updateSkil
                 } /*else {
                     onSuccess();
                 }*/
-                onSuccess(tmpCascade ? true : false);
+                onSuccess(true, tmpCascade ? true : false);
             } else {
                 updateLog([`Sorry, you failed to get a commission in term ${curCareer.term}.`]);
-                onFailure();
+                // onFailure();
+                onSuccess(false, false);
             }
         } else {
-            onNoAttempt();
+            // onNoAttempt();
+            onSuccess(false, false)
         }
 
         setChecked(true); // Reset `checked`
