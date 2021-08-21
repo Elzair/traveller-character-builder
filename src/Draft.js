@@ -96,11 +96,9 @@ function DraftCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, c
         updateLog(newLog);
 
         if (tmpCascade) {
-            // setCascade(tmpCascade);
             updateCascadeSkill(tmpCascade);
-        } /*else {
-                onDraft();
-            }*/
+        }
+
         onDraft(tmpCascade ? true : false);
     });
 
@@ -109,7 +107,6 @@ function DraftCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, c
 
 function DraftCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, cascadeSkill, updateCascadeSkill, onDraft, updateLog }) {
     let [checked, setChecked] = useState(false);
-    // let [cascade, setCascade] = useState(null);
 
     function handleChange(change) {
         setChecked(change);
@@ -171,36 +168,11 @@ function DraftCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, c
         updateLog(newLog);
 
         if (!tmpCascade) {
-            // setCascade(tmpCascade);
             updateCascadeSkill(tmpCascade);
-        } /*else {
-            onDraft();
-        }*/
+        }
 
         onDraft(tmpCascade ? true : false);
     }
-
-    // function handleCascadeSkillSelection(ev) {
-    //     ev.preventDefault();
-
-    //     let skill = '';
-    //     for (let t of ev.target) {
-    //         if (t.checked) {
-    //             skill = t.value;
-    //         }
-    //     }
-
-    //     if (skill !== '') {
-    //         let newSkills = {};
-    //         newSkills[skill] = (skills[skill] || 0) + cascade.value;
-
-    //         setCascade(null); // Reset cascade skills.
-    //         updateSkills(newSkills);
-    //         updateLog([`You improved your ${skill} to ${newSkills[skill]}.`]);
-
-    //         onDraft(true);
-    //     }
-    // }
 
     // Only allow a traveller to submit to the draft if they have not already done so before.
     useEffect(() => {
@@ -250,16 +222,13 @@ function DraftCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, c
             updateLog(newLog);
 
             if (tmpCascade) {
-                // setCascade(tmpCascade);
                 updateCascadeSkill(tmpCascade);
-            } /*else {
-                onDraft();
-            }*/
+            }
+
             onDraft(tmpCascade ? true : false);
         }
     });
 
-    // if (!cascade) {
     // Only allow a traveller to submit to the draft if they have not already done so before.
     if (career.filter(c => c.drafted).length > 0) {
         return (<div></div>);
@@ -305,24 +274,5 @@ function DraftCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, c
             </div>
         );
     }
-    // } else {
-    //     const skillData = CESKILLS[cascade.name];
-    //     const optionElts = Object.keys(skillData).map(skill => (
-    //         <label>
-    //             <input type="radio" id={skill} name="cascadeskill" value={skill} />
-    //             {skill}
-    //         </label>
-    //     ));
-
-    //     return (
-    //         <div>
-    //             {<form onSubmit={handleCascadeSkillSelection}>
-    //                 <label>{`Choose a specific focus of ${cascade.name}:`}</label>
-    //                 {optionElts}
-    //                 <input type="submit" value="Submit" />
-    //             </form>}
-    //         </div>
-    //     );
-    // }
 }
 

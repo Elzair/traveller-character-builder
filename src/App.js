@@ -74,8 +74,8 @@ function App() {
   let [injury, setInjury] = useState({ roll: 0, crisis: false, injuries: {} });
   let [age, setAge] = useState(18);
   let [anagathics, setAnagathics] = useState({ current: false, terms: 0 });
-  // let [credits, setCredits] = useState(0);
-  let [credits, setCredits] = useState(100000);
+  let [credits, setCredits] = useState(0);
+  // let [credits, setCredits] = useState(100000);
   let [items, setItems] = useState({});
   let [log, setLog] = useState([]);
 
@@ -195,7 +195,6 @@ function App() {
         setNextStep('SURVIVAL');
       }
     } else if (game === 'cepheusengine') {
-      // setStep('ENTRYSKILLS');
       if (!cascade) {
         setStep('ENTRYSKILLS');
       } else {
@@ -310,14 +309,6 @@ function App() {
     }
   }
 
-  // function commissionFailed() {
-  //   setStep('SKILL');
-  // }
-
-  // function commissionNotAttempted() {
-  //   setStep('SKILL');
-  // }
-
   function promoted(success, cascade) {
     // Increment number of skill rolls
     if (success) {
@@ -332,16 +323,7 @@ function App() {
     }
   }
 
-  // function notPromoted() {
-  //   setStep('SKILL');
-  // }
-
-  // function promotionNotAttempted() {
-  //   setStep('SKILL');
-  // }
-
   function choseSkill(cascade) {
-    // setStep('AGE');
     const curNumSkillRolls = numSkillRolls-1;
     setNumSkillRolls(curNumSkillRolls);
 
@@ -359,7 +341,6 @@ function App() {
   }
 
   function aged() {
-    // setAge(age+4);
     setStep('REENLIST');
   }
 
@@ -450,7 +431,6 @@ function App() {
         updateCascadeSkill={setCascadeSkill}
         display={step === 'CAREER'}
         onEnlistment={enlisted}
-        // onDraft={drafted}
         updateLog={updateLog}
       />
       <Draft
@@ -556,8 +536,6 @@ function App() {
         updateCascadeSkill={setCascadeSkill}
         display={step === 'COMMISSION'}
         onSuccess={commissioned}
-        // onFailure={commissionFailed}
-        // onNoAttempt={commissionNotAttempted}
         updateLog={updateLog}
       />
       <Promotion
@@ -572,8 +550,6 @@ function App() {
         updateCascadeSkill={setCascadeSkill}
         display={step === 'PROMOTION'}
         onSuccess={promoted}
-        // onFailure={notPromoted}
-        // onNoAttempt={promotionNotAttempted}
         updateLog={updateLog}
       />
       <Skill
