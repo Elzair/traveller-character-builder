@@ -67,6 +67,7 @@ function App() {
   let [homeworldUWP, setHomeworldUWP] = useState(generateUWP());
   let [homeworldTradeCodes, setHomeworldTradeCodes] = useState([]);
   let [skills, setSkills] = useState({});
+  let [numSkillRolls, setNumSkillRolls] = useState(0);
   let [cascadeSkill, setCascadeSkill] = useState(null);
   let [career, setCareer] = useState([]);
   let [mishap, setMishap] = useState('NONE');
@@ -229,6 +230,9 @@ function App() {
       const curCareer = career[career.length - 1]; // Get latest career
       const careerData = CTCAREERS.filter(c => curCareer.branch === c.name)[0];
 
+      // Set number of skill rolls each traveller gets.
+      setNumSkillRolls(careerData.numSkillsPerTerm);
+
       // If the career does not have commissions or advancements, go to skill rolls.
       // Also skip commission & promotion if the traveller was drafted and its their first term.
       // Furthermore, skip commission & promotion if the traveller has reached the maximum rank in their career.
@@ -242,6 +246,9 @@ function App() {
     } else if (game === 'cepheusengine') {
       const curCareer = career[career.length - 1]; // Get latest career
       const careerData = CECAREERS.filter(c => curCareer.branch === c.name)[0];
+
+      // Set number of skill rolls each traveller gets.
+      setNumSkillRolls(careerData.numSkillsPerTerm);
 
       // If the career does not have commissions or advancements, go to skill rolls.
       // Also skip commission & promotion if the traveller was drafted and its their first term.
@@ -290,6 +297,11 @@ function App() {
   }
 
   function commissioned(success, cascade) {
+    // Increment number of skill rolls
+    if (success) {
+      setNumSkillRolls(numSkillRolls+1);
+    }
+
     if (cascade) {
       setStep('CASCADESKILL');
       setNextStep(success ? 'PROMOTION' : 'SKILL');
@@ -306,8 +318,12 @@ function App() {
   //   setStep('SKILL');
   // }
 
-  function promoted(cascade) {
-    console.log('Got here');
+  function promoted(success, cascade) {
+    // Increment number of skill rolls
+    if (success) {
+      setNumSkillRolls(numSkillRolls+1);
+    }
+
     if (cascade) {
       setStep('CASCADESKILL');
       setNextStep('SKILL');
@@ -324,8 +340,17 @@ function App() {
   //   setStep('SKILL');
   // }
 
-  function choseSkill() {
-    setStep('AGE');
+  function choseSkill(cascade) {
+    // setStep('AGE');
+    const curNumSkillRolls = numSkillRolls-1;
+    setNumSkillRolls(curNumSkillRolls);
+
+    if (cascade) {
+      setStep('CASCADESKILL');
+      setNextStep(curNumSkillRolls > 0 ? 'SKILL' : 'AGE');
+    } else {
+      setStep(curNumSkillRolls > 0 ? 'SKILL' : 'AGE')
+    }
   }
 
   function choseCascadeSkill() {
@@ -558,6 +583,9 @@ function App() {
         career={career}
         skills={skills}
         updateSkills={updateSkills}
+        cascadeSkill={cascadeSkill}
+        updateCascadeSkill={setCascadeSkill}
+        numSkillRolls={numSkillRolls}
         display={step === 'SKILL'}
         onSelected={choseSkill}
         updateLog={updateLog}

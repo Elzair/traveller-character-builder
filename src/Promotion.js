@@ -63,7 +63,6 @@ function PromotionCT({ upp, updateUPP, career, updateCareer, skills, updateSkill
             let tmpCascade = null;
 
             const result = applyDMsToRoll(r2d6(), careerData.promotion.dms, upp);
-            console.log(result);
 
             if (result >= careerData.promotion.target) {
                 let newRank = curCareer.rank + 1;
@@ -106,16 +105,16 @@ function PromotionCT({ upp, updateUPP, career, updateCareer, skills, updateSkill
                     updateCascadeSkill(tmpCascade);
                 }
 
-                onSuccess(cascadeSkill ? true : false);
+                onSuccess(true, cascadeSkill ? true : false);
             } else {
                 updateLog([`Sorry, you failed to get a promotion in term ${curCareer.term}.`])
                 // onFailure();
-                onSuccess(false);
+                onSuccess(true, false);
             }
         } else {
             updateLog([`You did not attempt a promotion in term ${curCareer.term}.`]);
             // onFailure();
-            onSuccess(false);
+            onSuccess(true, false);
         }
 
         setChecked(true); // Reset `checked`
@@ -241,17 +240,17 @@ function PromotionCE({ upp, updateUPP, career, updateCareer, skills, updateSkill
                 } /*else {
                     onSuccess();
                 }*/
-                onSuccess(tmpCascade ? true : false);
+                onSuccess(true, tmpCascade ? true : false);
 
             } else {
                 updateLog([`Sorry, you failed to get a promotion in term ${curCareer.term}.`])
                 // onFailure();
-                onSuccess(false);
+                onSuccess(true, false);
             }
         } else {
             updateLog([`You did not attempt a promotion in term ${curCareer.term}.`]);
             // onFailure();
-            onSuccess(false);
+            onSuccess(true, false);
         }
 
         setChecked(true); // Reset `checked`
