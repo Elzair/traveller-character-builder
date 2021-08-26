@@ -4,7 +4,7 @@ import { r1d6, r2d6, randElt } from "./utils";
 
 import CECAREERS from './data/ce/careers';
 
-export function Injury({ game, upp, updateUPP, career, injury, updateInjury, credits, updateCredits, display, onInjury, onDeath, updateLog }) {
+export function Injury({ game, upp, updateUPP, career, injury, updateInjury, updateCrisis, credits, updateCredits, display, onInjury, onDeath, updateLog }) {
     if (display && game === 'cepheusengine') {
         return (
             <InjuryCE
@@ -13,6 +13,7 @@ export function Injury({ game, upp, updateUPP, career, injury, updateInjury, cre
                 career={career}
                 injury={injury}
                 updateInjury={updateInjury}
+                updateCrisis={updateCrisis}
                 credits={credits}
                 updateCredits={updateCredits}
                 onInjury={onInjury}
@@ -25,15 +26,17 @@ export function Injury({ game, upp, updateUPP, career, injury, updateInjury, cre
     }
 }
 
-function InjuryCE({ upp, updateUPP, career, injury, updateInjury, credits, updateCredits, onInjury, onDeath, updateLog }) {
+function InjuryCE({ upp, updateUPP, career, injury, updateInjury, updateCrisis, credits, updateCredits, onInjury, onDeath, updateLog }) {
     useEffect(() => {
         const curCareer = career[career.length - 1]; // Get latest career
         const careerData = CECAREERS.filter(c => c.name === curCareer.branch)[0];
 
         const physChars = ['Strength', 'Dexterity', 'Endurance'];
         let newUPP = { ...upp };
+        let newCrisis = false;
         let newLog = [];
         let debt = 0;
+        let dead = false;
         let newInjury = { ...injury };
 
         if (newInjury.roll === -1) {
@@ -87,21 +90,20 @@ function InjuryCE({ upp, updateUPP, career, injury, updateInjury, credits, updat
                 throw new Error(`InjuryCE Effect: rolled impossible number: ${newInjury.roll}`);
         }
 
-
         // Trigger an injury crisis if a physical characteristic has gone to or below 0.
         physChars.forEach(char => {
             if (newUPP[char] <= 0) {
-                newInjury.crisis = true;
+                newCrisis = true;
                 newLog.push(`You have suffered an injury crisis. Your ${char} has been reduced to 0.`)
                 debt += r1d6() * 10000;
             }
         });
 
-
         // See if the traveller's employer will help pay for medical care.
         if (debt > 0) {
             const medicalRoll = r2d6() + curCareer.rank;
             let payMod = 0;
+
             if (medicalRoll >= 12) {
                 payMod = careerData.medical['12'];
             } else if (medicalRoll >= 8) {
@@ -109,30 +111,41 @@ function InjuryCE({ upp, updateUPP, career, injury, updateInjury, credits, updat
             } else if (medicalRoll >= 4) {
                 payMod = careerData.medical['4'];
             }
+
+            newLog.push(`Your employer(s) pay for ${payMod*100}% of your medical bills.`);
             debt = Math.round(debt * (1.0 - payMod));
         }
 
-        // The traveller dies unless they can IMMEDIATELY pay for medical care.
-        if (debt > credits) {
-            newLog.push('You could not pay for emergency medical care. You have died.');
-            onDeath();
-        } else {
-            // If the traveller could pay for medical care, set any physical characteristics
-            // at or below 0 to 1.
-            physChars.forEach(char => {
-                if (newUPP[char] <= 0) {
-                    newUPP[char] = 1;
-                }
-            });
+        if (newCrisis) {
+            // The traveller dies unless they can IMMEDIATELY pay for medical care.
+            if (debt > credits) {
+                newLog.push('You could not pay for emergency medical care. You have died.');
+                
+                dead = true;
+            } else {
+                // If the traveller could pay for medical care, set any physical characteristics
+                // at or below 0 to 1.
+                physChars.forEach(char => {
+                    if (newUPP[char] <= 0) {
+                        newUPP[char] = 1;
+                    }
+                });
 
-            updateUPP(newUPP);
-            updateCredits(-1 * debt);
-            updateInjury(newInjury);
-
-            onInjury();
+                updateCrisis(true);
+            }
         }
 
+        updateUPP(newUPP);
+        updateCredits(-1 * debt);
+        updateInjury(newInjury);
+
         updateLog(newLog);
+
+        if (!dead) {
+            onInjury();
+        } else {
+            onDeath();
+        }
     });
 
     return (<div></div>)

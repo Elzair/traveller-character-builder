@@ -73,6 +73,7 @@ function App() {
   let [mishap, setMishap] = useState('NONE');
   let [injury, setInjury] = useState({ roll: 0, crisis: false, injuries: {} });
   let [age, setAge] = useState(18);
+  let [crisis, setCrisis] = useState(false);
   let [anagathics, setAnagathics] = useState({ current: false, terms: 0 });
   let [credits, setCredits] = useState(0);
   // let [credits, setCredits] = useState(100000);
@@ -141,12 +142,17 @@ function App() {
     setLog(newLog);
   }
 
+  // =========================
   // Step Transition Functions
+  // =========================
+
+  // OPTION -> UPP
   function finishGameOptions(game, name) {
     updateLog([`You have selected ${game}.`, `Your name is ${name}.`]);
     setStep('UPP');
   }
 
+  // UPP -> HOMEWORLD | CAREER
   function finalizeUPP() {
     let uppStr = Object.entries(upp).map(ent => num2tetra(ent[1])).join('');
     updateLog([`Your Universal Personality Profile is ${uppStr}.`]);
@@ -158,14 +164,17 @@ function App() {
     }
   }
 
+  // HOMEWORLD -> BACKGROUND
   function finalizeHomeworld() {
     setStep('BACKGROUND');
   }
 
+  // BACKGROUND -> CAREER
   function selectBackgroundSkills() {
     setStep('CAREER');
   }
 
+  // CAREER -> SUVIVAL | DRAFT | ENTRYSKILLS | CASCADESKILL
   function enlisted(success, cascade) {
     if (game === 'classic') {
       if (!cascade) {
@@ -186,6 +195,7 @@ function App() {
     }
   }
 
+  // DRAFT -> SURVIVAL | ENTRYSKILLS | CASCADESKILL
   function drafted(cascade) {
     if (game === 'classic') {
       if (!cascade) {
@@ -206,6 +216,7 @@ function App() {
     }
   }
 
+  // ENTRYSKILLS -> ANAGATHICS
   function entrySkillSelection() {
     if (game === 'cepheusengine') {
       setStep('ANAGATHICS');
@@ -214,16 +225,16 @@ function App() {
     }
   }
 
+  // ANAGATHICS -> SUVIVAL
   function anagathicsDecision() {
-    console.log('Got here');
     if (game === 'cepheusengine') {
-      console.log('Got here too');
       setStep('SURVIVAL');
     } else {
       setStep('END'); // Not implemented
     }
   }
 
+  // SURVIVAL -> COMMISSION | PROMOTION | SKILL
   function survived() {
     if (game === 'classic') {
       const curCareer = career[career.length - 1]; // Get latest career
@@ -264,10 +275,12 @@ function App() {
     }
   }
 
+  // SURVIVAL -> MISHAP
   function mishapHappened() {
     setStep('MISHAP');
   }
 
+  // MISHAP -> AGE | INJURY
   function mishapResolved(newMishap) {
     if (game === 'cepheusengine') {
       switch (newMishap) {
@@ -287,14 +300,17 @@ function App() {
     }
   }
 
+  // INJURY -> MEDICAL
   function injuryResolved() {
     setStep('MEDICAL');
   }
 
+  // MEDICAL -> AGE
   function medicalResolved() {
     setStep('AGE');
   }
 
+  // COMMISSION -> PROMOTION | SKILL | CASCADESKILL
   function commissioned(success, cascade) {
     // Increment number of skill rolls
     if (success) {
@@ -309,6 +325,7 @@ function App() {
     }
   }
 
+  // PROMOTION -> SKILL | CASCADESKILL
   function promoted(success, cascade) {
     // Increment number of skill rolls
     if (success) {
@@ -323,6 +340,7 @@ function App() {
     }
   }
 
+  // SKILL -> AGE | CASCADESKILL
   function choseSkill(cascade) {
     const curNumSkillRolls = numSkillRolls-1;
     setNumSkillRolls(curNumSkillRolls);
@@ -335,36 +353,44 @@ function App() {
     }
   }
 
+  // CASCADE SKILL -> ENTRYSKILLS | SURVIVAL | PROMOTION | SKILL | AGE
   function choseCascadeSkill() {
     setStep(nextStep);
     setNextStep(null);
   }
 
+  // AGE -> REENLIST
   function aged() {
     setStep('REENLIST');
   }
 
+  // REENLIST -> SURVIVAL | ANAGATHICS
   function reenlist() {
     setStep('SURVIVAL');
   }
 
+  // REENLIST -> MUSTER-OUT
   function ejected() {
     setStep('MUSTER-OUT');
   }
 
+  // REENLIST -> MUSTER-OUT
   function retired() {
     setStep('MUSTER-OUT');
   }
 
+  // MUSTER-OUT -> CAREER | FINISHED
   function musterOut() {
     setStep('FINISHED');
   }
 
+  // SURVIVAL | INJURY | AGE -> END
   function died() {
     updateLog([`You have died.`]);
     setStep('END');
   }
 
+  // FINISHED -> END
   function goodbye() {
     setStep('END');
   }
@@ -494,7 +520,6 @@ function App() {
         display={step === 'MISHAP'}
         onSurvival={survived}
         onMishap={mishapResolved}
-        onDeath={died}
         updateLog={updateLog}
       />
       <Injury
@@ -504,6 +529,7 @@ function App() {
         career={career}
         injury={injury}
         updateInjury={updateInjury}
+        updateCrisis={setCrisis}
         credits={credits}
         updateCredits={updateCredits}
         display={step === 'INJURY'}
@@ -582,6 +608,12 @@ function App() {
         updateUPP={updateUPP}
         age={age}
         updateAge={setAge}
+        career={career}
+        anagathics={anagathics}
+        mishap={mishap}
+        updateCrisis={setCrisis}
+        credits={credits}
+        updateCredits={updateCredits}
         display={step === 'AGE'}
         onAged={aged}
         onDeath={died}
