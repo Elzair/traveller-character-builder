@@ -366,7 +366,11 @@ function App() {
 
   // REENLIST -> SURVIVAL | ANAGATHICS
   function reenlist() {
-    setStep('SURVIVAL');
+    if (game === 'classic') {
+      setStep('SURVIVAL');
+    } else {
+      setStep('ANAGATHICS');
+    }
   }
 
   // REENLIST -> MUSTER-OUT
