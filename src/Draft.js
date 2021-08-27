@@ -64,7 +64,7 @@ function DraftCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, c
             if (benefit.type === 'SKILL') {
                 const skillData = CTSKILLS[benefit.name];
 
-                if (skillData === null) { // a non-cascade skill
+                if (skillData === null || skillData === undefined) { // a non-cascade skill
                     let newSkills = {};
                     newSkills[benefit.name] = (skills[benefit.name] || 0) + benefit.value;
                     updateSkills(newSkills);
@@ -84,10 +84,10 @@ function DraftCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, c
 
         let newCareer = [...career];
         newCareer.push({
-            branch: 'drifter',
+            branch: careerName,
             term: 0,
             rank: 0,
-            drafted: false,
+            drafted: true,
             failedBranch: '',
             rankPrev: 0
         });

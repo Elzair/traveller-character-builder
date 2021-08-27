@@ -162,7 +162,7 @@ function CareerCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
                     if (benefit.type === 'SKILL') {
                         const skillData = CESKILLS[benefit.name];
 
-                        if (skillData === null) { // a non-cascade skill
+                        if (skillData === null || skillData === undefined) { // a non-cascade skill
                             let newSkills = {};
                             newSkills[benefit.name] = (skills[benefit.name] || 0) + benefit.value;
                             updateSkills(newSkills);
