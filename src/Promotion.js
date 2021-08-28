@@ -106,12 +106,12 @@ function PromotionCT({ upp, updateUPP, career, updateCareer, skills, updateSkill
             } else {
                 updateLog([`Sorry, you failed to get a promotion in term ${curCareer.term}.`]);
 
-                onSuccess(true, false);
+                onSuccess(false, false);
             }
         } else {
             updateLog([`You did not attempt a promotion in term ${curCareer.term}.`]);
 
-            onSuccess(true, false);
+            onSuccess(false, false);
         }
 
         setChecked(true); // Reset `checked`
@@ -188,12 +188,12 @@ function PromotionCE({ upp, updateUPP, career, updateCareer, skills, updateSkill
             } else {
                 updateLog([`Sorry, you failed to get a promotion in term ${curCareer.term}.`]);
 
-                onSuccess(true, false);
+                onSuccess(false, false);
             }
         } else {
             updateLog([`You did not attempt a promotion in term ${curCareer.term}.`]);
 
-            onSuccess(true, false);
+            onSuccess(false, false);
         }
 
         setChecked(true); // Reset `checked`

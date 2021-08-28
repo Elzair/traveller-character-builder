@@ -57,9 +57,6 @@
             {
                 "type": "ITEM",
                 "name": "High Passage"
-            },
-            {
-                "type": "NOTHING"
             }
         ],
         "cash": [
@@ -723,9 +720,6 @@
             {
                 "type": "ITEM",
                 "name": "Mid Passage"
-            },
-            {
-                "type": "NOTHING"
             }
         ],
         "cash": [
@@ -928,9 +922,6 @@
             {
                 "type": "ITEM",
                 "name": "High Passage"
-            },
-            {
-                "type": "NOTHING"
             }
         ],
         "cash": [
@@ -1821,9 +1812,6 @@
             {
                 "type": "ITEM",
                 "name": "Mid Passage"
-            },
-            {
-                "type": "NOTHING"
             }
         ],
         "cash": [
@@ -2023,9 +2011,6 @@
             {
                 "type": "ITEM",
                 "name": "High Passage"
-            },
-            {
-                "type": "NOTHING"
             }
         ],
         "cash": [
@@ -2228,9 +2213,6 @@
             {
                 "type": "ITEM",
                 "name": "High Passage"
-            },
-            {
-                "type": "NOTHING"
             }
         ],
         "cash": [
@@ -4766,9 +4748,6 @@
             {
                 "type": "SHIP",
                 "name": "Courier Vessel"
-            },
-            {
-                "type": "NOTHING"
             }
         ],
         "cash": [

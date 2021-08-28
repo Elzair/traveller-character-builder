@@ -52,7 +52,8 @@ function DraftCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, c
         let newLog = [];
 
         // Apply any benefits for entering a career.
-        const careerName = CTCAREERS.filter(career => career.draftNumber === r1d6())[0].name;
+        const draftNumber = r1d6();
+        const careerName = CTCAREERS.filter(career => career.draftNumber === draftNumber)[0].name;
         const careerData = CTCAREERS.filter(c => c.name === careerName)[0];
         const rank = careerData.ranks[0];
 

@@ -1082,7 +1082,9 @@
             },
             {
                 "type": "SHIP",
-                "name": "Free Trader"
+                "name": "Free Trader",
+                "lease": 40,
+                "reduction": 10
             }
         ],
         "cash": [
