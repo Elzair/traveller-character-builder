@@ -137,6 +137,10 @@ function App() {
     setItems(newItems);
   }
 
+  function modifyItems(updated) {
+    setItems(updated);
+  }
+
   function updateLog(newEntries) {
     const newLog = log.concat(newEntries);
     setLog(newLog);
@@ -241,7 +245,8 @@ function App() {
       const careerData = CTCAREERS.filter(c => curCareer.branch === c.name)[0];
 
       // Set number of skill rolls each traveller gets.
-      setNumSkillRolls(careerData.numSkillsPerTerm);
+      // First term travellers get two skill rolls. Higher term travellers get either 1 or 2 skill rolls depending on their career.
+      setNumSkillRolls(curCareer.term === 1 ? 2 : careerData.numSkillsPerTerm);
 
       // If the career does not have commissions or advancements, go to skill rolls.
       // Also skip commission & promotion if the traveller was drafted and its their first term.
@@ -644,6 +649,7 @@ function App() {
         updateCredits={updateCredits}
         items={items}
         updateItems={updateItems}
+        modifyItems={modifyItems}
         display={step === 'MUSTER-OUT'}
         onMusterOut={musterOut}
         updateLog={updateLog}

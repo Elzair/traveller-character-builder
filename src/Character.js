@@ -1,5 +1,5 @@
 import React from 'react';
-import { capitalize, num2tetra } from "./utils";
+import { capitalize, isObject, num2tetra } from "./utils";
 
 import CTCAREERS from './data/ct/careers';
 
@@ -31,18 +31,25 @@ function CharacterCT({name, career, upp, skills, age, credits, items}) {
         rank = careerData.ranks[career[career.length-1].rank].name;
     }
 
-    let uppStr = Object.entries(upp).map(ent => num2tetra(ent[1])).join('');
+    const uppStr = Object.entries(upp).map(ent => num2tetra(ent[1])).join('');
 
-    let charstr1 = `${name} ${careerName} ${rank} ${uppStr} Age ${age} ${careerTerms} terms Cr${credits}`;
-    let charstr2 = Object.keys(skills).map(key => `${key}-${skills[key]}`).join(', ');
+    const charstr1 = `${name} ${careerName} ${rank} ${uppStr} Age ${age} ${careerTerms} terms Cr${credits}`;
+    const charstr2 = Object.keys(skills).map(key => `${key}-${skills[key]}`).join(', ');
 
-    // Count items in inventory
-    let charstr3 = Object.keys(items).map(item => items[item] > 1 ? `${item}x${items[item]}` : item).join(', ');
+    // Count items in inventory (except for ships with leases)
+    const charstr3 = Object.entries(items).filter(([_, val]) => !isObject(val) || !val.hasOwnProperty('lease'))
+        .map(([name, count]) => count > 1 ? `${name}x${count}` : name).join(', ');
+    
+    // Display any information on ships the character might have received
+    const shipsWithLeases = Object.entries(items).filter(([_, val]) => isObject(val) && val.hasOwnProperty('lease'));
+    const charstr4 = shipsWithLeases.length > 0 ? 
+        shipsWithLeases.map(([name, info]) => `Owns a ${name} with ${info.lease} years of payment left`) : '';
     
     return (
         <div className="CharacterSheet">
             <p>{charstr1}</p>
             <p>{[charstr2, charstr3].join(' ')}</p>
+            <p>{charstr4}</p>
         </div>
     )
 }
