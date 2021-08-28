@@ -99,7 +99,6 @@ function PromotionCT({ upp, updateUPP, career, updateCareer, skills, updateSkill
                 updateLog(newLog);
 
                 if (tmpCascade) {
-                    console.log('Setting Cascade skill');
                     updateCascadeSkill(tmpCascade);
                 }
 
