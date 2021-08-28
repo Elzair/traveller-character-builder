@@ -121,7 +121,8 @@ function DraftCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, c
         let tmpCascade = null;
 
         if (checked) { // Submit to the draft
-            careerName = CECAREERS.filter(career => career.draftNumber === r1d6())[0].name;
+            const draftNumber = r1d6();
+            careerName = CECAREERS.filter(career => career.draftNumber === draftNumber)[0].name;
             newLog.push(`You were drafted into the ${capitalize(careerName)}`);
         } else {
             careerName = 'drifter';
@@ -129,7 +130,7 @@ function DraftCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, c
         }
 
         // Apply any benefits for entering a career.
-        const careerData = CECAREERS.filter(c => c.name === 'drifter')[0];
+        const careerData = CECAREERS.filter(c => c.name === careerName)[0];
         const rank = careerData.ranks[0];
 
         if (rank.hasOwnProperty('benefit')) {

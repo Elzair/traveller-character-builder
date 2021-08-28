@@ -156,15 +156,11 @@ function SkillCE({ upp, updateUPP, career, skills, updateSkills, cascadeSkill, u
                 const skillData = CESKILLS[advance.name];
 
                 if (skillData === null) { // A non-cascade skill
-                    let newSkill = {};
-                    if (!skills.hasOwnProperty(advance.name)) {
-                        newSkill[advance.name] = advance.value;
-                    } else {
-                        newSkill[advance.name] = skills[advance.name] + advance.value;
-                    }
-                    updateSkills(newSkill);
+                    let newSkills = {};
+                    newSkills[advance.name] = (skills[advance.name] || 0) + advance.value;
+                    updateSkills(newSkills);
 
-                    newLog.push(`You improved your ${advance.name} to ${newSkill[advance.name]}.`);
+                    newLog.push(`You improved your ${advance.name} to ${newSkills[advance.name]}.`);
                 } else {
                     tmpCascade = advance;
                 }

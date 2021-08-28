@@ -45,16 +45,12 @@ function CascadeSkillCT({ skills, updateSkills, cascadeSkill, updateCascadeSkill
         }
 
         if (skill !== '') {
-            let newSkill = {};
-            if (!skills.hasOwnProperty(skill)) {
-                newSkill[skill] = cascadeSkill.value;
-            } else {
-                newSkill[skill] = skills[skill] + cascadeSkill.value;
-            }
+            let newSkills = {};
+            newSkills[skill] = (skills[skill] || 0) + cascadeSkill.value;
 
             updateCascadeSkill(null);
-            updateSkills(newSkill);
-            updateLog([`You improved your ${skill} to ${newSkill[skill]}.`]);
+            updateSkills(newSkills);
+            updateLog([`You improved your ${skill} to ${newSkills[skill]}.`]);
 
             onSelected();
         }
