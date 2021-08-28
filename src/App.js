@@ -101,6 +101,11 @@ function App() {
     setSkills(updateObject(skills, updated));
   }
 
+  function updateCascadeSkill(updated) {
+    console.log(`Updating cascade skill to ${updated}`);
+    setCascadeSkill(updated);
+  }
+
   function updateAnagathics(taking) {
     if (taking) {
       setAnagathics({
@@ -463,7 +468,7 @@ function App() {
         skills={skills}
         updateSkills={updateSkills}
         cascadeSkill={cascadeSkill}
-        updateCascadeSkill={setCascadeSkill}
+        updateCascadeSkill={updateCascadeSkill}
         display={step === 'CAREER'}
         onEnlistment={enlisted}
         updateLog={updateLog}
@@ -477,7 +482,7 @@ function App() {
         skills={skills}
         updateSkills={updateSkills}
         cascadeSkill={cascadeSkill}
-        updateCascadeSkill={setCascadeSkill}
+        updateCascadeSkill={updateCascadeSkill}
         display={step === 'DRAFT'}
         onDraft={drafted}
         updateLog={updateLog}
@@ -568,7 +573,7 @@ function App() {
         skills={skills}
         updateSkills={updateSkills}
         cascadeSkill={cascadeSkill}
-        updateCascadeSkill={setCascadeSkill}
+        updateCascadeSkill={updateCascadeSkill}
         display={step === 'COMMISSION'}
         onSuccess={commissioned}
         updateLog={updateLog}
@@ -582,7 +587,7 @@ function App() {
         skills={skills}
         updateSkills={updateSkills}
         cascadeSkill={cascadeSkill}
-        updateCascadeSkill={setCascadeSkill}
+        updateCascadeSkill={updateCascadeSkill}
         display={step === 'PROMOTION'}
         onSuccess={promoted}
         updateLog={updateLog}
@@ -595,7 +600,7 @@ function App() {
         skills={skills}
         updateSkills={updateSkills}
         cascadeSkill={cascadeSkill}
-        updateCascadeSkill={setCascadeSkill}
+        updateCascadeSkill={updateCascadeSkill}
         numSkillRolls={numSkillRolls}
         display={step === 'SKILL'}
         onSelected={choseSkill}
@@ -606,7 +611,7 @@ function App() {
         skills={skills}
         updateSkills={updateSkills}
         cascadeSkill={cascadeSkill}
-        updateCascadeSkill={setCascadeSkill}
+        updateCascadeSkill={updateCascadeSkill}
         display={step === 'CASCADESKILL'}
         onSelected={choseCascadeSkill}
         updateLog={updateLog}
