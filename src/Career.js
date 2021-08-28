@@ -105,7 +105,7 @@ function CareerCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
                     updateCascadeSkill(tmpCascade);
                 }
 
-                onEnlistment(true, false);
+                onEnlistment(true, tmpCascade ? true : false);
             } else {
                 updateLog(`Sorry! You failed to enlist in the ${careerName}.`);
 

@@ -102,7 +102,6 @@ function App() {
   }
 
   function updateCascadeSkill(updated) {
-    console.log(`Updating cascade skill to ${updated}`);
     setCascadeSkill(updated);
   }
 

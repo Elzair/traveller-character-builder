@@ -74,7 +74,7 @@ function PromotionCT({ upp, updateUPP, career, updateCareer, skills, updateSkill
                     if (benefit.type === 'SKILL') {
                         const skillData = CTSKILLS[benefit.name];
 
-                        if (!skillData) { // A non-cascade skill
+                        if (skillData === null || skillData === undefined) { // A non-cascade skill
                             let newSkills = {};
                             newSkills[benefit.name] = (skills[benefit.name] || 0) + benefit.value;
                             updateSkills(newSkills);
@@ -99,10 +99,11 @@ function PromotionCT({ upp, updateUPP, career, updateCareer, skills, updateSkill
                 updateLog(newLog);
 
                 if (tmpCascade) {
+                    console.log('Setting Cascade skill');
                     updateCascadeSkill(tmpCascade);
                 }
 
-                onSuccess(true, cascadeSkill ? true : false);
+                onSuccess(true, tmpCascade ? true : false);
             } else {
                 updateLog([`Sorry, you failed to get a promotion in term ${curCareer.term}.`]);
 

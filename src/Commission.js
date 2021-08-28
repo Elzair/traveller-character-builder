@@ -85,7 +85,7 @@ function CommissionCT({ upp, updateUPP, career, updateCareer, skills, updateSkil
                     if (benefit.type === 'SKILL') {
                         const skillData = CTSKILLS[benefit.name];
 
-                        if (skillData === null) { // a non-cascade skill
+                        if (skillData === null || skillData === undefined) { // a non-cascade skill
                             let newSkills = {};
                             newSkills[benefit.name] = (skills[benefit.name] || 0) + benefit.value;
                             updateSkills(newSkills);
@@ -122,10 +122,12 @@ function CommissionCT({ upp, updateUPP, career, updateCareer, skills, updateSkil
                 onSuccess(true, tmpCascade ? true : false);
             } else {
                 updateLog([`Sorry, you failed to get a commission in term ${curCareer.term}.`]);
+                
                 onSuccess(false, false);
             }
         } else {
             updateLog([`You did not attempt a commission in term ${curCareer.term}.`]);
+
             onSuccess(false, false);
         }
 
