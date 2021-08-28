@@ -51,25 +51,31 @@ function ReenlistCT({ career, updateCareer, options, onSuccess, onFailure, onRet
         const reenlist = careerData.reenlist;
 
         let roll = r2d6();
+        let newLog = [];
+        let status = '';
 
         if (checked) {
             // If the character has served the maximum # of terms, retirement is mandatory unless the roll is 12.
             if (curCareer.term >= options.maxTerms && roll !== 12) {
-                updateLog('You have served the maximum number of terms.');
+                // updateLog('You have served the maximum number of terms.');
+                newLog.push('You have served the maximum number of terms.');
+
+                status = 'retired';
+
                 onRetirement();
             } else {
                 // Some careers make it nearly mandatory to reenlist.
                 if (roll >= reenlist.target || (reenlist.hasOwnProperty('toLeave') && reenlist.toLeave)) {
-                    updateLog([`You have successfully reenlisted in the ${capitalize(curCareer.branch)} for another term.`]);
+                    newLog.push(`You have successfully reenlisted in the ${capitalize(curCareer.branch)} for another term.`);
 
-                    // Set `rankPrev` to the rank at the end of the term.
-                    let newCareer = [...career];
-                    newCareer[newCareer.length - 1].rankPrev = newCareer[newCareer.length - 1].rank;
-                    updateCareer(newCareer);
+                    status = 'reenlisted';
 
                     onSuccess();
                 } else {
-                    updateLog([`Unfortunately, you are not eligible for reenlistment with the ${capitalize(curCareer.branch)}.`]);
+                    newLog.push(`Unfortunately, you are not eligible for reenlistment with the ${capitalize(curCareer.branch)}.`);
+
+                    status = 'failure';
+
                     onFailure();
                 }
             }
@@ -77,26 +83,45 @@ function ReenlistCT({ career, updateCareer, options, onSuccess, onFailure, onRet
         } else {
             // If the roll is a twelve, reenlistment is mandatory.
             if (roll === 12) {
-                updateLog(['Your services are required for another term.']);
+                newLog.push('Your services are required for another term.');
 
-                // Set `rankPrev` to the rank at the end of the term.
-                let newCareer = [...career];
-                newCareer[newCareer.length - 1].rankPrev = newCareer[newCareer.length - 1].rank;
-                updateCareer(newCareer);
+                status = 'reenlisted';
 
                 onSuccess();
             } else if (reenlist.hasOwnProperty('toLeave') && reenlist.toLeave && roll < reenlist.target) { // Some careers require a successful reenlist roll to leave
-                updateLog(['You were not able to leave.']);
+                newLog.push('You were not able to leave.');
 
+                status = 'reenlisted';
+
+                onSuccess();
+            } else {
+                newLog.push('Your succesfully retired.');
+
+                status = 'retired';
+
+                onRetirement();
+            }
+        }
+
+        updateLog(newLog);
+
+        switch (status) {
+            case 'reenlisted': {
                 // Set `rankPrev` to the rank at the end of the term.
                 let newCareer = [...career];
                 newCareer[newCareer.length - 1].rankPrev = newCareer[newCareer.length - 1].rank;
                 updateCareer(newCareer);
-
                 onSuccess();
-            } else {
-                onRetirement();
+                break;
             }
+            case 'failure':
+                onFailure();
+                break;
+            case 'retired':
+                onRetirement();
+                break;
+            default:
+                throw new Error(`ReenlistCT::attemptReenlistment() Invalid status: ${status}`);
         }
     }
 
@@ -124,37 +149,30 @@ function ReenlistCE({ career, updateCareer, options, onSuccess, onFailure, onRet
         const reenlist = careerData.reenlist;
 
         let roll = r2d6();
+        let newLog = [];
+        let status = '';
 
         if (checked) {
             // If the character has served the maximum # of terms, retirement is mandatory unless the roll is 12.
             if (curCareer.term >= options.maxTerms && roll !== 12) {
-                updateLog(['You have served the maximum number of terms.']);
+                // updateLog('You have served the maximum number of terms.');
+                newLog.push('You have served the maximum number of terms.');
 
-                // Mandatory retirement from the current career.
-                let newCareer = [...career];
-                newCareer[newCareer.length - 1].retired = true;
-                updateCareer(newCareer);
+                status = 'retired';
 
                 onRetirement();
             } else {
-                if (roll >= reenlist.target) {
-                    updateLog([`You have successfully reenlisted in the ${capitalize(curCareer.branch)} for another term.`]);
+                // Some careers make it nearly mandatory to reenlist.
+                if (roll >= reenlist.target || (reenlist.hasOwnProperty('toLeave') && reenlist.toLeave)) {
+                    newLog.push(`You have successfully reenlisted in the ${capitalize(curCareer.branch)} for another term.`);
 
-                    // Set `rankPrev` to the rank at the end of the term.
-                    let newCareer = [...career];
-                    newCareer[newCareer.length - 1].rankPrev = newCareer[newCareer.length - 1].rank;
-                    updateCareer(newCareer);
+                    status = 'reenlisted';
 
                     onSuccess();
                 } else {
-                    updateLog([`Unfortunately, you are not eligible for reenlistment with the ${capitalize(curCareer.branch)}.`]);
+                    newLog.push(`Unfortunately, you are not eligible for reenlistment with the ${capitalize(curCareer.branch)}.`);
 
-                    // A traveller is considered retired if they leave their career after serving 5+ terms.
-                    if (curCareer.term >= 5) {
-                        let newCareer = [...career];
-                        newCareer[newCareer.length - 1].retired = true;
-                        updateCareer(newCareer);
-                    }
+                    status = 'failure';
 
                     onFailure();
                 }
@@ -163,26 +181,49 @@ function ReenlistCE({ career, updateCareer, options, onSuccess, onFailure, onRet
         } else {
             // If the roll is a twelve, reenlistment is mandatory.
             if (roll === 12) {
-                updateLog(['Your services are required for another term.']);
+                newLog.push('Your services are required for another term.');
 
+                status = 'reenlisted';
+
+                onSuccess();
+            } else if (reenlist.hasOwnProperty('toLeave') && reenlist.toLeave && roll < reenlist.target) { // Some careers require a successful reenlist roll to leave
+                newLog.push('You were not able to leave.');
+
+                status = 'reenlisted';
+
+                onSuccess();
+            } else {
+                newLog.push('Your succesfully retired.');
+
+                status = 'retired';
+
+                onRetirement();
+            }
+        }
+
+        updateLog(newLog);
+
+        switch (status) {
+            case 'reenlisted': {
                 // Set `rankPrev` to the rank at the end of the term.
                 let newCareer = [...career];
                 newCareer[newCareer.length - 1].rankPrev = newCareer[newCareer.length - 1].rank;
                 updateCareer(newCareer);
-
                 onSuccess();
-            } else {
-                updateLog([`You have retired from the ${capitalize(curCareer.branch)}.`]);
-
-                // A traveller is considered retired if they leave their career after serving 5+ terms.
-                if (curCareer.term >= 5) {
-                    let newCareer = [...career];
-                    newCareer[newCareer.length - 1].retired = true;
-                    updateCareer(newCareer);
-                }
-
-                onRetirement();
+                break;
             }
+            case 'failure':
+                onFailure();
+                break;
+            case 'retired': {
+                let newCareer = [...career];
+                newCareer[newCareer.length - 1].retired = true;
+                updateCareer(newCareer);
+                onRetirement();
+                break;
+            }
+            default:
+                throw new Error(`ReenlistCT::attemptReenlistment() Invalid status: ${status}`);
         }
     }
 
