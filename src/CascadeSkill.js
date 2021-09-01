@@ -89,14 +89,19 @@ function CascadeSkillCE({ skills, updateSkills, cascadeSkill, updateCascadeSkill
         }
 
         if (skill !== '') {
-            let newSkills = {};
-            newSkills[skill] = (skills[skill] || 0) + cascadeSkill.value;
+            const skData = CESKILLS[skill];
+            if (skData === null || skData === undefined) {
+                let newSkills = {};
+                newSkills[skill] = (skills[skill] || 0) + cascadeSkill.value;
 
-            updateCascadeSkill(null);
-            updateSkills(newSkills);
-            updateLog([`You improved your ${skill} to ${newSkills[skill]}.`]);
+                updateCascadeSkill(null);
+                updateSkills(newSkills);
+                updateLog([`You improved your ${skill} to ${newSkills[skill]}.`]);
 
-            onSelected();
+                onSelected();
+            } else { // Handle multiple nested cascading skills
+                updateCascadeSkill({ name: skill, value: cascadeSkill.value });
+            }
         }
     }
 
