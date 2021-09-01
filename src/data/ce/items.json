@@ -383,5 +383,9 @@
             "Rounds": 30,
             "Skill": "Slug Pistol"
         }
+    },
+    "Weapon": {
+        "Melee Weapon": null,
+        "Ranged Weapon": null
     }
 }

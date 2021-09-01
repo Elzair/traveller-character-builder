@@ -111,7 +111,6 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, updateCredi
             // Give travellers of rank 5 or rank 6 a +1 DM on rolls on the benefits table.
             const benefitsDM = curCareer.rank >= 5 ? 1 : 0;
             const benefit = table[Math.min(r1d6() - 1 + benefitsDM, table.length - 1)]; // Cap roll because not every benefit table has enough values.
-            // console.log(benefit);
 
             if (benefit.type === 'WEAPON') {
                 // If the benefit is a weapon, and the traveller has already received one, then
@@ -209,7 +208,6 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, updateCredi
         if (CTITEMS.hasOwnProperty(weapon)) {
             setWeapon({ name: weapon });
         } else if (items.hasOwnProperty(weapon) && items[weapon] > 0) {
-            // console.log(`Item already present selected: ${weapon}`);
             // If the traveller already has taken that weapon as a benefit, offer them
             // an increase in the corresponding skill instead.
             setSkill(weapon);
@@ -392,7 +390,6 @@ function MusterOutCE({ upp, updateUPP, career, skills, updateSkills, updateCredi
             // Give travellers of rank 5 or rank 6 a +1 DM on rolls on the benefits table.
             const benefitsDM = curCareer.rank >= 5 ? 1 : 0;
             const benefit = table[Math.min(r1d6() - 1 + benefitsDM, table.length - 1)]; // Cap roll because not every benefit table has enough values.
-            // console.log(benefit);
 
             if (benefit.type === 'WEAPON') {
                 // If the benefit is a weapon, and the traveller has already received one, then
@@ -421,30 +418,28 @@ function MusterOutCE({ upp, updateUPP, career, skills, updateSkills, updateCredi
     function handleWeaponSelection(ev) {
         ev.preventDefault();
 
-        let weapon = '';
+        let weaponName = '';
         for (let t of ev.target) {
             if (t.checked) {
-                weapon = t.value;
+                weaponName = t.value;
             }
         }
 
         // Check if the selected value is a specific weapon or a category of weapons
-        // TODO: Improve this
-        if (CEITEMS.hasOwnProperty(weapon)) {
-            setWeapon({ name: weapon });
-        } else if (items.hasOwnProperty(weapon) && items[weapon] > 0) {
-            console.log(`Item already present selected: ${weapon}`);
+        if (CEITEMS.hasOwnProperty(weaponName)) {
+            setWeapon({ name: weaponName });
+        } else if (items.hasOwnProperty(weaponName) && items[weaponName] > 0) {
             // If the traveller already has taken that weapon as a benefit, offer them
             // an increase in the corresponding skill instead.
-            setSkill(weapon);
-            setWeapon(null);
+            setSkill(CEITEMS[weapon.name][weaponName].Skill);
+            setWeapon({ name: weaponName });
         }
         else {
             let newItems = {};
-            newItems[weapon] = 1;
+            newItems[weaponName] = 1;
             updateItems(newItems);
 
-            updateLog([`You received a weapon ${weapon}.`]);
+            updateLog([`You received a weapon ${weaponName}.`]);
 
             decreaseBenefits();
             setWeapon(null);
@@ -458,8 +453,8 @@ function MusterOutCE({ upp, updateUPP, career, skills, updateSkills, updateCredi
     function handleSkillOrWeapon(ev) {
         ev.preventDefault();
 
-        const input = ev.target[0];
-        if (input.checked) {
+        // const input = ev.target[0];
+        if (skillChecked) {
             let newSkill = {};
             if (!skills.hasOwnProperty(skill)) {
                 newSkill[skill] = 1;
@@ -472,10 +467,10 @@ function MusterOutCE({ upp, updateUPP, career, skills, updateSkills, updateCredi
             updateLog([`You improved your ${skill} to ${newSkill[skill]}.`]);
         } else {
             let newItems = {};
-            newItems[skill] = 1;
+            newItems[weapon.name] = 1;
             updateItems(newItems);
 
-            updateLog([`You received a weapon ${skill}.`]);
+            updateLog([`You received a ${weapon.name}.`]);
         }
 
         decreaseBenefits();
@@ -539,7 +534,7 @@ function MusterOutCE({ upp, updateUPP, career, skills, updateSkills, updateCredi
                 </form>
             </div>
         );
-    } else if (weapon && weapon.hasOwnProperty('name')) { // Handle cascading weapon selection
+    } else if (weapon && weapon.hasOwnProperty('name') && skill === null) { // Handle cascading weapon selection
         const itemData = CEITEMS[weapon.name];
         const optionElts = Object.keys(itemData).map(item => (
             <label>
