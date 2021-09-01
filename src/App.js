@@ -647,7 +647,6 @@ function App() {
         updateCredits={updateCredits}
         display={step === 'AGE'}
         onAged={aged}
-        career={career}
         onDeath={died}
         updateLog={updateLog}
       />

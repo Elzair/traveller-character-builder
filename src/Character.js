@@ -16,6 +16,18 @@ export function Character({game, name, career, upp, skills, age, credits, items,
                 items={items}
             />
         );
+    } else if (display && game === 'cepheusengine') {
+        return (
+            <CharacterCE
+                name={name}
+                upp={upp} 
+                career={career} 
+                skills={skills}
+                age={age}
+                credits={credits}
+                items={items}
+            />
+        );
     } else {
         return (<div></div>);
     }
@@ -49,6 +61,35 @@ function CharacterCT({name, career, upp, skills, age, credits, items}) {
         <div className="CharacterSheet">
             <p>{charstr1}</p>
             <p>{[charstr2, charstr3].join(' ')}</p>
+            <p>{charstr4}</p>
+        </div>
+    )
+}
+
+function CharacterCE({name, career, upp, skills, age, credits, items}) {
+    const uppStr = Object.entries(upp).map(ent => num2tetra(ent[1])).join('');
+
+    const charstr1 = `${name} ${uppStr} Age ${age} Cr${credits}`;
+    const charstr2 = career.map(({ branch, term }) => `${capitalize(branch)} (${term} terms)`).join(', ');
+
+    const charstr3 = Object.entries(skills).sort((a, b) => {
+        if (a[0] > b[0]) {
+            return 1;
+        } else if (a[0] > b[0]) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }).map(([name, value]) => `${name}-${value}`).join(', ');
+
+    // Count items in inventory
+    const charstr4 = Object.entries(items).map(([name, count]) => count > 1 ? `${name}x${count}` : name).join(', ');
+    
+    return (
+        <div className="CharacterSheet">
+            <p>{charstr1}</p>
+            <p>{charstr2}</p>
+            <p>{charstr3}</p>
             <p>{charstr4}</p>
         </div>
     )
