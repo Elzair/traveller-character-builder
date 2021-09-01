@@ -96,7 +96,6 @@ function AgeCT({ upp, updateUPP, age, updateAge, onAged, onDeath, updateLog }) {
                 intDec = -1;
             }
 
-
             if (r2d6() < strRoll) {
                 newUPP.Strength = upp.Strength + strDec;
                 newLog.push(`Your Strength decreased to ${newUPP.Strength}`);
@@ -158,6 +157,8 @@ function AgeCT({ upp, updateUPP, age, updateAge, onAged, onDeath, updateLog }) {
             }
 
             updateUPP(newUPP);
+        } else {
+            newLog.push('You do not suffer the effects of aging.');
         }
 
         updateLog(newLog);
@@ -213,7 +214,7 @@ function AgeCE({
         if (curAge >= 34) {
             // Apply the total number of career terms as a negative dice modifier 
             // and number of terms the traveller took anagathics as a positive dice modifier
-            const numTerms = career.reduce((accum, curr) => accum + curr.term);
+            const numTerms = career.reduce((accum, curr) => accum + curr.term, 0);
             let roll = constrain(r2d6() - numTerms + anagathics.terms, -6, 12);
 
             switch (roll) {

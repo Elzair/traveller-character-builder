@@ -105,7 +105,7 @@ function App() {
   }
 
   function updateNumSkillRolls(updated) {
-    console.log(`Updating # Skill Rolls to: ${updated}`);
+    // console.log(`Updating # Skill Rolls to: ${updated}`);
     setNumSkillRolls(updated);
   }
 

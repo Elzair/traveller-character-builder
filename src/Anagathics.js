@@ -21,7 +21,7 @@ export function Anagathics({ game, anagathics, updateAnagathics, /*updateDebt,*/
 }
 
 function AnagathicsCE({ anagathics, updateAnagathics, /*updateDebt,*/ updateCredits, onAnagathicsDecision, updateLog }) {
-    let [checked, setChecked] = useState(true);
+    let [checked, setChecked] = useState(false);
 
     function handleCheck(check) {
         setChecked(check);

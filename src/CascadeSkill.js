@@ -106,6 +106,7 @@ function CascadeSkillCE({ skills, updateSkills, cascadeSkill, updateCascadeSkill
     }
 
     const skillData = CESKILLS[cascadeSkill.name];
+    
     const optionElts = Object.keys(skillData).map(skill => (
         <label>
             <input type="radio" id={skill} name="cascadeskill" value={skill} />
