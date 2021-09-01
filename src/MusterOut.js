@@ -540,7 +540,7 @@ function MusterOutCE({ upp, updateUPP, career, skills, updateSkills, updateCredi
             </div>
         );
     } else if (weapon && weapon.hasOwnProperty('name')) { // Handle cascading weapon selection
-        const itemData = CTITEMS[weapon.name];
+        const itemData = CEITEMS[weapon.name];
         const optionElts = Object.keys(itemData).map(item => (
             <label>
                 <input type="radio" id={item} name="weapons" value={item} />
