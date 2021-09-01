@@ -200,7 +200,7 @@
     {
         "name": "aerospace defense",
         "description": "Member of a planetary armed military force operating within a world's atmosphere and close orbit. Also known as the \"planetary air force\".",
-        "draftNumber": -1,
+        "draftNumber": 1,
         "enlistment": {
             "characteristic": "Endurance",
             "target": 5
