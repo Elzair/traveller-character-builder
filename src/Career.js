@@ -127,9 +127,9 @@ function CareerCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
     );
 }
 
-function canEnlistCE(upp, careerName) {
+function canEnlistCE(upp, careerName, numPreviousCareers) {
     const career = CECAREERS.filter(career => career.name === careerName)[0];
-    const result = modRollCE(upp, career.enlistment.characteristic);
+    const result = modRollCE(upp, career.enlistment.characteristic, false, -2 * numPreviousCareers);
     return result >= career.enlistment.target;
 }
 
@@ -148,7 +148,7 @@ function CareerCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
             let newLog = [];
 
             // Determine if character can enlist.
-            if (canEnlistCE(upp, careerName)) {
+            if (canEnlistCE(upp, careerName, career.length)) {
                 newLog.push(`Congratulations! You have enlisted in the ${capitalize(careerName)}!`);
                 let tmpCascade = null;
 

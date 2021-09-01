@@ -63,12 +63,12 @@ export function modCE(n) {
     return Math.min(Math.floor(n / 3) - 2, 9); 
 }
 
-export function modRollCE(upp, char, nat2Fails=false) {
+export function modRollCE(upp, char, nat2Fails=false, mods=0) {
     const roll =  r2d6();
     if (nat2Fails && roll === 2) {
         return roll;
     } else {
-        return roll + modCE(upp[char]);
+        return roll + mods + modCE(upp[char]);
     }
 }
 
