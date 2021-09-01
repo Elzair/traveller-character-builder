@@ -155,7 +155,7 @@ function SkillCE({ upp, updateUPP, career, skills, updateSkills, cascadeSkill, u
             } else if (advance.type === 'SKILL') {
                 const skillData = CESKILLS[advance.name];
 
-                if (skillData === null) { // A non-cascade skill
+                if (skillData === null || skillData === undefined) { // A non-cascade skill
                     let newSkills = {};
                     newSkills[advance.name] = (skills[advance.name] || 0) + advance.value;
                     updateSkills(newSkills);

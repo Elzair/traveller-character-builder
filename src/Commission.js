@@ -173,7 +173,7 @@ function CommissionCE({ upp, updateUPP, career, updateCareer, skills, updateSkil
                     if (benefit.type === 'SKILL') {
                         const skillData = CESKILLS[benefit.name];
 
-                        if (skillData === null) { // A non-cascade skill
+                        if (skillData === null || skillData === undefined) { // A non-cascade skill
                             let newSkills = {};
                             newSkills[benefit.name] = (skills[benefit.name] || 0) + benefit.value;
                             updateSkills(newSkills);
