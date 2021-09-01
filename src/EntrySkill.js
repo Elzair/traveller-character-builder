@@ -63,7 +63,7 @@ function EntrySkillCE({ career, upp, skills, updateSkills, onSkillSelection, upd
     } else {
         // Allow traveller to learn a career's service skill at level 0 if they do not already know it.
         const careerData = CECAREERS.filter(c => c.name === career[career.length - 1].branch)[0];
-        let skills = careerData.sst.filter(s => !skills.hasOwnProperty(s.name))
+        let skillsDisplay = careerData.sst.filter(s => !skills.hasOwnProperty(s.name))
             .map(s => <div key={`skill-${s.name}-div`} className="CESkill">
                 <input type="radio" id={`skill-${s.name}`} name="skill" value={s.name} /> <label className="CESkillLabel" htmlFor={`skill-${s.name}`} >{capitalize(s.name)}</label>
             </div>);
@@ -71,7 +71,7 @@ function EntrySkillCE({ career, upp, skills, updateSkills, onSkillSelection, upd
         return (
             <form className="CECAREERS" onSubmit={selectSkill}>
                 <p>Select One Skill: </p>
-                {skills}
+                {skillsDisplay}
                 <input className="Submit" type="submit" value="Submit" />
             </form>
         );
