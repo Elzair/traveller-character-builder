@@ -382,10 +382,11 @@ function App() {
     if (game === 'cepheusengine') {
       switch(mishap) {
         case 'MEDICAL-DISCHARGE':
-        case 'HONORABLE-DISCHARGE':
-          setStep('MUSTER-OUT');
+        case 'HONORABLE-DISCHARGE': {
+          const curCareer = career[career.length - 1];              
+          setStep(curCareer.term > 0 ? 'MUSTER-OUT' : 'NEWCAREER'); // Skip benefits if traveller has a mishap on their first term
           break;
-        case 'DISHONORABLE-DISCHARGE':
+        } case 'DISHONORABLE-DISCHARGE':
         case 'PRISON':
           setStep('NEWCAREER'); // Lose all benefits rolls from current career
           break;
