@@ -377,9 +377,25 @@ function App() {
     setNextStep(null);
   }
 
-  // AGE -> REENLIST
+  // AGE -> REENLIST | MUSTER-OUT
   function aged() {
-    setStep('REENLIST');
+    if (game === 'cepheusengine') {
+      switch(mishap) {
+        case 'MEDICAL-DISCHARGE':
+        case 'HONORABLE-DISCHARGE':
+          setStep('MUSTER-OUT');
+          break;
+        case 'DISHONORABLE-DISCHARGE':
+        case 'PRISON':
+          setStep('NEWCAREER'); // Lose all benefits rolls from current career
+          break;
+        default:
+          setStep('REENLIST');
+          break;
+      }
+    } else {
+      setStep('REENLIST');
+    }
   }
 
   // REENLIST -> SURVIVAL | ANAGATHICS
