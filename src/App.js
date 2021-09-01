@@ -30,6 +30,7 @@ import { Log } from './Log';
 
 import CTCAREERS from './data/ct/careers';
 import CECAREERS from './data/ce/careers';
+import { NewCareer } from './NewCareer';
 
 // eslint-disable-next-line
 const STEPS = [
@@ -52,6 +53,7 @@ const STEPS = [
   'AGE',
   'REENLISTMENT',
   'MUSTER-OUT',
+  'NEWCAREER',
   'FINISHED',
   'END'
 ];
@@ -399,9 +401,18 @@ function App() {
     setStep('MUSTER-OUT');
   }
 
-  // MUSTER-OUT -> CAREER | FINISHED
+  // MUSTER-OUT -> NEWCAREER | FINISHED
   function musterOut() {
     setStep('FINISHED');
+  }
+
+  // NEWCAREER -> CAREER | ENTRYSKILLS | FINISHED
+  function newCareer(tryNewCareer, drifter) {
+    if (tryNewCareer) {
+      setStep(drifter ? 'ENTRYSKILLS' : 'CAREER');
+    } else {
+      setStep('FINISHED');
+    }
   }
 
   // SURVIVAL | INJURY | AGE -> END
@@ -636,6 +647,7 @@ function App() {
         updateCredits={updateCredits}
         display={step === 'AGE'}
         onAged={aged}
+        career={career}
         onDeath={died}
         updateLog={updateLog}
       />
@@ -663,6 +675,15 @@ function App() {
         modifyItems={modifyItems}
         display={step === 'MUSTER-OUT'}
         onMusterOut={musterOut}
+        updateLog={updateLog}
+      />
+      <NewCareer
+        game={game}
+        career={career}
+        updateCareer={updateCareer}
+        crisis={crisis}
+        display={step === 'NEWCAREER'}
+        onSelection={newCareer}
         updateLog={updateLog}
       />
       <Goodbye

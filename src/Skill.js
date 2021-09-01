@@ -75,7 +75,7 @@ function SkillCT({ upp, updateUPP, career, skills, updateSkills, cascadeSkill, u
                 newLog.push(`You have increased your ${advance.name} to ${newChar[advance.name]}.`);
             } else if (advance.type === 'SKILL') {
                 const skillData = CTSKILLS[advance.name];
-                if (skillData === null) { // A non-cascade skill
+                if (skillData === null || skillData === undefined) { // A non-cascade skill
                     let newSkills = {};
                     newSkills[advance.name] = (skills[advance.name] || 0) + advance.value;
                     updateSkills(newSkills);

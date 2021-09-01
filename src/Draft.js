@@ -126,7 +126,7 @@ function DraftCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, c
             newLog.push(`You were drafted into the ${capitalize(careerName)}`);
         } else {
             careerName = 'drifter';
-            newLog.push('You became a drifter.');
+            newLog.push('You became a Drifter.');
         }
 
         // Apply any benefits for entering a career.
