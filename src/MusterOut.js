@@ -18,7 +18,9 @@ export function MusterOut({
     updateUPP, 
     career, 
     skills, 
-    updateSkills, 
+    updateSkills,
+    numCashRolls,
+    decrementNumCashRolls, 
     updateCredits, 
     items, 
     updateItems, 
@@ -35,6 +37,8 @@ export function MusterOut({
                 career={career}
                 skills={skills}
                 updateSkills={updateSkills}
+                numCashRolls={numCashRolls}
+                decrementNumCashRolls={decrementNumCashRolls}
                 updateCredits={updateCredits}
                 items={items}
                 updateItems={updateItems}
@@ -51,6 +55,8 @@ export function MusterOut({
                 career={career}
                 skills={skills}
                 updateSkills={updateSkills}
+                numCashRolls={numCashRolls}
+                decrementNumCashRolls={decrementNumCashRolls}
                 updateCredits={updateCredits}
                 items={items}
                 updateItems={updateItems}
@@ -63,10 +69,24 @@ export function MusterOut({
     }
 }
 
-function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, updateCredits, items, updateItems, modifyItems, onMusterOut, updateLog }) {
-    const MAXCASHROLLS = 3;
+function MusterOutCT({ 
+    upp, 
+    updateUPP, 
+    career, 
+    skills, 
+    updateSkills,
+    numCashRolls,
+    decrementNumCashRolls, 
+    updateCredits, 
+    items, 
+    updateItems, 
+    modifyItems, 
+    onMusterOut, 
+    updateLog 
+}) {
+    // const MAXCASHROLLS = 3;
 
-    let [numCashRolls, setNumCashRolls] = useState(MAXCASHROLLS);
+    // let [numCashRolls, setNumCashRolls] = useState(MAXCASHROLLS);
     let [weapon, setWeapon] = useState(null);
     let [skill, setSkill] = useState(null);
     let [skillChecked, setSkillChecked] = useState(true);
@@ -105,7 +125,8 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, updateCredi
 
             updateLog([`You receive Cr${amount}.`]);
 
-            setNumCashRolls(numCashRolls - 1);
+            // setNumCashRolls(numCashRolls - 1);
+            decrementNumCashRolls();
             decreaseBenefits();
         } else if (val === 'benefits') {
             // Give travellers of rank 5 or rank 6 a +1 DM on rolls on the benefits table.
@@ -342,10 +363,23 @@ function MusterOutCT({ upp, updateUPP, career, skills, updateSkills, updateCredi
     }
 }
 
-function MusterOutCE({ upp, updateUPP, career, skills, updateSkills, updateCredits, items, updateItems, onMusterOut, updateLog }) {
-    const MAXCASHROLLS = 3;
+function MusterOutCE({ 
+    upp, 
+    updateUPP, 
+    career, 
+    skills, 
+    updateSkills,
+    numCashRolls, 
+    decrementNumCashRolls,
+    updateCredits, 
+    items, 
+    updateItems, 
+    onMusterOut, 
+    updateLog 
+}) {
+    // const MAXCASHROLLS = 3;
 
-    let [numCashRolls, setNumCashRolls] = useState(MAXCASHROLLS);
+    // let [numCashRolls, setNumCashRolls] = useState(MAXCASHROLLS);
     let [weapon, setWeapon] = useState(null);
     let [skill, setSkill] = useState(null);
     let [skillChecked, setSkillChecked] = useState(true);
@@ -384,7 +418,8 @@ function MusterOutCE({ upp, updateUPP, career, skills, updateSkills, updateCredi
 
             updateLog([`You receive Cr${amount}.`]);
 
-            setNumCashRolls(numCashRolls - 1);
+            // setNumCashRolls(numCashRolls - 1);
+            decrementNumCashRolls();
             decreaseBenefits();
         } else if (val === 'benefits') {
             // Give travellers of rank 5 or rank 6 a +1 DM on rolls on the benefits table.
@@ -395,6 +430,7 @@ function MusterOutCE({ upp, updateUPP, career, skills, updateSkills, updateCredi
                 // If the benefit is a weapon, and the traveller has already received one, then
                 // ask if the traveller would like a skill increase instead.
                 setWeapon(benefit);
+                // console.log(benefit);
             } else if (benefit.type === 'ITEM') {
                 let newItems = {};
                 newItems[benefit.name] = 1;

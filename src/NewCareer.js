@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import Switch from 'react-switch';
 
-export function NewCareer({ game, career, updateCareer, crisis, display, onSelection, updateLog }) {
+export function NewCareer({ game, career, updateCareer, updateMishap, crisis, display, onSelection, updateLog }) {
     if (display && game === 'cepheusengine') {
         return (
             <NewCareerCE
                 career={career}
                 updateCareer={updateCareer}
+                updateMishap={updateMishap}
                 crisis={crisis}
                 onSelection={onSelection}
                 updateLog={updateLog}
@@ -17,7 +18,7 @@ export function NewCareer({ game, career, updateCareer, crisis, display, onSelec
     }
 }
 
-function NewCareerCE({ career, updateCareer, crisis, onSelection, updateLog }) {
+function NewCareerCE({ career, updateCareer, updateMishap, crisis, onSelection, updateLog }) {
     let [checked, setChecked] = useState(true);
 
     function handleCheck(check) {
@@ -39,6 +40,8 @@ function NewCareerCE({ career, updateCareer, crisis, onSelection, updateLog }) {
             });
             updateCareer(newCareer);
 
+            updateMishap('NONE'); // Clear Mishaps
+
             updateLog(['You have decided to become a Drifter!']);
 
             onSelection(true, true);
@@ -53,6 +56,8 @@ function NewCareerCE({ career, updateCareer, crisis, onSelection, updateLog }) {
         ev.preventDefault();
 
         updateLog([checked ? 'You have decided to try a new career!' : 'You have decided to become a traveller!']);
+
+        updateMishap('NONE'); // Clear Mishaps
 
         onSelection(checked, false);
     }

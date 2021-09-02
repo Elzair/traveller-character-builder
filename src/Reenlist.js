@@ -154,8 +154,9 @@ function ReenlistCE({ career, updateCareer, options, onSuccess, onFailure, onRet
 
         if (checked) {
             // If the character has served the maximum # of terms, retirement is mandatory unless the roll is 12.
-            if (curCareer.term >= options.maxTerms && roll !== 12) {
-                // updateLog('You have served the maximum number of terms.');
+            const numTerms = career.reduce((accum, career) => accum += career.term, 0);
+
+            if (numTerms >= options.maxTerms && roll !== 12) {
                 newLog.push('You have served the maximum number of terms.');
 
                 status = 'retired';
@@ -163,7 +164,7 @@ function ReenlistCE({ career, updateCareer, options, onSuccess, onFailure, onRet
                 onRetirement();
             } else {
                 // Some careers make it nearly mandatory to reenlist.
-                if (roll >= reenlist.target || (reenlist.hasOwnProperty('toLeave') && reenlist.toLeave)) {
+                if (roll >= reenlist.target) {
                     newLog.push(`You have successfully reenlisted in the ${capitalize(curCareer.branch)} for another term.`);
 
                     status = 'reenlisted';
@@ -182,12 +183,6 @@ function ReenlistCE({ career, updateCareer, options, onSuccess, onFailure, onRet
             // If the roll is a twelve, reenlistment is mandatory.
             if (roll === 12) {
                 newLog.push('Your services are required for another term.');
-
-                status = 'reenlisted';
-
-                onSuccess();
-            } else if (reenlist.hasOwnProperty('toLeave') && reenlist.toLeave && roll < reenlist.target) { // Some careers require a successful reenlist roll to leave
-                newLog.push('You were not able to leave.');
 
                 status = 'reenlisted';
 
@@ -223,7 +218,7 @@ function ReenlistCE({ career, updateCareer, options, onSuccess, onFailure, onRet
                 break;
             }
             default:
-                throw new Error(`ReenlistCT::attemptReenlistment() Invalid status: ${status}`);
+                throw new Error(`ReenlistCE::attemptReenlistment() Invalid status: ${status}`);
         }
     }
 

@@ -1,17 +1,23 @@
 import React from 'react';
 import { useState } from 'react';
 
+const DEFAULTMAXTERMS = 7;
+
 export function Game({name, setName, game, setGame, display, onFinished, options, updateOptions}) {
     let [rearrangeCharacteristics, setRearrangeCharacteristics] = useState(false);
     let [mishap, setMishap] = useState(false);
-    let [maxTerms, setMaxTerms] = useState(7); // The default maximum number of terms a traveller can take is SEVEN.
+    let [maxTerms, setMaxTerms] = useState(DEFAULTMAXTERMS);
 
     function handleSubmit(ev) {
         ev.preventDefault();
 
         if (name !== '') {
             if (game === 'mt2e') {
-                updateOptions({ rearrangeCharacteristics: true });
+                updateOptions({ 
+                    rearrangeCharacteristics: true,
+                    mishap: true,
+                    maxTerms
+                });
             } else if (game === 'cepheusengine') {
                 updateOptions({
                     rearrangeCharacteristics,
@@ -19,18 +25,44 @@ export function Game({name, setName, game, setGame, display, onFinished, options
                     maxTerms
                 });
             } else {
-                updateOptions({ rearrangeCharacteristics: false });
+                updateOptions({ 
+                    rearrangeCharacteristics: false,
+                    mishap: false,
+                    maxTerms: 7
+                });
             }
+
             onFinished(game, name);
         }
     }
 
     function handleSelectGame(ev) {
         setGame(ev.target.value);
+
+        // Reset options
+        switch(ev.target.value) {
+            case 'classic':
+            case 'cepheusengine':
+                setRearrangeCharacteristics(false);
+                setMishap(false);
+                break;
+            case 'mt2e':
+                setRearrangeCharacteristics(true);
+                setMishap(true);
+                break;
+        }
+
+        setMaxTerms(DEFAULTMAXTERMS);
     }
 
     function handleText(ev) {
         setName(ev.target.value);
+    }
+
+    function handleMaxTerms(ev) {
+        ev.preventDefault();
+
+        setMaxTerms(ev.target.valueAsNumber);
     }
 
     let gameOpts = [];
@@ -62,7 +94,7 @@ export function Game({name, setName, game, setGame, display, onFinished, options
                 id="maxTerms"
                 name="maxTerms"
                 value={maxTerms}
-                onChange={setMaxTerms}
+                onChange={handleMaxTerms}
             />
         );
     }

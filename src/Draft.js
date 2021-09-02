@@ -182,33 +182,35 @@ function DraftCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, c
             let tmpCascade = null;
             let newLog = [];
 
-            // Apply any benefits for entering a career.
-            const careerData = CECAREERS.filter(c => c.name === 'drifter')[0];
-            const rank = careerData.ranks[0];
+            newLog.push('With no other options, you have become a Drifter.');
 
-            if (rank.hasOwnProperty('benefit')) {
-                let benefit = rank.benefit;
+            // // Apply any benefits for entering a career.
+            // const careerData = CECAREERS.filter(c => c.name === 'drifter')[0];
+            // const rank = careerData.ranks[0];
 
-                if (benefit.type === 'SKILL') {
-                    const skillData = CESKILLS[benefit.name];
+            // if (rank.hasOwnProperty('benefit')) {
+            //     let benefit = rank.benefit;
 
-                    if (skillData === null) { // a non-cascade skill
-                        let newSkills = {};
-                        newSkills[benefit.name] = (skills[benefit.name] || 0) + benefit.value;
-                        updateSkills(newSkills);
+            //     if (benefit.type === 'SKILL') {
+            //         const skillData = CESKILLS[benefit.name];
 
-                        newLog.push(`Because of your rank, you gain ${benefit.name}-${benefit.value}.`);
-                    } else { // Transition to cascade skill selection
-                        tmpCascade = benefit;
-                    }
-                } else if (benefit.type === 'CHARACTERISTIC') {
-                    let newUPP = {};
-                    newUPP[benefit.name] = upp[benefit.name] + benefit.value;
-                    updateUPP(newUPP);
+            //         if (skillData === null) { // a non-cascade skill
+            //             let newSkills = {};
+            //             newSkills[benefit.name] = (skills[benefit.name] || 0) + benefit.value;
+            //             updateSkills(newSkills);
 
-                    newLog.push(`Because of your rank, your ${benefit.name} is now ${newUPP[benefit.name]}.`);
-                }
-            }
+            //             newLog.push(`Because of your rank, you gain ${benefit.name}-${benefit.value}.`);
+            //         } else { // Transition to cascade skill selection
+            //             tmpCascade = benefit;
+            //         }
+            //     } else if (benefit.type === 'CHARACTERISTIC') {
+            //         let newUPP = {};
+            //         newUPP[benefit.name] = upp[benefit.name] + benefit.value;
+            //         updateUPP(newUPP);
+
+            //         newLog.push(`Because of your rank, your ${benefit.name} is now ${newUPP[benefit.name]}.`);
+            //     }
+            // }
 
             let newCareer = [...career];
             newCareer.push({

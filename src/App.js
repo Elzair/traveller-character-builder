@@ -57,6 +57,7 @@ const STEPS = [
   'FINISHED',
   'END'
 ];
+const MAXCASHROLLS = 3;
 
 function App() {
   let [step, setStep] = useState('GAME');
@@ -78,6 +79,7 @@ function App() {
   let [age, setAge] = useState(18);
   let [crisis, setCrisis] = useState(false);
   let [anagathics, setAnagathics] = useState({ current: false, terms: 0 });
+  let [numCashRolls, setNumCashRolls] = useState(MAXCASHROLLS);
   let [credits, setCredits] = useState(0);
   // let [credits, setCredits] = useState(100000);
   let [items, setItems] = useState({});
@@ -133,6 +135,10 @@ function App() {
 
   function updateInjury(newInjury) {
     setInjury(newInjury);
+  }
+
+  function decrementNumCashRolls() {
+    setNumCashRolls(numCashRolls-1);
   }
 
   function updateCredits(newCredits) {
@@ -420,7 +426,12 @@ function App() {
 
   // MUSTER-OUT -> NEWCAREER | FINISHED
   function musterOut() {
-    setStep('FINISHED');
+    if (game === 'cepheusengine') {
+      const numTerms = career.reduce((accum, career) => accum += career.term, 0);
+      setStep(numTerms < options.maxTerms ? 'NEWCAREER' : 'FINISHED');
+    } else {
+      setStep('FINISHED');
+    }
   }
 
   // NEWCAREER -> CAREER | ENTRYSKILLS | FINISHED
@@ -685,6 +696,8 @@ function App() {
         career={career}
         skills={skills}
         updateSkills={updateSkills}
+        numCashRolls={numCashRolls}
+        decrementNumCashRolls={decrementNumCashRolls}
         updateCredits={updateCredits}
         items={items}
         updateItems={updateItems}
@@ -697,6 +710,7 @@ function App() {
         game={game}
         career={career}
         updateCareer={updateCareer}
+        updateMishap={updateMishap}
         crisis={crisis}
         display={step === 'NEWCAREER'}
         onSelection={newCareer}
