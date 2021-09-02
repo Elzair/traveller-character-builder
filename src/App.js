@@ -63,7 +63,7 @@ function App() {
   let [step, setStep] = useState('GAME');
   let [nextStep, setNextStep] = useState(null);
   // let [game, setGame] = useState("classic");
-  let [game, setGame] = useState("cepheusengine");
+  let [game, setGame] = useState("mt2e");
   let [options, setOptions] = useState({ rearrangeCharacteristics: false, });
   let [name, setName] = useState('');
   let [upp, setUPP] = useState(generateUPP());

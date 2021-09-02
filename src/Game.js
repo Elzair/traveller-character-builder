@@ -105,9 +105,9 @@ export function Game({name, setName, game, setGame, display, onFinished, options
                 <form onSubmit={handleSubmit}>
                     <label>Game:</label>
                     <select name="Game" onChange={handleSelectGame}>
-                        <option value="cepheusengine">Cepheus Engine</option>
-                        <option value="classic">Classic Traveller</option>
                         <option value="mt2e">Mongoose Traveller 2nd Edition</option>
+                        <option value="classic">Classic Traveller</option>
+                        <option value="cepheusengine">Cepheus Engine</option>
                     </select>
                     {gameOpts}
                     <label>Character Name:</label>
