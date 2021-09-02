@@ -32,6 +32,14 @@ import CTCAREERS from './data/ct/careers';
 import CECAREERS from './data/ce/careers';
 import { NewCareer } from './NewCareer';
 
+// ..######..########.########.########...######.
+// .##....##....##....##.......##.....##.##....##
+// .##..........##....##.......##.....##.##......
+// ..######.....##....######...########...######.
+// .......##....##....##.......##..............##
+// .##....##....##....##.......##........##....##
+// ..######.....##....########.##.........######.
+
 // eslint-disable-next-line
 const STEPS = [
   'GAME',
@@ -60,6 +68,13 @@ const STEPS = [
 const MAXCASHROLLS = 3;
 
 function App() {
+  // ..######..########....###....########.########
+  // .##....##....##......##.##......##....##......
+  // .##..........##.....##...##.....##....##......
+  // ..######.....##....##.....##....##....######..
+  // .......##....##....#########....##....##......
+  // .##....##....##....##.....##....##....##......
+  // ..######.....##....##.....##....##....########
   let [step, setStep] = useState('GAME');
   let [nextStep, setNextStep] = useState(null);
   // let [game, setGame] = useState("classic");
@@ -138,7 +153,7 @@ function App() {
   }
 
   function decrementNumCashRolls() {
-    setNumCashRolls(numCashRolls-1);
+    setNumCashRolls(numCashRolls - 1);
   }
 
   function updateCredits(newCredits) {
@@ -164,9 +179,13 @@ function App() {
     setLog(newLog);
   }
 
-  // =========================
-  // Step Transition Functions
-  // =========================
+  // ..######..########.########.########.....########.########.....###....##....##..######..####.########.####..#######..##....##
+  // .##....##....##....##.......##.....##.......##....##.....##...##.##...###...##.##....##..##.....##.....##..##.....##.###...##
+  // .##..........##....##.......##.....##.......##....##.....##..##...##..####..##.##........##.....##.....##..##.....##.####..##
+  // ..######.....##....######...########........##....########..##.....##.##.##.##..######...##.....##.....##..##.....##.##.##.##
+  // .......##....##....##.......##..............##....##...##...#########.##..####.......##..##.....##.....##..##.....##.##..####
+  // .##....##....##....##.......##..............##....##....##..##.....##.##...###.##....##..##.....##.....##..##.....##.##...###
+  // ..######.....##....########.##..............##....##.....##.##.....##.##....##..######..####....##....####..#######..##....##
 
   // OPTION -> UPP
   function finishGameOptions(game, name) {
@@ -181,6 +200,8 @@ function App() {
 
     if (game === 'cepheusengine') {
       setStep('HOMEWORLD');
+    } else if (game === 'mt2e') {
+      setStep('BACKGROUND');
     } else {
       setStep('CAREER');
     }
@@ -269,7 +290,7 @@ function App() {
       // If the career does not have commissions or advancements, go to skill rolls.
       // Also skip commission & promotion if the traveller was drafted and its their first term.
       // Furthermore, skip commission & promotion if the traveller has reached the maximum rank in their career.
-      if (careerData.commission === null || (curCareer.drafted === true && curCareer.term === 1) || (curCareer.rank === careerData.ranks.length-1)) {
+      if (careerData.commission === null || (curCareer.drafted === true && curCareer.term === 1) || (curCareer.rank === careerData.ranks.length - 1)) {
         setStep('SKILL');
       } else if (curCareer.rank >= 1 && curCareer.rank < careerData.ranks.length - 1) { // Go directly to promotion if a commission has already been earned
         setStep('PROMOTION');                                                           // and the traveller has not yet achieved the maximum rank.
@@ -287,7 +308,7 @@ function App() {
       // If the career does not have commissions or advancements, go to skill rolls.
       // Also skip commission & promotion if the traveller was drafted and its their first term.
       // Furthermore, skip commission & promotion if the traveller has reached the maximum rank in their career.
-      if (careerData.commission === null || (curCareer.drafted === true && curCareer.term === 1) || (curCareer.rank === careerData.ranks.length-1)) {
+      if (careerData.commission === null || (curCareer.drafted === true && curCareer.term === 1) || (curCareer.rank === careerData.ranks.length - 1)) {
         setStep('SKILL');
       } else if (curCareer.rank >= 1 && curCareer.rank < careerData.ranks.length - 1) { // Go directly to promotion if a commission has already been earned
         setStep('PROMOTION');                                                           // and the traveller has not yet achieved the maximum rank.
@@ -338,7 +359,7 @@ function App() {
   function commissioned(success, cascade) {
     // Increment number of skill rolls
     if (success) {
-      updateNumSkillRolls(numSkillRolls+1);
+      updateNumSkillRolls(numSkillRolls + 1);
     }
 
     if (cascade) {
@@ -353,7 +374,7 @@ function App() {
   function promoted(success, cascade) {
     // Increment number of skill rolls
     if (success) {
-      updateNumSkillRolls(numSkillRolls+1);
+      updateNumSkillRolls(numSkillRolls + 1);
     }
 
     if (cascade) {
@@ -366,7 +387,7 @@ function App() {
 
   // SKILL -> AGE | CASCADESKILL
   function choseSkill(cascade) {
-    const curNumSkillRolls = numSkillRolls-1;
+    const curNumSkillRolls = numSkillRolls - 1;
     updateNumSkillRolls(curNumSkillRolls);
 
     if (cascade) {
@@ -386,10 +407,10 @@ function App() {
   // AGE -> REENLIST | MUSTER-OUT
   function aged() {
     if (game === 'cepheusengine') {
-      switch(mishap) {
+      switch (mishap) {
         case 'MEDICAL-DISCHARGE':
         case 'HONORABLE-DISCHARGE': {
-          const curCareer = career[career.length - 1];              
+          const curCareer = career[career.length - 1];
           setStep(curCareer.term > 0 ? 'MUSTER-OUT' : 'NEWCAREER'); // Skip benefits if traveller has a mishap on their first term
           break;
         } case 'DISHONORABLE-DISCHARGE':
@@ -453,6 +474,14 @@ function App() {
   function goodbye() {
     setStep('END');
   }
+
+  // ..######...#######..##.....##.########...#######..##....##.########.##....##.########..######.
+  // .##....##.##.....##.###...###.##.....##.##.....##.###...##.##.......###...##....##....##....##
+  // .##.......##.....##.####.####.##.....##.##.....##.####..##.##.......####..##....##....##......
+  // .##.......##.....##.##.###.##.########..##.....##.##.##.##.######...##.##.##....##.....######.
+  // .##.......##.....##.##.....##.##........##.....##.##..####.##.......##..####....##..........##
+  // .##....##.##.....##.##.....##.##........##.....##.##...###.##.......##...###....##....##....##
+  // ..######...#######..##.....##.##.........#######..##....##.########.##....##....##.....######.
 
   return (
     <div id="App" className="App">
