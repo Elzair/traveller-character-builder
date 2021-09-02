@@ -50,6 +50,8 @@ export function Game({name, setName, game, setGame, display, onFinished, options
                 setRearrangeCharacteristics(true);
                 setMishap(true);
                 break;
+            default:
+                throw new Error(`Game: Invalid game selected ${ev.target.value}`);
         }
 
         setMaxTerms(DEFAULTMAXTERMS);
