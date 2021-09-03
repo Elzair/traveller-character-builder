@@ -76,10 +76,68 @@ export function modMT2E(n) {
     return n === 0 ? -3 : Math.min(Math.floor(n / 3) - 2, 3);
 }
 
+export function modRollMT2E(upp, char, skills, skill, mods) {
+    let roll = r2d6();
+    
+    // Add a characteristic modifier if appropriate
+    if (upp !== null && char !== null) {
+        roll += modMT2E(upp[char]);
+    }
+
+    // Add a skill modifier if approprate
+    if (skills !== null && skill !== null) {
+        let skillMod = skills.hasOwnProperty(skill) ? skills[skill] : -3;
+        roll += skillMod;
+    }
+
+    roll += mods; // Add any other random modifiers
+
+    return roll;
+}
+
+export function checkMT2E(target, upp, char, skills, skill, mods, useNaturals=false) {
+    let roll = r2d6();
+    let autoFail = false;
+    let autoSuccess = false;
+
+    // If `useNatural` is true, a roll of 2 is an automatic failure and a roll of 12 is an automatic success
+    if (useNaturals) {
+        if (roll === 2) {
+            autoFail = true;
+        } else if (roll === 12) {
+            autoSuccess = true;
+        }
+    }
+    
+    // Add a characteristic modifier if appropriate
+    if (upp !== null && char !== null) {
+        roll += modMT2E(upp[char]);
+    }
+
+    // Add a skill modifier if approprate
+    if (skills !== null && skill !== null) {
+        let skillMod = skills.hasOwnProperty(skill) ? skills[skill] : -3;
+        roll += skillMod;
+    }
+
+    roll += mods; // Add any other random modifiers
+
+    return {
+        roll,
+        success: roll >= target,
+        autoFail,
+        autoSuccess
+    };
+}
+
 export function isObject(val) {
     return typeof val === 'object' && val !== null && !Array.isArray(val);
 }
 
 export function randElt(arr) {
     return arr[Math.floor(Math.random()*arr.length)];
+}
+
+export function findTerm(age) {
+    return Math.floor((age-18)/4);
 }

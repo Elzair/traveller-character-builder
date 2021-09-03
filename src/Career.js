@@ -1,5 +1,5 @@
-import React/*, { useState }*/ from 'react';
-import { applyDMsToRoll, capitalize, modRollCE, /*r1d6,*/ r2d6 } from "./utils";
+import React from 'react';
+import { applyDMsToRoll, capitalize, modRollCE, r2d6 } from "./utils";
 
 import CTCAREERS from './data/ct/careers';
 import CTSKILLS from './data/ce/skills';

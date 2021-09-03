@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { constrain, r1d6, r2d6, randElt } from './utils';
+import { constrain, findTerm, r1d6, r2d6, randElt } from './utils';
 
 import CECAREERS from './data/ce/careers';
 
@@ -9,6 +9,7 @@ export function Age({
     updateUPP,
     age,
     updateAge,
+    updateTerm,
     career,
     anagathics,
     mishap,
@@ -27,6 +28,7 @@ export function Age({
                 updateUPP={updateUPP}
                 age={age}
                 updateAge={updateAge}
+                updateTerm={updateTerm}
                 onAged={onAged}
                 onDeath={onDeath}
                 updateLog={updateLog}
@@ -39,6 +41,7 @@ export function Age({
                 updateUPP={updateUPP}
                 age={age}
                 updateAge={updateAge}
+                updateTerm={updateTerm}
                 career={career}
                 anagathics={anagathics}
                 mishap={mishap}
@@ -55,7 +58,7 @@ export function Age({
     }
 }
 
-function AgeCT({ upp, updateUPP, age, updateAge, onAged, onDeath, updateLog }) {
+function AgeCT({ upp, updateUPP, age, updateAge, updateTerm, onAged, onDeath, updateLog }) {
     useEffect(() => {
         let curAge = age + 4;
 
@@ -162,7 +165,8 @@ function AgeCT({ upp, updateUPP, age, updateAge, onAged, onDeath, updateLog }) {
         }
 
         updateLog(newLog);
-        updateAge(age + 4);
+        updateAge(curAge)
+        updateTerm(findTerm(curAge));
         onAged();
     });
 
@@ -174,6 +178,7 @@ function AgeCE({
     updateUPP, 
     age, 
     updateAge, 
+    updateTerm,
     career, 
     anagathics, 
     mishap, 
@@ -327,6 +332,7 @@ function AgeCE({
 
         updateUPP(newUPP);
         updateAge(curAge);
+        updateTerm(findTerm(curAge));
         updateCredits(-1 * debt);
         updateLog(newLog);
 

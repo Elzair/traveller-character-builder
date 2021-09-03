@@ -4,7 +4,20 @@ import { r1d6 } from "./utils";
 
 // import CECAREERS from './data/ce/careers';
 
-export function Mishap({ game, upp, updateUPP, career, updateCareer, updateCredits, injury, updateInjury, updateMishap, display, onMishap, updateLog }) {
+export function Mishap({ 
+    game, 
+    upp, 
+    updateUPP, 
+    career, 
+    updateCareer, 
+    updateCredits, 
+    injury, 
+    updateInjury, 
+    updateMishap, 
+    display, 
+    onMishap, 
+    updateLog 
+}) {
     if (display && game === 'cepheusengine') {
         return (
             <MishapCE

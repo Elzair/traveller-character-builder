@@ -10,6 +10,7 @@ import { Game } from './Game';
 import { UPP } from './UPP';
 import { Homeworld } from './Homeworld';
 import { Background } from './Background';
+import { Education } from './Education';
 import { Career } from './Career';
 import { Draft } from './Draft';
 import { EntrySkill } from './EntrySkill';
@@ -27,10 +28,10 @@ import { Age } from './Age';
 import { Reenlist } from './Reenlist';
 import { MusterOut } from './MusterOut';
 import { Log } from './Log';
+import { NewCareer } from './NewCareer';
 
 import CTCAREERS from './data/ct/careers';
 import CECAREERS from './data/ce/careers';
-import { NewCareer } from './NewCareer';
 
 // ..######..########.########.########...######.
 // .##....##....##....##.......##.....##.##....##
@@ -46,6 +47,7 @@ const STEPS = [
   'UPP',
   'HOMEWORLD',
   'BACKGROUND',
+  'EDUCATION',
   'CAREER',
   'DRAFT',
   'ENTRYSKILLS',
@@ -54,6 +56,7 @@ const STEPS = [
   'MISHAP',
   'INJURY',
   'MEDICAL',
+  'EVENT',
   'COMMISSION',
   'PROMOTION',
   'SKILL',
@@ -88,6 +91,8 @@ function App() {
   let [skills, setSkills] = useState({});
   let [numSkillRolls, setNumSkillRolls] = useState(0);
   let [cascadeSkill, setCascadeSkill] = useState(null);
+  let [term, setTerm] = useState(0);
+  let [education, setEducation] = useState({});
   let [career, setCareer] = useState([]);
   let [mishap, setMishap] = useState('NONE');
   let [injury, setInjury] = useState({ roll: 0, crisis: false, injuries: {} });
@@ -214,7 +219,15 @@ function App() {
 
   // BACKGROUND -> CAREER
   function selectBackgroundSkills() {
-    setStep('CAREER');
+    if (game === 'mt2e') {
+      setStep('EDUCATION');
+    } else {
+      setStep('CAREER');
+    }
+  }
+
+  function educationDecision(decision) {
+    setStep(decision === 'career' ? 'CAREER' : 'EVENT');
   }
 
   // CAREER -> SUVIVAL | DRAFT | ENTRYSKILLS | CASCADESKILL
@@ -404,14 +417,18 @@ function App() {
     setNextStep(null);
   }
 
-  // AGE -> REENLIST | MUSTER-OUT
+  // AGE -> REENLIST | MUSTER-OUT | FINISHED
   function aged() {
     if (game === 'cepheusengine') {
       switch (mishap) {
         case 'MEDICAL-DISCHARGE':
         case 'HONORABLE-DISCHARGE': {
           const curCareer = career[career.length - 1];
-          setStep(curCareer.term > 0 ? 'MUSTER-OUT' : 'NEWCAREER'); // Skip benefits if traveller has a mishap on their first term
+          if (term >= options.maxTerms) { // End character creation if character has served the maximum number of terms.
+            setStep('FINISHED');
+          } else {
+            setStep(curCareer.term > 0 ? 'MUSTER-OUT' : 'NEWCAREER'); // Skip benefits if traveller has a mishap on their first term
+          }
           break;
         } case 'DISHONORABLE-DISCHARGE':
         case 'PRISON':
@@ -533,6 +550,18 @@ function App() {
         onFinalized={selectBackgroundSkills}
         updateLog={updateLog}
       />
+      <Education
+        game={game}
+        updateCareer={updateCareer}
+        upp={upp}
+        updateUPP={updateUPP}
+        skills={skills}
+        updateSkills={updateSkills}
+        education={education}
+        updateEducation={setEducation}
+        display={step === 'EDUCATION'}
+        onEducation={educationDecision}
+      />
       <Career
         game={game}
         career={career}
@@ -585,6 +614,8 @@ function App() {
         game={game}
         options={options}
         upp={upp}
+        term={term}
+        updateTerm={setTerm}
         career={career}
         updateCareer={updateCareer}
         anagathics={anagathics}
@@ -696,6 +727,7 @@ function App() {
         updateUPP={updateUPP}
         age={age}
         updateAge={setAge}
+        updateTerm={setTerm}
         career={career}
         anagathics={anagathics}
         mishap={mishap}
@@ -709,6 +741,7 @@ function App() {
       />
       <Reenlist
         game={game}
+        term={term}
         career={career}
         updateCareer={updateCareer}
         options={options}
