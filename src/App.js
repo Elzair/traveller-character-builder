@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import './App.css';
 
-import { num2tetra, r2d6, updateObject } from './utils';
+import { findTerm, num2tetra, r2d6, updateObject } from './utils';
 
 import { Game } from './Game';
 import { UPP } from './UPP';
@@ -91,7 +91,7 @@ function App() {
   let [skills, setSkills] = useState({});
   let [numSkillRolls, setNumSkillRolls] = useState(0);
   let [cascadeSkill, setCascadeSkill] = useState(null);
-  let [term, setTerm] = useState(0);
+  // let [term, setTerm] = useState(1);
   let [education, setEducation] = useState({});
   let [career, setCareer] = useState([]);
   let [mishap, setMishap] = useState('NONE');
@@ -423,10 +423,11 @@ function App() {
       switch (mishap) {
         case 'MEDICAL-DISCHARGE':
         case 'HONORABLE-DISCHARGE': {
-          const curCareer = career[career.length - 1];
-          if (term >= options.maxTerms) { // End character creation if character has served the maximum number of terms.
+          let newTerm = findTerm(age+2); // Find the current term from `age`+2 since `age` has not updated yet and non-prison mishaps increase age by 2 years.
+          if (newTerm > options.maxTerms) { // End character creation if character has served the maximum number of terms.
             setStep('FINISHED');
           } else {
+            const curCareer = career[career.length - 1];
             setStep(curCareer.term > 0 ? 'MUSTER-OUT' : 'NEWCAREER'); // Skip benefits if traveller has a mishap on their first term
           }
           break;
@@ -465,8 +466,7 @@ function App() {
   // MUSTER-OUT -> NEWCAREER | FINISHED
   function musterOut() {
     if (game === 'cepheusengine') {
-      const numTerms = career.reduce((accum, career) => accum += career.term, 0);
-      setStep(numTerms < options.maxTerms ? 'NEWCAREER' : 'FINISHED');
+      setStep(findTerm(age) <= options.maxTerms ? 'NEWCAREER' : 'FINISHED');
     } else {
       setStep('FINISHED');
     }
@@ -557,6 +557,8 @@ function App() {
         updateUPP={updateUPP}
         skills={skills}
         updateSkills={updateSkills}
+        // term={term}
+        age={age}
         education={education}
         updateEducation={setEducation}
         display={step === 'EDUCATION'}
@@ -614,8 +616,8 @@ function App() {
         game={game}
         options={options}
         upp={upp}
-        term={term}
-        updateTerm={setTerm}
+        // term={term}
+        // updateTerm={setTerm}
         career={career}
         updateCareer={updateCareer}
         anagathics={anagathics}
@@ -725,9 +727,9 @@ function App() {
         game={game}
         upp={upp}
         updateUPP={updateUPP}
+        // term={term}
         age={age}
         updateAge={setAge}
-        updateTerm={setTerm}
         career={career}
         anagathics={anagathics}
         mishap={mishap}
@@ -741,9 +743,10 @@ function App() {
       />
       <Reenlist
         game={game}
-        term={term}
+        // term={term}
         career={career}
         updateCareer={updateCareer}
+        age={age}
         options={options}
         display={step === 'REENLIST'}
         onSuccess={reenlist}

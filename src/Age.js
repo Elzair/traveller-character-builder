@@ -28,7 +28,6 @@ export function Age({
                 updateUPP={updateUPP}
                 age={age}
                 updateAge={updateAge}
-                updateTerm={updateTerm}
                 onAged={onAged}
                 onDeath={onDeath}
                 updateLog={updateLog}
@@ -41,7 +40,6 @@ export function Age({
                 updateUPP={updateUPP}
                 age={age}
                 updateAge={updateAge}
-                updateTerm={updateTerm}
                 career={career}
                 anagathics={anagathics}
                 mishap={mishap}
@@ -58,7 +56,7 @@ export function Age({
     }
 }
 
-function AgeCT({ upp, updateUPP, age, updateAge, updateTerm, onAged, onDeath, updateLog }) {
+function AgeCT({ upp, updateUPP, age, updateAge, onAged, onDeath, updateLog }) {
     useEffect(() => {
         let curAge = age + 4;
 
@@ -165,34 +163,33 @@ function AgeCT({ upp, updateUPP, age, updateAge, updateTerm, onAged, onDeath, up
         }
 
         updateLog(newLog);
-        updateAge(curAge)
-        updateTerm(findTerm(curAge));
+        updateAge(curAge);
         onAged();
     });
 
     return (<div></div>);
 }
 
-function AgeCE({ 
-    upp, 
-    updateUPP, 
-    age, 
-    updateAge, 
-    updateTerm,
-    career, 
-    anagathics, 
-    mishap, 
+function AgeCE({
+    upp,
+    updateUPP,
+    age,
+    updateAge,
+    career,
+    anagathics,
+    mishap,
     updateCrisis,
     credits,
     updateCredits,
-    onAged, 
-    onDeath, 
-    updateLog 
+    onAged,
+    onDeath,
+    updateLog
 }) {
     useEffect(() => {
         const curCareer = career[career.length - 1]; // Get latest career
         const careerData = CECAREERS.filter(c => c.name === curCareer.branch)[0];
         const physChars = ['Strength', 'Dexterity', 'Endurance'];
+        const mentChars = ['Intellect', 'Education', 'Social'];
 
         let newLog = [];
         let agingCrisis = false;
@@ -210,78 +207,84 @@ function AgeCE({
             case 'PRISON':
                 curAge += 6; // Spend an additional four years in prison
                 break;
-            default:
+            default: // No mishap
                 curAge += 4;
                 break;
         }
 
         // Began the aging process when the traveller reaches 34.
         if (curAge >= 34) {
-            // Apply the total number of career terms as a negative dice modifier 
-            // and number of terms the traveller took anagathics as a positive dice modifier
-            const numTerms = career.reduce((accum, curr) => accum + curr.term, 0);
-            let roll = constrain(r2d6() - numTerms + anagathics.terms, -6, 12);
+            let numTerms = findTerm(curAge) - findTerm(age); // Find the number of terms that the character has aged.
 
-            switch (roll) {
-                case -6:
-                    newUPP.Strength -= 2;
-                    newUPP.Dexterity -= 2;
-                    newUPP.Endurance -= 2;
-                    newUPP.Intellect -= 1;
-                    newLog.push('Your physical stats have diminished by 2 and your Intellect has diminished by 1.');
-                    break;
-                case -5:
-                    newUPP.Strength -= 2;
-                    newUPP.Dexterity -= 2;
-                    newUPP.Endurance -= 2;
-                    newLog.push('Your physical stats have diminished by 2.');
-                    break;
-                case -4: {
-                    const physChar = randElt(physChars);
-                    const others = physChars.filter(elt => elt !== physChar);
-                    newUPP[physChar] -= 1;
-                    newLog.push(`Your ${physChar} has diminished by 1.`);
-                    others.forEach(char => {
-                        newUPP[char] -= 2;
-                        newLog.push(`Your ${char} has diminished by 2.`);
-                    });
-                    break;
+            // Roll on the Aging table once for each four year term the character has aged
+            for (let i = 0; i < numTerms; i++) {
+                // Apply the total number of terms as a negative dice modifier 
+                // and number of terms the traveller took anagathics as a positive dice modifier.
+                let roll = constrain(r2d6() - (findTerm(age)+i+1) + anagathics.terms, -6, 12);
+
+                switch (roll) {
+                    case -6: {
+                        newUPP.Strength -= 2;
+                        newUPP.Dexterity -= 2;
+                        newUPP.Endurance -= 2;
+                        const mentChar = randElt(mentChars);
+                        newUPP[mentChar] -= 1;
+                        newLog.push(`Your physical stats have diminished by 2 and your ${mentChar} has diminished by 1.`);
+                        break;
+                    }
+                    case -5:
+                        newUPP.Strength -= 2;
+                        newUPP.Dexterity -= 2;
+                        newUPP.Endurance -= 2;
+                        newLog.push('Your physical stats have diminished by 2.');
+                        break;
+                    case -4: {
+                        const physChar = randElt(physChars);
+                        const others = physChars.filter(elt => elt !== physChar);
+                        newUPP[physChar] -= 1;
+                        newLog.push(`Your ${physChar} has diminished by 1.`);
+                        others.forEach(char => {
+                            newUPP[char] -= 2;
+                            newLog.push(`Your ${char} has diminished by 2.`);
+                        });
+                        break;
+                    }
+                    case -3: {
+                        const physChar = randElt(physChars);
+                        const others = physChars.filter(elt => elt !== physChar);
+                        newUPP[physChar] -= 2;
+                        newLog.push(`Your ${physChar} has diminished by 2.`);
+                        others.forEach(char => {
+                            newUPP[char] -= 1;
+                            newLog.push(`Your ${char} has diminished by 1.`);
+                        });
+                        break;
+                    }
+                    case -2:
+                        newUPP.Strength -= 1;
+                        newUPP.Dexterity -= 1;
+                        newUPP.Endurance -= 1;
+                        newLog.push('Your physical stats have diminished by 1.');
+                        break;
+                    case -1: {
+                        const physChar = randElt(physChars);
+                        const others = physChars.filter(elt => elt !== physChar);
+                        others.forEach(char => {
+                            newUPP[char] -= 1;
+                            newLog.push(`Your ${char} has diminished by 1.`);
+                        });
+                        break;
+                    }
+                    case 0: {
+                        const physChar = randElt(physChars);
+                        newUPP[physChar] -= 1;
+                        newLog.push(`Your ${physChar} has diminished by 1.`);
+                        break;
+                    }
+                    default:
+                        newLog.push('You do not suffer the effects of aging.');
+                        break; // No effect if roll > 0
                 }
-                case -3: {
-                    const physChar = randElt(physChars);
-                    const others = physChars.filter(elt => elt !== physChar);
-                    newUPP[physChar] -= 2;
-                    newLog.push(`Your ${physChar} has diminished by 2.`);
-                    others.forEach(char => {
-                        newUPP[char] -= 1;
-                        newLog.push(`Your ${char} has diminished by 1.`);
-                    });
-                    break;
-                }
-                case -2:
-                    newUPP.Strength -= 1;
-                    newUPP.Dexterity -= 1;
-                    newUPP.Endurance -= 1;
-                    newLog.push('Your physical stats have diminished by 1.');
-                    break;
-                case -1: {
-                    const physChar = randElt(physChars);
-                    const others = physChars.filter(elt => elt !== physChar);
-                    others.forEach(char => {
-                        newUPP[char] -= 1;
-                        newLog.push(`Your ${char} has diminished by 1.`);
-                    });
-                    break;
-                }
-                case 0: {
-                    const physChar = randElt(physChars);
-                    newUPP[physChar] -= 1;
-                    newLog.push(`Your ${physChar} has diminished by 1.`);
-                    break;
-                }
-                default:
-                    newLog.push('You do not suffer the effects of aging.');
-                    break; // No effect if roll > 0
             }
 
             // Trigger an aging crisis if a physical characteristic has gone to or below 0 or the character just stopped taking anagathics.
@@ -309,13 +312,13 @@ function AgeCE({
                 payMod = careerData.medical['4'];
             }
 
-            newLog.push(`Your employer(s) pay for ${payMod*100}% of your medical bills.`);
+            newLog.push(`Your employer(s) pay for ${payMod * 100}% of your medical bills.`);
             debt = Math.round(debt * (1.0 - payMod));
 
             // The traveller dies unless they can IMMEDIATELY pay for medical care.
             if (debt > credits) {
                 newLog.push('You could not pay for emergency medical care. You have died.');
-                
+
                 dead = true;
             } else {
                 // If the traveller could pay for medical care, set any physical characteristics
@@ -332,7 +335,6 @@ function AgeCE({
 
         updateUPP(newUPP);
         updateAge(curAge);
-        updateTerm(findTerm(curAge));
         updateCredits(-1 * debt);
         updateLog(newLog);
 

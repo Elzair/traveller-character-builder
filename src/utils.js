@@ -139,5 +139,5 @@ export function randElt(arr) {
 }
 
 export function findTerm(age) {
-    return Math.floor((age-18)/4);
+    return Math.floor((age-14)/4);
 }

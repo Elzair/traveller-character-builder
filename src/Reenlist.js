@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import Switch from 'react-switch';
 
-import { capitalize, r2d6 } from './utils';
+import { capitalize, findTerm, r2d6 } from './utils';
 
 import CTCAREERS from './data/ct/careers';
 import CECAREERS from './data/ce/careers';
 
-export function Reenlist({ game, term, career, updateCareer, options, display, onSuccess, onFailure, onRetirement, updateLog }) {
+export function Reenlist({ game, career, updateCareer, age, options, display, onSuccess, onFailure, onRetirement, updateLog }) {
     if (display && game === 'classic') {
         return (
             <ReenlistCT
-                term={term}
                 career={career}
                 updateCareer={updateCareer}
+                age={age}
                 options={options}
                 onSuccess={onSuccess}
                 onFailure={onFailure}
@@ -23,9 +23,9 @@ export function Reenlist({ game, term, career, updateCareer, options, display, o
     } else if (display && game === 'cepheusengine') {
         return (
             <ReenlistCE
-                term={term}
                 career={career}
                 updateCareer={updateCareer}
+                age={age}
                 options={options}
                 onSuccess={onSuccess}
                 onFailure={onFailure}
@@ -38,7 +38,7 @@ export function Reenlist({ game, term, career, updateCareer, options, display, o
     }
 }
 
-function ReenlistCT({ term, career, updateCareer, options, onSuccess, onFailure, onRetirement, updateLog }) {
+function ReenlistCT({ career, updateCareer, age, options, onSuccess, onFailure, onRetirement, updateLog }) {
     let [checked, setChecked] = useState(true);
 
     function handleCheck(check) {
@@ -58,7 +58,7 @@ function ReenlistCT({ term, career, updateCareer, options, onSuccess, onFailure,
 
         if (checked) {
             // If the character has served the maximum # of terms, retirement is mandatory unless the roll is 12.
-            if (term >= options.maxTerms && roll !== 12) {
+            if (findTerm(age) > options.maxTerms && roll !== 12) {
                 // updateLog('You have served the maximum number of terms.');
                 newLog.push('You have served the maximum number of terms.');
 
@@ -136,7 +136,7 @@ function ReenlistCT({ term, career, updateCareer, options, onSuccess, onFailure,
     );
 }
 
-function ReenlistCE({ term, career, updateCareer, options, onSuccess, onFailure, onRetirement, updateLog }) {
+function ReenlistCE({ career, updateCareer, age, options, onSuccess, onFailure, onRetirement, updateLog }) {
     let [checked, setChecked] = useState(true);
 
     function handleCheck(check) {
@@ -156,7 +156,7 @@ function ReenlistCE({ term, career, updateCareer, options, onSuccess, onFailure,
 
         if (checked) {
             // If the character has served the maximum # of terms, retirement is mandatory unless the roll is 12.
-            if (term >= options.maxTerms && roll !== 12) {
+            if (findTerm(age) > options.maxTerms && roll !== 12) {
                 newLog.push('You have served the maximum number of terms.');
 
                 status = 'retired';
