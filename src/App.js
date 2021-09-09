@@ -91,6 +91,7 @@ function App() {
   let [skills, setSkills] = useState({});
   let [numSkillRolls, setNumSkillRolls] = useState(0);
   let [cascadeSkill, setCascadeSkill] = useState(null);
+  let [skillList, setSkillList] = useState({ name: '', list: [], values: [], newSkills: {} });
   // let [term, setTerm] = useState(1);
   let [education, setEducation] = useState({});
   let [career, setCareer] = useState([]);
@@ -557,12 +558,14 @@ function App() {
         updateUPP={updateUPP}
         skills={skills}
         updateSkills={updateSkills}
-        // term={term}
+        skillList={skillList}
+        updateSkillList={setSkillList}
         age={age}
         education={education}
         updateEducation={setEducation}
         display={step === 'EDUCATION'}
         onEducation={educationDecision}
+        updateLog={updateLog}
       />
       <Career
         game={game}
