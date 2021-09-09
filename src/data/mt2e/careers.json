@@ -1,6 +1,6 @@
 [
     {
-        "name": "Agent",
+        "name": "agent",
         "enlistment": {
             "characteristic": "Intellect",
             "target": 6,
@@ -9,37 +9,37 @@
             }
         },
         "survival": {
-            "Law Enforcement": {
+            "law enforcement": {
                 "characteristic": "Endurance",
                 "target": 6
             },
-            "Intelligence": {
+            "intelligence": {
                 "characteristic": "Intellect",
                 "target": 7
             },
-            "Corporate": {
+            "corporate": {
                 "characteristic": "Intellect",
                 "target": 5
             }
         },
         "commission": null,
         "promotion": {
-            "Law Enforcement": {
+            "law enforcement": {
                 "characteristic": "Intellect",
                 "target": 6
             },
-            "Intelligence": {
+            "intelligence": {
                 "characteristic": "Intellect",
                 "target": 5
             },
-            "Corporate": {
+            "corporate": {
                 "characteristic": "Intellect",
                 "target": 7
             }
         }
     },
     {
-        "name": "Army",
+        "name": "army",
         "enlistment": {
             "characteristic": "Endurance",
             "target": 5,
@@ -52,15 +52,15 @@
             }
         },
         "survival": {
-            "Support": {
+            "support": {
                 "characteristic": "Endurance",
                 "target": 5
             },
-            "Infantry": {
+            "infantry": {
                 "characteristic": "Strength",
                 "target": 6
             },
-            "Cavalry": {
+            "cavalry": {
                 "characteristic": "Dexterity",
                 "target": 7
             }
@@ -70,22 +70,22 @@
             "target": 8
         },
         "promotion": {
-            "Support": {
+            "support": {
                 "characteristic": "Education",
                 "target": 7
             },
-            "Infantry": {
+            "infantry": {
                 "characteristic": "Education",
                 "target": 6
             },
-            "Cavalry": {
+            "cavalry": {
                 "characteristic": "Intellect",
                 "target": 5
             }
         }
     },
     {
-        "name": "Citizen",
+        "name": "citizen",
         "enlistment": {
             "characteristic": "Education",
             "target": 5,
@@ -94,74 +94,74 @@
             }
         },
         "survival": {
-            "Corporate": {
+            "corporate": {
                 "characteristic": "Social",
                 "target": 6
             },
-            "Worker": {
+            "worker": {
                 "characteristic": "Endurance",
                 "target": 4
             },
-            "Colonist": {
+            "colonist": {
                 "characteristic": "Intellect",
                 "target": 7
             }
         },
         "commission": null,
         "promotion": {
-            "Corporate": {
+            "corporate": {
                 "characteristic": "Intellect",
                 "target": 6
             },
-            "Worker": {
+            "worker": {
                 "characteristic": "Education",
                 "target": 8
             },
-            "Colonist": {
+            "colonist": {
                 "characteristic": "Endurance",
                 "target": 5
             }
         }
     },
     {
-        "name": "Drifter",
+        "name": "drifter",
         "enlistment": {
             "characteristic": "Strength",
             "target": -5,
             "automatic": true
         },
         "survival": {
-            "Barbarian": {
+            "barbarian": {
                 "characteristic": "Endurance",
                 "target": 7
             },
-            "Wanderer": {
+            "wanderer": {
                 "characteristic": "Endurance",
                 "target": 7
             },
-            "Scavenger": {
+            "scavenger": {
                 "characteristic": "Dexterity",
                 "target": 7
             }
         },
         "commission": null,
         "promotion": {
-            "Barbarian": {
+            "barbarian": {
                 "characteristic": "Strength",
                 "target": 7
             },
-            "Wanderer": {
+            "wanderer": {
                 "characteristic": "Intellect",
                 "target": 7
             },
-            "Scavenger": {
+            "scavenger": {
                 "characteristic": "Endurance",
                 "target": 7
             }
         }
     },
     {
-        "name": "Entertainer",
+        "name": "entertainer",
         "enlistment": {
             "characteristic": [
                 "Dexterity",
@@ -173,37 +173,37 @@
             }
         },
         "survival": {
-            "Artist": {
+            "artist": {
                 "characteristic": "Social",
                 "target": 6
             },
-            "Journalist": {
+            "journalist": {
                 "characteristic": "Education",
                 "target": 7
             },
-            "Performer": {
+            "performer": {
                 "characteristic": "Intellect",
                 "target": 5
             }
         },
         "commission": null,
         "promotion": {
-            "Artist": {
+            "artist": {
                 "characteristic": "Intellect",
                 "target": 6
             },
-            "Journalist": {
+            "journalist": {
                 "characteristic": "Intellect",
                 "target": 5
             },
-            "Performer": {
+            "performer": {
                 "characteristic": "Dexterity",
                 "target": 7
             }
         }
     },
     {
-        "name": "Marine",
+        "name": "marine",
         "enlistment": {
             "characteristic": "Endurance",
             "target": 6,
@@ -216,15 +216,15 @@
             }
         },
         "survival": {
-            "Support": {
+            "support": {
                 "characteristic": "Endurance",
                 "target": 5
             },
-            "Star Marine": {
+            "star marine": {
                 "characteristic": "Endurance",
                 "target": 6
             },
-            "Ground Assault": {
+            "ground assault": {
                 "characteristic": "Endurance",
                 "target": 7
             }
@@ -234,22 +234,22 @@
             "target": 8
         },
         "promotion": {
-            "Support": {
+            "support": {
                 "characteristic": "Education",
                 "target": 7
             },
-            "Star Marine": {
+            "star marine": {
                 "characteristic": "Education",
                 "target": 6
             },
-            "Ground Assault": {
+            "ground assault": {
                 "characteristic": "Education",
                 "target": 5
             }
         }
     },
     {
-        "name": "Merchant",
+        "name": "merchant",
         "enlistment": {
             "characteristic": "Intellect",
             "target": 4,
@@ -258,37 +258,37 @@
             }
         },
         "survival": {
-            "Merchant Marine": {
+            "merchant marine": {
                 "characteristic": "Education",
                 "target": 5
             },
-            "Free Trader": {
+            "free trader": {
                 "characteristic": "Dexterity",
                 "target": 6
             },
-            "Broker": {
+            "broker": {
                 "characteristic": "Education",
                 "target": 5
             }
         },
         "commission": null,
         "promotion": {
-            "Merchant Marine": {
+            "merchant marine": {
                 "characteristic": "Intellect",
                 "target": 7
             },
-            "Free Trader": {
+            "free trader": {
                 "characteristic": "Intellect",
                 "target": 6
             },
-            "Broker": {
+            "broker": {
                 "characteristic": "Intellect",
                 "target": 7
             }
         }
     },
     {
-        "name": "Navy",
+        "name": "navy",
         "enlistment": {
             "characteristic": "Intellect",
             "target": 6,
@@ -301,15 +301,15 @@
             }
         },
         "survival": {
-            "Line/Crew": {
+            "line/crew": {
                 "characteristic": "Intellect",
                 "target": 5
             },
-            "Engineer/Gunner": {
+            "engineer/gunner": {
                 "characteristic": "Intellect",
                 "target": 6
             },
-            "Flight": {
+            "flight": {
                 "characteristic": "Dexterity",
                 "target": 7
             }
@@ -319,22 +319,22 @@
             "target": 8
         },
         "promotion": {
-            "Line/Crew": {
+            "line/crew": {
                 "characteristic": "Education",
                 "target": 7
             },
-            "Engineer/Gunner": {
+            "engineer/gunner": {
                 "characteristic": "Education",
                 "target": 6
             },
-            "Flight": {
+            "flight": {
                 "characteristic": "Education",
                 "target": 5
             }
         }
     },
     {
-        "name": "Noble",
+        "name": "noble",
         "enlistment": {
             "characteristic": "Social",
             "target": 10,
@@ -347,37 +347,37 @@
             }
         },
         "survival": {
-            "Administrator": {
+            "administrator": {
                 "characteristic": "Intellect",
                 "target": 4
             },
-            "Diplomat": {
+            "diplomat": {
                 "characteristic": "Intellect",
                 "target": 5
             },
-            "Dilettante": {
+            "dilettante": {
                 "characteristic": "Social",
                 "target": 3
             }
         },
         "commission": null,
         "promotion": {
-            "Administrator": {
+            "administrator": {
                 "characteristic": "Education",
                 "target": 6
             },
-            "Diplomat": {
+            "diplomat": {
                 "characteristic": "Social",
                 "target": 7
             },
-            "Dilettante": {
+            "dilettante": {
                 "characteristic": "Intellect",
                 "target": 8
             }
         }
     },
     {
-        "name": "Rogue",
+        "name": "rogue",
         "enlistment": {
             "characteristic": "Dexterity",
             "target": 6,
@@ -386,37 +386,37 @@
             }
         },
         "survival": {
-            "Thief": {
+            "thief": {
                 "characteristic": "Intellect",
                 "target": 6
             },
-            "Enforcer": {
+            "enforcer": {
                 "characteristic": "Endurance",
                 "target": 6
             },
-            "Pirate": {
+            "pirate": {
                 "characteristic": "Dexterity",
                 "target": 6
             }
         },
         "commission": null,
         "promotion": {
-            "Thief": {
+            "thief": {
                 "characteristic": "Dexterity",
                 "target": 6
             },
-            "Enforcer": {
+            "enforcer": {
                 "characteristic": "Strength",
                 "target": 6
             },
-            "Pirate": {
+            "pirate": {
                 "characteristic": "Intellect",
                 "target": 6
             }
         }
     },
     {
-        "name": "Scholar",
+        "name": "scholar",
         "enlistment": {
             "characteristic": "Intellect",
             "target": 6,
@@ -425,37 +425,37 @@
             }
         },
         "survival": {
-            "Field Researcher": {
+            "field researcher": {
                 "characteristic": "Endurance",
                 "target": 6
             },
-            "Scientist": {
+            "scientist": {
                 "characteristic": "Education",
                 "target": 4
             },
-            "Physician": {
+            "physician": {
                 "characteristic": "Education",
                 "target": 4
             }
         },
         "commission": null,
         "promotion": {
-            "Field Researcher": {
+            "field researcher": {
                 "characteristic": "Intellect",
                 "target": 6
             },
-            "Scientist": {
+            "scientist": {
                 "characteristic": "Intellect",
                 "target": 8
             },
-            "Physician": {
+            "physician": {
                 "characteristic": "Education",
                 "target": 8
             }
         }
     },
     {
-        "name": "Scout",
+        "name": "scout",
         "enlistment": {
             "characteristic": "Intellect",
             "target": 5,
@@ -464,30 +464,30 @@
             }
         },
         "survival": {
-            "Courier": {
+            "courier": {
                 "characteristic": "Endurance",
                 "target": 5
             },
-            "Surveyor": {
+            "surveyor": {
                 "characteristic": "Endurance",
                 "target": 6
             },
-            "Explorer": {
+            "explorer": {
                 "characteristic": "Endurance",
                 "target": 7
             }
         },
         "commission": null,
         "promotion": {
-            "Courier": {
+            "courier": {
                 "characteristic": "Education",
                 "target": 9
             },
-            "Surveyor": {
+            "surveyor": {
                 "characteristic": "Intellect",
                 "target": 8
             },
-            "Explorer": {
+            "explorer": {
                 "characteristic": "Education",
                 "target": 7
             }

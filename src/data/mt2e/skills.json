@@ -1,0 +1,137 @@
+{
+    "Admin": null,
+    "Advocate": null,
+    "Animals": {
+        "Handling": null,
+        "Training": null,
+        "Veterinary": null
+    },
+    "Art": {
+        "Holography": null,
+        "Instrument": null,
+        "Performer": null,
+        "Visual Media": null,
+        "Write": null
+    },
+    "Astrogation": null,
+    "Athletics": {
+        "Dexterity": null,
+        "Endurance": null,
+        "Strength": null
+    },
+    "Broker": null,
+    "Carouse": null,
+    "Deception": null,
+    "Diplomat": null,
+    "Drive": {
+        "Hovercraft": null,
+        "Mole": null,
+        "Track": null,
+        "Walker": null,
+        "Wheel": null
+    },
+    "Electronics": {
+        "Comms": null,
+        "Computers": null,
+        "Remote Ops": null,
+        "Sensors": null
+    },
+    "Engineer": {
+        "J-drive": null,
+        "Life Support": null,
+        "M-drive": null,
+        "Power": null
+    },
+    "Explosives": null,
+    "Flyer": {
+        "Airship": null,
+        "Grav": null,
+        "Ornithopter": null,
+        "Rotor": null,
+        "Wing": null
+    },
+    "Gambler": null,
+    "Gunner": {
+        "Capital": null,
+        "Ortillery": null,
+        "Screen": null,
+        "Turret": null
+    },
+    "Gun Combat": {
+        "Archaic": null,
+        "Energy": null,
+        "Slug": null
+    },
+    "Heavy Weapons": {
+        "Artillery": null,
+        "Man Portable": null,
+        "Vehicle": null
+    },
+    "Investigate": null,
+    "Jack-of-All-Trades": null,
+    "Language": {
+        "Anglic": null,
+        "Oynprith": null,
+        "Vilani": null,
+        "Zdetl": null
+    },
+    "Leadership": null,
+    "Mechanic": null,
+    "Medic": null,
+    "Melee": {
+        "Blade": null,
+        "Bludgeon": null,
+        "Natural": null,
+        "Unarmed": null
+    },
+    "Navigation": null,
+    "Persuade": null,
+    "Pilot": {
+        "Capital Ships": null,
+        "Small Craft": null,
+        "Spacecraft": null
+    },
+    "Profession": {
+        "Belter": null,
+        "Biologicals": null,
+        "Civil Engineering": null,
+        "Hydroponics": null,
+        "Polymers": null
+    },
+    "Recon": null,
+    "Science": {
+        "Archaeology": null,
+        "Astronomy": null,
+        "Biology": null,
+        "Chemistry": null,
+        "Cosmology": null,
+        "Cybernetics": null,
+        "Economics": null,
+        "Genetics": null,
+        "History": null,
+        "Linguistics": null,
+        "Philosophy": null,
+        "Physics": null,
+        "Planetology": null,
+        "Psionicology": null,
+        "Psychology": null,
+        "Robotics": null,
+        "Sophontology": null,
+        "Xenology": null
+    },
+    "Seafarer": {
+        "Ocean Ships": null,
+        "Personal": null,
+        "Sail": null,
+        "Submarine": null
+    },
+    "Stealth": null,
+    "Steward": null,
+    "Streetwise": null,
+    "Survival": null,
+    "Tactics": {
+        "Military": null,
+        "Naval": null
+    },
+    "Vacc Suit": null
+}
