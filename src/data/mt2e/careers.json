@@ -1,0 +1,496 @@
+[
+    {
+        "name": "Agent",
+        "enlistment": {
+            "characteristic": "Intellect",
+            "target": 6,
+            "dms": {
+                "previousCareer": true
+            }
+        },
+        "survival": {
+            "Law Enforcement": {
+                "characteristic": "Endurance",
+                "target": 6
+            },
+            "Intelligence": {
+                "characteristic": "Intellect",
+                "target": 7
+            },
+            "Corporate": {
+                "characteristic": "Intellect",
+                "target": 5
+            }
+        },
+        "commission": null,
+        "promotion": {
+            "Law Enforcement": {
+                "characteristic": "Intellect",
+                "target": 6
+            },
+            "Intelligence": {
+                "characteristic": "Intellect",
+                "target": 5
+            },
+            "Corporate": {
+                "characteristic": "Intellect",
+                "target": 7
+            }
+        }
+    },
+    {
+        "name": "Army",
+        "enlistment": {
+            "characteristic": "Endurance",
+            "target": 5,
+            "dms": {
+                "previousCareer": true,
+                "age": {
+                    "target": 30,
+                    "value": -2
+                }
+            }
+        },
+        "survival": {
+            "Support": {
+                "characteristic": "Endurance",
+                "target": 5
+            },
+            "Infantry": {
+                "characteristic": "Strength",
+                "target": 6
+            },
+            "Cavalry": {
+                "characteristic": "Dexterity",
+                "target": 7
+            }
+        },
+        "commission": {
+            "characteristic": "Social",
+            "target": 8
+        },
+        "promotion": {
+            "Support": {
+                "characteristic": "Education",
+                "target": 7
+            },
+            "Infantry": {
+                "characteristic": "Education",
+                "target": 6
+            },
+            "Cavalry": {
+                "characteristic": "Intellect",
+                "target": 5
+            }
+        }
+    },
+    {
+        "name": "Citizen",
+        "enlistment": {
+            "characteristic": "Education",
+            "target": 5,
+            "dms": {
+                "previousCareer": true
+            }
+        },
+        "survival": {
+            "Corporate": {
+                "characteristic": "Social",
+                "target": 6
+            },
+            "Worker": {
+                "characteristic": "Endurance",
+                "target": 4
+            },
+            "Colonist": {
+                "characteristic": "Intellect",
+                "target": 7
+            }
+        },
+        "commission": null,
+        "promotion": {
+            "Corporate": {
+                "characteristic": "Intellect",
+                "target": 6
+            },
+            "Worker": {
+                "characteristic": "Education",
+                "target": 8
+            },
+            "Colonist": {
+                "characteristic": "Endurance",
+                "target": 5
+            }
+        }
+    },
+    {
+        "name": "Drifter",
+        "enlistment": {
+            "characteristic": "Strength",
+            "target": -5,
+            "automatic": true
+        },
+        "survival": {
+            "Barbarian": {
+                "characteristic": "Endurance",
+                "target": 7
+            },
+            "Wanderer": {
+                "characteristic": "Endurance",
+                "target": 7
+            },
+            "Scavenger": {
+                "characteristic": "Dexterity",
+                "target": 7
+            }
+        },
+        "commission": null,
+        "promotion": {
+            "Barbarian": {
+                "characteristic": "Strength",
+                "target": 7
+            },
+            "Wanderer": {
+                "characteristic": "Intellect",
+                "target": 7
+            },
+            "Scavenger": {
+                "characteristic": "Endurance",
+                "target": 7
+            }
+        }
+    },
+    {
+        "name": "Entertainer",
+        "enlistment": {
+            "characteristic": [
+                "Dexterity",
+                "Intellect"
+            ],
+            "target": 5,
+            "dms": {
+                "previousCareer": true
+            }
+        },
+        "survival": {
+            "Artist": {
+                "characteristic": "Social",
+                "target": 6
+            },
+            "Journalist": {
+                "characteristic": "Education",
+                "target": 7
+            },
+            "Performer": {
+                "characteristic": "Intellect",
+                "target": 5
+            }
+        },
+        "commission": null,
+        "promotion": {
+            "Artist": {
+                "characteristic": "Intellect",
+                "target": 6
+            },
+            "Journalist": {
+                "characteristic": "Intellect",
+                "target": 5
+            },
+            "Performer": {
+                "characteristic": "Dexterity",
+                "target": 7
+            }
+        }
+    },
+    {
+        "name": "Marine",
+        "enlistment": {
+            "characteristic": "Endurance",
+            "target": 6,
+            "dms": {
+                "previousCareer": true,
+                "age": {
+                    "target": 30,
+                    "value": -2
+                }
+            }
+        },
+        "survival": {
+            "Support": {
+                "characteristic": "Endurance",
+                "target": 5
+            },
+            "Star Marine": {
+                "characteristic": "Endurance",
+                "target": 6
+            },
+            "Ground Assault": {
+                "characteristic": "Endurance",
+                "target": 7
+            }
+        },
+        "commission": {
+            "characteristic": "Social",
+            "target": 8
+        },
+        "promotion": {
+            "Support": {
+                "characteristic": "Education",
+                "target": 7
+            },
+            "Star Marine": {
+                "characteristic": "Education",
+                "target": 6
+            },
+            "Ground Assault": {
+                "characteristic": "Education",
+                "target": 5
+            }
+        }
+    },
+    {
+        "name": "Merchant",
+        "enlistment": {
+            "characteristic": "Intellect",
+            "target": 4,
+            "dms": {
+                "previousCareer": true
+            }
+        },
+        "survival": {
+            "Merchant Marine": {
+                "characteristic": "Education",
+                "target": 5
+            },
+            "Free Trader": {
+                "characteristic": "Dexterity",
+                "target": 6
+            },
+            "Broker": {
+                "characteristic": "Education",
+                "target": 5
+            }
+        },
+        "commission": null,
+        "promotion": {
+            "Merchant Marine": {
+                "characteristic": "Intellect",
+                "target": 7
+            },
+            "Free Trader": {
+                "characteristic": "Intellect",
+                "target": 6
+            },
+            "Broker": {
+                "characteristic": "Intellect",
+                "target": 7
+            }
+        }
+    },
+    {
+        "name": "Navy",
+        "enlistment": {
+            "characteristic": "Intellect",
+            "target": 6,
+            "dms": {
+                "previousCareer": true,
+                "age": {
+                    "target": 34,
+                    "value": -2
+                }
+            }
+        },
+        "survival": {
+            "Line/Crew": {
+                "characteristic": "Intellect",
+                "target": 5
+            },
+            "Engineer/Gunner": {
+                "characteristic": "Intellect",
+                "target": 6
+            },
+            "Flight": {
+                "characteristic": "Dexterity",
+                "target": 7
+            }
+        },
+        "commission": {
+            "characteristic": "Social",
+            "target": 8
+        },
+        "promotion": {
+            "Line/Crew": {
+                "characteristic": "Education",
+                "target": 7
+            },
+            "Engineer/Gunner": {
+                "characteristic": "Education",
+                "target": 6
+            },
+            "Flight": {
+                "characteristic": "Education",
+                "target": 5
+            }
+        }
+    },
+    {
+        "name": "Noble",
+        "enlistment": {
+            "characteristic": "Social",
+            "target": 10,
+            "automatic": {
+                "characteristic": "Social",
+                "target": 10
+            },
+            "dms": {
+                "previousCareer": true
+            }
+        },
+        "survival": {
+            "Administrator": {
+                "characteristic": "Intellect",
+                "target": 4
+            },
+            "Diplomat": {
+                "characteristic": "Intellect",
+                "target": 5
+            },
+            "Dilettante": {
+                "characteristic": "Social",
+                "target": 3
+            }
+        },
+        "commission": null,
+        "promotion": {
+            "Administrator": {
+                "characteristic": "Education",
+                "target": 6
+            },
+            "Diplomat": {
+                "characteristic": "Social",
+                "target": 7
+            },
+            "Dilettante": {
+                "characteristic": "Intellect",
+                "target": 8
+            }
+        }
+    },
+    {
+        "name": "Rogue",
+        "enlistment": {
+            "characteristic": "Dexterity",
+            "target": 6,
+            "dms": {
+                "previousCareer": true
+            }
+        },
+        "survival": {
+            "Thief": {
+                "characteristic": "Intellect",
+                "target": 6
+            },
+            "Enforcer": {
+                "characteristic": "Endurance",
+                "target": 6
+            },
+            "Pirate": {
+                "characteristic": "Dexterity",
+                "target": 6
+            }
+        },
+        "commission": null,
+        "promotion": {
+            "Thief": {
+                "characteristic": "Dexterity",
+                "target": 6
+            },
+            "Enforcer": {
+                "characteristic": "Strength",
+                "target": 6
+            },
+            "Pirate": {
+                "characteristic": "Intellect",
+                "target": 6
+            }
+        }
+    },
+    {
+        "name": "Scholar",
+        "enlistment": {
+            "characteristic": "Intellect",
+            "target": 6,
+            "dms": {
+                "previousCareer": true
+            }
+        },
+        "survival": {
+            "Field Researcher": {
+                "characteristic": "Endurance",
+                "target": 6
+            },
+            "Scientist": {
+                "characteristic": "Education",
+                "target": 4
+            },
+            "Physician": {
+                "characteristic": "Education",
+                "target": 4
+            }
+        },
+        "commission": null,
+        "promotion": {
+            "Field Researcher": {
+                "characteristic": "Intellect",
+                "target": 6
+            },
+            "Scientist": {
+                "characteristic": "Intellect",
+                "target": 8
+            },
+            "Physician": {
+                "characteristic": "Education",
+                "target": 8
+            }
+        }
+    },
+    {
+        "name": "Scout",
+        "enlistment": {
+            "characteristic": "Intellect",
+            "target": 5,
+            "dms": {
+                "previousCareer": true
+            }
+        },
+        "survival": {
+            "Courier": {
+                "characteristic": "Endurance",
+                "target": 5
+            },
+            "Surveyor": {
+                "characteristic": "Endurance",
+                "target": 6
+            },
+            "Explorer": {
+                "characteristic": "Endurance",
+                "target": 7
+            }
+        },
+        "commission": null,
+        "promotion": {
+            "Courier": {
+                "characteristic": "Education",
+                "target": 9
+            },
+            "Surveyor": {
+                "characteristic": "Intellect",
+                "target": 8
+            },
+            "Explorer": {
+                "characteristic": "Education",
+                "target": 7
+            }
+        }
+    }
+]
