@@ -1,0 +1,136 @@
+Severe Injury
+
+Deal
+  - Accept: Keep Benefit
+  - Refuse: Severe Injury, Enemy, Skill+1, NoLeave
+
+Check Advocate 8+
+  - Success: Keep Benefit
+  - Fail: Lose Benefit
+  - Fumble: Prison
+
+Gain Enemy & Deception-1
+
+Severe Injury to Contact
+
+Injury
+
+Gain Enemy
+
+Gain Recon or Survival & Enemy
+
+CO engaged in illegality
+  - Join: Gain Ally
+  - Snitch: Keep Benefit
+
+Gain Rival
+
+Lose 1 SOC
+
+Investigation
+  - Cooperate: +2 Qualification check for next career
+  - Refuse: Gain Ally, NoLeave
+
+Check Streetwise
+  - Success: Gain Skill+1
+  - Fail: Nothing
+
+Lose 1 END
+
+Change Contact or Ally to Rival or Enemy. Gain Rival or Enemy if no Ally or Contact. Roll 2D6, if 2 go to Prison
+
+Change Contact or Ally to Rival or Enemy. Gain Rival or Enemy if no Ally or Contact
+
+Gain Survival-1, Pilot-1, Persuade-1, or Streetwise-1
+
+Gain +2 Qualification check
+
+Gain Enemy and Reduce STR or DEX by 1
+
+Increase Stealth or Survival
+
+Bad Mission
+  - Accept: Gain Enemy, NoLeave
+  - Refuse: Nothing
+
+Lose all Benefits and Gain Rival
+
+Gain Gun Combat 1 or Pilot 1
+
+Can be Rogue career with no Qualification check
+
+Keep Benefit
+
+Reduce STR, DEX, or END by 1, NoLeave
+
+Make skill check 8+ based on Assignment (Electronics (Sensor) if Line/Crew; Mechanic or Vacc Suit if Engineer/Gunner; Pilot (Small Craft), Pilot (Spacecraft), or Tactics (Naval) if Flight)
+  - Success: Keep Benefit
+  - Fail: Nothing
+
+Accident
+  - Responsible: Gain one Skill roll
+  - Not: Gain Enemy and keep Benefit roll
+
+Check Stealth or Deception 8+
+  - Success: Nothing
+  - Fail: Injury
+
+Increase Diplomat or Advocate & Gain Rival
+
+Check END 8+
+  - Success: Nothing
+  - Fail: Injury
+
+Prison
+
+Gain Deception-1, Pilot (Small Craft)-1, Pilot (Spacecraft)-1, Athletics (Dexterity)-1, or Gunner-1
+
+Minor Injury and Gain Rival
+
+Government persecuted research
+  - Open: Increase Science, Gain Rival, NoLeave
+  - Discrete: Increase Science, Lose 2 Soc, NoLeave
+
+Gain Survival-1, Athletics (Dexterity)-1, or Athletics (Endurance)-1
+
+Sabotage
+  - Persevere: Lose ALL Benefits, NoLeave
+  - Give Up: Keep Benefit
+
+Gain Rival, NoLeave
+
+Reduce INT or SOC by 1
+
+Gain 1d6 Contacts and 1d3 Enemies
+
+Gain Rival and Gain Diplomat-1
+
+Severe Injury, NoLeave
+
+ParoleThreshold + 2, NoLeave
+
+Threatening Gang
+  - Fight: Check Melee (Unarmed) 8+
+    - Success: Gain Enemy, ParoleThreshold+1, NoLeave
+    - Fail: Severe Injury, NoLeave
+  - Give In: Lose ALL Benefit rolls for entire career, NoLeave
+
+Gain Enemy, ParoleThreshold+1, NoLeave
+
+Lose 1 SOC, NoLeave
+
+Injury, NoLeave
+
+Lose 1 PSI
+
+Gang Attack. Roll 1d6
+  - 1-2: Injury
+  - 3-4: Lose 1 SOC
+  - 5-6: Nothing
+
+Unethical Psionics
+  - Accept: Gain Enemy, NoLeave
+  - Refuse: Nothing
+
+Ally or Contact becomes Enemy
+
