@@ -30,7 +30,13 @@ export function padToTwo(num) {
 }
 
 export function capitalize(str) {
-    return str.replace(/^\w/, (c) => c.toUpperCase());
+    if (str.includes('/')) {
+        return str.split('/').map(s => s.replace(/^\w/, c => c.toUpperCase())).join('/');
+    } else if (str.includes(' ')) {
+        return str.split(' ').map(s => s.replace(/^\w/, c => c.toUpperCase())).join(' ');
+    } else {
+        return str.replace(/^\w/, (c) => c.toUpperCase());
+    }
 }
 
 export function updateObject(obj, updates) {
@@ -140,4 +146,22 @@ export function randElt(arr) {
 
 export function findTerm(age) {
     return Math.floor((age-14)/4);
+}
+
+export function getSkillNames(name) {
+    let regexp1 = new RegExp('.*\\(');
+    let regexp2 = new RegExp('\\(.*\\)');
+
+    const tmpStr = name.match(regexp1);
+
+    if (tmpStr) {
+        const main = tmpStr[0].substring(0, tmpStr[0].length-1).trimEnd(); // Remove everything past '(' and trim any trailing whitespace
+        
+        const tmpStr2 = name.match(regexp2)[0];
+        const sub = tmpStr2.substring(1, tmpStr2.length-1); // Remove '(' and ')'
+
+        return { main, sub };
+    } else {
+        return { main: name, sub: null };
+    }
 }

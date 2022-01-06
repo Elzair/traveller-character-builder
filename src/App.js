@@ -577,6 +577,7 @@ function App() {
         updateSkills={updateSkills}
         cascadeSkill={cascadeSkill}
         updateCascadeSkill={updateCascadeSkill}
+        age={age}
         display={step === 'CAREER'}
         onEnlistment={enlisted}
         updateLog={updateLog}
