@@ -1,0 +1,22 @@
+{
+    'Injury',
+    'Severe Injury',
+    'PSI',
+    'Mishap',
+    'NoLeave',
+    'NoGraduate',
+    'Prison',
+    'Drafted',
+    'ModParoleThreshold',
+    'ModBenefits',
+    'GainSkill',
+    'ModKnown',
+    'ModCharacteristics',
+    'ModSkills',
+    'TestCharacteristic',
+    'TestSkill',
+    'ModAdvancementCheck',
+    'Question',
+    'Multi',
+    'Roll'
+}

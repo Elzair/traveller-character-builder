@@ -1,0 +1,466 @@
+Test for PSI
+
+NoGraduate
+
+Mishap. NoLeave
+
+Minor Injury. Gain Rival
+
+Injury
+
+Injury, NoLeave
+
+Severe Injury
+
+Severe Injury. NoLeave
+
+Severe Injury to Contact
+
+Prison
+
+Gain DM+2 to next Qualification check
+
+Gain DM+2 to next Advancement check
+
+Automatic Advancement
+
+Automatic Commission or Promotion
+
+Drafted
+
+Gain DM+2 to next Advancement check. Gain Ally
+
+Gain DM+1 to 1 Benefit
+
+Gain DM+2 to 1 Benefit. Gain Enemy
+
+Life Event
+
+Unusual Event on Life Events
+
+ParoleThreshold-1
+
+ParoleThreshold-2
+
+ParoleThreshold+2. NoLeave
+
+Lose all Benefits. Gain Rival
+
+Can enter Rogue career with no Qualification check
+
+Keep Benefit
+
+Gain Admin-1, Deception-1, Investigate-1, or Recon-1
+
+Gain Admin-1, Advocate-1, Persuade-1, or Diplomat-1
+
+Gain Animals-1, Electronics-1, Engineer-1, Profession-1, or Science-1
+
+Gain Animals (Riding)-1, Animals (Training)-1, Engineer-1, Recon-1, or Vacc Suit-1
+
+Gain Animals (Riding)-1, Animals (Training)-1, Recon-1, Science-1 or Survival-1
+
+Gain Animals (Riding)-1, Art-1, Carouse-1, or Streetwise-1
+
+Gain Art (Any)-1, Athletics (Any)-1, Stealth-1, or Survival-1
+
+Gain Astrogation-1, Electronics-1, Mechanic-1, Navigation-1, or Pilot (Small Craft)-1
+
+Gain Carouse-1
+
+Gain Deception-1, Stealth-1, Streetwise-1, or Survival-1
+
+Gain Deception-1, Pilot (Small Craft)-1, Pilot (Spacecraft)-1, Athletics (Dexterity)-1, or Gunner-1
+
+Gain Drive-1, Flyer-1, Pilot-1, or Gunner-1
+
+Gain Electronics-1, Engineer-1, Gunner-1, or Pilot-1
+
+Gain Electronics-1 or Mechanic-1
+
+Gain Electronics (Comms), Gun Combat-1, Leadership-1, or Recon-1
+
+Gain Gun Combat-1, Melee-1, Stealth-1 or Streetwise-1
+
+Gain Gun Combat 1 or Pilot 1
+
+Gain Investigate-1, Recon-1, Stealth-1, or Streetwise-1
+
+Gain Medic-1, Science-1, Engineer-1, Electronics-1, or Investigate-1
+
+Gain Persuade-1, Recon-1, Stealth-1, or Streetwise-1
+
+Gain Survival-1, Athletics (Dexterity)-1, or Athletics (Endurance)-1
+
+Gain Survival-1, Pilot-1, Persuade-1, or Streetwise-1
+
+Gain any Skill (except Jack-of-All-Trades) at 0
+
+Gain Carouse-1, Persuade-1, Steward-1, or Contact
+
+Gain Diplomat-1, Recon-1, Steward-1, or Contact
+
+Gain Tactics-1 or DM+4 to next Advancement check
+
+Gain Tactics (Military) or DM+4 to next Advancement check
+
+Gain Tactics (Naval)-1 or DM+4 on next Advancement check
+
+Gain Admin-1, Advocate-1, Diplomat-1, or Investigate-1. Roll 2d6. Prison if 2
+
+Gain Advocate-1, Persuade-1, Explosives-1, or Streetwise 1. Check chosen Skill 8+
+  - Success: Gain DM+2 to next Advancement roll
+  - Fail: Gain DM-2 to next Survival roll
+
+Gain Contact
+  
+Gain 1d3 Allies
+
+Gain 1d3 Contacts
+
+Gain 1d6 Contacts and 1d3 Enemies
+
+Gain Enemy
+
+Gain Enemy, ParoleThreshold+1, NoLeave
+
+Gain Enemy. Gain Deception-1
+
+Gain Enemy. Lose 1 STR or DEX
+
+Gain Ally and DM+4 to next Advancement check
+
+Gain Ally. Either Increase Leadership or Gain DM+4 to next Advancement check
+
+Gain Ally. Gain Diplomat-1 or DM+4 to next Advancement check
+
+Gain Ally. Increase Carouse or DM+4 to next Advancement check
+
+Gain Enemy and Gain DM+2 on next Advancement check in Navy
+
+Gain Enemy and DM+2 on next Advancement check
+
+Gain Rival
+
+Gain Rival. NoLeave
+
+Gain Rival. Gain Diplomat-1
+
+Contact or Ally becomes Enemy
+
+Contact or Ally becomes Rival
+
+Contact or Ally becomes Rival or Enemy. Gain Rival or Enemy if no Ally or Contact
+
+Contact or Ally becomes Rival or Enemy. Gain Rival or Enemy if no Ally or Contact. Roll 2D6, if 2 go to Prison
+
+Lose 1 STR, DEX, or END. NoLeave
+
+Lose 1 END
+
+Lose 1 INT or SOC
+
+Lose 1 SOC
+
+Lose 1 SOC. NoLeave
+
+Lose 1 PSI
+
+Gain 1 SOC
+
+Gain 1 PSI
+
+Increase Admin, Advocate, Electronics (Computers), or Steward by 1
+
+Increase Athletics (Dexterity) or Vacc Suit by 1
+
+Increase Diplomat or Advocate by 1. Gain Rival
+
+Increase Drive, Electronics, Engineer, Flyer, or Mechanic by 1
+
+Increase Melee (Any), Jack-of-All-Trades, Streetwise, or Survival by 1
+
+Increase Electronics or Engineer by 1
+
+Increase Stealth or Survival by 1
+
+Increase any learned skill by 1
+
+Increase Carouse, Diplomat, Persuade, or Steward by 1. Gain Ally and Rival
+
+Increase Admin, Advocate, Diplomacy, or Persuade by 1. Gain Rival
+
+Increase Recon or Survival by 1. Gain Enemy
+
+Either Increase Investigate by 1 or Gain DM+4 to next Advancement check
+
+Either Increase Diplomat or Gain DM+4 to next Advancement check
+
+Check END 8+
+  - Success: ParoleThreshold-1. Gain Athletics (Any)-1, Mechanic-1, or Melee (Unarmed)-1
+  - Fail: ParoleThreshold+1
+
+Check END 8+
+  - Success: Nothing
+  - Fail: Injury
+
+Check EDU 8+
+  - Success: Gain skill of your choice at 1
+  - Fail: Nothing
+
+Check EDU 8+
+- Success: Increase a learned skill by 1
+- Fail: Nothing
+
+Check EDU 8+
+  - Success: Increase Gun Combat or Leadership
+  - Fail: Injury
+
+Check EDU 8+
+  - Success: Gain Skill (not Jack-of-All-Trades) at 1
+  - Fail: Nothing
+
+Check EDU 10+
+  - Success: Gain a skill of your choice at 1
+  - Fail: Nothing
+
+Check SOC 8+
+  - Success: Gain Rival
+  - Fail: Gain Enemy
+  - Fumble: Prison
+
+Join Movement. Check SOC 8+
+  - Success: Become leading figure. Gain Ally and Enemy. 
+  - Fail: Nothing
+
+Check SOC 9+
+  - Success: Nothing
+  - Fail: Choose Draft or Drifter next term
+    - Draft: Roll 1d6
+      - 1-3: Army, NoGraduate
+      - 4-5: Marine, NoGraduate
+      - 6: Navy, NoGraduate
+
+Check any Skill learned at College 9+
+  - Success: Increase that Skill and Gain Rival
+  - Fail: Nothing
+
+Check Advocate 8+
+  - Success: Keep Benefit
+  - Fail: Lose Benefit
+  - Fumble: Prison
+
+Check Art (Any) or Investigate 8+
+  - Success: Gain 1 SOC
+  - Fail: Lose 1 SOC
+
+Check Deception 8+
+  - Success: Roll on Rogue or Citizen Events table and gain Specialist skill from that career
+  - Fail: Rogue or Citizen Mishap table
+
+Check Gun Combat or Stealth 8+
+  - Success: Gain Benefit
+  - Fail: Injury
+
+Check Investigate or Streetwise 8+
+  - Success: Increase Deception, Jack-of-All-Trades, Persuade, or Tactics by 1
+  - Fail: Mishap
+
+Check Melee or Gun Combat 8+
+- Success: Increase Leadership or Tactics (Military)
+- Fail: Lose 1 STR, DEX, or END
+
+Check Stealth or Deception 8+
+  - Success: Nothing
+  - Fail: Injury
+
+Check Streetwise
+  - Success: Gain Skill+1
+  - Fail: Nothing
+
+Learn Secret
+  - Profit: Gain DM+1 to Benefit, and Gain Deception-1, Streetwise-1, or criminal Contact
+  - Refuse: Nothing
+
+Patron Job
+  - Accept: Gain DM+4 to next Qualification check, Owe Favor
+  - Refuse: Nothing
+
+Gain Enemy if None and Check Melee, Gun Combat, or Stealth 8+
+  - Success: Nothing
+  - Fail: Injury
+
+Adventure.
+  - Accept:
+    - 1-2: Injury or Prison
+    - 3-4: Nothing
+    - 5-6: Gain DM+4 to 1 Benefit
+  - Refuse: Nothing
+
+Bring down leader
+  - Accept: Check Art or Persuade 8+
+    - Success: Increase any learned skill by 1
+    - Fail: Increase any learned skill by 1 and Mishap
+  - Refuse: Nothing
+
+Bad Commander
+  - Report: Gain DM+2 to next Advancement check. Gain Enemy
+  - Gain Ally
+
+Smuggle
+  - Accept: Check Deception or Persuade 8+
+    - Success: Gain Streetwise-1 and extra Benefit
+    - Fail: Nothing
+  - Refuse: Gain Enemy
+
+Gamble # Benefits
+  - Accept: Check Gamble or Broker 8+
+    - Success: Gain .5*# Benefits rounded up, Increase skill used by 1
+    - Fail: Lose # Benefits, Increase skill used by 1
+  - Refuse: Nothing
+
+Gain Gamble-1 or Deception-1. Gamble?
+  - Yes: Check Gamble 8+
+    - Success Success: Gain Benefit
+    - Fail: Lose Benefit
+  - No: Nothing
+
+Abuse Position
+  - Accept: Gain Benefit
+  - Refuse: Gain DM+2 on next Advancement check
+
+Challenged to Duel
+  - Accept: Check Melee (Blade) 8+
+    - Success: Gain 1 SOC, Increase Melee (Blade), Leadership, Tactics (Any), or Deception by 1
+    - Fail: Injury, Lose 1 SOC, Increase Melee (Blade), Leadership, Tactics (Any), or Deception by 1
+  - Refuse: Lose 1 SOC
+
+Conspiracy
+  - Join: Check Deception or Persuade 8+
+    - Success: Increase Carouse, Deception, Persuade, or Tactics by 1
+    - Fail: Mishap
+  - Refuse: Gain Enemy
+
+Trial
+  - Defend Self: Check Advocate 8+
+    - Success: Nothing
+    - Fail: Gain Enemy. Prison
+  - Hire Lawyer: Gain Contact. Lose Benefit.
+
+Gain Gambling-1. Wager # Benefits? 
+  - Yes: Check Gambling 8+
+    - Success: Gain .5*# Benefits rounded up,
+    - Fail: Lose # Benefits
+  - Refuse: Nothing
+
+Unethical Research
+  - Accept: Gain 2 Benefits. Increase 2 Science Skills. Gain 1d3 Enemies
+  - Refuse: Nothing
+
+Unethical Shortcut
+  - Accept: Check Deception or Admin 8+
+    - Success: Gain DM+1 to Benefit roll. Increase Skill. Gain Enemy
+    - Fail: Gain Enemy. Lose Benefit.
+  - Refuse: Nothing
+
+Ambush
+  - Run: Check Pilot 8+
+    - Success: Gain Electronics (Sensors)-1. Gain Enemy
+    - Fail: Gain Enemy. Leave
+  - Bargain: Check Persuade 10+
+    - Success: Gain Electronics (Sensors)-1. Gain Enemy
+    - Fail: Gain Enemy. Leave
+
+Check Electronics or Deception 8+
+  - Success: Gain Ally. Gain DM+2 to next Advancement check
+  - Fail: Mishap. NoLeave
+
+Escape
+  - Yes: Check Stealth or Deception 10+
+    - Success: Leave
+    - Fail: ParoleThreshold+2
+  - No: Nothing
+
+Join Gang?
+  - Yes: Check Persuade or Melee 8+
+    - Success: ParoleThreshold+1. Gain DM+1 to Survival Checks in Prison, Gain Deception-1, Melee (Unarmed)-1, Persuade-1, Stealth-1
+    - Fail: Gain Enemy
+  - No: Nothing
+
+Prison Event. Roll 1d6
+  - 1: Riot. Roll 1d6
+    - 1-2: Injury
+    - 3-4: Nothing
+    - 5-6: Gain Benefit
+  - 2: Gain Contact
+  - 3: Gain Rival
+  - 4: Reroll ParoleThreshold
+  - 5: ParoleThreshold-2
+  - 6: Check Melee (Unarmed) 8+
+    - Success: Nothing
+    - Fail: Injury
+
+Hire Lawyer?
+  - Yes: Cr-(LawyerAdvocate)^2. Check 2d6 + LawyerAdvocate
+    - Success: ParoleThreshold-1d6
+    - Fail: Nothing
+
+Save Guard?
+  - Yes: Check 2d6 8+
+    - Success: Gain Ally. ParoleThreshold-2
+    - Fail: Injury
+  - No: Nothing
+
+Use power unethically?
+  - Yes: Check PSI 8+
+    - Success: Gain Benefit or 1 SOC
+    - Fail: Lose 1 SOC
+  - No: Nothing
+
+Deal
+  - Accept: Keep Benefit
+  - Refuse: Severe Injury, Enemy, Skill+1, NoLeave
+
+CO engaged in illegality
+  - Join: Gain Ally
+  - Snitch: Keep Benefit
+
+Investigation
+  - Cooperate: +2 Qualification check for next career
+  - Refuse: Gain Ally, NoLeave
+
+Bad Mission
+  - Accept: Gain Enemy, NoLeave
+  - Refuse: Nothing
+
+Make skill check 8+ based on Assignment (Electronics (Sensor) if Line/Crew; Mechanic or Vacc Suit if Engineer/Gunner; Pilot (Small Craft), Pilot (Spacecraft), or Tactics (Naval) if Flight)
+  - Success: Keep Benefit
+  - Fail: Nothing
+
+Accident
+  - Responsible: Gain one Skill roll
+  - Not: Gain Enemy and keep Benefit roll
+
+Government persecuted research
+  - Open: Increase Science, Gain Rival, NoLeave
+  - Discrete: Increase Science, Lose 2 Soc, NoLeave
+
+Sabotage
+  - Persevere: Lose ALL Benefits, NoLeave
+  - Give Up: Keep Benefit
+
+Threatening Gang
+  - Fight: Check Melee (Unarmed) 8+
+    - Success: Gain Enemy, ParoleThreshold+1, NoLeave
+    - Fail: Severe Injury, NoLeave
+  - Give In: Lose ALL Benefit rolls for entire career, NoLeave
+
+Gang Attack. Roll 1d6
+  - 1-2: Injury
+  - 3-4: Lose 1 SOC
+  - 5-6: Nothing
+
+Unethical Psionics
+  - Accept: Gain Enemy. NoLeave
+  - Refuse: Nothing
+
