@@ -1,10 +1,12 @@
-export function r1d6() {
-    return Math.floor(Math.random()*6)+1;
-}
+// export function r1d6() {
+//     return Math.floor(Math.random()*6)+1;
+// }
 
-export function r2d6() {
-    return r1d6()+r1d6();
-}
+// export function r2d6() {
+//     return r1d6()+r1d6();
+// }
+
+import { r1d6, r2d6 } from './random';
 
 export function constrain(num, min, max) {
     return Math.min(max, Math.max(min, num));
@@ -140,9 +142,9 @@ export function isObject(val) {
     return typeof val === 'object' && val !== null && !Array.isArray(val);
 }
 
-export function randElt(arr) {
-    return arr[Math.floor(Math.random()*arr.length)];
-}
+// export function randElt(arr) {
+//     return arr[Math.floor(Math.random()*arr.length)];
+// }
 
 export function findTerm(age) {
     return Math.floor((age-14)/4);

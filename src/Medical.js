@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Switch from 'react-switch';
 
-import { r2d6 } from "./utils";
+import { r2d6 } from './random';
 
 import CECAREERS from './data/ce/careers';
 

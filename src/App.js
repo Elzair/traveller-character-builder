@@ -4,7 +4,8 @@ import { useState } from 'react';
 
 import './App.css';
 
-import { findTerm, num2tetra, r2d6, updateObject } from './utils';
+import { findTerm, num2tetra, /*r2d6,*/ updateObject } from './utils';
+import { r2d6 } from './random';
 
 import { Game } from './Game';
 import { UPP } from './UPP';

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Switch from 'react-switch';
 
-import { applyDMsToRoll, modRollCE, r2d6 } from "./utils";
+import { applyDMsToRoll, modRollCE/*, r2d6*/ } from './utils';
+import { r2d6 } from './random';
 
 import CTCAREERS from './data/ct/careers';
 import CTSKILLS from './data/ct/skills';

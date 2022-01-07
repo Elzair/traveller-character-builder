@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Switch from 'react-switch';
 
-import { capitalize, findTerm, r2d6 } from './utils';
+import { capitalize, findTerm/*, r2d6*/ } from './utils';
+import { r2d6 } from './random';
 
 import CTCAREERS from './data/ct/careers';
 import CECAREERS from './data/ce/careers';

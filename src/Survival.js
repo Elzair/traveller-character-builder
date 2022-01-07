@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
-import { applyDMsToRoll, modRollCE, r2d6 } from "./utils";
+import { applyDMsToRoll, modRollCE/*, r2d6*/ } from './utils';
+import { r2d6 } from './random';
 
 import CTCAREERS from './data/ct/careers';
 import CECAREERS from './data/ce/careers';

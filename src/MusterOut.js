@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import Switch from 'react-switch';
 
-import { r1d6 } from './utils';
+import { r1d6 } from './random';
 
 import CTCAREERS from './data/ct/careers';
 import CTITEMS from './data/ct/items';

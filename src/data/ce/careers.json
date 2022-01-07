@@ -3101,7 +3101,7 @@
                 "name": "Third Officer",
                 "benefit": {
                     "type": "SKILL",
-                    "name": "Pilot",
+                    "name": "Piloting",
                     "value": 1
                 }
             },
@@ -4034,7 +4034,7 @@
                 "name": "Lieutenant",
                 "benefit": {
                     "type": "SKILL",
-                    "name": "Pilot",
+                    "name": "Piloting",
                     "value": 1
                 }
             },
@@ -4718,7 +4718,7 @@
                 "name": "scout",
                 "benefit": {
                     "type": "SKILL",
-                    "name": "Pilot",
+                    "name": "Piloting",
                     "value": 1
                 }
             }

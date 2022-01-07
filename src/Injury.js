@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { r1d6, r2d6, randElt } from "./utils";
+import { r1d6, r2d6, randElt } from './random';
 
 import CECAREERS from './data/ce/careers';
 

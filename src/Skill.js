@@ -1,6 +1,6 @@
 import React from 'react';
 // import { useState } from 'react';
-import { r1d6 } from "./utils";
+import { r1d6 } from './random';
 
 import CTCAREERS from './data/ct/careers';
 import CTSKILLS from './data/ct/skills';

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Switch from 'react-switch';
 
-import { r1d6 } from './utils';
+import { r1d6 } from './random';
 
 export function Anagathics({ game, anagathics, updateAnagathics, /*updateDebt,*/ updateCredits, display, onAnagathicsDecision, updateLog }) {
     if (display && game === 'cepheusengine') {

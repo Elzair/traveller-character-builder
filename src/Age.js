@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { constrain, findTerm, r1d6, r2d6, randElt } from './utils';
+import { constrain, findTerm/*, r1d6, r2d6, randElt*/ } from './utils';
+import { r1d6, r2d6, randElt } from './random';
 
 import CECAREERS from './data/ce/careers';
 

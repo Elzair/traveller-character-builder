@@ -1,5 +1,6 @@
 import React from 'react';
-import { applyDMsToRoll, capitalize, modRollCE, r2d6 } from "./utils";
+import { applyDMsToRoll, capitalize, modRollCE/*, r2d6*/ } from './utils';
+import { r2d6 } from './random';
 
 import CTCAREERS from './data/ct/careers';
 import CTSKILLS from './data/ce/skills';
