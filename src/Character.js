@@ -1,8 +1,12 @@
+// These components handle displaying information about the traveller.
+
 import React from 'react';
 import { capitalize, isObject, num2tetra } from "./utils";
 
 import CTCAREERS from './data/ct/careers';
 
+// Main Character Component handles whether or not to display Character (based on `display`)  
+// and whether to use Classic Traveller, Cepheus Engine, or Mongoose Traveller 2nd Edition.
 export function Character({game, name, career, upp, skills, age, credits, items, display}) {
     if (display && game === 'classic') {
         return (
@@ -32,6 +36,14 @@ export function Character({game, name, career, upp, skills, age, credits, items,
         return (<div></div>);
     }
 }
+
+// ..######..##..........###.....######...######..####..######.
+// .##....##.##.........##.##...##....##.##....##..##..##....##
+// .##.......##........##...##..##.......##........##..##......
+// .##.......##.......##.....##..######...######...##..##......
+// .##.......##.......#########.......##.......##..##..##......
+// .##....##.##.......##.....##.##....##.##....##..##..##....##
+// ..######..########.##.....##..######...######..####..######.
 
 function CharacterCT({name, career, upp, skills, age, credits, items}) {
     const careerName = career.length > 0 ? capitalize(career[career.length-1].branch) : 'Unemployed';
@@ -65,6 +77,14 @@ function CharacterCT({name, career, upp, skills, age, credits, items}) {
         </div>
     )
 }
+
+// ..######..########.########..##.....##.########.##.....##..######.
+// .##....##.##.......##.....##.##.....##.##.......##.....##.##....##
+// .##.......##.......##.....##.##.....##.##.......##.....##.##......
+// .##.......######...########..#########.######...##.....##..######.
+// .##.......##.......##........##.....##.##.......##.....##.......##
+// .##....##.##.......##........##.....##.##.......##.....##.##....##
+// ..######..########.##........##.....##.########..#######...######.
 
 function CharacterCE({name, career, upp, skills, age, credits, items}) {
     const uppStr = Object.entries(upp).map(ent => num2tetra(ent[1])).join('');

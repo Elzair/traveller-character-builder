@@ -1,3 +1,5 @@
+// These components handle whether or not the traveller survives their current term (or, depending on `options`, has a mishap).
+
 import React, { useEffect } from 'react';
 
 import { applyDMsToRoll, modRollCE/*, r2d6*/ } from './utils';
@@ -6,6 +8,8 @@ import { r2d6 } from './random';
 import CTCAREERS from './data/ct/careers';
 import CECAREERS from './data/ce/careers';
 
+// Main Skill Component handles whether or not to display Skill (based on `display`)  
+// and whether to use Classic Traveller, Cepheus Engine, or Mongoose Traveller 2nd Edition.
 export function Survival({ game, options, upp, career, updateCareer, anagathics, display, onSurvival, onMishap, onDeath, updateLog }) {
     if (display && game === 'classic') {
         return (
@@ -36,6 +40,13 @@ export function Survival({ game, options, upp, career, updateCareer, anagathics,
     }
 }
 
+// ..######..##..........###.....######...######..####..######.
+// .##....##.##.........##.##...##....##.##....##..##..##....##
+// .##.......##........##...##..##.......##........##..##......
+// .##.......##.......##.....##..######...######...##..##......
+// .##.......##.......#########.......##.......##..##..##......
+// .##....##.##.......##.....##.##....##.##....##..##..##....##
+// ..######..########.##.....##..######...######..####..######.
 function SurvivalCT({ upp, career, updateCareer, onSurvival, onDeath }) {
     useEffect(() => {
         const curCareer = career[career.length - 1]; // Get latest career
@@ -65,6 +76,13 @@ function SurvivalCT({ upp, career, updateCareer, onSurvival, onDeath }) {
     return (<div></div>)
 }
 
+// ..######..########.########..##.....##.########.##.....##..######.
+// .##....##.##.......##.....##.##.....##.##.......##.....##.##....##
+// .##.......##.......##.....##.##.....##.##.......##.....##.##......
+// .##.......######...########..#########.######...##.....##..######.
+// .##.......##.......##........##.....##.##.......##.....##.......##
+// .##....##.##.......##........##.....##.##.......##.....##.##....##
+// ..######..########.##........##.....##.########..#######...######.
 function SurvivalCE({ options, upp, career, updateCareer, anagathics, onSurvival, onMishap, onDeath, updateLog }) {
     useEffect(() => {
         const curCareer = career[career.length - 1]; // Get latest career

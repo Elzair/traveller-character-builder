@@ -1,3 +1,5 @@
+// These components handle selecting a career for the traveller (and possibly gaining benefits at the entry level).
+
 import React from 'react';
 import { applyDMsToRoll, capitalize, modRollCE/*, r2d6*/ } from './utils';
 import { r2d6 } from './random';
@@ -11,6 +13,8 @@ import MT2ESKILLS from './data/mt2e/skills';
 
 import './Career.css';
 
+// Main Career Component handles whether or not to display Career (based on `display`)  
+// and whether to use Classic Traveller, Cepheus Engine, or Mongoose Traveller 2nd Edition.
 export function Career({ game, career, updateCareer, upp, updateUPP, skills, updateSkills, cascadeSkill, updateCascadeSkill, age, display, onEnlistment, updateLog }) {
     if (display && game === 'classic') {
         return (
@@ -62,6 +66,14 @@ export function Career({ game, career, updateCareer, upp, updateUPP, skills, upd
         return (<div></div>);
     }
 }
+
+// ..######..##..........###.....######...######..####..######.
+// .##....##.##.........##.##...##....##.##....##..##..##....##
+// .##.......##........##...##..##.......##........##..##......
+// .##.......##.......##.....##..######...######...##..##......
+// .##.......##.......#########.......##.......##..##..##......
+// .##....##.##.......##.....##.##....##.##....##..##..##....##
+// ..######..########.##.....##..######...######..####..######.
 
 function canEnlistCT(upp, careerName) {
     const career = CTCAREERS.filter(career => career.name === careerName)[0];
@@ -145,6 +157,14 @@ function CareerCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
         </form>
     );
 }
+
+// ..######..########.########..##.....##.########.##.....##..######.
+// .##....##.##.......##.....##.##.....##.##.......##.....##.##....##
+// .##.......##.......##.....##.##.....##.##.......##.....##.##......
+// .##.......######...########..#########.######...##.....##..######.
+// .##.......##.......##........##.....##.##.......##.....##.......##
+// .##....##.##.......##........##.....##.##.......##.....##.##....##
+// ..######..########.##........##.....##.########..#######...######.
 
 function canEnlistCE(upp, careerName, numPreviousCareers) {
     const career = CECAREERS.filter(career => career.name === careerName)[0];
@@ -236,6 +256,14 @@ function CareerCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, 
         </form>
     );
 }
+
+// .##.....##.########..#######..########
+// .###...###....##....##.....##.##......
+// .####.####....##...........##.##......
+// .##.###.##....##.....#######..######..
+// .##.....##....##....##........##......
+// .##.....##....##....##........##......
+// .##.....##....##....#########.########
 
 function CareerMT2E({ career, updateCareer, upp, updateUPP, skills, updateSkills, cascadeSkill, updateCascadeSkill, age, onEnlistment, updateLog }) {
     function selectCareer(ev) {

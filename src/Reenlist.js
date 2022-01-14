@@ -1,3 +1,5 @@
+// These components handle a traveller attempting to re-enlist in their career for an additional term.
+
 import React, { useState } from 'react';
 import Switch from 'react-switch';
 
@@ -7,6 +9,8 @@ import { r2d6 } from './random';
 import CTCAREERS from './data/ct/careers';
 import CECAREERS from './data/ce/careers';
 
+// Main Reenlist Component handles whether or not to display Reenlist (based on `display`)  
+// and whether to use Classic Traveller, Cepheus Engine, or Mongoose Traveller 2nd Edition.
 export function Reenlist({ game, career, updateCareer, age, options, display, onSuccess, onFailure, onRetirement, updateLog }) {
     if (display && game === 'classic') {
         return (
@@ -39,6 +43,13 @@ export function Reenlist({ game, career, updateCareer, age, options, display, on
     }
 }
 
+// ..######..##..........###.....######...######..####..######.
+// .##....##.##.........##.##...##....##.##....##..##..##....##
+// .##.......##........##...##..##.......##........##..##......
+// .##.......##.......##.....##..######...######...##..##......
+// .##.......##.......#########.......##.......##..##..##......
+// .##....##.##.......##.....##.##....##.##....##..##..##....##
+// ..######..########.##.....##..######...######..####..######.
 function ReenlistCT({ career, updateCareer, age, options, onSuccess, onFailure, onRetirement, updateLog }) {
     let [checked, setChecked] = useState(true);
 
@@ -137,6 +148,13 @@ function ReenlistCT({ career, updateCareer, age, options, onSuccess, onFailure, 
     );
 }
 
+// ..######..########.########..##.....##.########.##.....##..######.
+// .##....##.##.......##.....##.##.....##.##.......##.....##.##....##
+// .##.......##.......##.....##.##.....##.##.......##.....##.##......
+// .##.......######...########..#########.######...##.....##..######.
+// .##.......##.......##........##.....##.##.......##.....##.......##
+// .##....##.##.......##........##.....##.##.......##.....##.##....##
+// ..######..########.##........##.....##.########..#######...######.
 function ReenlistCE({ career, updateCareer, age, options, onSuccess, onFailure, onRetirement, updateLog }) {
     let [checked, setChecked] = useState(true);
 

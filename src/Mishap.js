@@ -1,9 +1,13 @@
+// These components handle what happens when a traveller fails their Survival check.
+
 import React, { useEffect } from 'react';
 
 import { r1d6 } from './random';
 
 // import CECAREERS from './data/ce/careers';
 
+// Main Mishap Component handles whether or not to display Mishap (based on `display`)  
+// and whether to use Cepheus Engine or Mongoose Traveller 2nd Edition.
 export function Mishap({ 
     game, 
     upp, 
@@ -37,6 +41,14 @@ export function Mishap({
         return (<div></div>);
     }
 }
+
+// ..######..########.########..##.....##.########.##.....##..######.
+// .##....##.##.......##.....##.##.....##.##.......##.....##.##....##
+// .##.......##.......##.....##.##.....##.##.......##.....##.##......
+// .##.......######...########..#########.######...##.....##..######.
+// .##.......##.......##........##.....##.##.......##.....##.......##
+// .##....##.##.......##........##.....##.##.......##.....##.##....##
+// ..######..########.##........##.....##.########..#######...######.
 
 function MishapCE({ upp, updateUPP, career, updateCareer, updateCredits, injury, updateInjury, updateMishap, onMishap, updateLog }) {
     useEffect(() => {

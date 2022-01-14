@@ -1,6 +1,10 @@
+// These components handle selecting a new career after a traveller has finished (voluntarily or not) a career.
+
 import React, { useState } from 'react';
 import Switch from 'react-switch';
 
+// Main NewCareer Component handles whether or not to display NewCareer (based on `display`)  
+// and whether to use Cepheus Engine or Mongoose Traveller 2nd Edition.
 export function NewCareer({ game, career, updateCareer, updateMishap, crisis, display, onSelection, updateLog }) {
     if (display && game === 'cepheusengine') {
         return (
@@ -17,6 +21,14 @@ export function NewCareer({ game, career, updateCareer, updateMishap, crisis, di
         return (<div></div>);
     }
 }
+
+// ..######..########.########..##.....##.########.##.....##..######.
+// .##....##.##.......##.....##.##.....##.##.......##.....##.##....##
+// .##.......##.......##.....##.##.....##.##.......##.....##.##......
+// .##.......######...########..#########.######...##.....##..######.
+// .##.......##.......##........##.....##.##.......##.....##.......##
+// .##....##.##.......##........##.....##.##.......##.....##.##....##
+// ..######..########.##........##.....##.########..#######...######.
 
 function NewCareerCE({ career, updateCareer, updateMishap, crisis, onSelection, updateLog }) {
     let [checked, setChecked] = useState(true);

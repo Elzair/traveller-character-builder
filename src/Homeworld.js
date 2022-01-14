@@ -1,9 +1,19 @@
+// This component handles selecting the traveller's homeworld (and specifying its Universal World Profile).
+
 import React from 'react';
 
 import { UwpInput } from './UwpInput';
 
 import './Homeworld.css';
 import './default.css';
+
+// ..######..########.########..##.....##.########.##.....##..######.
+// .##....##.##.......##.....##.##.....##.##.......##.....##.##....##
+// .##.......##.......##.....##.##.....##.##.......##.....##.##......
+// .##.......######...########..#########.######...##.....##..######.
+// .##.......##.......##........##.....##.##.......##.....##.......##
+// .##....##.##.......##........##.....##.##.......##.....##.##....##
+// ..######..########.##........##.....##.########..#######...######.
 
 export function Homeworld({ uwp, updateUWP, tradeCodes, updateTradeCodes, display, onFinalized }) {
     function handleHomeworldSelection(ev) {
@@ -47,8 +57,20 @@ export function Homeworld({ uwp, updateUWP, tradeCodes, updateTradeCodes, displa
     }
 }
 
+/**
+ * Get trade codes based on UWP data
+ * @param {Number} starport Starport Quality
+ * @param {Number} size Size of Planet
+ * @param {Number} atmo Type of Atmosphere
+ * @param {Number} hydro Presence of Water
+ * @param {Number} pop Population
+ * @param {Number} gov Type of Government
+ * @param {Number} law Law Level
+ * @param {Number} tech Tech Level
+ * @returns Array
+ */
 function getTradeCodes(starport, size, atmo, hydro, pop, gov, law, tech) {
-    // Generate the main world's trade codes
+   
     let codes = [];
 
     if (atmo >= 4 && atmo <= 9 && hydro >= 4 && hydro <= 8 && pop >= 5 && pop <= 7) {

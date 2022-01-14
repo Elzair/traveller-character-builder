@@ -1,3 +1,5 @@
+// These components handle selecting benefits from leaving a career.
+
 import React from 'react';
 import { useState } from 'react';
 import Switch from 'react-switch';
@@ -12,6 +14,8 @@ import CEITEMS from './data/ce/items';
 
 const INITBENEFITROLLS = 99; // Use some large number first
 
+// Main MusterOut Component handles whether or not to display MusterOut (based on `display`)  
+// and whether to use Classic Traveller, Cepheus Engine, or Mongoose Traveller 2nd Edition.
 export function MusterOut({ 
     game, 
     upp, 
@@ -69,6 +73,14 @@ export function MusterOut({
     }
 }
 
+// ..######..##..........###.....######...######..####..######.
+// .##....##.##.........##.##...##....##.##....##..##..##....##
+// .##.......##........##...##..##.......##........##..##......
+// .##.......##.......##.....##..######...######...##..##......
+// .##.......##.......#########.......##.......##..##..##......
+// .##....##.##.......##.....##.##....##.##....##..##..##....##
+// ..######..########.##.....##..######...######..####..######.
+
 function MusterOutCT({ 
     upp, 
     updateUPP, 
@@ -117,7 +129,7 @@ function MusterOutCT({
         const careerData = CTCAREERS.filter(c => c.name === curCareer.branch)[0];
         const table = careerData[val];
 
-        if (val === 'cash') {
+        if (val === 'cash') { // Handle the traveller selecting cash as a benefit.
             // Give travellers with Gambling-1 or higher a +1 DM on rolls on the Cash table.
             const cashDM = skills.hasOwnProperty('Gambling') && skills.Gambling >= 1 ? 1 : 0;
             const amount = table[r1d6() - 1 + cashDM];
@@ -128,7 +140,7 @@ function MusterOutCT({
             // setNumCashRolls(numCashRolls - 1);
             decrementNumCashRolls();
             decreaseBenefits();
-        } else if (val === 'benefits') {
+        } else if (val === 'benefits') { // Handle the traveller selecting a specific benefit.
             // Give travellers of rank 5 or rank 6 a +1 DM on rolls on the benefits table.
             const benefitsDM = curCareer.rank >= 5 ? 1 : 0;
             const benefit = table[Math.min(r1d6() - 1 + benefitsDM, table.length - 1)]; // Cap roll because not every benefit table has enough values.
@@ -362,6 +374,14 @@ function MusterOutCT({
         return (<div></div>);
     }
 }
+
+// ..######..########.########..##.....##.########.##.....##..######.
+// .##....##.##.......##.....##.##.....##.##.......##.....##.##....##
+// .##.......##.......##.....##.##.....##.##.......##.....##.##......
+// .##.......######...########..#########.######...##.....##..######.
+// .##.......##.......##........##.....##.##.......##.....##.......##
+// .##....##.##.......##........##.....##.##.......##.....##.##....##
+// ..######..########.##........##.....##.########..#######...######.
 
 function MusterOutCE({ 
     upp, 

@@ -1,3 +1,6 @@
+// These components handle a traveller attempting to apply for a promotion and give the traveller
+// any benefits that come along with the promotion 
+
 import React, { useState } from 'react';
 import Switch from 'react-switch';
 
@@ -9,6 +12,8 @@ import CTSKILLS from './data/ct/skills';
 import CECAREERS from './data/ce/careers';
 import CESKILLS from './data/ce/skills';
 
+// Main Promotion Component handles whether or not to display Promotion (based on `display`)  
+// and whether to use Classic Traveller, Cepheus Engine, or Mongoose Traveller 2nd Edition.
 export function Promotion({ game, upp, updateUPP, career, updateCareer, skills, updateSkills, cascadeSkill, updateCascadeSkill, display, onSuccess, updateLog }) {
     if (display && game === 'classic') {
         return (
@@ -45,6 +50,13 @@ export function Promotion({ game, upp, updateUPP, career, updateCareer, skills, 
     }
 }
 
+// ..######..##..........###.....######...######..####..######.
+// .##....##.##.........##.##...##....##.##....##..##..##....##
+// .##.......##........##...##..##.......##........##..##......
+// .##.......##.......##.....##..######...######...##..##......
+// .##.......##.......#########.......##.......##..##..##......
+// .##....##.##.......##.....##.##....##.##....##..##..##....##
+// ..######..########.##.....##..######...######..####..######.
 function PromotionCT({ upp, updateUPP, career, updateCareer, skills, updateSkills, cascadeSkill, updateCascadeSkill, onSuccess, updateLog }) {
     let [checked, setChecked] = useState(true);
 
@@ -128,6 +140,13 @@ function PromotionCT({ upp, updateUPP, career, updateCareer, skills, updateSkill
 
 }
 
+// ..######..########.########..##.....##.########.##.....##..######.
+// .##....##.##.......##.....##.##.....##.##.......##.....##.##....##
+// .##.......##.......##.....##.##.....##.##.......##.....##.##......
+// .##.......######...########..#########.######...##.....##..######.
+// .##.......##.......##........##.....##.##.......##.....##.......##
+// .##....##.##.......##........##.....##.##.......##.....##.##....##
+// ..######..########.##........##.....##.########..#######...######.
 function PromotionCE({ upp, updateUPP, career, updateCareer, skills, updateSkills, cascadeSkill, updateCascadeSkill, onSuccess, updateLog }) {
     let [checked, setChecked] = useState(true);
 

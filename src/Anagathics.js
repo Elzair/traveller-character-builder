@@ -1,7 +1,12 @@
+// These components handle the traveller's decision to use Anagathics to slow the effects of aging.
+
 import React, { useState } from 'react';
 import Switch from 'react-switch';
 
 import { r1d6 } from './random';
+
+// Main Anagathics Component handles whether or not to display Anagathics (based on `display`)  
+// and whether to use Cepheus Engine or Mongoose Traveller 2nd Edition.
 
 export function Anagathics({ game, anagathics, updateAnagathics, /*updateDebt,*/ updateCredits, display, onAnagathicsDecision, updateLog }) {
     if (display && game === 'cepheusengine') {
@@ -19,6 +24,15 @@ export function Anagathics({ game, anagathics, updateAnagathics, /*updateDebt,*/
         return (<div></div>);
     }
 }
+
+// ..######..########.########..##.....##.########.##.....##..######.
+// .##....##.##.......##.....##.##.....##.##.......##.....##.##....##
+// .##.......##.......##.....##.##.....##.##.......##.....##.##......
+// .##.......######...########..#########.######...##.....##..######.
+// .##.......##.......##........##.....##.##.......##.....##.......##
+// .##....##.##.......##........##.....##.##.......##.....##.##....##
+// ..######..########.##........##.....##.########..#######...######.
+
 
 function AnagathicsCE({ anagathics, updateAnagathics, /*updateDebt,*/ updateCredits, onAnagathicsDecision, updateLog }) {
     let [checked, setChecked] = useState(false);

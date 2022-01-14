@@ -1,9 +1,13 @@
+// These components handle giving traveller's skills when they first enter a career.
+
 import React, { useEffect } from 'react';
 
 import { capitalize } from './utils';
 
 import CECAREERS from './data/ce/careers.json';
 
+// Main EntrySkill Component handles whether or not to display EntrySkill (based on `display`)  
+// and whether to use Cepheus Engine or Mongoose Traveller 2nd Edition.
 export function EntrySkill({ game, career, upp, skills, updateSkills, display, onSkillSelection, updateLog }) {
     if (display && game === 'cepheusengine') {
         return (
@@ -20,6 +24,14 @@ export function EntrySkill({ game, career, upp, skills, updateSkills, display, o
         return (<div></div>)
     }
 }
+
+// ..######..########.########..##.....##.########.##.....##..######.
+// .##....##.##.......##.....##.##.....##.##.......##.....##.##....##
+// .##.......##.......##.....##.##.....##.##.......##.....##.##......
+// .##.......######...########..#########.######...##.....##..######.
+// .##.......##.......##........##.....##.##.......##.....##.......##
+// .##....##.##.......##........##.....##.##.......##.....##.##....##
+// ..######..########.##........##.....##.########..#######...######.
 
 function EntrySkillCE({ career, upp, skills, updateSkills, onSkillSelection, updateLog }) {
     function selectSkill(ev) {

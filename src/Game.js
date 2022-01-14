@@ -3,6 +3,9 @@ import { useState } from 'react';
 
 const DEFAULTMAXTERMS = 7;
 
+// This component handles selecting which ruleset to use to create characters:
+// Classic Traveller, Cepheus Engine, or Mongoose Traveller 2nd Edition.
+// It also selects various optional rules.
 export function Game({name, setName, game, setGame, display, onFinished, options, updateOptions}) {
     let [rearrangeCharacteristics, setRearrangeCharacteristics] = useState(false);
     let [mishap, setMishap] = useState(false);
@@ -101,6 +104,7 @@ export function Game({name, setName, game, setGame, display, onFinished, options
         );
     }
 
+    // Only display `Game` component if `display` is true.
     if (display) {
         return (
             <div>

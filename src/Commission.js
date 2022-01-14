@@ -1,3 +1,5 @@
+// These components handle travellers applying for a commission (and possibly gaining benefits from the commission).
+
 import React, { useState } from 'react';
 import Switch from 'react-switch';
 
@@ -9,6 +11,8 @@ import CTSKILLS from './data/ct/skills';
 import CECAREERS from './data/ce/careers';
 import CESKILLS from './data/ce/skills';
 
+// Main Commission Component handles whether or not to display Commission (based on `display`)  
+// and whether to use Classic Traveller, Cepheus Engine, or Mongoose Traveller 2nd Edition.
 export function Commission({ game, upp, updateUPP, career, updateCareer, skills, updateSkills, cascadeSkill, updateCascadeSkill, display, onSuccess, updateLog }) {
     if (display && game === 'classic') {
         return (
@@ -44,6 +48,14 @@ export function Commission({ game, upp, updateUPP, career, updateCareer, skills,
         return (<div></div>);
     }
 }
+
+// ..######..##..........###.....######...######..####..######.
+// .##....##.##.........##.##...##....##.##....##..##..##....##
+// .##.......##........##...##..##.......##........##..##......
+// .##.......##.......##.....##..######...######...##..##......
+// .##.......##.......#########.......##.......##..##..##......
+// .##....##.##.......##.....##.##....##.##....##..##..##....##
+// ..######..########.##.....##..######...######..####..######.
 
 function CommissionCT({ upp, updateUPP, career, updateCareer, skills, updateSkills, cascadeSkill, updateCascadeSkill, onSuccess, updateLog }) {
     let [checked, setChecked] = useState(true);
@@ -143,6 +155,14 @@ function CommissionCT({ upp, updateUPP, career, updateCareer, skills, updateSkil
         </form>
     );
 }
+
+// ..######..########.########..##.....##.########.##.....##..######.
+// .##....##.##.......##.....##.##.....##.##.......##.....##.##....##
+// .##.......##.......##.....##.##.....##.##.......##.....##.##......
+// .##.......######...########..#########.######...##.....##..######.
+// .##.......##.......##........##.....##.##.......##.....##.......##
+// .##....##.##.......##........##.....##.##.......##.....##.##....##
+// ..######..########.##........##.....##.########..#######...######.
 
 function CommissionCE({ upp, updateUPP, career, updateCareer, skills, updateSkills, cascadeSkill, updateCascadeSkill, onSuccess, /*onFailure, onNoAttempt,*/ updateLog }) {
     let [checked, setChecked] = useState(true);

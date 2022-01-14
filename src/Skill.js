@@ -1,3 +1,5 @@
+// These components handle selecting a skill that the traveller improves during their current term.
+
 import React from 'react';
 // import { useState } from 'react';
 import { r1d6 } from './random';
@@ -7,6 +9,8 @@ import CTSKILLS from './data/ct/skills';
 import CECAREERS from './data/ce/careers';
 import CESKILLS from './data/ce/skills';
 
+// Main Skill Component handles whether or not to display Skill (based on `display`)  
+// and whether to use Classic Traveller, Cepheus Engine, or Mongoose Traveller 2nd Edition.
 export function Skill({ game, upp, updateUPP, career, skills, updateSkills, cascadeSkill, updateCascadeSkill, numSkillRolls, display, onSelected, updateLog }) {
     if (display && game === 'classic') {
         return (
@@ -43,6 +47,13 @@ export function Skill({ game, upp, updateUPP, career, skills, updateSkills, casc
     }
 }
 
+// ..######..##..........###.....######...######..####..######.
+// .##....##.##.........##.##...##....##.##....##..##..##....##
+// .##.......##........##...##..##.......##........##..##......
+// .##.......##.......##.....##..######...######...##..##......
+// .##.......##.......#########.......##.......##..##..##......
+// .##....##.##.......##.....##.##....##.##....##..##..##....##
+// ..######..########.##.....##..######...######..####..######.
 function SkillCT({ upp, updateUPP, career, skills, updateSkills, cascadeSkill, updateCascadeSkill, numSkillRolls, onSelected, updateLog }) {
     function handleSkillSelection(ev) {
         ev.preventDefault();
@@ -125,6 +136,13 @@ function SkillCT({ upp, updateUPP, career, skills, updateSkills, cascadeSkill, u
     );
 }
 
+// ..######..########.########..##.....##.########.##.....##..######.
+// .##....##.##.......##.....##.##.....##.##.......##.....##.##....##
+// .##.......##.......##.....##.##.....##.##.......##.....##.##......
+// .##.......######...########..#########.######...##.....##..######.
+// .##.......##.......##........##.....##.##.......##.....##.......##
+// .##....##.##.......##........##.....##.##.......##.....##.##....##
+// ..######..########.##........##.....##.########..#######...######.
 function SkillCE({ upp, updateUPP, career, skills, updateSkills, cascadeSkill, updateCascadeSkill, numSkillRolls, onSelected, updateLog }) {
     function handleSkillSelection(ev) {
         ev.preventDefault();

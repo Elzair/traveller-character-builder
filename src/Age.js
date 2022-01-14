@@ -1,9 +1,13 @@
+// These components handle aging the traveller and applying any debilitating effects from age.
+
 import React, { useEffect } from 'react';
 import { constrain, findTerm/*, r1d6, r2d6, randElt*/ } from './utils';
 import { r1d6, r2d6, randElt } from './random';
 
 import CECAREERS from './data/ce/careers';
 
+// Main Age Component handles whether or not to display Age (based on `display`)  
+// and whether to use Classic Traveller, Cepheus Engine, or Mongoose Traveller 2nd Edition.
 export function Age({
     game,
     upp,
@@ -56,6 +60,14 @@ export function Age({
         return (<div></div>);
     }
 }
+
+// ..######..##..........###.....######...######..####..######.
+// .##....##.##.........##.##...##....##.##....##..##..##....##
+// .##.......##........##...##..##.......##........##..##......
+// .##.......##.......##.....##..######...######...##..##......
+// .##.......##.......#########.......##.......##..##..##......
+// .##....##.##.......##.....##.##....##.##....##..##..##....##
+// ..######..########.##.....##..######...######..####..######.
 
 function AgeCT({ upp, updateUPP, age, updateAge, onAged, onDeath, updateLog }) {
     useEffect(() => {
@@ -170,6 +182,14 @@ function AgeCT({ upp, updateUPP, age, updateAge, onAged, onDeath, updateLog }) {
 
     return (<div></div>);
 }
+
+// ..######..########.########..##.....##.########.##.....##..######.
+// .##....##.##.......##.....##.##.....##.##.......##.....##.##....##
+// .##.......##.......##.....##.##.....##.##.......##.....##.##......
+// .##.......######...########..#########.######...##.....##..######.
+// .##.......##.......##........##.....##.##.......##.....##.......##
+// .##....##.##.......##........##.....##.##.......##.....##.##....##
+// ..######..########.##........##.....##.########..#######...######.
 
 function AgeCE({
     upp,

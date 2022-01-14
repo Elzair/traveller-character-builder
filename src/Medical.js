@@ -1,3 +1,6 @@
+// These components handle restoring characteristics to an injured traveller and calculating
+// the cost of medical treatment.
+
 import React, { useState, useEffect } from 'react';
 import Switch from 'react-switch';
 
@@ -5,6 +8,8 @@ import { r2d6 } from './random';
 
 import CECAREERS from './data/ce/careers';
 
+// Main Medical Component handles whether or not to display Medical (based on `display`)  
+// and whether to use Cepheus Engine or Mongoose Traveller 2nd Edition.
 export function Medical({ game, upp, updateUPP, career, injury, updateInjury, credits, updateCredits, display, onMedical, updateLog }) {
     if (display && game === 'cepheusengine') {
         return (
@@ -24,6 +29,14 @@ export function Medical({ game, upp, updateUPP, career, injury, updateInjury, cr
         return (<div></div>);
     }
 }
+
+// ..######..########.########..##.....##.########.##.....##..######.
+// .##....##.##.......##.....##.##.....##.##.......##.....##.##....##
+// .##.......##.......##.....##.##.....##.##.......##.....##.##......
+// .##.......######...########..#########.######...##.....##..######.
+// .##.......##.......##........##.....##.##.......##.....##.......##
+// .##....##.##.......##........##.....##.##.......##.....##.##....##
+// ..######..########.##........##.....##.########..#######...######.
 
 function MedicalCE({ upp, updateUPP, career, injury, updateInjury, credits, updateCredits, onMedical, updateLog }) {
     let [checked, setChecked] = useState(true);
@@ -62,6 +75,12 @@ function MedicalCE({ upp, updateUPP, career, injury, updateInjury, credits, upda
         onMedical();
     }
 
+    /**
+     * This function calculates the cost of restoring the traveller's injured
+     * characteristics after the traveller's employer has (potentially)
+     * paid some of the expenses.
+     * @returns Number representing the cost of the operation
+     */
     function calculateDebt() {
         const curCareer = career[career.length - 1]; // Get latest career
         const careerData = CECAREERS.filter(c => c.name === curCareer.branch)[0];

@@ -1,3 +1,5 @@
+// These components handle travellers being drafted into a career (and possibly gaining benefits from the entry level).
+
 import React, { useEffect, useState } from 'react';
 import Switch from 'react-switch';
 
@@ -11,6 +13,8 @@ import CESKILLS from './data/ce/skills';
 
 import './default.css';
 
+// Main Draft Component handles whether or not to display Draft (based on `display`)  
+// and whether to use Classic Traveller, Cepheus Engine, or Mongoose Traveller 2nd Edition.
 export function Draft({ game, career, updateCareer, upp, updateUPP, skills, updateSkills, cascadeSkill, updateCascadeSkill, display, onDraft, updateLog }) {
     if (display && game === 'classic') {
         return (
@@ -46,6 +50,14 @@ export function Draft({ game, career, updateCareer, upp, updateUPP, skills, upda
         return (<div></div>);
     }
 }
+
+// ..######..##..........###.....######...######..####..######.
+// .##....##.##.........##.##...##....##.##....##..##..##....##
+// .##.......##........##...##..##.......##........##..##......
+// .##.......##.......##.....##..######...######...##..##......
+// .##.......##.......#########.......##.......##..##..##......
+// .##....##.##.......##.....##.##....##.##....##..##..##....##
+// ..######..########.##.....##..######...######..####..######.
 
 function DraftCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, cascadeSkill, updateCascadeSkill, onDraft, updateLog }) {
     useEffect(() => {
@@ -106,6 +118,14 @@ function DraftCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, c
 
     return (<div></div>);
 }
+
+// ..######..########.########..##.....##.########.##.....##..######.
+// .##....##.##.......##.....##.##.....##.##.......##.....##.##....##
+// .##.......##.......##.....##.##.....##.##.......##.....##.##......
+// .##.......######...########..#########.######...##.....##..######.
+// .##.......##.......##........##.....##.##.......##.....##.......##
+// .##....##.##.......##........##.....##.##.......##.....##.##....##
+// ..######..########.##........##.....##.########..#######...######.
 
 function DraftCE({ career, updateCareer, upp, updateUPP, skills, updateSkills, cascadeSkill, updateCascadeSkill, onDraft, updateLog }) {
     let [checked, setChecked] = useState(false);

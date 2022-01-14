@@ -1,10 +1,12 @@
-import React from 'react';
+// These components handle selecting a sub-skill from a cascade skill.
 
-// import { applyDMsToRoll, modRollCE, r2d6 } from "./utils";
+import React from 'react';
 
 import CTSKILLS from './data/ct/skills';
 import CESKILLS from './data/ce/skills';
 
+// Main CascadeSkill Component handles whether or not to display CascadeSkill (based on `display`)  
+// and whether to use Classic Traveller, Cepheus Engine, or Mongoose Traveller 2nd Edition.
 export function CascadeSkill({ game, skills, updateSkills, cascadeSkill, updateCascadeSkill, display, onSelected, updateLog }) {
     if (display && game === 'classic') {
         return (
@@ -32,6 +34,14 @@ export function CascadeSkill({ game, skills, updateSkills, cascadeSkill, updateC
         return (<div></div>);
     }
 }
+
+// ..######..##..........###.....######...######..####..######.
+// .##....##.##.........##.##...##....##.##....##..##..##....##
+// .##.......##........##...##..##.......##........##..##......
+// .##.......##.......##.....##..######...######...##..##......
+// .##.......##.......#########.......##.......##..##..##......
+// .##....##.##.......##.....##.##....##.##....##..##..##....##
+// ..######..########.##.....##..######...######..####..######.
 
 function CascadeSkillCT({ skills, updateSkills, cascadeSkill, updateCascadeSkill, onSelected, updateLog }) {
     function handleCascadeSkillSelection(ev) {
@@ -76,6 +86,13 @@ function CascadeSkillCT({ skills, updateSkills, cascadeSkill, updateCascadeSkill
     );
 }
 
+// ..######..########.########..##.....##.########.##.....##..######.
+// .##....##.##.......##.....##.##.....##.##.......##.....##.##....##
+// .##.......##.......##.....##.##.....##.##.......##.....##.##......
+// .##.......######...########..#########.######...##.....##..######.
+// .##.......##.......##........##.....##.##.......##.....##.......##
+// .##....##.##.......##........##.....##.##.......##.....##.##....##
+// ..######..########.##........##.....##.########..#######...######.
 
 function CascadeSkillCE({ skills, updateSkills, cascadeSkill, updateCascadeSkill, onSelected, updateLog }) {
     function handleCascadeSkillSelection(ev) {
