@@ -75,45 +75,47 @@ function MedicalCE({ upp, updateUPP, career, injury, updateInjury, credits, upda
         onMedical();
     }
 
-    /**
-     * This function calculates the cost of restoring the traveller's injured
-     * characteristics after the traveller's employer has (potentially)
-     * paid some of the expenses.
-     * @returns Number representing the cost of the operation
-     */
-    function calculateDebt() {
-        const curCareer = career[career.length - 1]; // Get latest career
-        const careerData = CECAREERS.filter(c => c.name === curCareer.branch)[0];
 
-        // Calculate amount of credits needed to pay to restore all lost characteristics.
-        let newDebt = 0;
-        const physChars = ['Strength', 'Dexterity', 'Endurance'];
-        physChars.forEach(char => newDebt += (injury.injuries[char] || 0));
-        newDebt *= 5000; // Each characteristic point lost costs 5000Cr to treat.
-
-        // See if the traveller's employer will help pay for medical care.
-        const medicalRoll = r2d6() + curCareer.rank;
-        let payMod = 0;
-        if (medicalRoll >= 12) {
-            payMod = careerData.medical['12'];
-        } else if (medicalRoll >= 8) {
-            payMod = careerData.medical['8'];
-        } else if (medicalRoll >= 4) {
-            payMod = careerData.medical['4'];
-        }
-        newDebt = Math.round(newDebt * (1.0 - payMod));
-
-        return newDebt;
-    }
 
     // If the traveller has no treatable injuries, go to the next step.
     useEffect(() => {
+        /**
+         * This function calculates the cost of restoring the traveller's injured
+         * characteristics after the traveller's employer has (potentially)
+         * paid some of the expenses.
+         * @returns Number representing the cost of the operation
+         */
+        function calculateDebt() {
+            const curCareer = career[career.length - 1]; // Get latest career
+            const careerData = CECAREERS.filter(c => c.name === curCareer.branch)[0];
+
+            // Calculate amount of credits needed to pay to restore all lost characteristics.
+            let newDebt = 0;
+            const physChars = ['Strength', 'Dexterity', 'Endurance'];
+            physChars.forEach(char => newDebt += (injury.injuries[char] || 0));
+            newDebt *= 5000; // Each characteristic point lost costs 5000Cr to treat.
+
+            // See if the traveller's employer will help pay for medical care.
+            const medicalRoll = r2d6() + curCareer.rank;
+            let payMod = 0;
+            if (medicalRoll >= 12) {
+                payMod = careerData.medical['12'];
+            } else if (medicalRoll >= 8) {
+                payMod = careerData.medical['8'];
+            } else if (medicalRoll >= 4) {
+                payMod = careerData.medical['4'];
+            }
+            newDebt = Math.round(newDebt * (1.0 - payMod));
+
+            return newDebt;
+        }
+
         if (Object.keys(injury.injuries).length === 0) {
             onMedical();
         } else {
             setDebt(calculateDebt());
         }
-    });
+    }, [injury.injuries, onMedical]);
 
     if (Object.keys(injury.injuries).length > 0) {
         // const cost = calculateDebt(); // Calculate debt for display purposes.

@@ -51,8 +51,8 @@ function EntrySkillCE({ career, upp, skills, updateSkills, onSkillSelection, upd
 
     // If this is the traveller's first career, give them all service skills at level 0.
     // Otherwise, let them select one skill from the career's service skill table to be level 0.
-    if (career.length === 1) {
-        useEffect(() => {
+    useEffect(() => {
+        if (career.length === 1) {
             const careerData = CECAREERS.filter(c => c.name === career[career.length - 1].branch)[0];
             const serviceSkills = careerData.sst.filter(skill => skill.type === 'SKILL').map(skill => skill.name);
             let newLog = [];
@@ -69,8 +69,10 @@ function EntrySkillCE({ career, upp, skills, updateSkills, onSkillSelection, upd
             updateSkills(newSkills);
             updateLog(newLog);
             onSkillSelection();
-        });
+        }
+    });
 
+    if (career.length === 1) {
         return (<div></div>);
     } else {
         // Allow traveller to learn a career's service skill at level 0 if they do not already know it.
