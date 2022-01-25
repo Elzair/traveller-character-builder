@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useDebugValue, useEffect, useState } from 'react';
 // import logo from './logo.svg';
 
 import './App.css';
@@ -33,6 +32,12 @@ import { NewCareer } from './NewCareer';
 
 import CTCAREERS from './data/ct/careers';
 import CECAREERS from './data/ce/careers';
+
+function useStateWithLabel(initialValue, label) {
+  const [value, setValue] = useState(initialValue);
+  useDebugValue(`${label}: ${JSON.stringify(value, null, 2)}`);
+  return [value, setValue];
+}
 
 // ..######..########.########.########...######.
 // .##....##....##....##.......##.....##.##....##
@@ -69,6 +74,7 @@ const STEPS = [
   'FINISHED',
   'END'
 ];
+
 const MAXCASHROLLS = 3;
 
 function App() {
@@ -79,33 +85,33 @@ function App() {
   // .......##....##....#########....##....##......
   // .##....##....##....##.....##....##....##......
   // ..######.....##....##.....##....##....########
-  let [step, setStep] = useState('GAME');
-  let [nextStep, setNextStep] = useState(null);
-  // let [game, setGame] = useState("classic");
-  let [game, setGame] = useState("mt2e");
-  let [options, setOptions] = useState({ rearrangeCharacteristics: false, });
-  let [name, setName] = useState('');
-  let [upp, setUPP] = useState(generateUPP());
-  // let [homeworldName, setHomeworldName] = useState('');
-  let [homeworldUWP, setHomeworldUWP] = useState(generateUWP());
-  let [homeworldTradeCodes, setHomeworldTradeCodes] = useState([]);
-  let [skills, setSkills] = useState({});
-  let [numSkillRolls, setNumSkillRolls] = useState(0);
-  let [cascadeSkill, setCascadeSkill] = useState(null);
-  let [skillList, setSkillList] = useState({ name: '', list: [], values: [], newSkills: {} });
-  // let [term, setTerm] = useState(1);
-  let [education, setEducation] = useState({});
-  let [career, setCareer] = useState([]);
-  let [mishap, setMishap] = useState('NONE');
-  let [injury, setInjury] = useState({ roll: 0, crisis: false, injuries: {} });
-  let [age, setAge] = useState(18);
-  let [crisis, setCrisis] = useState(false);
-  let [anagathics, setAnagathics] = useState({ current: false, terms: 0 });
-  let [numCashRolls, setNumCashRolls] = useState(MAXCASHROLLS);
-  let [credits, setCredits] = useState(0);
-  // let [credits, setCredits] = useState(100000);
-  let [items, setItems] = useState({});
-  let [log, setLog] = useState([]);
+  let [step, setStep] = useStateWithLabel('GAME', 'step');
+  let [nextStep, setNextStep] = useStateWithLabel(null, 'nextStep');
+  // let [game, setGame] = useStateWithLabel("classic", 'game');
+  let [game, setGame] = useStateWithLabel("mt2e", 'game');
+  let [options, setOptions] = useStateWithLabel({ rearrangeCharacteristics: false, }, 'options');
+  let [name, setName] = useStateWithLabel('', 'name');
+  let [upp, setUPP] = useStateWithLabel(generateUPP(), 'upp');
+  // let [homeworldName, setHomeworldName] = useStateWithLabel('', 'homeworldName');
+  let [homeworldUWP, setHomeworldUWP] = useStateWithLabel(generateUWP(), 'homeworldUWP');
+  let [homeworldTradeCodes, setHomeworldTradeCodes] = useStateWithLabel([], 'homeworldTradeCodes');
+  let [skills, setSkills] = useStateWithLabel({}, 'skills');
+  let [numSkillRolls, setNumSkillRolls] = useStateWithLabel(0, 'numSkillRolls');
+  let [cascadeSkill, setCascadeSkill] = useStateWithLabel(null, 'cascadeSkill');
+  let [skillList, setSkillList] = useStateWithLabel({ name: '', list: [], values: [], newSkills: {} }, 'skillList');
+  // let [term, setTerm] = useStateWithLabel(1, 'term');
+  let [education, setEducation] = useStateWithLabel({}, 'education');
+  let [career, setCareer] = useStateWithLabel([], 'career');
+  let [mishap, setMishap] = useStateWithLabel('NONE', 'mishap');
+  let [injury, setInjury] = useStateWithLabel({ roll: 0, crisis: false, injuries: {} }, 'injury');
+  let [age, setAge] = useStateWithLabel(18, 'age');
+  let [crisis, setCrisis] = useStateWithLabel(false, 'crisis');
+  let [anagathics, setAnagathics] = useStateWithLabel({ current: false, terms: 0 }, 'anagathics');
+  let [numCashRolls, setNumCashRolls] = useStateWithLabel(MAXCASHROLLS, 'numCashRolls');
+  let [credits, setCredits] = useStateWithLabel(0, 'credits');
+  // let [credits, setCredits] = useStateWithLabel(100000, 'credits');
+  let [items, setItems] = useStateWithLabel({}, 'items');
+  let [log, setLog] = useStateWithLabel([], 'log');
 
   // Update State Functions
   function updateGameOptions(opts) {
