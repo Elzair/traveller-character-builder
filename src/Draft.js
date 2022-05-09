@@ -70,7 +70,7 @@ function DraftCT({ career, updateCareer, upp, updateUPP, skills, updateSkills, c
         const careerData = CTCAREERS.filter(c => c.name === careerName)[0];
         const rank = careerData.ranks[0];
 
-        newLog.push(`You were drafted into the ${capitalize(careerName)}`);
+        newLog.push(`You were drafted into the ${capitalize(careerName)}.`);
 
         if (rank.hasOwnProperty('benefit')) {
             let benefit = rank.benefit;

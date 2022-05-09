@@ -9,6 +9,7 @@ utils/cepheus-scraper/node_modules
 
 # testing
 /coverage
+src/__snapshots__
 
 # production
 /build

@@ -1,7 +1,7 @@
 {
     'Injury',
     'Severe Injury',
-    'PSI',
+    'RollPSI',
     'Mishap',
     'NoLeave',
     'NoGraduate',
@@ -18,5 +18,8 @@
     'ModAdvancementCheck',
     'Question',
     'Multi',
-    'Roll'
+    'Roll',
+    'LifeEvent',
+    'ModQualificationCheck',
+    'Choice',
 }

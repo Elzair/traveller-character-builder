@@ -12,6 +12,6 @@ export function randElt(arr) {
     return arr[array.length > 0 ? array.shift() : (Math.floor(Math.random()*arr.length))];
 }
 
-export function getValues(arr) {
+export function setValues(arr) {
     array = [...arr]
 }

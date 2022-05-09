@@ -1,4 +1,4 @@
-import { r1d6, r2d6, randElt, getValues } from './random';
+import { r1d6, r2d6, randElt, setValues } from './random';
 
 test('r1d6() produces random number with empty array', () => {
     let r = r1d6();
@@ -6,8 +6,8 @@ test('r1d6() produces random number with empty array', () => {
     expect(r).toBeLessThanOrEqual(6);
 });
 
-test('r1d6() should produce a specific number after getValues is called', () => {
-    getValues([1, 5, 4, 6, 3, 2]);
+test('r1d6() should produce a specific number after setValues is called', () => {
+    setValues([1, 5, 4, 6, 3, 2]);
     expect(r1d6()).toEqual(1);
 });
 
@@ -32,7 +32,7 @@ test('randElt() should return the only element in an array even when the random 
 });
 
 test('randElt should return the proper element when the random array is full', () => {
-    getValues([2]);
+    setValues([2]);
     let arr = [20, 5, 14, 6, 9];
     expect(randElt(arr)).toEqual(14);
 })
