@@ -22,10 +22,10 @@ test('Draft renders nothing when `display` is false', () => {
         // { game, upp, updateUPP, career, updateCareer, skills, updateSkills, cascadeSkill, updateCascadeSkill, display, onSuccess, updateLog }
         <Draft 
             game={game} 
-            upp={upp} 
-            updateUPP={updateUPP} 
             career={career} 
             updateCareer={updateCareer} 
+            upp={upp} 
+            updateUPP={updateUPP} 
             skills={skills} 
             updateSkills={updateSkills}
             cascadeSkill={cascadeSkill}

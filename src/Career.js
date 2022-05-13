@@ -280,12 +280,12 @@ function CareerMT2E({ career, updateCareer, upp, updateUPP, skills, updateSkills
             let newLog = [];
 
             // Determine if character can enlist.
-            if (canEnlistCE(upp, careerName, career.length)) {
+            if (canEnlistMT2E(upp, careerName, career.length)) {
                 newLog.push(`Congratulations! You have enlisted in the ${capitalize(careerName)}!`);
                 let tmpCascade = null;
 
                 // Apply any benefits for entering a career.
-                const careerData = CECAREERS.filter(c => c.name === careerName)[0];
+                const careerData = MT2ECAREERS.filter(c => c.name === careerName)[0];
                 const rank = careerData.ranks[0];
 
                 if (rank.hasOwnProperty('benefit')) {
