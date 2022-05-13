@@ -107,13 +107,18 @@ export function checkMT2E(target, upp, char, skills, skill, mods, useNaturals=fa
     let roll = r2d6();
     let autoFail = false;
     let autoSuccess = false;
+    let success = false;
+    let effect = 0;
 
     // If `useNatural` is true, a roll of 2 is an automatic failure and a roll of 12 is an automatic success
     if (useNaturals) {
         if (roll === 2) {
             autoFail = true;
+            success = false;
+
         } else if (roll === 12) {
             autoSuccess = true;
+            success = true;
         }
     }
     
@@ -124,15 +129,23 @@ export function checkMT2E(target, upp, char, skills, skill, mods, useNaturals=fa
 
     // Add a skill modifier if approprate
     if (skills !== null && skill !== null) {
-        let skillMod = skills.hasOwnProperty(skill) ? skills[skill] : -3;
+        let skillMod = skills.hasOwnProperty(skill) ? skills[skill] : -3; // Add untrained penalty if traveller does not have that skill
         roll += skillMod;
     }
 
     roll += mods; // Add any other random modifiers
 
+    // Determine success;
+    if (!autoFail && !autoSuccess) {
+        success = roll >= target;
+    }
+
+    effect = roll - target; // Determine by how much the roll succeeds or fails
+
     return {
         roll,
-        success: roll >= target,
+        success,
+        effect,
         autoFail,
         autoSuccess
     };
