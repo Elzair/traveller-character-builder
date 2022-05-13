@@ -12,8 +12,8 @@ export function Education({
     skillList,
     updateSkillList,
     age, 
-    education, 
-    updateEducation, 
+    // education, 
+    // updateEducation, 
     display, 
     onEducation, 
     updateLog 
@@ -30,8 +30,8 @@ export function Education({
                 skillList={skillList}
                 updateSkillList={updateSkillList}
                 age={age}
-                education={education}
-                updateEducation={updateEducation}
+                // education={education}
+                // updateEducation={updateEducation}
                 onEducation={onEducation}
                 updateLog={updateLog}
             />
@@ -40,6 +40,14 @@ export function Education({
         return (<div></div>);
     }
 }
+
+// .##.....##.########..#######..########
+// .###...###....##....##.....##.##......
+// .####.####....##...........##.##......
+// .##.###.##....##.....#######..######..
+// .##.....##....##....##........##......
+// .##.....##....##....##........##......
+// .##.....##....##....#########.########
 
 function EducationMT2E({ 
     career, 
@@ -51,8 +59,8 @@ function EducationMT2E({
     skillList,
     updateSkillList,
     age, 
-    education, 
-    updateEducation, 
+    // education, 
+    // updateEducation, 
     onEducation, 
     updateLog 
 }) {
@@ -68,6 +76,7 @@ function EducationMT2E({
 
         let roll;
         let newLog = [];
+        let universityCareer = null;
 
         // Attempt entry into university
         if (decision === 'university') {
@@ -133,7 +142,15 @@ function EducationMT2E({
                     newSkills: {}
                 });
 
-                // Increase Education
+                universityCareer = {
+                    branch: 'university',
+                    term: 0,
+                    rank: null,
+                    drafted: null,
+                    rankPrev: null
+                };
+
+                // Increase Education by 1
                 let newUPP = { ...upp };
                 newUPP.Education += 1;
                 updateUPP(newUPP);
@@ -146,6 +163,14 @@ function EducationMT2E({
             let dms = (findTerm(age)-1)*-2;
             
             if (checkMT2E(8, upp, 'Endurance', null, null, dms).success) {
+                universityCareer = {
+                    branch: 'army-academy',
+                    term: 0,
+                    rank: null,
+                    drafted: null,
+                    rankPrev: null
+                };
+
                 newLog.push('Congratulations! You got into an army academy!');
             } else {
                 newLog.push('Unfortunately, you did not qualify for an army academy.');
@@ -156,6 +181,14 @@ function EducationMT2E({
             let dms = (findTerm(age)-1)*-2;
             
             if (checkMT2E(9, upp, 'Intellect', null, null, dms).success) {
+                universityCareer = {
+                    branch: 'naval-academy',
+                    term: 0,
+                    rank: null,
+                    drafted: null,
+                    rankPrev: null
+                };
+
                 newLog.push('Congratulations! You got into a navy academy!');
             } else {
                 newLog.push('Unfortunately, you did not qualify for a navy academy.');
@@ -166,11 +199,27 @@ function EducationMT2E({
             let dms = (findTerm(age)-1)*-2;
             
             if (checkMT2E(9, upp, 'Endurance', null, null, dms).success) {
+                universityCareer = {
+                    branch: 'marine-academy',
+                    term: 0,
+                    rank: null,
+                    drafted: null,
+                    rankPrev: null
+                };
+
                 newLog.push('Congratulations! You got into a marine academy!');
             } else {
                 newLog.push('Unfortunately, you did not qualify for a marine academy.');
                 decision = 'career';
             }
+        }
+
+
+        // Add university term to career list if traveller enrolled.
+        if (universityCareer !== null) {
+            let newCareer = [...career];
+            newCareer.push(universityCareer);
+            updateCareer(newCareer);
         }
 
         updateLog(newLog);
