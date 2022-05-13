@@ -100,7 +100,7 @@ function App() {
   let [cascadeSkill, setCascadeSkill] = useStateWithLabel(null, 'cascadeSkill');
   let [skillList, setSkillList] = useStateWithLabel({ name: '', list: [], values: [], newSkills: {} }, 'skillList');
   // let [term, setTerm] = useStateWithLabel(1, 'term');
-  let [education, setEducation] = useStateWithLabel({}, 'education');
+  // let [education, setEducation] = useStateWithLabel({}, 'education');
   let [career, setCareer] = useStateWithLabel([], 'career');
   let [mishap, setMishap] = useStateWithLabel('NONE', 'mishap');
   let [injury, setInjury] = useStateWithLabel({ roll: 0, crisis: false, injuries: {} }, 'injury');
@@ -225,15 +225,18 @@ function App() {
     setStep('BACKGROUND');
   }
 
-  // BACKGROUND -> CAREER
+  // BACKGROUND -> CAREER | EDUCATION
   function selectBackgroundSkills() {
     if (game === 'mt2e') {
-      setStep('EDUCATION');
+      // Education is only available in terms 1, 2 & 3.
+      let term = findTerm(age);
+      setStep(term <= 3 ? 'EDUCATION' : 'CAREER');
     } else {
       setStep('CAREER');
     }
   }
 
+  // EDUCATION -> SELECTSKILL | ENTRYSKILLS | CAREER
   function educationDecision(decision) {
     setStep(decision === 'career' ? 'CAREER' : 'EVENT');
   }
@@ -568,8 +571,8 @@ function App() {
         skillList={skillList}
         updateSkillList={setSkillList}
         age={age}
-        education={education}
-        updateEducation={setEducation}
+        // education={education}
+        // updateEducation={setEducation}
         display={step === 'EDUCATION'}
         onEducation={educationDecision}
         updateLog={updateLog}
